@@ -1,5 +1,5 @@
 #!/bin/bash
 
-cd ../cp-padma/
+cd ../
 
 wp i18n make-pot . library/languages/padma.pot

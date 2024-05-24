@@ -373,7 +373,7 @@ class PadmaAdmin {
 		));
 
         /* General Padma admin CSS/JS */
-		if ( strpos(padma_get('page'), 'padma') !== false ) {
+		if (strpos(padma_get('page') ?? '', 'padma') !== false) {
 
 			wp_enqueue_script('padma_jquery_scrollto', padma_url() . '/library/admin/js/jquery.scrollto.js', array('jquery'));
 			wp_enqueue_script('padma_jquery_tabby', padma_url() . '/library/admin/js/jquery.tabby.js', array('jquery'));

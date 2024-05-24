@@ -11,7 +11,7 @@
 			<p><?php _e( 'Our team has been working really hard to bring this powerful tool to you. We hope you like it.', 'padma' ); ?></p>
 			<h4><?php _e( 'Aim to collaborate?', 'padma' ); ?></h4>
 			<ul>				
-				<li><?php _e( '- Report errors in: https://www.padmaunlimited.com/bug-report/', 'padma' ); ?></li>
+				<li><?php _e( '- Report errors in: https://github.com/cp-psource/ps-padma/issues', 'padma' ); ?></li>
 				<li><?php _e( '- Collaborate coding through GitHub', 'padma' ); ?></li>
 				<li><?php _e( '- Suggest functionalities, blocks or plugins', 'padma' ); ?></li>
 				<li><?php _e( '- Join our social networks', 'padma' ); ?></li>
@@ -19,13 +19,13 @@
 				<li><?php _e( '- Spread the word!', 'padma' ); ?></li>
 			</ul>			
 			<p><?php _e( 'Let\'s build together!', 'padma' ); ?></p>
-			<p><?php _e( '@PadmaTeam', 'padma' ); ?></p>
+			<p><?php _e( '@PSOURCE', 'padma' ); ?></p>
 		</div>
 
 		<p class="padma-unlimited-notice-rate-actions">			
 			<a href="https://www.facebook.com/padmaunlimited/" class="padma-admin-social-icon  first" target="_blank"><img src="<?php echo get_template_directory_uri() . '/library/admin/images/facebook.png'; ?>"></a>			
 			<a href="https://twitter.com/PadmaUnlimited" class="padma-admin-social-icon" target="_blank"><img src="<?php echo get_template_directory_uri() . '/library/admin/images/twitter.png'; ?>"></a>			
-			<a href="https://github.com/PadmaUnlimited/padma-theme" class="padma-admin-social-icon" target="_blank"><img src="<?php echo get_template_directory_uri() . '/library/admin/images/github.png'; ?>"></a>			
+			<a href="https://github.com/cp-psource/ps-padma" class="padma-admin-social-icon" target="_blank"><img src="<?php echo get_template_directory_uri() . '/library/admin/images/github.png'; ?>"></a>			
 			<a href="https://join.slack.com/t/padma-unlimited/shared_invite/enQtNTAxMzM1NjcwNTc5LWVmZjliNDRhZTQ1Y2FhZDY3ZjdkNzMzYzRmMzEwMDEyMWY0MjllYzJhYTk4ZTMxODEzNjk5NzE1YzMyMjFjNmY" class="padma-admin-social-icon" target="_blank"><img src="<?php echo get_template_directory_uri() . '/library/admin/images/slack.png'; ?>"></a>			
 			<a href="<?php echo self::get_dismiss_link(); ?>" class="padma-unlimited-notice-rate-dismiss"><?php _e( 'Dismiss', 'padma' ); ?></a>
 		</p>
