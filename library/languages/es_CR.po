@@ -23,8 +23,8 @@ msgstr "Padma Unlimited"
 
 #. Theme URI of the theme
 #. Author URI of the theme
-msgid "https://www.padmaunlimited.com/"
-msgstr "https://www.padmaunlimited.com/"
+msgid "https://cp-psource.github.io/ps-padma//"
+msgstr "https://cp-psource.github.io/ps-padma//"
 
 #. Description of the theme
 msgid ""
@@ -1849,8 +1849,8 @@ msgid "Register to get even more plugins and blocks"
 msgstr "Regístrese para obtener aún más plugins y bloques"
 
 #: library/admin/partials/notices/support-us.php:15
-msgid "- Report errors in: https://www.padmaunlimited.com/bug-report/"
-msgstr "- Informar errores en: https://www.padmaunlimited.com/bug-report/"
+msgid "- Report errors in: https://cp-psource.github.io/ps-padma//bug-report/"
+msgstr "- Informar errores en: https://cp-psource.github.io/ps-padma//bug-report/"
 
 #: library/admin/partials/notices/support-us.php:16
 msgid "- Collaborate coding through GitHub"
@@ -6110,7 +6110,7 @@ msgstr ""
 "Desactive Padma al ir a<a href=\"%s\">Appearance &raquo; Temas </a> y elegir "
 "un tema diferente hasta que su instalación de WordPress se haya actualizado "
 "a 3.4 o superior.<br /><br />\n"
-"Si el problema persiste, visite <a href=\"https://www.padmaunlimited.com\" \n"
+"Si el problema persiste, visite <a href=\"https://cp-psource.github.io/ps-padma/\" \n"
 "target=\"_blank\">Soporte Padma</a>.\n"
 "\t"
 
@@ -6830,11 +6830,11 @@ msgstr ""
 #: library/visual-editor/visual-editor.php:705
 msgid ""
 "If this message persists after upgrading to a modern browser, please visit "
-"our <a href=\"https://www.padmaunlimited.com/community/\" target=\"_blank\">"
+"our <a href=\"https://cp-psource.github.io/ps-padma//community/\" target=\"_blank\">"
 "Community</a>."
 msgstr ""
 "Si este mensaje persiste después de actualizar a un navegador moderno, "
-"visite nuestra <a href=\"https://www.padmaunlimited.com/community/\" "
+"visite nuestra <a href=\"https://cp-psource.github.io/ps-padma//community/\" "
 "target=\"_blank\"> Comunidad </a>."
 
 #: library/wrappers/wrapper-options.php:15

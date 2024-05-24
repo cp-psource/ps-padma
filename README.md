@@ -5,19 +5,19 @@ Padma Theme Builder is a fork of Headway Themes 3.8.X developed to provide an up
 
 Padma Theme Builder allows HWT 3.8.X & BT 1.X users to migrate their obsolete Websites to an updated and improved development framework, for FREE.
 
-We encourage you to try Padma Unlimited Theme Builder and help us to keep improving it by sending us <a href="https://www.padmaunlimited.com/bug-report/" rel="nofollow">bug reports</a> or <a href="https://www.padmaunlimited.com/contact-us/" rel="nofollow">suggestions.</a>
+We encourage you to try Padma Unlimited Theme Builder and help us to keep improving it by sending us <a href="https://cp-psource.github.io/ps-padma//bug-report/" rel="nofollow">bug reports</a> or <a href="https://cp-psource.github.io/ps-padma//contact-us/" rel="nofollow">suggestions.</a>
 All kind of contributions are welcome!
 
 Links of interest:
 <ul>
-<li><a href="https://www.padmaunlimited.com/" rel="nofollow">Official Padma | Unlimited Theme Builder Website</a></li>
-<li><a href="https://www.padmaunlimited.com/blog/2018/free-unlimited-themes-for-personal-or-commercial-use/" rel="nofollow">Free Unlimited Themes for personal or commercial use</a></li>
-<li><a href="https://www.padmaunlimited.com/blog/2018/an-action-step-is-worth-a-thousand-words/" rel="nofollow">An action Step is worth a thousand words</a></li>
+<li><a href="https://cp-psource.github.io/ps-padma//" rel="nofollow">Official Padma | Unlimited Theme Builder Website</a></li>
+<li><a href="https://cp-psource.github.io/ps-padma//blog/2018/free-unlimited-themes-for-personal-or-commercial-use/" rel="nofollow">Free Unlimited Themes for personal or commercial use</a></li>
+<li><a href="https://cp-psource.github.io/ps-padma//blog/2018/an-action-step-is-worth-a-thousand-words/" rel="nofollow">An action Step is worth a thousand words</a></li>
 </ul>
 <br>
 <br>
 Contributors.<br>
-We are looking for people eager to participate in the improvement and growth of Padma Unlimited Theme Builder. Please <a href="https://www.padmaunlimited.com/contact-us/" rel="nofollow">get in touch</a> and let us know you are here and interested in collaborate.
+We are looking for people eager to participate in the improvement and growth of Padma Unlimited Theme Builder. Please <a href="https://cp-psource.github.io/ps-padma//contact-us/" rel="nofollow">get in touch</a> and let us know you are here and interested in collaborate.
 <br>
 <br>
 Patrons.<br>

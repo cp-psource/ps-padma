@@ -157,7 +157,7 @@ define(['jquery', 'util.tooltips', 'helper.boxes', 'modules/panel'], function($,
 		{
 			target: 'window',
 			title: 'Have fun building with Padma!',
-			content: '<p>We hope you find Padma to the most powerful and easy-to-use WordPress framework around.</p><p>If you have any questions, please don\'t hesitate to visit the <a href="https://www.padmaunlimited.com/community/" target="_blank">Community</a>.</p>',
+			content: '<p>We hope you find Padma to the most powerful and easy-to-use WordPress framework around.</p><p>If you have any questions, please don\'t hesitate to visit the <a href="https://cp-psource.github.io/ps-padma//community/" target="_blank">Community</a>.</p>',
 			end: true
 		}
 	];

@@ -9,7 +9,7 @@ This documentation is in the process of development and we work hard to get it r
 
 Follow next easy steps to get our **forever free Theme** **Builder** available on your WordPress installation.
 
-1. Go to [https://www.padmaunlimited.com/](https://www.padmaunlimited.com/) and click the **Download** » Button.
+1. Go to [https://cp-psource.github.io/ps-padma//](https://cp-psource.github.io/ps-padma//) and click the **Download** » Button.
 
 2. Access your **WordPress** Dashboard. Select Appearance/ Themes in the main menu. 
 ![enter image description here](https://docs.padmaunlimited.com/wp-content/uploads/2018/03/Padma-Unlimited-Appearance-Themes.png)

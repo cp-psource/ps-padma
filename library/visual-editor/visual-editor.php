@@ -702,7 +702,7 @@ class PadmaVisualEditor {
 
 		$message .= __('Please upgrade to a modern browser such as <a href="http://www.google.com/chrome" target="_blank">Google Chrome</a> or <a href="http://firefox.com" target="_blank">Mozilla Firefox</a>.','padma') . '<br /><br />'; 
 
-		$message .= __('If this message persists after upgrading to a modern browser, please visit our <a href="https://www.padmaunlimited.com/community/" target="_blank">Community</a>.','padma');
+		$message .= __('If this message persists after upgrading to a modern browser, please visit our <a href="https://cp-psource.github.io/ps-padma//community/" target="_blank">Community</a>.','padma');
 
 		return wp_die($message);
 

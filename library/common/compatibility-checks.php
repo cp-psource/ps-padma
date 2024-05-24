@@ -17,7 +17,7 @@ if ( (defined('DOING_AJAX') && DOING_AJAX) || $pagenow === 'themes.php' ) {
 
 		Please deactivate Padma by going to <a href="%s">Appearance &raquo; Themes</a> and choosing a difference theme until your WordPress installation has been updated to 3.4 or higher.<br /><br />
 
-		If the issue persists, please visit <a href="https://www.padmaunlimited.com" target="_blank">Padma Support</a>.
+		If the issue persists, please visit <a href="https://cp-psource.github.io/ps-padma/" target="_blank">Padma Support</a>.
 	', 'padma'), $wp_version, admin_url('themes.php'));
 
 	wp_die($message);

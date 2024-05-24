@@ -473,8 +473,8 @@ class PadmaVisualEditorDisplay {
 					<li><a href="' . admin_url('admin.php?page=padma-tools')  . '" target="_blank">' . __('Padma Tools', 'padma') . '</a></li>
 					<li><a href="https://docs.padmaunlimited.com" target="_blank" rel="noopener">' . __('Documentation', 'padma') . '</a></li>
 					<li><a href="mailto:support@padmaunlimited.com" target="_blank">' . __('Support', 'padma') . '</a></li>
-					<li><a href="https://www.padmaunlimited.com/community/" target="_blank" rel="noopener">' . __('Community', 'padma') . '</a></li>
-					<li><a href="https://www.padmaunlimited.com/get-started/how-to-collaborate/" target="_blank" rel="noopener">' . __('Get Involved','padma') . '</a></li>
+					<li><a href="https://cp-psource.github.io/ps-padma//community/" target="_blank" rel="noopener">' . __('Community', 'padma') . '</a></li>
+					<li><a href="https://cp-psource.github.io/ps-padma//get-started/how-to-collaborate/" target="_blank" rel="noopener">' . __('Get Involved','padma') . '</a></li>
 				</ul>
 
 			</li>';

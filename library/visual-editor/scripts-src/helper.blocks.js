@@ -1172,7 +1172,7 @@ define(['modules/panel.inputs', 'helper.history', 'util.browser'], function(pane
 			});
 			/*
 			blockTypeSelector.find('div.block-type#get-more-blocks').bind('click', function(event) {
-				location.assign('https://www.padmaunlimited.com/how-to-get-more-blocks/');
+				location.assign('https://cp-psource.github.io/ps-padma//how-to-get-more-blocks/');
 			});*/
 
 

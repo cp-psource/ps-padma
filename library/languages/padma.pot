@@ -20,7 +20,7 @@ msgstr ""
 
 #. Theme URI of the theme
 #. Author URI of the theme
-msgid "https://www.padmaunlimited.com/"
+msgid "https://cp-psource.github.io/ps-padma//"
 msgstr ""
 
 #. Description of the theme
@@ -1322,7 +1322,7 @@ msgid "Register to get even more plugins and blocks"
 msgstr ""
 
 #: library/admin/partials/notices/support-us.php:15
-msgid "- Report errors in: https://www.padmaunlimited.com/bug-report/"
+msgid "- Report errors in: https://cp-psource.github.io/ps-padma//bug-report/"
 msgstr ""
 
 #: library/admin/partials/notices/support-us.php:16
@@ -4825,7 +4825,7 @@ msgid ""
 "\n"
 "\t\tPlease deactivate Padma by going to <a href=\"%s\">Appearance &raquo; Themes</a> and choosing a difference theme until your WordPress installation has been updated to 3.4 or higher.<br /><br />\n"
 "\n"
-"\t\tIf the issue persists, please visit <a href=\"https://www.padmaunlimited.com\" target=\"_blank\">Padma Support</a>.\n"
+"\t\tIf the issue persists, please visit <a href=\"https://cp-psource.github.io/ps-padma/\" target=\"_blank\">Padma Support</a>.\n"
 "\t"
 msgstr ""
 
@@ -5419,7 +5419,7 @@ msgid "Please upgrade to a modern browser such as <a href=\"http://www.google.co
 msgstr ""
 
 #: library/visual-editor/visual-editor.php:705
-msgid "If this message persists after upgrading to a modern browser, please visit our <a href=\"https://www.padmaunlimited.com/community/\" target=\"_blank\">Community</a>."
+msgid "If this message persists after upgrading to a modern browser, please visit our <a href=\"https://cp-psource.github.io/ps-padma//community/\" target=\"_blank\">Community</a>."
 msgstr ""
 
 #: library/wrappers/wrapper-options.php:15
