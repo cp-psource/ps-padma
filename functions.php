@@ -57,3 +57,14 @@ add_filter(
 	}
 );
 
+require 'psource/psource-plugin-update/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://github.com/cp-psource/ps-padma',
+	__FILE__,
+	'ps-padma'
+);
+
+//Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('master');
