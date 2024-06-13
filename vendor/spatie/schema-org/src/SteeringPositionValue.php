@@ -2,17 +2,16 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\SteeringPositionValueContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\QualitativeValueContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\QualitativeValueContract;
+use Spatie\SchemaOrg\Contracts\SteeringPositionValueContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A value indicating a steering position.
  *
  * @see https://schema.org/SteeringPositionValue
- * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
  */
@@ -23,24 +22,22 @@ class SteeringPositionValue extends BaseType implements SteeringPositionValueCon
      * main direction of driving).
      *
      * @see https://schema.org/LeftHandDriving
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
      */
-     const LeftHandDriving = 'https://schema.org/LeftHandDriving';
+    public const LeftHandDriving = 'https://schema.org/LeftHandDriving';
 
     /**
      * The steering position is on the right side of the vehicle (viewed from
      * the main direction of driving).
      *
      * @see https://schema.org/RightHandDriving
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
      */
-     const RightHandDriving = 'https://schema.org/RightHandDriving';
+    public const RightHandDriving = 'https://schema.org/RightHandDriving';
 
     /**
-     * A property-value pair representing an additional characteristics of the
-     * entitity, e.g. a product feature or another characteristic for which
-     * there is no matching property in schema.org.
-     * 
+     * A property-value pair representing an additional characteristic of the
+     * entity, e.g. a product feature or another characteristic for which there
+     * is no matching property in schema.org.
+     *
      * Note: Publishers should be aware that applications designed to use
      * specific schema.org properties (e.g. https://schema.org/width,
      * https://schema.org/color, https://schema.org/gtin13, ...) will typically
@@ -61,10 +58,14 @@ class SteeringPositionValue extends BaseType implements SteeringPositionValueCon
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -94,7 +95,7 @@ class SteeringPositionValue extends BaseType implements SteeringPositionValueCon
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -131,7 +132,6 @@ class SteeringPositionValue extends BaseType implements SteeringPositionValueCon
      * @return static
      *
      * @see https://schema.org/equal
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function equal($equal)
     {
@@ -147,7 +147,6 @@ class SteeringPositionValue extends BaseType implements SteeringPositionValueCon
      * @return static
      *
      * @see https://schema.org/greater
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function greater($greater)
     {
@@ -163,7 +162,6 @@ class SteeringPositionValue extends BaseType implements SteeringPositionValueCon
      * @return static
      *
      * @see https://schema.org/greaterOrEqual
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function greaterOrEqual($greaterOrEqual)
     {
@@ -212,7 +210,6 @@ class SteeringPositionValue extends BaseType implements SteeringPositionValueCon
      * @return static
      *
      * @see https://schema.org/lesser
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function lesser($lesser)
     {
@@ -228,7 +225,6 @@ class SteeringPositionValue extends BaseType implements SteeringPositionValueCon
      * @return static
      *
      * @see https://schema.org/lesserOrEqual
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function lesserOrEqual($lesserOrEqual)
     {
@@ -274,7 +270,6 @@ class SteeringPositionValue extends BaseType implements SteeringPositionValueCon
      * @return static
      *
      * @see https://schema.org/nonEqual
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function nonEqual($nonEqual)
     {
@@ -342,19 +337,17 @@ class SteeringPositionValue extends BaseType implements SteeringPositionValueCon
     }
 
     /**
-     * A pointer to a secondary value that provides additional information on
-     * the original value, e.g. a reference temperature.
+     * A secondary value that provides additional information on the original
+     * value, e.g. a reference temperature or a type of measurement.
      *
-     * @param \Spatie\SchemaOrg\Contracts\EnumerationContract|\Spatie\SchemaOrg\Contracts\EnumerationContract[]|\Spatie\SchemaOrg\Contracts\PropertyValueContract|\Spatie\SchemaOrg\Contracts\PropertyValueContract[]|\Spatie\SchemaOrg\Contracts\QualitativeValueContract|\Spatie\SchemaOrg\Contracts\QualitativeValueContract[]|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[]|\Spatie\SchemaOrg\Contracts\StructuredValueContract|\Spatie\SchemaOrg\Contracts\StructuredValueContract[] $valueReference
+     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|\Spatie\SchemaOrg\Contracts\EnumerationContract|\Spatie\SchemaOrg\Contracts\EnumerationContract[]|\Spatie\SchemaOrg\Contracts\MeasurementTypeEnumerationContract|\Spatie\SchemaOrg\Contracts\MeasurementTypeEnumerationContract[]|\Spatie\SchemaOrg\Contracts\PropertyValueContract|\Spatie\SchemaOrg\Contracts\PropertyValueContract[]|\Spatie\SchemaOrg\Contracts\QualitativeValueContract|\Spatie\SchemaOrg\Contracts\QualitativeValueContract[]|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[]|\Spatie\SchemaOrg\Contracts\StructuredValueContract|\Spatie\SchemaOrg\Contracts\StructuredValueContract[]|string|string[] $valueReference
      *
      * @return static
      *
      * @see https://schema.org/valueReference
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function valueReference($valueReference)
     {
         return $this->setProperty('valueReference', $valueReference);
     }
-
 }

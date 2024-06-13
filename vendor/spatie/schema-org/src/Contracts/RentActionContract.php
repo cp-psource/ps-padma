@@ -46,6 +46,8 @@ interface RentActionContract
 
     public function priceSpecification($priceSpecification);
 
+    public function provider($provider);
+
     public function realEstateAgent($realEstateAgent);
 
     public function result($result);
@@ -59,5 +61,4 @@ interface RentActionContract
     public function target($target);
 
     public function url($url);
-
 }

@@ -27,6 +27,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|AddAction addAction(\Closure|null $callback = null)
  * @method self|AdministrativeArea administrativeArea(\Closure|null $callback = null)
  * @method self|AdultEntertainment adultEntertainment(\Closure|null $callback = null)
+ * @method self|AdultOrientedEnumeration adultOrientedEnumeration(\Closure|null $callback = null)
  * @method self|AdvertiserContentArticle advertiserContentArticle(\Closure|null $callback = null)
  * @method self|AggregateOffer aggregateOffer(\Closure|null $callback = null)
  * @method self|AggregateRating aggregateRating(\Closure|null $callback = null)
@@ -35,6 +36,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|Airport airport(\Closure|null $callback = null)
  * @method self|AlignmentObject alignmentObject(\Closure|null $callback = null)
  * @method self|AllocateAction allocateAction(\Closure|null $callback = null)
+ * @method self|AmpStory ampStory(\Closure|null $callback = null)
  * @method self|AmusementPark amusementPark(\Closure|null $callback = null)
  * @method self|AnalysisNewsArticle analysisNewsArticle(\Closure|null $callback = null)
  * @method self|AnatomicalStructure anatomicalStructure(\Closure|null $callback = null)
@@ -61,6 +63,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|Attorney attorney(\Closure|null $callback = null)
  * @method self|Audience audience(\Closure|null $callback = null)
  * @method self|AudioObject audioObject(\Closure|null $callback = null)
+ * @method self|AudioObjectSnapshot audioObjectSnapshot(\Closure|null $callback = null)
  * @method self|Audiobook audiobook(\Closure|null $callback = null)
  * @method self|AuthorizeAction authorizeAction(\Closure|null $callback = null)
  * @method self|AutoBodyShop autoBodyShop(\Closure|null $callback = null)
@@ -84,6 +87,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|BedType bedType(\Closure|null $callback = null)
  * @method self|BefriendAction befriendAction(\Closure|null $callback = null)
  * @method self|BikeStore bikeStore(\Closure|null $callback = null)
+ * @method self|BioChemEntity bioChemEntity(\Closure|null $callback = null)
  * @method self|Blog blog(\Closure|null $callback = null)
  * @method self|BlogPosting blogPosting(\Closure|null $callback = null)
  * @method self|BloodTest bloodTest(\Closure|null $callback = null)
@@ -91,6 +95,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|BoatReservation boatReservation(\Closure|null $callback = null)
  * @method self|BoatTerminal boatTerminal(\Closure|null $callback = null)
  * @method self|BoatTrip boatTrip(\Closure|null $callback = null)
+ * @method self|BodyMeasurementTypeEnumeration bodyMeasurementTypeEnumeration(\Closure|null $callback = null)
  * @method self|BodyOfWater bodyOfWater(\Closure|null $callback = null)
  * @method self|Bone bone(\Closure|null $callback = null)
  * @method self|Book book(\Closure|null $callback = null)
@@ -140,6 +145,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|CheckInAction checkInAction(\Closure|null $callback = null)
  * @method self|CheckOutAction checkOutAction(\Closure|null $callback = null)
  * @method self|CheckoutPage checkoutPage(\Closure|null $callback = null)
+ * @method self|ChemicalSubstance chemicalSubstance(\Closure|null $callback = null)
  * @method self|ChildCare childCare(\Closure|null $callback = null)
  * @method self|ChildrensEvent childrensEvent(\Closure|null $callback = null)
  * @method self|ChooseAction chooseAction(\Closure|null $callback = null)
@@ -170,6 +176,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|ComputerStore computerStore(\Closure|null $callback = null)
  * @method self|ConfirmAction confirmAction(\Closure|null $callback = null)
  * @method self|Consortium consortium(\Closure|null $callback = null)
+ * @method self|ConstraintNode constraintNode(\Closure|null $callback = null)
  * @method self|ConsumeAction consumeAction(\Closure|null $callback = null)
  * @method self|ContactPage contactPage(\Closure|null $callback = null)
  * @method self|ContactPoint contactPoint(\Closure|null $callback = null)
@@ -229,6 +236,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|DigitalDocument digitalDocument(\Closure|null $callback = null)
  * @method self|DigitalDocumentPermission digitalDocumentPermission(\Closure|null $callback = null)
  * @method self|DigitalDocumentPermissionType digitalDocumentPermissionType(\Closure|null $callback = null)
+ * @method self|DigitalPlatformEnumeration digitalPlatformEnumeration(\Closure|null $callback = null)
  * @method self|DisagreeAction disagreeAction(\Closure|null $callback = null)
  * @method self|DiscoverAction discoverAction(\Closure|null $callback = null)
  * @method self|DiscussionForumPosting discussionForumPosting(\Closure|null $callback = null)
@@ -252,6 +260,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|DrugStrength drugStrength(\Closure|null $callback = null)
  * @method self|DryCleaningOrLaundry dryCleaningOrLaundry(\Closure|null $callback = null)
  * @method self|Duration duration(\Closure|null $callback = null)
+ * @method self|EUEnergyEfficiencyEnumeration eUEnergyEfficiencyEnumeration(\Closure|null $callback = null)
  * @method self|EatAction eatAction(\Closure|null $callback = null)
  * @method self|EducationEvent educationEvent(\Closure|null $callback = null)
  * @method self|EducationalAudience educationalAudience(\Closure|null $callback = null)
@@ -271,6 +280,9 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|EndorseAction endorseAction(\Closure|null $callback = null)
  * @method self|EndorsementRating endorsementRating(\Closure|null $callback = null)
  * @method self|Energy energy(\Closure|null $callback = null)
+ * @method self|EnergyConsumptionDetails energyConsumptionDetails(\Closure|null $callback = null)
+ * @method self|EnergyEfficiencyEnumeration energyEfficiencyEnumeration(\Closure|null $callback = null)
+ * @method self|EnergyStarEnergyEfficiencyEnumeration energyStarEnergyEfficiencyEnumeration(\Closure|null $callback = null)
  * @method self|EngineSpecification engineSpecification(\Closure|null $callback = null)
  * @method self|EntertainmentBusiness entertainmentBusiness(\Closure|null $callback = null)
  * @method self|EntryPoint entryPoint(\Closure|null $callback = null)
@@ -309,6 +321,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|FundingScheme fundingScheme(\Closure|null $callback = null)
  * @method self|FurnitureStore furnitureStore(\Closure|null $callback = null)
  * @method self|Game game(\Closure|null $callback = null)
+ * @method self|GameAvailabilityEnumeration gameAvailabilityEnumeration(\Closure|null $callback = null)
  * @method self|GamePlayMode gamePlayMode(\Closure|null $callback = null)
  * @method self|GameServer gameServer(\Closure|null $callback = null)
  * @method self|GameServerStatus gameServerStatus(\Closure|null $callback = null)
@@ -316,6 +329,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|GasStation gasStation(\Closure|null $callback = null)
  * @method self|GatedResidenceCommunity gatedResidenceCommunity(\Closure|null $callback = null)
  * @method self|GenderType genderType(\Closure|null $callback = null)
+ * @method self|Gene gene(\Closure|null $callback = null)
  * @method self|GeneralContractor generalContractor(\Closure|null $callback = null)
  * @method self|GeoCircle geoCircle(\Closure|null $callback = null)
  * @method self|GeoCoordinates geoCoordinates(\Closure|null $callback = null)
@@ -363,11 +377,16 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|HowToSupply howToSupply(\Closure|null $callback = null)
  * @method self|HowToTip howToTip(\Closure|null $callback = null)
  * @method self|HowToTool howToTool(\Closure|null $callback = null)
+ * @method self|HyperToc hyperToc(\Closure|null $callback = null)
+ * @method self|HyperTocEntry hyperTocEntry(\Closure|null $callback = null)
+ * @method self|IPTCDigitalSourceEnumeration iPTCDigitalSourceEnumeration(\Closure|null $callback = null)
  * @method self|IceCreamShop iceCreamShop(\Closure|null $callback = null)
  * @method self|IgnoreAction ignoreAction(\Closure|null $callback = null)
  * @method self|ImageGallery imageGallery(\Closure|null $callback = null)
  * @method self|ImageObject imageObject(\Closure|null $callback = null)
+ * @method self|ImageObjectSnapshot imageObjectSnapshot(\Closure|null $callback = null)
  * @method self|ImagingTest imagingTest(\Closure|null $callback = null)
+ * @method self|IndividualPhysician individualPhysician(\Closure|null $callback = null)
  * @method self|IndividualProduct individualProduct(\Closure|null $callback = null)
  * @method self|InfectiousAgentClass infectiousAgentClass(\Closure|null $callback = null)
  * @method self|InfectiousDisease infectiousDisease(\Closure|null $callback = null)
@@ -428,11 +447,16 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|MapCategoryType mapCategoryType(\Closure|null $callback = null)
  * @method self|MarryAction marryAction(\Closure|null $callback = null)
  * @method self|Mass mass(\Closure|null $callback = null)
+ * @method self|MathSolver mathSolver(\Closure|null $callback = null)
  * @method self|MaximumDoseSchedule maximumDoseSchedule(\Closure|null $callback = null)
+ * @method self|MeasurementMethodEnum measurementMethodEnum(\Closure|null $callback = null)
+ * @method self|MeasurementTypeEnumeration measurementTypeEnumeration(\Closure|null $callback = null)
+ * @method self|MediaEnumeration mediaEnumeration(\Closure|null $callback = null)
  * @method self|MediaGallery mediaGallery(\Closure|null $callback = null)
  * @method self|MediaManipulationRatingEnumeration mediaManipulationRatingEnumeration(\Closure|null $callback = null)
  * @method self|MediaObject mediaObject(\Closure|null $callback = null)
  * @method self|MediaReview mediaReview(\Closure|null $callback = null)
+ * @method self|MediaReviewItem mediaReviewItem(\Closure|null $callback = null)
  * @method self|MediaSubscription mediaSubscription(\Closure|null $callback = null)
  * @method self|MedicalAudience medicalAudience(\Closure|null $callback = null)
  * @method self|MedicalAudienceType medicalAudienceType(\Closure|null $callback = null)
@@ -484,10 +508,12 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|MenuSection menuSection(\Closure|null $callback = null)
  * @method self|MerchantReturnEnumeration merchantReturnEnumeration(\Closure|null $callback = null)
  * @method self|MerchantReturnPolicy merchantReturnPolicy(\Closure|null $callback = null)
+ * @method self|MerchantReturnPolicySeasonalOverride merchantReturnPolicySeasonalOverride(\Closure|null $callback = null)
  * @method self|Message message(\Closure|null $callback = null)
  * @method self|MiddleSchool middleSchool(\Closure|null $callback = null)
  * @method self|MobileApplication mobileApplication(\Closure|null $callback = null)
  * @method self|MobilePhoneStore mobilePhoneStore(\Closure|null $callback = null)
+ * @method self|MolecularEntity molecularEntity(\Closure|null $callback = null)
  * @method self|MonetaryAmount monetaryAmount(\Closure|null $callback = null)
  * @method self|MonetaryAmountDistribution monetaryAmountDistribution(\Closure|null $callback = null)
  * @method self|MonetaryGrant monetaryGrant(\Closure|null $callback = null)
@@ -536,6 +562,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|NutritionInformation nutritionInformation(\Closure|null $callback = null)
  * @method self|Observation observation(\Closure|null $callback = null)
  * @method self|Occupation occupation(\Closure|null $callback = null)
+ * @method self|OccupationalExperienceRequirements occupationalExperienceRequirements(\Closure|null $callback = null)
  * @method self|OccupationalTherapy occupationalTherapy(\Closure|null $callback = null)
  * @method self|OceanBodyOfWater oceanBodyOfWater(\Closure|null $callback = null)
  * @method self|Offer offer(\Closure|null $callback = null)
@@ -546,6 +573,8 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|OfferShippingDetails offerShippingDetails(\Closure|null $callback = null)
  * @method self|OfficeEquipmentStore officeEquipmentStore(\Closure|null $callback = null)
  * @method self|OnDemandEvent onDemandEvent(\Closure|null $callback = null)
+ * @method self|OnlineBusiness onlineBusiness(\Closure|null $callback = null)
+ * @method self|OnlineStore onlineStore(\Closure|null $callback = null)
  * @method self|OpeningHoursSpecification openingHoursSpecification(\Closure|null $callback = null)
  * @method self|OpinionNewsArticle opinionNewsArticle(\Closure|null $callback = null)
  * @method self|Optician optician(\Closure|null $callback = null)
@@ -591,17 +620,20 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|PhysicalExam physicalExam(\Closure|null $callback = null)
  * @method self|PhysicalTherapy physicalTherapy(\Closure|null $callback = null)
  * @method self|Physician physician(\Closure|null $callback = null)
+ * @method self|PhysiciansOffice physiciansOffice(\Closure|null $callback = null)
  * @method self|Place place(\Closure|null $callback = null)
  * @method self|PlaceOfWorship placeOfWorship(\Closure|null $callback = null)
  * @method self|PlanAction planAction(\Closure|null $callback = null)
  * @method self|Play play(\Closure|null $callback = null)
  * @method self|PlayAction playAction(\Closure|null $callback = null)
+ * @method self|PlayGameAction playGameAction(\Closure|null $callback = null)
  * @method self|Playground playground(\Closure|null $callback = null)
  * @method self|Plumber plumber(\Closure|null $callback = null)
  * @method self|PodcastEpisode podcastEpisode(\Closure|null $callback = null)
  * @method self|PodcastSeason podcastSeason(\Closure|null $callback = null)
  * @method self|PodcastSeries podcastSeries(\Closure|null $callback = null)
  * @method self|PoliceStation policeStation(\Closure|null $callback = null)
+ * @method self|PoliticalParty politicalParty(\Closure|null $callback = null)
  * @method self|Pond pond(\Closure|null $callback = null)
  * @method self|PostOffice postOffice(\Closure|null $callback = null)
  * @method self|PostalAddress postalAddress(\Closure|null $callback = null)
@@ -612,7 +644,9 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|Preschool preschool(\Closure|null $callback = null)
  * @method self|PresentationDigitalDocument presentationDigitalDocument(\Closure|null $callback = null)
  * @method self|PreventionIndication preventionIndication(\Closure|null $callback = null)
+ * @method self|PriceComponentTypeEnumeration priceComponentTypeEnumeration(\Closure|null $callback = null)
  * @method self|PriceSpecification priceSpecification(\Closure|null $callback = null)
+ * @method self|PriceTypeEnumeration priceTypeEnumeration(\Closure|null $callback = null)
  * @method self|Product product(\Closure|null $callback = null)
  * @method self|ProductCollection productCollection(\Closure|null $callback = null)
  * @method self|ProductGroup productGroup(\Closure|null $callback = null)
@@ -627,6 +661,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|Property property(\Closure|null $callback = null)
  * @method self|PropertyValue propertyValue(\Closure|null $callback = null)
  * @method self|PropertyValueSpecification propertyValueSpecification(\Closure|null $callback = null)
+ * @method self|Protein protein(\Closure|null $callback = null)
  * @method self|PsychologicalTreatment psychologicalTreatment(\Closure|null $callback = null)
  * @method self|PublicSwimmingPool publicSwimmingPool(\Closure|null $callback = null)
  * @method self|PublicToilet publicToilet(\Closure|null $callback = null)
@@ -672,7 +707,9 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|Report report(\Closure|null $callback = null)
  * @method self|ReportageNewsArticle reportageNewsArticle(\Closure|null $callback = null)
  * @method self|ReportedDoseSchedule reportedDoseSchedule(\Closure|null $callback = null)
+ * @method self|ResearchOrganization researchOrganization(\Closure|null $callback = null)
  * @method self|ResearchProject researchProject(\Closure|null $callback = null)
+ * @method self|Researcher researcher(\Closure|null $callback = null)
  * @method self|Reservation reservation(\Closure|null $callback = null)
  * @method self|ReservationPackage reservationPackage(\Closure|null $callback = null)
  * @method self|ReservationStatusType reservationStatusType(\Closure|null $callback = null)
@@ -685,6 +722,8 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|ResumeAction resumeAction(\Closure|null $callback = null)
  * @method self|ReturnAction returnAction(\Closure|null $callback = null)
  * @method self|ReturnFeesEnumeration returnFeesEnumeration(\Closure|null $callback = null)
+ * @method self|ReturnLabelSourceEnumeration returnLabelSourceEnumeration(\Closure|null $callback = null)
+ * @method self|ReturnMethodEnumeration returnMethodEnumeration(\Closure|null $callback = null)
  * @method self|Review review(\Closure|null $callback = null)
  * @method self|ReviewAction reviewAction(\Closure|null $callback = null)
  * @method self|ReviewNewsArticle reviewNewsArticle(\Closure|null $callback = null)
@@ -705,9 +744,11 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|Sculpture sculpture(\Closure|null $callback = null)
  * @method self|SeaBodyOfWater seaBodyOfWater(\Closure|null $callback = null)
  * @method self|SearchAction searchAction(\Closure|null $callback = null)
+ * @method self|SearchRescueOrganization searchRescueOrganization(\Closure|null $callback = null)
  * @method self|SearchResultsPage searchResultsPage(\Closure|null $callback = null)
  * @method self|Season season(\Closure|null $callback = null)
  * @method self|Seat seat(\Closure|null $callback = null)
+ * @method self|SeekToAction seekToAction(\Closure|null $callback = null)
  * @method self|SelfStorage selfStorage(\Closure|null $callback = null)
  * @method self|SellAction sellAction(\Closure|null $callback = null)
  * @method self|SendAction sendAction(\Closure|null $callback = null)
@@ -723,11 +764,15 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|ShortStory shortStory(\Closure|null $callback = null)
  * @method self|SingleFamilyResidence singleFamilyResidence(\Closure|null $callback = null)
  * @method self|SiteNavigationElement siteNavigationElement(\Closure|null $callback = null)
+ * @method self|SizeGroupEnumeration sizeGroupEnumeration(\Closure|null $callback = null)
+ * @method self|SizeSpecification sizeSpecification(\Closure|null $callback = null)
+ * @method self|SizeSystemEnumeration sizeSystemEnumeration(\Closure|null $callback = null)
  * @method self|SkiResort skiResort(\Closure|null $callback = null)
  * @method self|SocialEvent socialEvent(\Closure|null $callback = null)
  * @method self|SocialMediaPosting socialMediaPosting(\Closure|null $callback = null)
  * @method self|SoftwareApplication softwareApplication(\Closure|null $callback = null)
  * @method self|SoftwareSourceCode softwareSourceCode(\Closure|null $callback = null)
+ * @method self|SolveMathAction solveMathAction(\Closure|null $callback = null)
  * @method self|SomeProducts someProducts(\Closure|null $callback = null)
  * @method self|SpeakableSpecification speakableSpecification(\Closure|null $callback = null)
  * @method self|SpecialAnnouncement specialAnnouncement(\Closure|null $callback = null)
@@ -741,7 +786,9 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|SpreadsheetDigitalDocument spreadsheetDigitalDocument(\Closure|null $callback = null)
  * @method self|StadiumOrArena stadiumOrArena(\Closure|null $callback = null)
  * @method self|State state(\Closure|null $callback = null)
+ * @method self|Statement statement(\Closure|null $callback = null)
  * @method self|StatisticalPopulation statisticalPopulation(\Closure|null $callback = null)
+ * @method self|StatisticalVariable statisticalVariable(\Closure|null $callback = null)
  * @method self|StatusEnumeration statusEnumeration(\Closure|null $callback = null)
  * @method self|SteeringPositionValue steeringPositionValue(\Closure|null $callback = null)
  * @method self|Store store(\Closure|null $callback = null)
@@ -754,6 +801,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|SuperficialAnatomy superficialAnatomy(\Closure|null $callback = null)
  * @method self|SurgicalProcedure surgicalProcedure(\Closure|null $callback = null)
  * @method self|SuspendAction suspendAction(\Closure|null $callback = null)
+ * @method self|Syllabus syllabus(\Closure|null $callback = null)
  * @method self|Synagogue synagogue(\Closure|null $callback = null)
  * @method self|TVClip tVClip(\Closure|null $callback = null)
  * @method self|TVEpisode tVEpisode(\Closure|null $callback = null)
@@ -766,11 +814,13 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|TaxiReservation taxiReservation(\Closure|null $callback = null)
  * @method self|TaxiService taxiService(\Closure|null $callback = null)
  * @method self|TaxiStand taxiStand(\Closure|null $callback = null)
+ * @method self|Taxon taxon(\Closure|null $callback = null)
  * @method self|TechArticle techArticle(\Closure|null $callback = null)
  * @method self|TelevisionChannel televisionChannel(\Closure|null $callback = null)
  * @method self|TelevisionStation televisionStation(\Closure|null $callback = null)
  * @method self|TennisComplex tennisComplex(\Closure|null $callback = null)
  * @method self|TextDigitalDocument textDigitalDocument(\Closure|null $callback = null)
+ * @method self|TextObject textObject(\Closure|null $callback = null)
  * @method self|TheaterEvent theaterEvent(\Closure|null $callback = null)
  * @method self|TheaterGroup theaterGroup(\Closure|null $callback = null)
  * @method self|TherapeuticProcedure therapeuticProcedure(\Closure|null $callback = null)
@@ -813,6 +863,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|UserPlusOnes userPlusOnes(\Closure|null $callback = null)
  * @method self|UserReview userReview(\Closure|null $callback = null)
  * @method self|UserTweets userTweets(\Closure|null $callback = null)
+ * @method self|VacationRental vacationRental(\Closure|null $callback = null)
  * @method self|Vehicle vehicle(\Closure|null $callback = null)
  * @method self|Vein vein(\Closure|null $callback = null)
  * @method self|Vessel vessel(\Closure|null $callback = null)
@@ -822,6 +873,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|VideoGameClip videoGameClip(\Closure|null $callback = null)
  * @method self|VideoGameSeries videoGameSeries(\Closure|null $callback = null)
  * @method self|VideoObject videoObject(\Closure|null $callback = null)
+ * @method self|VideoObjectSnapshot videoObjectSnapshot(\Closure|null $callback = null)
  * @method self|ViewAction viewAction(\Closure|null $callback = null)
  * @method self|VirtualLocation virtualLocation(\Closure|null $callback = null)
  * @method self|VisualArtsEvent visualArtsEvent(\Closure|null $callback = null)
@@ -839,6 +891,9 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInMultiTypedEntity;
  * @method self|WatchAction watchAction(\Closure|null $callback = null)
  * @method self|Waterfall waterfall(\Closure|null $callback = null)
  * @method self|WearAction wearAction(\Closure|null $callback = null)
+ * @method self|WearableMeasurementTypeEnumeration wearableMeasurementTypeEnumeration(\Closure|null $callback = null)
+ * @method self|WearableSizeGroupEnumeration wearableSizeGroupEnumeration(\Closure|null $callback = null)
+ * @method self|WearableSizeSystemEnumeration wearableSizeSystemEnumeration(\Closure|null $callback = null)
  * @method self|WebAPI webAPI(\Closure|null $callback = null)
  * @method self|WebApplication webApplication(\Closure|null $callback = null)
  * @method self|WebContent webContent(\Closure|null $callback = null)
@@ -858,6 +913,9 @@ class MultiTypedEntity implements Type, JsonSerializable
 {
     /** @var Type[] */
     protected $nodes = [];
+
+    /** @var string */
+    protected $nonce = '';
 
     /**
      * This overloads all \Spatie\SchemaOrg\Schema construction methods.
@@ -932,6 +990,13 @@ class MultiTypedEntity implements Type, JsonSerializable
         return $this;
     }
 
+    public function setNonce(string $nonce)
+    {
+        $this->nonce = $nonce;
+
+        return $this;
+    }
+
     public function get(string $type): Type
     {
         if (! $this->has($type)) {
@@ -1000,12 +1065,23 @@ class MultiTypedEntity implements Type, JsonSerializable
         return 'https://schema.org';
     }
 
-    public function toScript(): string
+    public function nonceAttr(): string
     {
-        return '<script type="application/ld+json">'.json_encode($this, JSON_UNESCAPED_UNICODE).'</script>';
+        if ($this->nonce) {
+            $attr = ' nonce="'.$this->nonce.'"';
+        } else {
+            $attr = '';
+        }
+
+        return $attr;
     }
 
-    public function jsonSerialize()
+    public function toScript(): string
+    {
+        return '<script type="application/ld+json"'.$this->nonceAttr().'>'.json_encode($this, JSON_UNESCAPED_UNICODE).'</script>';
+    }
+
+    public function jsonSerialize(): mixed
     {
         return $this->toArray();
     }

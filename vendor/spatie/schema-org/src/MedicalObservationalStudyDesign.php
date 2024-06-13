@@ -2,17 +2,17 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\MedicalObservationalStudyDesignContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\MedicalEnumerationContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\MedicalEnumerationContract;
+use Spatie\SchemaOrg\Contracts\MedicalObservationalStudyDesignContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * Design models for observational medical studies. Enumerated type.
  *
  * @see https://schema.org/MedicalObservationalStudyDesign
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
  */
@@ -29,9 +29,9 @@ class MedicalObservationalStudyDesign extends BaseType implements MedicalObserva
      * period of time were included, or only a selection.
      *
      * @see https://schema.org/CaseSeries
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const CaseSeries = 'https://schema.org/CaseSeries';
+    public const CaseSeries = 'https://schema.org/CaseSeries';
 
     /**
      * Also known as a panel study. A cohort study is a form of longitudinal
@@ -46,9 +46,9 @@ class MedicalObservationalStudyDesign extends BaseType implements MedicalObserva
      * cohort may be compared with each other.
      *
      * @see https://schema.org/CohortStudy
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const CohortStudy = 'https://schema.org/CohortStudy';
+    public const CohortStudy = 'https://schema.org/CohortStudy';
 
     /**
      * Studies carried out on pre-existing data (usually from 'snapshot'
@@ -56,9 +56,9 @@ class MedicalObservationalStudyDesign extends BaseType implements MedicalObserva
      * Prevalence Studies.
      *
      * @see https://schema.org/CrossSectional
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const CrossSectional = 'https://schema.org/CrossSectional';
+    public const CrossSectional = 'https://schema.org/CrossSectional';
 
     /**
      * Unlike cross-sectional studies, longitudinal studies track the same
@@ -68,33 +68,37 @@ class MedicalObservationalStudyDesign extends BaseType implements MedicalObserva
      * certain diseases.
      *
      * @see https://schema.org/Longitudinal
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const Longitudinal = 'https://schema.org/Longitudinal';
+    public const Longitudinal = 'https://schema.org/Longitudinal';
 
     /**
      * An observational study design.
      *
      * @see https://schema.org/Observational
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const Observational = 'https://schema.org/Observational';
+    public const Observational = 'https://schema.org/Observational';
 
     /**
      * A registry-based study design.
      *
      * @see https://schema.org/Registry
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const Registry = 'https://schema.org/Registry';
+    public const Registry = 'https://schema.org/Registry';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -124,7 +128,7 @@ class MedicalObservationalStudyDesign extends BaseType implements MedicalObserva
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -274,5 +278,4 @@ class MedicalObservationalStudyDesign extends BaseType implements MedicalObserva
     {
         return $this->setProperty('url', $url);
     }
-
 }

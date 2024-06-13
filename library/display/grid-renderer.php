@@ -1,32 +1,18 @@
 <?php
 class PadmaGridRenderer {
 
-
 	private $wrapper;
-
-
 	public $blocks = array();
-
-
 	private $layout = array();
-
-
 	private $rows = array();
-
-
 	private $columns = array();
-
-
 	private $column_positions = array();
-
-
 	private $section_classes = array();
-
-
 	private $column_top_tolerance = 30;
-
-
 	private $row_top_tolerance = 20;
+	public $blocks_unsorted;
+	public $blocks_in_sub_columns;
+	public $finalized_layout;
 
 	public function __construct( $blocks = array(), $wrapper) {
 

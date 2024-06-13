@@ -2,10 +2,10 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\MedicalObservationalStudyContract;
-use \Spatie\SchemaOrg\Contracts\MedicalEntityContract;
-use \Spatie\SchemaOrg\Contracts\MedicalStudyContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\MedicalEntityContract;
+use Spatie\SchemaOrg\Contracts\MedicalObservationalStudyContract;
+use Spatie\SchemaOrg\Contracts\MedicalStudyContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * An observational study is a type of medical study that attempts to infer the
@@ -18,7 +18,7 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
  * of the treatment.
  *
  * @see https://schema.org/MedicalObservationalStudy
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  */
 class MedicalObservationalStudy extends BaseType implements MedicalObservationalStudyContract, MedicalEntityContract, MedicalStudyContract, ThingContract
@@ -26,10 +26,14 @@ class MedicalObservationalStudy extends BaseType implements MedicalObservational
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -65,7 +69,7 @@ class MedicalObservationalStudy extends BaseType implements MedicalObservational
      * @return static
      *
      * @see https://schema.org/code
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function code($code)
     {
@@ -75,7 +79,7 @@ class MedicalObservationalStudy extends BaseType implements MedicalObservational
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -104,6 +108,23 @@ class MedicalObservationalStudy extends BaseType implements MedicalObservational
     }
 
     /**
+     * A [[Grant]] that directly or indirectly provide funding or sponsorship
+     * for this item. See also [[ownershipFundingInfo]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\GrantContract|\Spatie\SchemaOrg\Contracts\GrantContract[] $funding
+     *
+     * @return static
+     *
+     * @see https://schema.org/funding
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/383
+     */
+    public function funding($funding)
+    {
+        return $this->setProperty('funding', $funding);
+    }
+
+    /**
      * A medical guideline related to this entity.
      *
      * @param \Spatie\SchemaOrg\Contracts\MedicalGuidelineContract|\Spatie\SchemaOrg\Contracts\MedicalGuidelineContract[] $guideline
@@ -111,7 +132,7 @@ class MedicalObservationalStudy extends BaseType implements MedicalObservational
      * @return static
      *
      * @see https://schema.org/guideline
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function guideline($guideline)
     {
@@ -127,7 +148,7 @@ class MedicalObservationalStudy extends BaseType implements MedicalObservational
      * @return static
      *
      * @see https://schema.org/healthCondition
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function healthCondition($healthCondition)
     {
@@ -176,7 +197,7 @@ class MedicalObservationalStudy extends BaseType implements MedicalObservational
      * @return static
      *
      * @see https://schema.org/legalStatus
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function legalStatus($legalStatus)
     {
@@ -208,7 +229,7 @@ class MedicalObservationalStudy extends BaseType implements MedicalObservational
      * @return static
      *
      * @see https://schema.org/medicineSystem
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function medicineSystem($medicineSystem)
     {
@@ -253,7 +274,7 @@ class MedicalObservationalStudy extends BaseType implements MedicalObservational
      * @return static
      *
      * @see https://schema.org/recognizingAuthority
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function recognizingAuthority($recognizingAuthority)
     {
@@ -268,7 +289,7 @@ class MedicalObservationalStudy extends BaseType implements MedicalObservational
      * @return static
      *
      * @see https://schema.org/relevantSpecialty
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function relevantSpecialty($relevantSpecialty)
     {
@@ -293,7 +314,7 @@ class MedicalObservationalStudy extends BaseType implements MedicalObservational
 
     /**
      * A person or organization that supports a thing through a pledge, promise,
-     * or financial contribution. e.g. a sponsor of a Medical Study or a
+     * or financial contribution. E.g. a sponsor of a Medical Study or a
      * corporate sponsor of an event.
      *
      * @param \Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[]|\Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[] $sponsor
@@ -315,7 +336,7 @@ class MedicalObservationalStudy extends BaseType implements MedicalObservational
      * @return static
      *
      * @see https://schema.org/status
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function status($status)
     {
@@ -330,7 +351,7 @@ class MedicalObservationalStudy extends BaseType implements MedicalObservational
      * @return static
      *
      * @see https://schema.org/study
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function study($study)
     {
@@ -345,7 +366,7 @@ class MedicalObservationalStudy extends BaseType implements MedicalObservational
      * @return static
      *
      * @see https://schema.org/studyDesign
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function studyDesign($studyDesign)
     {
@@ -360,7 +381,7 @@ class MedicalObservationalStudy extends BaseType implements MedicalObservational
      * @return static
      *
      * @see https://schema.org/studyLocation
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function studyLocation($studyLocation)
     {
@@ -376,7 +397,7 @@ class MedicalObservationalStudy extends BaseType implements MedicalObservational
      * @return static
      *
      * @see https://schema.org/studySubject
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function studySubject($studySubject)
     {
@@ -411,5 +432,4 @@ class MedicalObservationalStudy extends BaseType implements MedicalObservational
     {
         return $this->setProperty('url', $url);
     }
-
 }

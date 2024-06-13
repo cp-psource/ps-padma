@@ -12,6 +12,8 @@ interface PatientContract
 
     public function affiliation($affiliation);
 
+    public function agentInteractionStatistic($agentInteractionStatistic);
+
     public function alternateName($alternateName);
 
     public function alumniOf($alumniOf);
@@ -63,6 +65,8 @@ interface PatientContract
     public function follows($follows);
 
     public function funder($funder);
+
+    public function funding($funding);
 
     public function gender($gender);
 
@@ -154,9 +158,13 @@ interface PatientContract
 
     public function subjectOf($subjectOf);
 
+    public function suggestedAge($suggestedAge);
+
     public function suggestedGender($suggestedGender);
 
     public function suggestedMaxAge($suggestedMaxAge);
+
+    public function suggestedMeasurement($suggestedMeasurement);
 
     public function suggestedMinAge($suggestedMinAge);
 
@@ -173,5 +181,4 @@ interface PatientContract
     public function workLocation($workLocation);
 
     public function worksFor($worksFor);
-
 }

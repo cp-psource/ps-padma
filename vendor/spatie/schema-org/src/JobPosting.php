@@ -2,9 +2,9 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\JobPostingContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\JobPostingContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A listing that describes a job opening in a certain organization.
@@ -17,10 +17,14 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -58,7 +62,7 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
      * @return static
      *
      * @see https://schema.org/applicantLocationRequirements
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2083
      */
     public function applicantLocationRequirements($applicantLocationRequirements)
@@ -74,7 +78,7 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
      * @return static
      *
      * @see https://schema.org/applicationContact
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2396
      */
     public function applicationContact($applicationContact)
@@ -127,7 +131,7 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -136,6 +140,29 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
     public function description($description)
     {
         return $this->setProperty('description', $description);
+    }
+
+    /**
+     * Indicates whether an [[url]] that is associated with a [[JobPosting]]
+     * enables direct application for the job, via the posting website. A job
+     * posting is considered to have directApply of [[True]] if an application
+     * process for the specified job can be directly initiated via the url(s)
+     * given (noting that e.g. multiple internet domains might nevertheless be
+     * involved at an implementation level). A value of [[False]] is appropriate
+     * if there is no clear path to applying directly online for the specified
+     * job, navigating directly from the JobPosting url(s) supplied.
+     *
+     * @param bool|bool[] $directApply
+     *
+     * @return static
+     *
+     * @see https://schema.org/directApply
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2907
+     */
+    public function directApply($directApply)
+    {
+        return $this->setProperty('directApply', $directApply);
     }
 
     /**
@@ -163,7 +190,7 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
      * @return static
      *
      * @see https://schema.org/educationRequirements
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      */
     public function educationRequirements($educationRequirements)
     {
@@ -179,7 +206,7 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
      * @return static
      *
      * @see https://schema.org/eligibilityToWorkRequirement
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2384
      */
     public function eligibilityToWorkRequirement($eligibilityToWorkRequirement)
@@ -196,7 +223,7 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
      * @return static
      *
      * @see https://schema.org/employerOverview
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2396
      */
     public function employerOverview($employerOverview)
@@ -228,7 +255,7 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
      * @return static
      *
      * @see https://schema.org/employmentUnit
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2296
      */
     public function employmentUnit($employmentUnit)
@@ -256,10 +283,30 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
     }
 
     /**
+     * Indicates whether a [[JobPosting]] will accept experience (as indicated
+     * by [[OccupationalExperienceRequirements]]) in place of its formal
+     * educational qualifications (as indicated by [[educationRequirements]]).
+     * If true, indicates that satisfying one of these requirements is
+     * sufficient.
+     *
+     * @param bool|bool[] $experienceInPlaceOfEducation
+     *
+     * @return static
+     *
+     * @see https://schema.org/experienceInPlaceOfEducation
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2681
+     */
+    public function experienceInPlaceOfEducation($experienceInPlaceOfEducation)
+    {
+        return $this->setProperty('experienceInPlaceOfEducation', $experienceInPlaceOfEducation);
+    }
+
+    /**
      * Description of skills and experience needed for the position or
      * Occupation.
      *
-     * @param string|string[] $experienceRequirements
+     * @param \Spatie\SchemaOrg\Contracts\OccupationalExperienceRequirementsContract|\Spatie\SchemaOrg\Contracts\OccupationalExperienceRequirementsContract[]|string|string[] $experienceRequirements
      *
      * @return static
      *
@@ -272,9 +319,9 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
     }
 
     /**
-     * Organization offering the job position.
+     * Organization or Person offering the job position.
      *
-     * @param \Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[] $hiringOrganization
+     * @param \Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[]|\Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[] $hiringOrganization
      *
      * @return static
      *
@@ -383,7 +430,7 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
      * @return static
      *
      * @see https://schema.org/jobImmediateStart
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2244
      */
     public function jobImmediateStart($jobImmediateStart)
@@ -407,14 +454,15 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
     }
 
     /**
-     * A description of the job location (e.g TELECOMMUTE for telecommute jobs).
+     * A description of the job location (e.g. TELECOMMUTE for telecommute
+     * jobs).
      *
      * @param string|string[] $jobLocationType
      *
      * @return static
      *
      * @see https://schema.org/jobLocationType
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1591
      */
     public function jobLocationType($jobLocationType)
@@ -433,7 +481,7 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
      * @return static
      *
      * @see https://schema.org/jobStartDate
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2244
      */
     public function jobStartDate($jobStartDate)
@@ -473,13 +521,12 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
 
     /**
      * A category describing the job, preferably using a term from a taxonomy
-     * such as <a href="http://www.onetcenter.org/taxonomy.html">BLS
-     * O*NET-SOC</a>,
+     * such as [BLS O*NET-SOC](http://www.onetcenter.org/taxonomy.html),
      * [ISCO-08](https://www.ilo.org/public/english/bureau/stat/isco/isco08/) or
      * similar, with the property repeated for each applicable value. Ideally
      * the taxonomy should be identified, and both the textual label and formal
      * code for the category should be provided.
-     * 
+     *
      * Note: for historical reasons, any textual label and formal code provided
      * as a literal may be assumed to be from O*NET-SOC.
      *
@@ -488,7 +535,7 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
      * @return static
      *
      * @see https://schema.org/occupationalCategory
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      */
     public function occupationalCategory($occupationalCategory)
     {
@@ -506,7 +553,7 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
      * @return static
      *
      * @see https://schema.org/physicalRequirement
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2384
      */
     public function physicalRequirement($physicalRequirement)
@@ -537,7 +584,7 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
      * @return static
      *
      * @see https://schema.org/qualifications
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      */
     public function qualifications($qualifications)
     {
@@ -576,7 +623,7 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
 
     /**
      * The currency (coded using [ISO
-     * 4217](http://en.wikipedia.org/wiki/ISO_4217) ) used for the main salary
+     * 4217](http://en.wikipedia.org/wiki/ISO_4217)) used for the main salary
      * information in this job posting or for this employee.
      *
      * @param string|string[] $salaryCurrency
@@ -614,7 +661,7 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
      * @return static
      *
      * @see https://schema.org/securityClearanceRequirement
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2384
      */
     public function securityClearanceRequirement($securityClearanceRequirement)
@@ -633,7 +680,7 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
      * @return static
      *
      * @see https://schema.org/sensoryRequirement
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2384
      */
     public function sensoryRequirement($sensoryRequirement)
@@ -710,7 +757,7 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
      * @return static
      *
      * @see https://schema.org/totalJobOpenings
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2329
      */
     public function totalJobOpenings($totalJobOpenings)
@@ -741,7 +788,6 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
      * @return static
      *
      * @see https://schema.org/validThrough
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function validThrough($validThrough)
     {
@@ -762,5 +808,4 @@ class JobPosting extends BaseType implements JobPostingContract, IntangibleContr
     {
         return $this->setProperty('workHours', $workHours);
     }
-
 }

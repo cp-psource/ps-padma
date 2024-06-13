@@ -2,16 +2,16 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\PhysicalActivityCategoryContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\PhysicalActivityCategoryContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * Categories of physical activity, organized by physiologic classification.
  *
  * @see https://schema.org/PhysicalActivityCategory
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
  */
@@ -23,44 +23,44 @@ class PhysicalActivityCategory extends BaseType implements PhysicalActivityCateg
      * metabolism uses oxygen to adequately meet energy demands during exercise.
      *
      * @see https://schema.org/AerobicActivity
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const AerobicActivity = 'https://schema.org/AerobicActivity';
+    public const AerobicActivity = 'https://schema.org/AerobicActivity';
 
     /**
      * Physical activity that is of high-intensity which utilizes the anaerobic
      * metabolism of the body.
      *
      * @see https://schema.org/AnaerobicActivity
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const AnaerobicActivity = 'https://schema.org/AnaerobicActivity';
+    public const AnaerobicActivity = 'https://schema.org/AnaerobicActivity';
 
     /**
      * Physical activity that is engaged to help maintain posture and balance.
      *
      * @see https://schema.org/Balance
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const Balance = 'https://schema.org/Balance';
+    public const Balance = 'https://schema.org/Balance';
 
     /**
      * Physical activity that is engaged in to improve joint and muscle
      * flexibility.
      *
      * @see https://schema.org/Flexibility
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const Flexibility = 'https://schema.org/Flexibility';
+    public const Flexibility = 'https://schema.org/Flexibility';
 
     /**
      * Any physical activity engaged in for recreational purposes. Examples may
      * include ballroom dancing, roller skating, canoeing, fishing, etc.
      *
      * @see https://schema.org/LeisureTimeActivity
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const LeisureTimeActivity = 'https://schema.org/LeisureTimeActivity';
+    public const LeisureTimeActivity = 'https://schema.org/LeisureTimeActivity';
 
     /**
      * Any physical activity engaged in for job-related purposes. Examples may
@@ -68,26 +68,30 @@ class PhysicalActivityCategory extends BaseType implements PhysicalActivityCateg
      * or vegetables, construction work, etc.
      *
      * @see https://schema.org/OccupationalActivity
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const OccupationalActivity = 'https://schema.org/OccupationalActivity';
+    public const OccupationalActivity = 'https://schema.org/OccupationalActivity';
 
     /**
      * Physical activity that is engaged in to improve muscle and bone strength.
      * Also referred to as resistance training.
      *
      * @see https://schema.org/StrengthTraining
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const StrengthTraining = 'https://schema.org/StrengthTraining';
+    public const StrengthTraining = 'https://schema.org/StrengthTraining';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -117,7 +121,7 @@ class PhysicalActivityCategory extends BaseType implements PhysicalActivityCateg
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -267,5 +271,4 @@ class PhysicalActivityCategory extends BaseType implements PhysicalActivityCateg
     {
         return $this->setProperty('url', $url);
     }
-
 }

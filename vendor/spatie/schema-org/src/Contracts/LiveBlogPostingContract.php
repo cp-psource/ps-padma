@@ -34,6 +34,8 @@ interface LiveBlogPostingContract
 
     public function alternativeHeadline($alternativeHeadline);
 
+    public function archivedAt($archivedAt);
+
     public function articleBody($articleBody);
 
     public function articleSection($articleSection);
@@ -74,9 +76,13 @@ interface LiveBlogPostingContract
 
     public function copyrightHolder($copyrightHolder);
 
+    public function copyrightNotice($copyrightNotice);
+
     public function copyrightYear($copyrightYear);
 
     public function correction($correction);
+
+    public function countryOfOrigin($countryOfOrigin);
 
     public function coverageEndTime($coverageEndTime);
 
@@ -86,6 +92,8 @@ interface LiveBlogPostingContract
 
     public function creator($creator);
 
+    public function creditText($creditText);
+
     public function dateCreated($dateCreated);
 
     public function dateModified($dateModified);
@@ -93,6 +101,8 @@ interface LiveBlogPostingContract
     public function datePublished($datePublished);
 
     public function description($description);
+
+    public function digitalSourceType($digitalSourceType);
 
     public function disambiguatingDescription($disambiguatingDescription);
 
@@ -122,6 +132,8 @@ interface LiveBlogPostingContract
 
     public function funder($funder);
 
+    public function funding($funding);
+
     public function genre($genre);
 
     public function hasPart($hasPart);
@@ -137,6 +149,8 @@ interface LiveBlogPostingContract
     public function interactionStatistic($interactionStatistic);
 
     public function interactivityType($interactivityType);
+
+    public function interpretedAsClaim($interpretedAsClaim);
 
     public function isAccessibleForFree($isAccessibleForFree);
 
@@ -240,6 +254,8 @@ interface LiveBlogPostingContract
 
     public function text($text);
 
+    public function thumbnail($thumbnail);
+
     public function thumbnailUrl($thumbnailUrl);
 
     public function timeRequired($timeRequired);
@@ -263,5 +279,4 @@ interface LiveBlogPostingContract
     public function workExample($workExample);
 
     public function workTranslation($workTranslation);
-
 }

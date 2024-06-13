@@ -36,6 +36,8 @@ interface ClaimContract
 
     public function appearance($appearance);
 
+    public function archivedAt($archivedAt);
+
     public function assesses($assesses);
 
     public function associatedMedia($associatedMedia);
@@ -54,6 +56,8 @@ interface ClaimContract
 
     public function citation($citation);
 
+    public function claimInterpreter($claimInterpreter);
+
     public function comment($comment);
 
     public function commentCount($commentCount);
@@ -70,13 +74,19 @@ interface ClaimContract
 
     public function copyrightHolder($copyrightHolder);
 
+    public function copyrightNotice($copyrightNotice);
+
     public function copyrightYear($copyrightYear);
 
     public function correction($correction);
 
+    public function countryOfOrigin($countryOfOrigin);
+
     public function creativeWorkStatus($creativeWorkStatus);
 
     public function creator($creator);
+
+    public function creditText($creditText);
 
     public function dateCreated($dateCreated);
 
@@ -85,6 +95,8 @@ interface ClaimContract
     public function datePublished($datePublished);
 
     public function description($description);
+
+    public function digitalSourceType($digitalSourceType);
 
     public function disambiguatingDescription($disambiguatingDescription);
 
@@ -116,6 +128,8 @@ interface ClaimContract
 
     public function funder($funder);
 
+    public function funding($funding);
+
     public function genre($genre);
 
     public function hasPart($hasPart);
@@ -131,6 +145,8 @@ interface ClaimContract
     public function interactionStatistic($interactionStatistic);
 
     public function interactivityType($interactivityType);
+
+    public function interpretedAsClaim($interpretedAsClaim);
 
     public function isAccessibleForFree($isAccessibleForFree);
 
@@ -222,6 +238,8 @@ interface ClaimContract
 
     public function text($text);
 
+    public function thumbnail($thumbnail);
+
     public function thumbnailUrl($thumbnailUrl);
 
     public function timeRequired($timeRequired);
@@ -243,5 +261,4 @@ interface ClaimContract
     public function workExample($workExample);
 
     public function workTranslation($workTranslation);
-
 }

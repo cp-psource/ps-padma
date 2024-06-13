@@ -16,6 +16,8 @@ interface PathologyTestContract
 
     public function disambiguatingDescription($disambiguatingDescription);
 
+    public function funding($funding);
+
     public function guideline($guideline);
 
     public function identifier($identifier);
@@ -53,5 +55,4 @@ interface PathologyTestContract
     public function usedToDiagnose($usedToDiagnose);
 
     public function usesDevice($usesDevice);
-
 }

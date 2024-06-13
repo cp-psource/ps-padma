@@ -40,6 +40,8 @@ interface LeaveActionContract
 
     public function potentialAction($potentialAction);
 
+    public function provider($provider);
+
     public function result($result);
 
     public function sameAs($sameAs);
@@ -51,5 +53,4 @@ interface LeaveActionContract
     public function target($target);
 
     public function url($url);
-
 }

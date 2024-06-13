@@ -16,6 +16,8 @@ interface CarContract
 
     public function alternateName($alternateName);
 
+    public function asin($asin);
+
     public function audience($audience);
 
     public function award($award);
@@ -33,6 +35,12 @@ interface CarContract
     public function category($category);
 
     public function color($color);
+
+    public function countryOfAssembly($countryOfAssembly);
+
+    public function countryOfLastProcessing($countryOfLastProcessing);
+
+    public function countryOfOrigin($countryOfOrigin);
 
     public function dateVehicleFirstRegistered($dateVehicleFirstRegistered);
 
@@ -54,6 +62,8 @@ interface CarContract
 
     public function fuelType($fuelType);
 
+    public function funding($funding);
+
     public function gtin($gtin);
 
     public function gtin12($gtin12);
@@ -63,6 +73,12 @@ interface CarContract
     public function gtin14($gtin14);
 
     public function gtin8($gtin8);
+
+    public function hasAdultConsideration($hasAdultConsideration);
+
+    public function hasEnergyConsumptionDetails($hasEnergyConsumptionDetails);
+
+    public function hasMeasurement($hasMeasurement);
 
     public function hasMerchantReturnPolicy($hasMerchantReturnPolicy);
 
@@ -80,6 +96,8 @@ interface CarContract
 
     public function isConsumableFor($isConsumableFor);
 
+    public function isFamilyFriendly($isFamilyFriendly);
+
     public function isRelatedTo($isRelatedTo);
 
     public function isSimilarTo($isSimilarTo);
@@ -87,6 +105,8 @@ interface CarContract
     public function isVariantOf($isVariantOf);
 
     public function itemCondition($itemCondition);
+
+    public function keywords($keywords);
 
     public function knownVehicleDamages($knownVehicleDamages);
 
@@ -102,6 +122,8 @@ interface CarContract
 
     public function mileageFromOdometer($mileageFromOdometer);
 
+    public function mobileUrl($mobileUrl);
+
     public function model($model);
 
     public function modelDate($modelDate);
@@ -109,6 +131,8 @@ interface CarContract
     public function mpn($mpn);
 
     public function name($name);
+
+    public function negativeNotes($negativeNotes);
 
     public function nsn($nsn);
 
@@ -127,6 +151,8 @@ interface CarContract
     public function pattern($pattern);
 
     public function payload($payload);
+
+    public function positiveNotes($positiveNotes);
 
     public function potentialAction($potentialAction);
 
@@ -193,5 +219,4 @@ interface CarContract
     public function wheelbase($wheelbase);
 
     public function width($width);
-
 }

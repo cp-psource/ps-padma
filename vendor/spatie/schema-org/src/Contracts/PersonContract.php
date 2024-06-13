@@ -12,6 +12,8 @@ interface PersonContract
 
     public function affiliation($affiliation);
 
+    public function agentInteractionStatistic($agentInteractionStatistic);
+
     public function alternateName($alternateName);
 
     public function alumniOf($alumniOf);
@@ -57,6 +59,8 @@ interface PersonContract
     public function follows($follows);
 
     public function funder($funder);
+
+    public function funding($funding);
 
     public function gender($gender);
 
@@ -151,5 +155,4 @@ interface PersonContract
     public function workLocation($workLocation);
 
     public function worksFor($worksFor);
-
 }

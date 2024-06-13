@@ -2,16 +2,16 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\ReturnFeesEnumerationContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\ReturnFeesEnumerationContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
- * ReturnFeesEnumeration expresses policies for return fees.
+ * Enumerates several kinds of policies for product return fees.
  *
  * @see https://schema.org/ReturnFeesEnumeration
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
  * @link https://github.com/schemaorg/schemaorg/issues/2288
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
@@ -19,39 +19,65 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
 class ReturnFeesEnumeration extends BaseType implements ReturnFeesEnumerationContract, EnumerationContract, IntangibleContract, ThingContract
 {
     /**
-     * OriginalShippingFees ...
+     * Specifies that product returns are free of charge for the customer.
+     *
+     * @see https://schema.org/FreeReturn
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2880
+     */
+    public const FreeReturn = 'https://schema.org/FreeReturn';
+
+    /**
+     * Specifies that the customer must pay the original shipping costs when
+     * returning a product.
      *
      * @see https://schema.org/OriginalShippingFees
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2288
      */
-     const OriginalShippingFees = 'https://schema.org/OriginalShippingFees';
+    public const OriginalShippingFees = 'https://schema.org/OriginalShippingFees';
 
     /**
-     * RestockingFees ...
+     * Specifies that the customer must pay a restocking fee when returning a
+     * product.
      *
      * @see https://schema.org/RestockingFees
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2288
      */
-     const RestockingFees = 'https://schema.org/RestockingFees';
+    public const RestockingFees = 'https://schema.org/RestockingFees';
 
     /**
-     * ReturnShippingFees ...
+     * Specifies that product returns must be paid for, and are the
+     * responsibility of, the customer.
+     *
+     * @see https://schema.org/ReturnFeesCustomerResponsibility
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2880
+     */
+    public const ReturnFeesCustomerResponsibility = 'https://schema.org/ReturnFeesCustomerResponsibility';
+
+    /**
+     * Specifies that the customer must pay the return shipping costs when
+     * returning a product.
      *
      * @see https://schema.org/ReturnShippingFees
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2288
      */
-     const ReturnShippingFees = 'https://schema.org/ReturnShippingFees';
+    public const ReturnShippingFees = 'https://schema.org/ReturnShippingFees';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -81,7 +107,7 @@ class ReturnFeesEnumeration extends BaseType implements ReturnFeesEnumerationCon
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -231,5 +257,4 @@ class ReturnFeesEnumeration extends BaseType implements ReturnFeesEnumerationCon
     {
         return $this->setProperty('url', $url);
     }
-
 }

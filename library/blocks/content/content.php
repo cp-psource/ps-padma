@@ -1905,7 +1905,7 @@ class PadmaContentBlockOptions extends PadmaBlockOptionsAPI {
 		$authors = get_users(array(
 			'orderby' => 'post_count',
 			'order' => 'desc',
-			'who' => 'authors'
+			'capability' => 'authors'
 		));
 
 		foreach ( $authors as $author )

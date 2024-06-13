@@ -36,6 +36,10 @@ interface ProductCollectionContract
 
     public function alternativeHeadline($alternativeHeadline);
 
+    public function archivedAt($archivedAt);
+
+    public function asin($asin);
+
     public function assesses($assesses);
 
     public function associatedMedia($associatedMedia);
@@ -78,13 +82,23 @@ interface ProductCollectionContract
 
     public function copyrightHolder($copyrightHolder);
 
+    public function copyrightNotice($copyrightNotice);
+
     public function copyrightYear($copyrightYear);
 
     public function correction($correction);
 
+    public function countryOfAssembly($countryOfAssembly);
+
+    public function countryOfLastProcessing($countryOfLastProcessing);
+
+    public function countryOfOrigin($countryOfOrigin);
+
     public function creativeWorkStatus($creativeWorkStatus);
 
     public function creator($creator);
+
+    public function creditText($creditText);
 
     public function dateCreated($dateCreated);
 
@@ -95,6 +109,8 @@ interface ProductCollectionContract
     public function depth($depth);
 
     public function description($description);
+
+    public function digitalSourceType($digitalSourceType);
 
     public function disambiguatingDescription($disambiguatingDescription);
 
@@ -124,6 +140,8 @@ interface ProductCollectionContract
 
     public function funder($funder);
 
+    public function funding($funding);
+
     public function genre($genre);
 
     public function gtin($gtin);
@@ -135,6 +153,12 @@ interface ProductCollectionContract
     public function gtin14($gtin14);
 
     public function gtin8($gtin8);
+
+    public function hasAdultConsideration($hasAdultConsideration);
+
+    public function hasEnergyConsumptionDetails($hasEnergyConsumptionDetails);
+
+    public function hasMeasurement($hasMeasurement);
 
     public function hasMerchantReturnPolicy($hasMerchantReturnPolicy);
 
@@ -159,6 +183,8 @@ interface ProductCollectionContract
     public function interactionStatistic($interactionStatistic);
 
     public function interactivityType($interactivityType);
+
+    public function interpretedAsClaim($interpretedAsClaim);
 
     public function isAccessibleForFree($isAccessibleForFree);
 
@@ -206,11 +232,15 @@ interface ProductCollectionContract
 
     public function mentions($mentions);
 
+    public function mobileUrl($mobileUrl);
+
     public function model($model);
 
     public function mpn($mpn);
 
     public function name($name);
+
+    public function negativeNotes($negativeNotes);
 
     public function nsn($nsn);
 
@@ -219,6 +249,8 @@ interface ProductCollectionContract
     public function pattern($pattern);
 
     public function position($position);
+
+    public function positiveNotes($positiveNotes);
 
     public function potentialAction($potentialAction);
 
@@ -284,6 +316,8 @@ interface ProductCollectionContract
 
     public function text($text);
 
+    public function thumbnail($thumbnail);
+
     public function thumbnailUrl($thumbnailUrl);
 
     public function timeRequired($timeRequired);
@@ -309,5 +343,4 @@ interface ProductCollectionContract
     public function workExample($workExample);
 
     public function workTranslation($workTranslation);
-
 }

@@ -10,6 +10,8 @@ interface AirlineContract
 
     public function address($address);
 
+    public function agentInteractionStatistic($agentInteractionStatistic);
+
     public function aggregateRating($aggregateRating);
 
     public function alternateName($alternateName);
@@ -70,6 +72,8 @@ interface AirlineContract
 
     public function funder($funder);
 
+    public function funding($funding);
+
     public function globalLocationNumber($globalLocationNumber);
 
     public function hasCredential($hasCredential);
@@ -91,6 +95,10 @@ interface AirlineContract
     public function interactionStatistic($interactionStatistic);
 
     public function isicV4($isicV4);
+
+    public function iso6523Code($iso6523Code);
+
+    public function keywords($keywords);
 
     public function knowsAbout($knowsAbout);
 
@@ -159,5 +167,4 @@ interface AirlineContract
     public function url($url);
 
     public function vatID($vatID);
-
 }

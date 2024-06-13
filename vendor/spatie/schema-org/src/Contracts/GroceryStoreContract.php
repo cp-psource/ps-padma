@@ -12,6 +12,8 @@ interface GroceryStoreContract
 
     public function address($address);
 
+    public function agentInteractionStatistic($agentInteractionStatistic);
+
     public function aggregateRating($aggregateRating);
 
     public function alternateName($alternateName);
@@ -84,6 +86,8 @@ interface GroceryStoreContract
 
     public function funder($funder);
 
+    public function funding($funding);
+
     public function geo($geo);
 
     public function geoContains($geoContains);
@@ -131,6 +135,10 @@ interface GroceryStoreContract
     public function isAccessibleForFree($isAccessibleForFree);
 
     public function isicV4($isicV4);
+
+    public function iso6523Code($iso6523Code);
+
+    public function keywords($keywords);
 
     public function knowsAbout($knowsAbout);
 
@@ -229,5 +237,4 @@ interface GroceryStoreContract
     public function url($url);
 
     public function vatID($vatID);
-
 }

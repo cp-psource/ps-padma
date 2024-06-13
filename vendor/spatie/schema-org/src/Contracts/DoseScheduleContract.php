@@ -20,6 +20,8 @@ interface DoseScheduleContract
 
     public function frequency($frequency);
 
+    public function funding($funding);
+
     public function guideline($guideline);
 
     public function identifier($identifier);
@@ -49,5 +51,4 @@ interface DoseScheduleContract
     public function targetPopulation($targetPopulation);
 
     public function url($url);
-
 }

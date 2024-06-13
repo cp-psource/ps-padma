@@ -2,14 +2,14 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\HowToItemContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ListItemContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\HowToItemContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\ListItemContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * An item used as either a tool or supply when performing the instructions for
- * how to to achieve a result.
+ * how to achieve a result.
  *
  * @see https://schema.org/HowToItem
  *
@@ -19,10 +19,14 @@ class HowToItem extends BaseType implements HowToItemContract, IntangibleContrac
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -52,7 +56,7 @@ class HowToItem extends BaseType implements HowToItemContract, IntangibleContrac
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -115,7 +119,7 @@ class HowToItem extends BaseType implements HowToItemContract, IntangibleContrac
 
     /**
      * An entity represented by an entry in a list or data feed (e.g. an
-     * 'artist' in a list of 'artists')’.
+     * 'artist' in a list of 'artists').
      *
      * @param \Spatie\SchemaOrg\Contracts\ThingContract|\Spatie\SchemaOrg\Contracts\ThingContract[] $item
      *
@@ -202,7 +206,7 @@ class HowToItem extends BaseType implements HowToItemContract, IntangibleContrac
     }
 
     /**
-     * A link to the ListItem that preceeds the current one.
+     * A link to the ListItem that precedes the current one.
      *
      * @param \Spatie\SchemaOrg\Contracts\ListItemContract|\Spatie\SchemaOrg\Contracts\ListItemContract[] $previousItem
      *
@@ -273,5 +277,4 @@ class HowToItem extends BaseType implements HowToItemContract, IntangibleContrac
     {
         return $this->setProperty('url', $url);
     }
-
 }

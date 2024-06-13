@@ -16,6 +16,8 @@ interface DrugClassContract
 
     public function drug($drug);
 
+    public function funding($funding);
+
     public function guideline($guideline);
 
     public function identifier($identifier);
@@ -43,5 +45,4 @@ interface DrugClassContract
     public function subjectOf($subjectOf);
 
     public function url($url);
-
 }

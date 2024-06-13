@@ -18,6 +18,8 @@ interface OfferForLeaseContract
 
     public function areaServed($areaServed);
 
+    public function asin($asin);
+
     public function availability($availability);
 
     public function availabilityEnds($availabilityEnds);
@@ -31,6 +33,8 @@ interface OfferForLeaseContract
     public function businessFunction($businessFunction);
 
     public function category($category);
+
+    public function checkoutPageURLTemplate($checkoutPageURLTemplate);
 
     public function deliveryLeadTime($deliveryLeadTime);
 
@@ -58,6 +62,12 @@ interface OfferForLeaseContract
 
     public function gtin8($gtin8);
 
+    public function hasAdultConsideration($hasAdultConsideration);
+
+    public function hasMeasurement($hasMeasurement);
+
+    public function hasMerchantReturnPolicy($hasMerchantReturnPolicy);
+
     public function identifier($identifier);
 
     public function image($image);
@@ -68,6 +78,8 @@ interface OfferForLeaseContract
 
     public function inventoryLevel($inventoryLevel);
 
+    public function isFamilyFriendly($isFamilyFriendly);
+
     public function itemCondition($itemCondition);
 
     public function itemOffered($itemOffered);
@@ -75,6 +87,8 @@ interface OfferForLeaseContract
     public function leaseLength($leaseLength);
 
     public function mainEntityOfPage($mainEntityOfPage);
+
+    public function mobileUrl($mobileUrl);
 
     public function mpn($mpn);
 
@@ -115,5 +129,4 @@ interface OfferForLeaseContract
     public function validThrough($validThrough);
 
     public function warranty($warranty);
-
 }

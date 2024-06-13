@@ -2,16 +2,17 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\LegalValueLevelContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\LegalValueLevelContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A list of possible levels for the legal validity of a legislation.
  *
  * @see https://schema.org/LegalValueLevel
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
+ * @link https://github.com/schemaorg/schemaorg/issues/1156
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
  */
@@ -21,54 +22,62 @@ class LegalValueLevel extends BaseType implements LegalValueLevelContract, Enume
      * Indicates that the publisher gives some special status to the publication
      * of the document. ("The Queens Printer" version of a UK Act of Parliament,
      * or the PDF version of a Directive published by the EU Office of
-     * Publications). Something "Authoritative" is considered to be also
-     * [[OfficialLegalValue]]".
+     * Publications.) Something "Authoritative" is considered to be also
+     * [[OfficialLegalValue]].
      *
      * @see https://schema.org/AuthoritativeLegalValue
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1156
      */
-     const AuthoritativeLegalValue = 'https://schema.org/AuthoritativeLegalValue';
+    public const AuthoritativeLegalValue = 'https://schema.org/AuthoritativeLegalValue';
 
     /**
      * Indicates a document for which the text is conclusively what the law says
-     * and is legally binding. (e.g. The digitally signed version of an Official
+     * and is legally binding. (E.g. the digitally signed version of an Official
      * Journal.)
      *   Something "Definitive" is considered to be also
      * [[AuthoritativeLegalValue]].
      *
      * @see https://schema.org/DefinitiveLegalValue
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1156
      */
-     const DefinitiveLegalValue = 'https://schema.org/DefinitiveLegalValue';
+    public const DefinitiveLegalValue = 'https://schema.org/DefinitiveLegalValue';
 
     /**
      * All the documents published by an official publisher should have at least
      * the legal value level "OfficialLegalValue". This indicates that the
      * document was published by an organisation with the public task of making
-     * it available (e.g. a consolidated version of a EU directive published by
+     * it available (e.g. a consolidated version of an EU directive published by
      * the EU Office of Publications).
      *
      * @see https://schema.org/OfficialLegalValue
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1156
      */
-     const OfficialLegalValue = 'https://schema.org/OfficialLegalValue';
+    public const OfficialLegalValue = 'https://schema.org/OfficialLegalValue';
 
     /**
      * Indicates that a document has no particular or special standing (e.g. a
      * republication of a law by a private publisher).
      *
      * @see https://schema.org/UnofficialLegalValue
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1156
      */
-     const UnofficialLegalValue = 'https://schema.org/UnofficialLegalValue';
+    public const UnofficialLegalValue = 'https://schema.org/UnofficialLegalValue';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -98,7 +107,7 @@ class LegalValueLevel extends BaseType implements LegalValueLevelContract, Enume
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -248,5 +257,4 @@ class LegalValueLevel extends BaseType implements LegalValueLevelContract, Enume
     {
         return $this->setProperty('url', $url);
     }
-
 }

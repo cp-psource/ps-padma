@@ -38,6 +38,8 @@ interface SearchActionContract
 
     public function potentialAction($potentialAction);
 
+    public function provider($provider);
+
     public function query($query);
 
     public function result($result);
@@ -51,5 +53,4 @@ interface SearchActionContract
     public function target($target);
 
     public function url($url);
-
 }

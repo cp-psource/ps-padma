@@ -2,19 +2,19 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\MedicalTrialContract;
-use \Spatie\SchemaOrg\Contracts\MedicalEntityContract;
-use \Spatie\SchemaOrg\Contracts\MedicalStudyContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\MedicalEntityContract;
+use Spatie\SchemaOrg\Contracts\MedicalStudyContract;
+use Spatie\SchemaOrg\Contracts\MedicalTrialContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
- * A medical trial is a type of medical study that uses scientific process used
- * to compare the safety and efficacy of medical therapies or medical
- * procedures. In general, medical trials are controlled and subjects are
- * allocated at random to the different treatment and/or control groups.
+ * A medical trial is a type of medical study that uses a scientific process to
+ * compare the safety and efficacy of medical therapies or medical procedures.
+ * In general, medical trials are controlled and subjects are allocated at
+ * random to the different treatment and/or control groups.
  *
  * @see https://schema.org/MedicalTrial
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  */
 class MedicalTrial extends BaseType implements MedicalTrialContract, MedicalEntityContract, MedicalStudyContract, ThingContract
@@ -22,10 +22,14 @@ class MedicalTrial extends BaseType implements MedicalTrialContract, MedicalEnti
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -61,7 +65,7 @@ class MedicalTrial extends BaseType implements MedicalTrialContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/code
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function code($code)
     {
@@ -71,7 +75,7 @@ class MedicalTrial extends BaseType implements MedicalTrialContract, MedicalEnti
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -100,6 +104,23 @@ class MedicalTrial extends BaseType implements MedicalTrialContract, MedicalEnti
     }
 
     /**
+     * A [[Grant]] that directly or indirectly provide funding or sponsorship
+     * for this item. See also [[ownershipFundingInfo]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\GrantContract|\Spatie\SchemaOrg\Contracts\GrantContract[] $funding
+     *
+     * @return static
+     *
+     * @see https://schema.org/funding
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/383
+     */
+    public function funding($funding)
+    {
+        return $this->setProperty('funding', $funding);
+    }
+
+    /**
      * A medical guideline related to this entity.
      *
      * @param \Spatie\SchemaOrg\Contracts\MedicalGuidelineContract|\Spatie\SchemaOrg\Contracts\MedicalGuidelineContract[] $guideline
@@ -107,7 +128,7 @@ class MedicalTrial extends BaseType implements MedicalTrialContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/guideline
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function guideline($guideline)
     {
@@ -123,7 +144,7 @@ class MedicalTrial extends BaseType implements MedicalTrialContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/healthCondition
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function healthCondition($healthCondition)
     {
@@ -172,7 +193,7 @@ class MedicalTrial extends BaseType implements MedicalTrialContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/legalStatus
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function legalStatus($legalStatus)
     {
@@ -204,7 +225,7 @@ class MedicalTrial extends BaseType implements MedicalTrialContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/medicineSystem
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function medicineSystem($medicineSystem)
     {
@@ -249,7 +270,7 @@ class MedicalTrial extends BaseType implements MedicalTrialContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/recognizingAuthority
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function recognizingAuthority($recognizingAuthority)
     {
@@ -264,7 +285,7 @@ class MedicalTrial extends BaseType implements MedicalTrialContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/relevantSpecialty
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function relevantSpecialty($relevantSpecialty)
     {
@@ -289,7 +310,7 @@ class MedicalTrial extends BaseType implements MedicalTrialContract, MedicalEnti
 
     /**
      * A person or organization that supports a thing through a pledge, promise,
-     * or financial contribution. e.g. a sponsor of a Medical Study or a
+     * or financial contribution. E.g. a sponsor of a Medical Study or a
      * corporate sponsor of an event.
      *
      * @param \Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[]|\Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[] $sponsor
@@ -311,7 +332,7 @@ class MedicalTrial extends BaseType implements MedicalTrialContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/status
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function status($status)
     {
@@ -326,7 +347,7 @@ class MedicalTrial extends BaseType implements MedicalTrialContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/study
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function study($study)
     {
@@ -341,7 +362,7 @@ class MedicalTrial extends BaseType implements MedicalTrialContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/studyLocation
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function studyLocation($studyLocation)
     {
@@ -357,7 +378,7 @@ class MedicalTrial extends BaseType implements MedicalTrialContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/studySubject
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function studySubject($studySubject)
     {
@@ -387,7 +408,7 @@ class MedicalTrial extends BaseType implements MedicalTrialContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/trialDesign
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function trialDesign($trialDesign)
     {
@@ -407,5 +428,4 @@ class MedicalTrial extends BaseType implements MedicalTrialContract, MedicalEnti
     {
         return $this->setProperty('url', $url);
     }
-
 }

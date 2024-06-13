@@ -2,11 +2,11 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\SingleFamilyResidenceContract;
-use \Spatie\SchemaOrg\Contracts\AccommodationContract;
-use \Spatie\SchemaOrg\Contracts\HouseContract;
-use \Spatie\SchemaOrg\Contracts\PlaceContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\AccommodationContract;
+use Spatie\SchemaOrg\Contracts\HouseContract;
+use Spatie\SchemaOrg\Contracts\PlaceContract;
+use Spatie\SchemaOrg\Contracts\SingleFamilyResidenceContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * Residence type: Single-family home.
@@ -17,7 +17,7 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
 class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceContract, AccommodationContract, HouseContract, PlaceContract, ThingContract
 {
     /**
-     * Category of an [[Accommodation]], following real estate conventions e.g.
+     * Category of an [[Accommodation]], following real estate conventions, e.g.
      * RESO (see
      * [PropertySubType](https://ddwiki.reso.org/display/DDW17/PropertySubType+Field),
      * and
@@ -29,7 +29,7 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
      * @return static
      *
      * @see https://schema.org/accommodationCategory
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2373
      */
     public function accommodationCategory($accommodationCategory)
@@ -45,7 +45,7 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
      * @return static
      *
      * @see https://schema.org/accommodationFloorPlan
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2373
      */
     public function accommodationFloorPlan($accommodationFloorPlan)
@@ -54,10 +54,10 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
     }
 
     /**
-     * A property-value pair representing an additional characteristics of the
-     * entitity, e.g. a product feature or another characteristic for which
-     * there is no matching property in schema.org.
-     * 
+     * A property-value pair representing an additional characteristic of the
+     * entity, e.g. a product feature or another characteristic for which there
+     * is no matching property in schema.org.
+     *
      * Note: Publishers should be aware that applications designed to use
      * specific schema.org properties (e.g. https://schema.org/width,
      * https://schema.org/color, https://schema.org/gtin13, ...) will typically
@@ -78,10 +78,14 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -148,7 +152,6 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
      * @return static
      *
      * @see https://schema.org/amenityFeature
-     * @link https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#STI_Accommodation_Ontology
      */
     public function amenityFeature($amenityFeature)
     {
@@ -156,10 +159,28 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
     }
 
     /**
+     * The type of bed or beds included in the accommodation. For the single
+     * case of just one bed of a certain type, you use bed directly with a text.
+     *       If you want to indicate the quantity of a certain kind of bed, use
+     * an instance of BedDetails. For more detailed information, use the
+     * amenityFeature property.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\BedDetailsContract|\Spatie\SchemaOrg\Contracts\BedDetailsContract[]|\Spatie\SchemaOrg\Contracts\BedTypeContract|\Spatie\SchemaOrg\Contracts\BedTypeContract[]|string|string[] $bed
+     *
+     * @return static
+     *
+     * @see https://schema.org/bed
+     */
+    public function bed($bed)
+    {
+        return $this->setProperty('bed', $bed);
+    }
+
+    /**
      * A short textual code (also called "store code") that uniquely identifies
      * a place of business. The code is typically assigned by the
      * parentOrganization and used in structured URLs.
-     * 
+     *
      * For example, in the URL
      * http://www.starbucks.co.uk/store-locator/etc/detail/3047 the code "3047"
      * is a branchCode for a particular branch.
@@ -221,7 +242,7 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -304,7 +325,7 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
      * @return static
      *
      * @see https://schema.org/floorLevel
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2373
      */
     public function floorLevel($floorLevel)
@@ -315,14 +336,13 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
     /**
      * The size of the accommodation, e.g. in square meter or squarefoot.
      * Typical unit code(s): MTK for square meter, FTK for square foot, or YDK
-     * for square yard
+     * for square yard.
      *
      * @param \Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[] $floorSize
      *
      * @return static
      *
      * @see https://schema.org/floorSize
-     * @link https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#STI_Accommodation_Ontology
      */
     public function floorSize($floorSize)
     {
@@ -414,9 +434,9 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
 
     /**
      * Represents spatial relations in which two geometries (or the places they
-     * represent) are topologically disjoint: they have no point in common. They
-     * form a set of disconnected geometries." (a symmetric relationship, as
-     * defined in [DE-9IM](https://en.wikipedia.org/wiki/DE-9IM))
+     * represent) are topologically disjoint: "they have no point in common.
+     * They form a set of disconnected geometries." (A symmetric relationship,
+     * as defined in [DE-9IM](https://en.wikipedia.org/wiki/DE-9IM).)
      *
      * @param \Spatie\SchemaOrg\Contracts\GeospatialGeometryContract|\Spatie\SchemaOrg\Contracts\GeospatialGeometryContract[]|\Spatie\SchemaOrg\Contracts\PlaceContract|\Spatie\SchemaOrg\Contracts\PlaceContract[] $geoDisjoint
      *
@@ -435,7 +455,7 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
      * [DE-9IM](https://en.wikipedia.org/wiki/DE-9IM). "Two geometries are
      * topologically equal if their interiors intersect and no part of the
      * interior or boundary of one geometry intersects the exterior of the
-     * other" (a symmetric relationship)
+     * other" (a symmetric relationship).
      *
      * @param \Spatie\SchemaOrg\Contracts\GeospatialGeometryContract|\Spatie\SchemaOrg\Contracts\GeospatialGeometryContract[]|\Spatie\SchemaOrg\Contracts\PlaceContract|\Spatie\SchemaOrg\Contracts\PlaceContract[] $geoEquals
      *
@@ -483,9 +503,9 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
 
     /**
      * Represents spatial relations in which two geometries (or the places they
-     * represent) touch: they have at least one boundary point in common, but no
-     * interior points." (a symmetric relationship, as defined in
-     * [DE-9IM](https://en.wikipedia.org/wiki/DE-9IM) )
+     * represent) touch: "they have at least one boundary point in common, but
+     * no interior points." (A symmetric relationship, as defined in
+     * [DE-9IM](https://en.wikipedia.org/wiki/DE-9IM).)
      *
      * @param \Spatie\SchemaOrg\Contracts\GeospatialGeometryContract|\Spatie\SchemaOrg\Contracts\GeospatialGeometryContract[]|\Spatie\SchemaOrg\Contracts\PlaceContract|\Spatie\SchemaOrg\Contracts\PlaceContract[] $geoTouches
      *
@@ -526,7 +546,6 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
      * @return static
      *
      * @see https://schema.org/globalLocationNumber
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function globalLocationNumber($globalLocationNumber)
     {
@@ -545,7 +564,7 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
      * @return static
      *
      * @see https://schema.org/hasDriveThroughService
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2490
      */
     public function hasDriveThroughService($hasDriveThroughService)
@@ -624,11 +643,26 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
      * @return static
      *
      * @see https://schema.org/isicV4
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function isicV4($isicV4)
     {
         return $this->setProperty('isicV4', $isicV4);
+    }
+
+    /**
+     * Keywords or tags used to describe some item. Multiple textual entries in
+     * a keywords list are typically delimited by commas, or by repeating the
+     * property.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|string|string[] $keywords
+     *
+     * @return static
+     *
+     * @see https://schema.org/keywords
+     */
+    public function keywords($keywords)
+    {
+        return $this->setProperty('keywords', $keywords);
     }
 
     /**
@@ -655,7 +689,7 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
      * @return static
      *
      * @see https://schema.org/leaseLength
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2373
      */
     public function leaseLength($leaseLength)
@@ -671,7 +705,6 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
      * @return static
      *
      * @see https://schema.org/logo
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function logo($logo)
     {
@@ -766,7 +799,7 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
     }
 
     /**
-     * The total integer number of bathrooms in a some [[Accommodation]],
+     * The total integer number of bathrooms in some [[Accommodation]],
      * following real estate conventions as [documented in
      * RESO](https://ddwiki.reso.org/display/DDW17/BathroomsTotalInteger+Field):
      * "The simple sum of the number of bathrooms. For example for a property
@@ -778,7 +811,7 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
      * @return static
      *
      * @see https://schema.org/numberOfBathroomsTotal
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2373
      */
     public function numberOfBathroomsTotal($numberOfBathroomsTotal)
@@ -795,7 +828,7 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
      * @return static
      *
      * @see https://schema.org/numberOfBedrooms
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2373
      */
     public function numberOfBedrooms($numberOfBedrooms)
@@ -813,7 +846,7 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
      * @return static
      *
      * @see https://schema.org/numberOfFullBathrooms
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2373
      */
     public function numberOfFullBathrooms($numberOfFullBathrooms)
@@ -831,7 +864,7 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
      * @return static
      *
      * @see https://schema.org/numberOfPartialBathrooms
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2373
      */
     public function numberOfPartialBathrooms($numberOfPartialBathrooms)
@@ -850,7 +883,6 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
      * @return static
      *
      * @see https://schema.org/numberOfRooms
-     * @link https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#STI_Accommodation_Ontology
      */
     public function numberOfRooms($numberOfRooms)
     {
@@ -862,14 +894,13 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
      * infants etc). For individual accommodations, this is not necessarily the
      * legal maximum but defines the permitted usage as per the contractual
      * agreement (e.g. a double room used by a single person).
-     * Typical unit code(s): C62 for person
+     * Typical unit code(s): C62 for person.
      *
      * @param \Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[] $occupancy
      *
      * @return static
      *
      * @see https://schema.org/occupancy
-     * @link https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#STI_Accommodation_Ontology
      */
     public function occupancy($occupancy)
     {
@@ -884,7 +915,6 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
      * @return static
      *
      * @see https://schema.org/openingHoursSpecification
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function openingHoursSpecification($openingHoursSpecification)
     {
@@ -899,7 +929,6 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
      * @return static
      *
      * @see https://schema.org/permittedUsage
-     * @link https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#STI_Accommodation_Ontology
      */
     public function permittedUsage($permittedUsage)
     {
@@ -915,7 +944,6 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
      * @return static
      *
      * @see https://schema.org/petsAllowed
-     * @link https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#STI_Accommodation_Ontology
      */
     public function petsAllowed($petsAllowed)
     {
@@ -967,7 +995,7 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
 
     /**
      * A flag to signal that the [[Place]] is open to public visitors.  If this
-     * property is omitted there is no assumed default boolean value
+     * property is omitted there is no assumed default boolean value.
      *
      * @param bool|bool[] $publicAccess
      *
@@ -1047,7 +1075,6 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
      * @return static
      *
      * @see https://schema.org/smokingAllowed
-     * @link https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#STI_Accommodation_Ontology
      */
     public function smokingAllowed($smokingAllowed)
     {
@@ -1056,7 +1083,7 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
 
     /**
      * The special opening hours of a certain place.
-     * 
+     *
      * Use this to explicitly override general opening hours brought in scope by
      * [[openingHoursSpecification]] or [[openingHours]].
      *
@@ -1110,7 +1137,7 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
      * @return static
      *
      * @see https://schema.org/tourBookingPage
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2373
      */
     public function tourBookingPage($tourBookingPage)
@@ -1142,12 +1169,11 @@ class SingleFamilyResidence extends BaseType implements SingleFamilyResidenceCon
      * @return static
      *
      * @see https://schema.org/yearBuilt
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2373
      */
     public function yearBuilt($yearBuilt)
     {
         return $this->setProperty('yearBuilt', $yearBuilt);
     }
-
 }

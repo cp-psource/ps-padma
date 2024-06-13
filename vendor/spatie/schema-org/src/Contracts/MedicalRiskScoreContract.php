@@ -18,6 +18,8 @@ interface MedicalRiskScoreContract
 
     public function estimatesRiskOf($estimatesRiskOf);
 
+    public function funding($funding);
+
     public function guideline($guideline);
 
     public function identifier($identifier);
@@ -47,5 +49,4 @@ interface MedicalRiskScoreContract
     public function subjectOf($subjectOf);
 
     public function url($url);
-
 }

@@ -14,6 +14,9 @@ abstract class BaseType implements Type, ArrayAccess, JsonSerializable
     /** @var array */
     protected $properties = [];
 
+    /** @var string */
+    protected $nonce = '';
+
     public function getContext(): string
     {
         return 'https://schema.org';
@@ -51,6 +54,13 @@ abstract class BaseType implements Type, ArrayAccess, JsonSerializable
         return $this;
     }
 
+    public function setNonce(string $nonce)
+    {
+        $this->nonce = $nonce;
+
+        return $this;
+    }
+
     public function getProperty(string $property, $default = null)
     {
         return $this->properties[$property] ?? $default;
@@ -69,22 +79,22 @@ abstract class BaseType implements Type, ArrayAccess, JsonSerializable
         return new ReferencedType($this);
     }
 
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return array_key_exists($offset, $this->properties);
     }
 
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->getProperty($offset);
     }
 
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         $this->setProperty($offset, $value);
     }
 
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->properties[$offset]);
     }
@@ -128,18 +138,32 @@ abstract class BaseType implements Type, ArrayAccess, JsonSerializable
 
     protected function serializeIdentifier()
     {
-        if (isset($this['identifier']) && ! $this['identifier'] instanceof Type) {
+        if (
+            isset($this['identifier'])
+            && ! $this['identifier'] instanceof Type
+        ) {
             $this->setProperty('@id', $this['identifier']);
             unset($this['identifier']);
         }
     }
 
-    public function toScript(): string
+    public function nonceAttr(): string
     {
-        return '<script type="application/ld+json">'.json_encode($this->toArray(), JSON_UNESCAPED_UNICODE).'</script>';
+        if ($this->nonce) {
+            $attr = ' nonce="'.$this->nonce.'"';
+        } else {
+            $attr = '';
+        }
+
+        return $attr;
     }
 
-    public function jsonSerialize()
+    public function toScript(): string
+    {
+        return '<script type="application/ld+json"'.$this->nonceAttr().'>'.json_encode($this->toArray(), JSON_UNESCAPED_UNICODE).'</script>';
+    }
+
+    public function jsonSerialize(): mixed
     {
         return $this->toArray();
     }

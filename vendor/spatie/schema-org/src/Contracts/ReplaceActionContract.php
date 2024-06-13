@@ -40,6 +40,8 @@ interface ReplaceActionContract
 
     public function potentialAction($potentialAction);
 
+    public function provider($provider);
+
     public function replacee($replacee);
 
     public function replacer($replacer);
@@ -57,5 +59,4 @@ interface ReplaceActionContract
     public function targetCollection($targetCollection);
 
     public function url($url);
-
 }

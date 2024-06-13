@@ -2,18 +2,18 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\ProductCollectionContract;
-use \Spatie\SchemaOrg\Contracts\CollectionContract;
-use \Spatie\SchemaOrg\Contracts\CreativeWorkContract;
-use \Spatie\SchemaOrg\Contracts\ProductContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\CollectionContract;
+use Spatie\SchemaOrg\Contracts\CreativeWorkContract;
+use Spatie\SchemaOrg\Contracts\ProductCollectionContract;
+use Spatie\SchemaOrg\Contracts\ProductContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A set of products (either [[ProductGroup]]s or specific variants) that are
  * listed together e.g. in an [[Offer]].
  *
  * @see https://schema.org/ProductCollection
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
  * @link https://github.com/schemaorg/schemaorg/issues/2597
  *
  */
@@ -42,7 +42,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/abstract
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/276
      */
     public function abstract($abstract)
@@ -52,9 +52,9 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
 
     /**
      * The human sensory perceptual system or cognitive faculty through which a
-     * person may process or perceive information. Expected values include:
-     * auditory, tactile, textual, visual, colorDependent, chartOnVisual,
-     * chemOnVisual, diagramOnVisual, mathOnVisual, musicOnVisual, textOnVisual.
+     * person may process or perceive information. Values should be drawn from
+     * the [approved
+     * vocabulary](https://www.w3.org/2021/a11y-discov-vocab/latest/#accessMode-vocabulary).
      *
      * @param string|string[] $accessMode
      *
@@ -70,8 +70,9 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
 
     /**
      * A list of single or combined accessModes that are sufficient to
-     * understand all the intellectual content of a resource. Expected values
-     * include:  auditory, tactile, textual, visual.
+     * understand all the intellectual content of a resource. Values should be
+     * drawn from the [approved
+     * vocabulary](https://www.w3.org/2021/a11y-discov-vocab/latest/#accessModeSufficient-vocabulary).
      *
      * @param \Spatie\SchemaOrg\Contracts\ItemListContract|\Spatie\SchemaOrg\Contracts\ItemListContract[] $accessModeSufficient
      *
@@ -87,8 +88,8 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
 
     /**
      * Indicates that the resource is compatible with the referenced
-     * accessibility API ([WebSchemas wiki lists possible
-     * values](http://www.w3.org/wiki/WebSchemas/Accessibility)).
+     * accessibility API. Values should be drawn from the [approved
+     * vocabulary](https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityAPI-vocabulary).
      *
      * @param string|string[] $accessibilityAPI
      *
@@ -103,8 +104,8 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
 
     /**
      * Identifies input methods that are sufficient to fully control the
-     * described resource ([WebSchemas wiki lists possible
-     * values](http://www.w3.org/wiki/WebSchemas/Accessibility)).
+     * described resource. Values should be drawn from the [approved
+     * vocabulary](https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityControl-vocabulary).
      *
      * @param string|string[] $accessibilityControl
      *
@@ -119,8 +120,9 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
 
     /**
      * Content features of the resource, such as accessible media, alternatives
-     * and supported enhancements for accessibility ([WebSchemas wiki lists
-     * possible values](http://www.w3.org/wiki/WebSchemas/Accessibility)).
+     * and supported enhancements for accessibility. Values should be drawn from
+     * the [approved
+     * vocabulary](https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityFeature-vocabulary).
      *
      * @param string|string[] $accessibilityFeature
      *
@@ -135,9 +137,9 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
 
     /**
      * A characteristic of the described resource that is physiologically
-     * dangerous to some users. Related to WCAG 2.0 guideline 2.3 ([WebSchemas
-     * wiki lists possible
-     * values](http://www.w3.org/wiki/WebSchemas/Accessibility)).
+     * dangerous to some users. Related to WCAG 2.0 guideline 2.3. Values should
+     * be drawn from the [approved
+     * vocabulary](https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityHazard-vocabulary).
      *
      * @param string|string[] $accessibilityHazard
      *
@@ -155,7 +157,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * deficiencies, consistent with the other accessibility metadata but
      * expressing subtleties such as "short descriptions are present but long
      * descriptions will be needed for non-visual users" or "short descriptions
-     * are present and no long descriptions are needed."
+     * are present and no long descriptions are needed".
      *
      * @param string|string[] $accessibilitySummary
      *
@@ -192,7 +194,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/acquireLicensePage
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2454
      */
     public function acquireLicensePage($acquireLicensePage)
@@ -201,10 +203,10 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     }
 
     /**
-     * A property-value pair representing an additional characteristics of the
-     * entitity, e.g. a product feature or another characteristic for which
-     * there is no matching property in schema.org.
-     * 
+     * A property-value pair representing an additional characteristic of the
+     * entity, e.g. a product feature or another characteristic for which there
+     * is no matching property in schema.org.
+     *
      * Note: Publishers should be aware that applications designed to use
      * specific schema.org properties (e.g. https://schema.org/width,
      * https://schema.org/color, https://schema.org/gtin13, ...) will typically
@@ -225,10 +227,14 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -285,6 +291,52 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     }
 
     /**
+     * Indicates a page or other link involved in archival of a
+     * [[CreativeWork]]. In the case of [[MediaReview]], the items in a
+     * [[MediaReviewItem]] may often become inaccessible, but be archived by
+     * archival, journalistic, activist, or law enforcement organizations. In
+     * such cases, the referenced page may not directly publish the content.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\WebPageContract|\Spatie\SchemaOrg\Contracts\WebPageContract[]|string|string[] $archivedAt
+     *
+     * @return static
+     *
+     * @see https://schema.org/archivedAt
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2450
+     */
+    public function archivedAt($archivedAt)
+    {
+        return $this->setProperty('archivedAt', $archivedAt);
+    }
+
+    /**
+     * An Amazon Standard Identification Number (ASIN) is a 10-character
+     * alphanumeric unique identifier assigned by Amazon.com and its partners
+     * for product identification within the Amazon organization (summary from
+     * [Wikipedia](https://en.wikipedia.org/wiki/Amazon_Standard_Identification_Number)'s
+     * article).
+     *
+     * Note also that this is a definition for how to include ASINs in
+     * Schema.org data, and not a definition of ASINs in general - see
+     * documentation from Amazon for authoritative details.
+     * ASINs are most commonly encoded as text strings, but the [asin] property
+     * supports URL/URI as potential values too.
+     *
+     * @param string|string[] $asin
+     *
+     * @return static
+     *
+     * @see https://schema.org/asin
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2288
+     */
+    public function asin($asin)
+    {
+        return $this->setProperty('asin', $asin);
+    }
+
+    /**
      * The item being described is intended to assess the competency or learning
      * outcome defined by the referenced term.
      *
@@ -293,7 +345,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/assesses
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2427
      */
     public function assesses($assesses)
@@ -408,7 +460,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * A category for the item. Greater signs or slashes can be used to
      * informally indicate a category hierarchy.
      *
-     * @param \Spatie\SchemaOrg\Contracts\PhysicalActivityCategoryContract|\Spatie\SchemaOrg\Contracts\PhysicalActivityCategoryContract[]|\Spatie\SchemaOrg\Contracts\ThingContract|\Spatie\SchemaOrg\Contracts\ThingContract[]|string|string[] $category
+     * @param \Spatie\SchemaOrg\Contracts\CategoryCodeContract|\Spatie\SchemaOrg\Contracts\CategoryCodeContract[]|\Spatie\SchemaOrg\Contracts\PhysicalActivityCategoryContract|\Spatie\SchemaOrg\Contracts\PhysicalActivityCategoryContract[]|\Spatie\SchemaOrg\Contracts\ThingContract|\Spatie\SchemaOrg\Contracts\ThingContract[]|string|string[] $category
      *
      * @return static
      *
@@ -456,7 +508,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/collectionSize
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1759
      */
     public function collectionSize($collectionSize)
@@ -472,7 +524,6 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/color
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function color($color)
     {
@@ -515,7 +566,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * held by an [[ArchiveOrganization]]. This property is not suitable for use
      * as a general Web access control mechanism. It is expressed only in
      * natural language.
-     * 
+     *
      * For example "Available by appointment from the Reading Room" or
      * "Accessible only from logged-in accounts ".
      *
@@ -524,7 +575,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/conditionsOfAccess
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2173
      */
     public function conditionsOfAccess($conditionsOfAccess)
@@ -548,7 +599,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     }
 
     /**
-     * Official rating of a piece of content&#x2014;for example,'MPAA PG-13'.
+     * Official rating of a piece of content&#x2014;for example, 'MPAA PG-13'.
      *
      * @param \Spatie\SchemaOrg\Contracts\RatingContract|\Spatie\SchemaOrg\Contracts\RatingContract[]|string|string[] $contentRating
      *
@@ -570,7 +621,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/contentReferenceTime
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1050
      */
     public function contentReferenceTime($contentReferenceTime)
@@ -607,6 +658,24 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     }
 
     /**
+     * Text of a notice appropriate for describing the copyright aspects of this
+     * Creative Work, ideally indicating the owner of the copyright for the
+     * Work.
+     *
+     * @param string|string[] $copyrightNotice
+     *
+     * @return static
+     *
+     * @see https://schema.org/copyrightNotice
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2659
+     */
+    public function copyrightNotice($copyrightNotice)
+    {
+        return $this->setProperty('copyrightNotice', $copyrightNotice);
+    }
+
+    /**
      * The year during which the claimed copyright for the CreativeWork was
      * first asserted.
      *
@@ -630,11 +699,70 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/correction
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1950
      */
     public function correction($correction)
     {
         return $this->setProperty('correction', $correction);
+    }
+
+    /**
+     * The place where the product was assembled.
+     *
+     * @param string|string[] $countryOfAssembly
+     *
+     * @return static
+     *
+     * @see https://schema.org/countryOfAssembly
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/991
+     */
+    public function countryOfAssembly($countryOfAssembly)
+    {
+        return $this->setProperty('countryOfAssembly', $countryOfAssembly);
+    }
+
+    /**
+     * The place where the item (typically [[Product]]) was last processed and
+     * tested before importation.
+     *
+     * @param string|string[] $countryOfLastProcessing
+     *
+     * @return static
+     *
+     * @see https://schema.org/countryOfLastProcessing
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/991
+     */
+    public function countryOfLastProcessing($countryOfLastProcessing)
+    {
+        return $this->setProperty('countryOfLastProcessing', $countryOfLastProcessing);
+    }
+
+    /**
+     * The country of origin of something, including products as well as
+     * creative  works such as movie and TV content.
+     *
+     * In the case of TV and movie, this would be the country of the principle
+     * offices of the production company or individual responsible for the
+     * movie. For other kinds of [[CreativeWork]] it is difficult to provide
+     * fully general guidance, and properties such as [[contentLocation]] and
+     * [[locationCreated]] may be more applicable.
+     *
+     * In the case of products, the country of origin of the product. The exact
+     * interpretation of this may vary by context and product type, and cannot
+     * be fully enumerated here.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\CountryContract|\Spatie\SchemaOrg\Contracts\CountryContract[] $countryOfOrigin
+     *
+     * @return static
+     *
+     * @see https://schema.org/countryOfOrigin
+     */
+    public function countryOfOrigin($countryOfOrigin)
+    {
+        return $this->setProperty('countryOfOrigin', $countryOfOrigin);
     }
 
     /**
@@ -648,7 +776,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/creativeWorkStatus
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/987
      */
     public function creativeWorkStatus($creativeWorkStatus)
@@ -669,6 +797,23 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     public function creator($creator)
     {
         return $this->setProperty('creator', $creator);
+    }
+
+    /**
+     * Text that can be used to credit person(s) and/or organization(s)
+     * associated with a published Creative Work.
+     *
+     * @param string|string[] $creditText
+     *
+     * @return static
+     *
+     * @see https://schema.org/creditText
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2659
+     */
+    public function creditText($creditText)
+    {
+        return $this->setProperty('creditText', $creditText);
     }
 
     /**
@@ -723,7 +868,6 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/depth
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function depth($depth)
     {
@@ -733,7 +877,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -742,6 +886,23 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     public function description($description)
     {
         return $this->setProperty('description', $description);
+    }
+
+    /**
+     * Indicates an IPTCDigitalSourceEnumeration code indicating the nature of
+     * the digital source(s) for some [[CreativeWork]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\IPTCDigitalSourceEnumerationContract|\Spatie\SchemaOrg\Contracts\IPTCDigitalSourceEnumerationContract[] $digitalSourceType
+     *
+     * @return static
+     *
+     * @see https://schema.org/digitalSourceType
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/3392
+     */
+    public function digitalSourceType($digitalSourceType)
+    {
+        return $this->setProperty('digitalSourceType', $digitalSourceType);
     }
 
     /**
@@ -779,12 +940,12 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * An [EIDR](https://eidr.org/) (Entertainment Identifier Registry)
      * [[identifier]] representing a specific edit / edition for a work of film
      * or television.
-     * 
+     *
      * For example, the motion picture known as "Ghostbusters" whose
-     * [[titleEIDR]] is "10.5240/7EC7-228A-510A-053E-CBB8-J", has several edits
+     * [[titleEIDR]] is "10.5240/7EC7-228A-510A-053E-CBB8-J" has several edits,
      * e.g. "10.5240/1F2A-E1C5-680A-14C6-E76B-I" and
      * "10.5240/8A35-3BEE-6497-5D12-9E4F-3".
-     * 
+     *
      * Since schema.org types like [[Movie]] and [[TVEpisode]] can be used for
      * both works and their multiple expressions, it is possible to use
      * [[titleEIDR]] alone (for a general description), or alongside
@@ -795,7 +956,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/editEIDR
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2469
      */
     public function editEIDR($editEIDR)
@@ -819,7 +980,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
 
     /**
      * An alignment to an established educational framework.
-     * 
+     *
      * This property should not be used where the nature of the alignment can be
      * described using a simple property, for example to express that a resource
      * [[teaches]] or [[assesses]] a competency.
@@ -845,7 +1006,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/educationalLevel
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1779
      */
     public function educationalLevel($educationalLevel)
@@ -857,7 +1018,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * The purpose of a work in the context of education; for example,
      * 'assignment', 'group work'.
      *
-     * @param string|string[] $educationalUse
+     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|string|string[] $educationalUse
      *
      * @return static
      *
@@ -887,14 +1048,14 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * Media type typically expressed using a MIME format (see [IANA
      * site](http://www.iana.org/assignments/media-types/media-types.xhtml) and
      * [MDN
-     * reference](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types))
+     * reference](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)),
      * e.g. application/zip for a SoftwareApplication binary, audio/mpeg for
-     * .mp3 etc.).
-     * 
+     * .mp3 etc.
+     *
      * In cases where a [[CreativeWork]] has several media type representations,
      * [[encoding]] can be used to indicate each [[MediaObject]] alongside
      * particular [[encodingFormat]] information.
-     * 
+     *
      * Unregistered or niche encoding and file formats can be indicated instead
      * via the most appropriate URL, e.g. defining Web page or a
      * Wikipedia/Wikidata entry.
@@ -933,7 +1094,6 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/exampleOfWork
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_bibex
      */
     public function exampleOfWork($exampleOfWork)
     {
@@ -961,7 +1121,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     /**
      * Media type, typically MIME format (see [IANA
      * site](http://www.iana.org/assignments/media-types/media-types.xhtml)) of
-     * the content e.g. application/zip of a SoftwareApplication binary. In
+     * the content, e.g. application/zip of a SoftwareApplication binary. In
      * cases where a CreativeWork has several media type representations,
      * 'encoding' can be used to indicate each MediaObject alongside particular
      * fileFormat information. Unregistered or niche file formats can be
@@ -995,6 +1155,23 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     }
 
     /**
+     * A [[Grant]] that directly or indirectly provide funding or sponsorship
+     * for this item. See also [[ownershipFundingInfo]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\GrantContract|\Spatie\SchemaOrg\Contracts\GrantContract[] $funding
+     *
+     * @return static
+     *
+     * @see https://schema.org/funding
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/383
+     */
+    public function funding($funding)
+    {
+        return $this->setProperty('funding', $funding);
+    }
+
+    /**
      * Genre of the creative work, broadcast channel or group.
      *
      * @param string|string[] $genre
@@ -1012,31 +1189,36 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * A Global Trade Item Number
      * ([GTIN](https://www.gs1.org/standards/id-keys/gtin)). GTINs identify
      * trade items, including products and services, using numeric
-     * identification codes. The [[gtin]] property generalizes the earlier <a
-     * class="localLink" href="https://schema.org/gtin8">gtin8</a>, <a
-     * class="localLink" href="https://schema.org/gtin12">gtin12</a>, <a
-     * class="localLink" href="https://schema.org/gtin13">gtin13</a>, and <a
-     * class="localLink" href="https://schema.org/gtin14">gtin14</a> properties.
+     * identification codes.
+     *
      * The GS1 [digital link
      * specifications](https://www.gs1.org/standards/Digital-Link/) express
-     * GTINs as URLs. A correct [[gtin]] value should be a valid GTIN, which
-     * means that it should be an all-numeric string of either 8, 12, 13 or 14
-     * digits, or a "GS1 Digital Link" URL based on such a string. The numeric
-     * component should also have a [valid GS1 check
+     * GTINs as URLs (URIs, IRIs, etc.). Details including regular expression
+     * examples can be found in, Section 6 of the GS1 URI Syntax specification;
+     * see also [schema.org tracking
+     * issue](https://github.com/schemaorg/schemaorg/issues/3156#issuecomment-1209522809)
+     * for schema.org-specific discussion. A correct [[gtin]] value should be a
+     * valid GTIN, which means that it should be an all-numeric string of either
+     * 8, 12, 13 or 14 digits, or a "GS1 Digital Link" URL based on such a
+     * string. The numeric component should also have a [valid GS1 check
      * digit](https://www.gs1.org/services/check-digit-calculator) and meet the
-     * other rules for valid GTINs. See also <a
-     * href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1's GTIN
-     * Summary</a> and
+     * other rules for valid GTINs. See also [GS1's GTIN
+     * Summary](http://www.gs1.org/barcodes/technical/idkeys/gtin) and
      * [Wikipedia](https://en.wikipedia.org/wiki/Global_Trade_Item_Number) for
      * more details. Left-padding of the gtin values is not required or
-     * encouraged.
+     * encouraged. The [[gtin]] property generalizes the earlier [[gtin8]],
+     * [[gtin12]], [[gtin13]], and [[gtin14]] properties.
+     *
+     * Note also that this is a definition for how to include GTINs in
+     * Schema.org data, and not a definition of GTINs in general - see the GS1
+     * documentation for authoritative details.
      *
      * @param string|string[] $gtin
      *
      * @return static
      *
      * @see https://schema.org/gtin
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2288
      */
     public function gtin($gtin)
@@ -1067,7 +1249,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * The GTIN-13 code of the product, or the product to which the offer
      * refers. This is equivalent to 13-digit ISBN codes and EAN UCC-13. Former
      * 12-digit UPC codes can be converted into a GTIN-13 code by simply adding
-     * a preceeding zero. See [GS1 GTIN
+     * a preceding zero. See [GS1 GTIN
      * Summary](http://www.gs1.org/barcodes/technical/idkeys/gtin) for more
      * details.
      *
@@ -1076,7 +1258,6 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/gtin13
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function gtin13($gtin13)
     {
@@ -1094,7 +1275,6 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/gtin14
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function gtin14($gtin14)
     {
@@ -1102,9 +1282,8 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     }
 
     /**
-     * The [GTIN-8](http://apps.gs1.org/GDD/glossary/Pages/GTIN-8.aspx) code of
-     * the product, or the product to which the offer refers. This code is also
-     * known as EAN/UCC-8 or 8-digit EAN. See [GS1 GTIN
+     * The GTIN-8 code of the product, or the product to which the offer refers.
+     * This code is also known as EAN/UCC-8 or 8-digit EAN. See [GS1 GTIN
      * Summary](http://www.gs1.org/barcodes/technical/idkeys/gtin) for more
      * details.
      *
@@ -1113,7 +1292,6 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/gtin8
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function gtin8($gtin8)
     {
@@ -1121,14 +1299,68 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     }
 
     /**
-     * Indicates a MerchantReturnPolicy that may be applicable.
+     * Used to tag an item to be intended or suitable for consumption or use by
+     * adults only.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\AdultOrientedEnumerationContract|\Spatie\SchemaOrg\Contracts\AdultOrientedEnumerationContract[] $hasAdultConsideration
+     *
+     * @return static
+     *
+     * @see https://schema.org/hasAdultConsideration
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2989
+     */
+    public function hasAdultConsideration($hasAdultConsideration)
+    {
+        return $this->setProperty('hasAdultConsideration', $hasAdultConsideration);
+    }
+
+    /**
+     * Defines the energy efficiency Category (also known as "class" or
+     * "rating") for a product according to an international energy efficiency
+     * standard.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\EnergyConsumptionDetailsContract|\Spatie\SchemaOrg\Contracts\EnergyConsumptionDetailsContract[] $hasEnergyConsumptionDetails
+     *
+     * @return static
+     *
+     * @see https://schema.org/hasEnergyConsumptionDetails
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2670
+     */
+    public function hasEnergyConsumptionDetails($hasEnergyConsumptionDetails)
+    {
+        return $this->setProperty('hasEnergyConsumptionDetails', $hasEnergyConsumptionDetails);
+    }
+
+    /**
+     * A product measurement, for example the inseam of pants, the wheel size of
+     * a bicycle, or the gauge of a screw. Usually an exact measurement, but can
+     * also be a range of measurements for adjustable products, for example
+     * belts and ski bindings.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[] $hasMeasurement
+     *
+     * @return static
+     *
+     * @see https://schema.org/hasMeasurement
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2811
+     */
+    public function hasMeasurement($hasMeasurement)
+    {
+        return $this->setProperty('hasMeasurement', $hasMeasurement);
+    }
+
+    /**
+     * Specifies a MerchantReturnPolicy that may be applicable.
      *
      * @param \Spatie\SchemaOrg\Contracts\MerchantReturnPolicyContract|\Spatie\SchemaOrg\Contracts\MerchantReturnPolicyContract[] $hasMerchantReturnPolicy
      *
      * @return static
      *
      * @see https://schema.org/hasMerchantReturnPolicy
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2288
      */
     public function hasMerchantReturnPolicy($hasMerchantReturnPolicy)
@@ -1145,7 +1377,6 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/hasPart
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_bibex
      */
     public function hasPart($hasPart)
     {
@@ -1160,7 +1391,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/hasProductReturnPolicy
-     * @see http://attic.schema.org
+     * @see https://attic.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2288
      */
     public function hasProductReturnPolicy($hasProductReturnPolicy)
@@ -1256,7 +1487,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/inProductGroupWithID
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1797
      */
     public function inProductGroupWithID($inProductGroupWithID)
@@ -1273,7 +1504,6 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/includesObject
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function includesObject($includesObject)
     {
@@ -1313,6 +1543,24 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     }
 
     /**
+     * Used to indicate a specific claim contained, implied, translated or
+     * refined from the content of a [[MediaObject]] or other [[CreativeWork]].
+     * The interpreting party can be indicated using [[claimInterpreter]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\ClaimContract|\Spatie\SchemaOrg\Contracts\ClaimContract[] $interpretedAsClaim
+     *
+     * @return static
+     *
+     * @see https://schema.org/interpretedAsClaim
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2450
+     */
+    public function interpretedAsClaim($interpretedAsClaim)
+    {
+        return $this->setProperty('interpretedAsClaim', $interpretedAsClaim);
+    }
+
+    /**
      * A flag to signal that the item, event, or place is accessible for free.
      *
      * @param bool|bool[] $isAccessibleForFree
@@ -1335,7 +1583,6 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/isAccessoryOrSparePartFor
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function isAccessoryOrSparePartFor($isAccessoryOrSparePartFor)
     {
@@ -1344,7 +1591,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
 
     /**
      * A resource from which this work is derived or from which it is a
-     * modification or adaption.
+     * modification or adaptation.
      *
      * @param \Spatie\SchemaOrg\Contracts\CreativeWorkContract|\Spatie\SchemaOrg\Contracts\CreativeWorkContract[]|\Spatie\SchemaOrg\Contracts\ProductContract|\Spatie\SchemaOrg\Contracts\ProductContract[]|string|string[] $isBasedOn
      *
@@ -1382,7 +1629,6 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/isConsumableFor
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function isConsumableFor($isConsumableFor)
     {
@@ -1426,7 +1672,6 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/isRelatedTo
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function isRelatedTo($isRelatedTo)
     {
@@ -1442,7 +1687,6 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/isSimilarTo
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function isSimilarTo($isSimilarTo)
     {
@@ -1467,7 +1711,6 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/isVariantOf
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function isVariantOf($isVariantOf)
     {
@@ -1475,9 +1718,10 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     }
 
     /**
-     * A predefined value from OfferItemCondition or a textual description of
-     * the condition of the product or service, or the products or services
-     * included in the offer.
+     * A predefined value from OfferItemCondition specifying the condition of
+     * the product or service, or the products or services included in the
+     * offer. Also used for product return policies to specify the condition of
+     * products accepted for returns.
      *
      * @param \Spatie\SchemaOrg\Contracts\OfferItemConditionContract|\Spatie\SchemaOrg\Contracts\OfferItemConditionContract[] $itemCondition
      *
@@ -1491,10 +1735,11 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     }
 
     /**
-     * Keywords or tags used to describe this content. Multiple entries in a
-     * keywords list are typically delimited by commas.
+     * Keywords or tags used to describe some item. Multiple textual entries in
+     * a keywords list are typically delimited by commas, or by repeating the
+     * property.
      *
-     * @param string|string[] $keywords
+     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|string|string[] $keywords
      *
      * @return static
      *
@@ -1509,7 +1754,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * The predominant type or kind characterizing the learning resource. For
      * example, 'presentation', 'handout'.
      *
-     * @param string|string[] $learningResourceType
+     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|string|string[] $learningResourceType
      *
      * @return static
      *
@@ -1558,7 +1803,6 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/logo
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function logo($logo)
     {
@@ -1616,7 +1860,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/maintainer
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2311
      */
     public function maintainer($maintainer)
@@ -1662,7 +1906,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/materialExtent
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1759
      */
     public function materialExtent($materialExtent)
@@ -1683,6 +1927,38 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     public function mentions($mentions)
     {
         return $this->setProperty('mentions', $mentions);
+    }
+
+    /**
+     * The [[mobileUrl]] property is provided for specific situations in which
+     * data consumers need to determine whether one of several provided URLs is
+     * a dedicated 'mobile site'.
+     *
+     * To discourage over-use, and reflecting intial usecases, the property is
+     * expected only on [[Product]] and [[Offer]], rather than [[Thing]]. The
+     * general trend in web technology is towards [responsive
+     * design](https://en.wikipedia.org/wiki/Responsive_web_design) in which
+     * content can be flexibly adapted to a wide range of browsing environments.
+     * Pages and sites referenced with the long-established [[url]] property
+     * should ideally also be usable on a wide variety of devices, including
+     * mobile phones. In most cases, it would be pointless and counter
+     * productive to attempt to update all [[url]] markup to use [[mobileUrl]]
+     * for more mobile-oriented pages. The property is intended for the case
+     * when items (primarily [[Product]] and [[Offer]]) have extra URLs hosted
+     * on an additional "mobile site" alongside the main one. It should not be
+     * taken as an endorsement of this publication style.
+     *
+     * @param string|string[] $mobileUrl
+     *
+     * @return static
+     *
+     * @see https://schema.org/mobileUrl
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/3134
+     */
+    public function mobileUrl($mobileUrl)
+    {
+        return $this->setProperty('mobileUrl', $mobileUrl);
     }
 
     /**
@@ -1712,7 +1988,6 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/mpn
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function mpn($mpn)
     {
@@ -1734,6 +2009,34 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     }
 
     /**
+     * Provides negative considerations regarding something, most typically in
+     * pro/con lists for reviews (alongside [[positiveNotes]]). For symmetry
+     *
+     * In the case of a [[Review]], the property describes the [[itemReviewed]]
+     * from the perspective of the review; in the case of a [[Product]], the
+     * product itself is being described. Since product descriptions
+     * tend to emphasise positive claims, it may be relatively unusual to find
+     * [[negativeNotes]] used in this way. Nevertheless for the sake of
+     * symmetry, [[negativeNotes]] can be used on [[Product]].
+     *
+     * The property values can be expressed either as unstructured text
+     * (repeated as necessary), or if ordered, as a list (in which case the most
+     * negative is at the beginning of the list).
+     *
+     * @param \Spatie\SchemaOrg\Contracts\ItemListContract|\Spatie\SchemaOrg\Contracts\ItemListContract[]|\Spatie\SchemaOrg\Contracts\ListItemContract|\Spatie\SchemaOrg\Contracts\ListItemContract[]|\Spatie\SchemaOrg\Contracts\WebContentContract|\Spatie\SchemaOrg\Contracts\WebContentContract[]|string|string[] $negativeNotes
+     *
+     * @return static
+     *
+     * @see https://schema.org/negativeNotes
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2832
+     */
+    public function negativeNotes($negativeNotes)
+    {
+        return $this->setProperty('negativeNotes', $negativeNotes);
+    }
+
+    /**
      * Indicates the [NATO stock
      * number](https://en.wikipedia.org/wiki/NATO_Stock_Number) (nsn) of a
      * [[Product]].
@@ -1743,7 +2046,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/nsn
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2126
      */
     public function nsn($nsn)
@@ -1783,7 +2086,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/pattern
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1797
      */
     public function pattern($pattern)
@@ -1806,6 +2109,31 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     }
 
     /**
+     * Provides positive considerations regarding something, for example product
+     * highlights or (alongside [[negativeNotes]]) pro/con lists for reviews.
+     *
+     * In the case of a [[Review]], the property describes the [[itemReviewed]]
+     * from the perspective of the review; in the case of a [[Product]], the
+     * product itself is being described.
+     *
+     * The property values can be expressed either as unstructured text
+     * (repeated as necessary), or if ordered, as a list (in which case the most
+     * positive is at the beginning of the list).
+     *
+     * @param \Spatie\SchemaOrg\Contracts\ItemListContract|\Spatie\SchemaOrg\Contracts\ItemListContract[]|\Spatie\SchemaOrg\Contracts\ListItemContract|\Spatie\SchemaOrg\Contracts\ListItemContract[]|\Spatie\SchemaOrg\Contracts\WebContentContract|\Spatie\SchemaOrg\Contracts\WebContentContract[]|string|string[] $positiveNotes
+     *
+     * @return static
+     *
+     * @see https://schema.org/positiveNotes
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2832
+     */
+    public function positiveNotes($positiveNotes)
+    {
+        return $this->setProperty('positiveNotes', $positiveNotes);
+    }
+
+    /**
      * Indicates a potential Action, which describes an idealized action in
      * which this thing would play an 'object' role.
      *
@@ -1822,7 +2150,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
 
     /**
      * The person or organization who produced the work (e.g. music album,
-     * movie, tv/radio series etc.).
+     * movie, TV/radio series etc.).
      *
      * @param \Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[]|\Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[] $producer
      *
@@ -1836,8 +2164,8 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     }
 
     /**
-     * The product identifier, such as ISBN. For example: ```meta
-     * itemprop="productID" content="isbn:123-456-789"```.
+     * The product identifier, such as ISBN. For example: ``` meta
+     * itemprop="productID" content="isbn:123-456-789" ```.
      *
      * @param string|string[] $productID
      *
@@ -1858,7 +2186,6 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/productionDate
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
      */
     public function productionDate($productionDate)
     {
@@ -1875,7 +2202,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/provider
-     * @link https://github.com/schemaorg/schemaorg/issues/2289
+     * @see https://pending.schema.org
      */
     public function provider($provider)
     {
@@ -1918,7 +2245,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/publisherImprint
-     * @see http://bib.schema.org
+     * @see https://bib.schema.org
      */
     public function publisherImprint($publisherImprint)
     {
@@ -1928,12 +2255,12 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     /**
      * The publishingPrinciples property indicates (typically via [[URL]]) a
      * document describing the editorial principles of an [[Organization]] (or
-     * individual e.g. a [[Person]] writing a blog) that relate to their
+     * individual, e.g. a [[Person]] writing a blog) that relate to their
      * activities as a publisher, e.g. ethics or diversity policies. When
      * applied to a [[CreativeWork]] (e.g. [[NewsArticle]]) the principles are
      * those of the party primarily responsible for the creation of the
      * [[CreativeWork]].
-     * 
+     *
      * While such policies are most typically expressed in natural language,
      * sometimes related information (e.g. indicating a [[funder]]) can be
      * expressed using schema.org terminology.
@@ -1950,14 +2277,13 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     }
 
     /**
-     * The date the item e.g. vehicle was purchased by the current owner.
+     * The date the item, e.g. vehicle, was purchased by the current owner.
      *
      * @param \DateTimeInterface|\DateTimeInterface[] $purchaseDate
      *
      * @return static
      *
      * @see https://schema.org/purchaseDate
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
      */
     public function purchaseDate($purchaseDate)
     {
@@ -1988,7 +2314,6 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/releaseDate
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function releaseDate($releaseDate)
     {
@@ -2056,9 +2381,14 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
 
     /**
      * Indicates (by URL or string) a particular version of a schema used in
-     * some CreativeWork. For example, a document could declare a schemaVersion
-     * using an URL such as https://schema.org/version/2.0/ if precise
-     * indication of schema version was required by some application.
+     * some CreativeWork. This property was created primarily to
+     *     indicate the use of a specific schema.org release, e.g. ```10.0``` as
+     * a simple string, or more explicitly via URL,
+     * ```https://schema.org/docs/releases.html#v10.0```. There may be
+     * situations in which other schemas might usefully be referenced this way,
+     * e.g.
+     * ```http://dublincore.org/specifications/dublin-core/dces/1999-07-02/```
+     * but this has not been carefully explored in the community.
      *
      * @param string|string[] $schemaVersion
      *
@@ -2073,14 +2403,14 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
 
     /**
      * Indicates the date on which the current structured data was generated /
-     * published. Typically used alongside [[sdPublisher]]
+     * published. Typically used alongside [[sdPublisher]].
      *
      * @param \DateTimeInterface|\DateTimeInterface[] $sdDatePublished
      *
      * @return static
      *
      * @see https://schema.org/sdDatePublished
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1886
      */
     public function sdDatePublished($sdDatePublished)
@@ -2097,7 +2427,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/sdLicense
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1886
      */
     public function sdLicense($sdLicense)
@@ -2119,7 +2449,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/sdPublisher
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1886
      */
     public function sdPublisher($sdPublisher)
@@ -2128,19 +2458,18 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     }
 
     /**
-     * A standardized size of a product or creative work, often simplifying
-     * richer information into a simple textual string, either through referring
-     * to named sizes or (in the case of product markup), by adopting
-     * conventional simplifications. Use of QuantitativeValue with a unitCode or
-     * unitText can add more structure; in other cases, the /width, /height,
-     * /depth and /weight properties may be more applicable.
+     * A standardized size of a product or creative work, specified either
+     * through a simple textual string (for example 'XL', '32Wx34L'), a
+     * QuantitativeValue with a unitCode, or a comprehensive and structured
+     * [[SizeSpecification]]; in other cases, the [[width]], [[height]],
+     * [[depth]] and [[weight]] properties may be more applicable.
      *
-     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[]|string|string[] $size
+     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[]|\Spatie\SchemaOrg\Contracts\SizeSpecificationContract|\Spatie\SchemaOrg\Contracts\SizeSpecificationContract[]|string|string[] $size
      *
      * @return static
      *
      * @see https://schema.org/size
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1797
      */
     public function size($size)
@@ -2157,7 +2486,6 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/sku
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function sku($sku)
     {
@@ -2229,7 +2557,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
 
     /**
      * A person or organization that supports a thing through a pledge, promise,
-     * or financial contribution. e.g. a sponsor of a Medical Study or a
+     * or financial contribution. E.g. a sponsor of a Medical Study or a
      * corporate sponsor of an event.
      *
      * @param \Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[]|\Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[] $sponsor
@@ -2267,7 +2595,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/teaches
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2427
      */
     public function teaches($teaches)
@@ -2299,13 +2627,13 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * format](https://en.wikipedia.org/wiki/ISO_8601#Time_intervals). In
      *       the case of a Dataset it will typically indicate the relevant time
      * period in a precise notation (e.g. for a 2011 census dataset, the year
-     * 2011 would be written "2011/2012"). Other forms of content e.g.
-     * ScholarlyArticle, Book, TVSeries or TVEpisode may indicate their
+     * 2011 would be written "2011/2012"). Other forms of content, e.g.
+     * ScholarlyArticle, Book, TVSeries or TVEpisode, may indicate their
      * temporalCoverage in broader terms - textually or via well-known URL.
      *       Written works such as books may sometimes have precise temporal
      * coverage too, e.g. a work set in 1939 - 1945 can be indicated in ISO 8601
      * interval format format via "1939/1945".
-     * 
+     *
      * Open-ended date ranges can be written with ".." in place of the end date.
      * For example, "2015-11/.." indicates a range beginning in November 2015
      * and with no specified final date. This is tentative and might be updated
@@ -2337,6 +2665,20 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     }
 
     /**
+     * Thumbnail image for an image or video.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\ImageObjectContract|\Spatie\SchemaOrg\Contracts\ImageObjectContract[] $thumbnail
+     *
+     * @return static
+     *
+     * @see https://schema.org/thumbnail
+     */
+    public function thumbnail($thumbnail)
+    {
+        return $this->setProperty('thumbnail', $thumbnail);
+    }
+
+    /**
      * A thumbnail image relevant to the Thing.
      *
      * @param string|string[] $thumbnailUrl
@@ -2351,9 +2693,8 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     }
 
     /**
-     * Approximate or typical time it takes to work with or through this
-     * learning resource for the typical intended target audience, e.g. 'PT30M',
-     * 'PT1H25M'.
+     * Approximate or typical time it usually takes to work with or through the
+     * content of this work for the typical or target audience.
      *
      * @param \Spatie\SchemaOrg\Contracts\DurationContract|\Spatie\SchemaOrg\Contracts\DurationContract[] $timeRequired
      *
@@ -2367,15 +2708,15 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     }
 
     /**
-     * The work that this work has been translated from. e.g. 物种起源 is a
-     * translationOf “On the Origin of Species”
+     * The work that this work has been translated from. E.g. 物种起源 is a
+     * translationOf “On the Origin of Species”.
      *
      * @param \Spatie\SchemaOrg\Contracts\CreativeWorkContract|\Spatie\SchemaOrg\Contracts\CreativeWorkContract[] $translationOfWork
      *
      * @return static
      *
      * @see https://schema.org/translationOfWork
-     * @see http://bib.schema.org
+     * @see https://bib.schema.org
      */
     public function translationOfWork($translationOfWork)
     {
@@ -2430,11 +2771,11 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * The schema.org [[usageInfo]] property indicates further information about
      * a [[CreativeWork]]. This property is applicable both to works that are
      * freely available and to those that require payment or other transactions.
-     * It can reference additional information e.g. community expectations on
+     * It can reference additional information, e.g. community expectations on
      * preferred linking and citation conventions, as well as purchasing
      * details. For something that can be commercially licensed, usageInfo can
      * provide detailed, resource-specific information about licensing options.
-     * 
+     *
      * This property can be used alongside the license property which indicates
      * license(s) applicable to some piece of content. The usageInfo property
      * can provide information about other licensing options, e.g. acquiring
@@ -2446,7 +2787,7 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/usageInfo
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2454
      */
     public function usageInfo($usageInfo)
@@ -2490,7 +2831,6 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/weight
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function weight($weight)
     {
@@ -2513,14 +2853,13 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
 
     /**
      * Example/instance/realization/derivation of the concept of this creative
-     * work. eg. The paperback edition, first edition, or eBook.
+     * work. E.g. the paperback edition, first edition, or e-book.
      *
      * @param \Spatie\SchemaOrg\Contracts\CreativeWorkContract|\Spatie\SchemaOrg\Contracts\CreativeWorkContract[] $workExample
      *
      * @return static
      *
      * @see https://schema.org/workExample
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_bibex
      */
     public function workExample($workExample)
     {
@@ -2528,8 +2867,8 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
     }
 
     /**
-     * A work that is a translation of the content of this work. e.g. 西遊記
-     * has an English workTranslation “Journey to the West”,a German
+     * A work that is a translation of the content of this work. E.g. 西遊記
+     * has an English workTranslation “Journey to the West”, a German
      * workTranslation “Monkeys Pilgerfahrt” and a Vietnamese  translation
      * Tây du ký bình khảo.
      *
@@ -2538,11 +2877,10 @@ class ProductCollection extends BaseType implements ProductCollectionContract, C
      * @return static
      *
      * @see https://schema.org/workTranslation
-     * @see http://bib.schema.org
+     * @see https://bib.schema.org
      */
     public function workTranslation($workTranslation)
     {
         return $this->setProperty('workTranslation', $workTranslation);
     }
-
 }

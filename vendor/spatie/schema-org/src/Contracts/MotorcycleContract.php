@@ -14,6 +14,8 @@ interface MotorcycleContract
 
     public function alternateName($alternateName);
 
+    public function asin($asin);
+
     public function audience($audience);
 
     public function award($award);
@@ -31,6 +33,12 @@ interface MotorcycleContract
     public function category($category);
 
     public function color($color);
+
+    public function countryOfAssembly($countryOfAssembly);
+
+    public function countryOfLastProcessing($countryOfLastProcessing);
+
+    public function countryOfOrigin($countryOfOrigin);
 
     public function dateVehicleFirstRegistered($dateVehicleFirstRegistered);
 
@@ -52,6 +60,8 @@ interface MotorcycleContract
 
     public function fuelType($fuelType);
 
+    public function funding($funding);
+
     public function gtin($gtin);
 
     public function gtin12($gtin12);
@@ -61,6 +71,12 @@ interface MotorcycleContract
     public function gtin14($gtin14);
 
     public function gtin8($gtin8);
+
+    public function hasAdultConsideration($hasAdultConsideration);
+
+    public function hasEnergyConsumptionDetails($hasEnergyConsumptionDetails);
+
+    public function hasMeasurement($hasMeasurement);
 
     public function hasMerchantReturnPolicy($hasMerchantReturnPolicy);
 
@@ -78,6 +94,8 @@ interface MotorcycleContract
 
     public function isConsumableFor($isConsumableFor);
 
+    public function isFamilyFriendly($isFamilyFriendly);
+
     public function isRelatedTo($isRelatedTo);
 
     public function isSimilarTo($isSimilarTo);
@@ -85,6 +103,8 @@ interface MotorcycleContract
     public function isVariantOf($isVariantOf);
 
     public function itemCondition($itemCondition);
+
+    public function keywords($keywords);
 
     public function knownVehicleDamages($knownVehicleDamages);
 
@@ -100,6 +120,8 @@ interface MotorcycleContract
 
     public function mileageFromOdometer($mileageFromOdometer);
 
+    public function mobileUrl($mobileUrl);
+
     public function model($model);
 
     public function modelDate($modelDate);
@@ -107,6 +129,8 @@ interface MotorcycleContract
     public function mpn($mpn);
 
     public function name($name);
+
+    public function negativeNotes($negativeNotes);
 
     public function nsn($nsn);
 
@@ -125,6 +149,8 @@ interface MotorcycleContract
     public function pattern($pattern);
 
     public function payload($payload);
+
+    public function positiveNotes($positiveNotes);
 
     public function potentialAction($potentialAction);
 
@@ -189,5 +215,4 @@ interface MotorcycleContract
     public function wheelbase($wheelbase);
 
     public function width($width);
-
 }

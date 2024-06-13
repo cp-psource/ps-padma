@@ -2,23 +2,23 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\DefinedRegionContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\StructuredValueContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\DefinedRegionContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\StructuredValueContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A DefinedRegion is a geographic area defined by potentially arbitrary (rather
  * than political, administrative or natural geographical) criteria. Properties
  * are provided for defining a region by reference to sets of postal codes.
- * 
+ *
  * Examples: a delivery destination when shopping. Region where regional pricing
  * is configured.
- * 
+ *
  * Requirement 1:
  * Country: US
  * States: "NY", "CA"
- * 
+ *
  * Requirement 2:
  * Country: US
  * PostalCode Set: { [94000-94585], [97000, 97999], [13000, 13599]}
@@ -26,7 +26,7 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
  * Region = state, canton, prefecture, autonomous community...
  *
  * @see https://schema.org/DefinedRegion
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
  * @link https://github.com/schemaorg/schemaorg/issues/2506
  *
  */
@@ -35,10 +35,14 @@ class DefinedRegion extends BaseType implements DefinedRegionContract, Intangibl
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -70,7 +74,7 @@ class DefinedRegion extends BaseType implements DefinedRegionContract, Intangibl
     /**
      * The region in which the locality is, and which is in the country. For
      * example, California or another appropriate first-level [Administrative
-     * division](https://en.wikipedia.org/wiki/List_of_administrative_divisions_by_country)
+     * division](https://en.wikipedia.org/wiki/List_of_administrative_divisions_by_country).
      *
      * @param string|string[] $addressRegion
      *
@@ -101,7 +105,7 @@ class DefinedRegion extends BaseType implements DefinedRegionContract, Intangibl
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -216,7 +220,7 @@ class DefinedRegion extends BaseType implements DefinedRegionContract, Intangibl
      * @return static
      *
      * @see https://schema.org/postalCodePrefix
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2506
      */
     public function postalCodePrefix($postalCodePrefix)
@@ -232,7 +236,7 @@ class DefinedRegion extends BaseType implements DefinedRegionContract, Intangibl
      * @return static
      *
      * @see https://schema.org/postalCodeRange
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2506
      */
     public function postalCodeRange($postalCodeRange)
@@ -299,5 +303,4 @@ class DefinedRegion extends BaseType implements DefinedRegionContract, Intangibl
     {
         return $this->setProperty('url', $url);
     }
-
 }

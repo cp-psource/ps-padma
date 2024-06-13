@@ -40,6 +40,8 @@ interface WebApplicationContract
 
     public function applicationSuite($applicationSuite);
 
+    public function archivedAt($archivedAt);
+
     public function assesses($assesses);
 
     public function associatedMedia($associatedMedia);
@@ -78,6 +80,8 @@ interface WebApplicationContract
 
     public function copyrightHolder($copyrightHolder);
 
+    public function copyrightNotice($copyrightNotice);
+
     public function copyrightYear($copyrightYear);
 
     public function correction($correction);
@@ -86,9 +90,13 @@ interface WebApplicationContract
 
     public function countriesSupported($countriesSupported);
 
+    public function countryOfOrigin($countryOfOrigin);
+
     public function creativeWorkStatus($creativeWorkStatus);
 
     public function creator($creator);
+
+    public function creditText($creditText);
 
     public function dateCreated($dateCreated);
 
@@ -99,6 +107,8 @@ interface WebApplicationContract
     public function description($description);
 
     public function device($device);
+
+    public function digitalSourceType($digitalSourceType);
 
     public function disambiguatingDescription($disambiguatingDescription);
 
@@ -134,6 +144,8 @@ interface WebApplicationContract
 
     public function funder($funder);
 
+    public function funding($funding);
+
     public function genre($genre);
 
     public function hasPart($hasPart);
@@ -151,6 +163,8 @@ interface WebApplicationContract
     public function interactionStatistic($interactionStatistic);
 
     public function interactivityType($interactivityType);
+
+    public function interpretedAsClaim($interpretedAsClaim);
 
     public function isAccessibleForFree($isAccessibleForFree);
 
@@ -268,6 +282,8 @@ interface WebApplicationContract
 
     public function text($text);
 
+    public function thumbnail($thumbnail);
+
     public function thumbnailUrl($thumbnailUrl);
 
     public function timeRequired($timeRequired);
@@ -289,5 +305,4 @@ interface WebApplicationContract
     public function workExample($workExample);
 
     public function workTranslation($workTranslation);
-
 }

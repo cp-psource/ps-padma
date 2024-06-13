@@ -28,6 +28,8 @@ interface RadiationTherapyContract
 
     public function followup($followup);
 
+    public function funding($funding);
+
     public function guideline($guideline);
 
     public function howPerformed($howPerformed);
@@ -65,5 +67,4 @@ interface RadiationTherapyContract
     public function subjectOf($subjectOf);
 
     public function url($url);
-
 }

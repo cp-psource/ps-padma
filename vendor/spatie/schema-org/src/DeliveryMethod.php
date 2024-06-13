@@ -2,10 +2,10 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\DeliveryMethodContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\DeliveryMethodContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A delivery method is a standardized procedure for transferring the product or
@@ -13,9 +13,9 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
  * methods are characterized by the means of transportation used, and by the
  * organization or group that is the contracting party for the sending
  * organization or person.
- * 
+ *
  * Commonly used values:
- * 
+ *
  * * http://purl.org/goodrelations/v1#DeliveryModeDirectDownload
  * * http://purl.org/goodrelations/v1#DeliveryModeFreight
  * * http://purl.org/goodrelations/v1#DeliveryModeMail
@@ -26,7 +26,6 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
  * * http://purl.org/goodrelations/v1#UPS
  *
  * @see https://schema.org/DeliveryMethod
- * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
  */
@@ -37,7 +36,7 @@ class DeliveryMethod extends BaseType implements DeliveryMethodContract, Enumera
      *
      * @see https://schema.org/LockerDelivery
      */
-     const LockerDelivery = 'https://schema.org/LockerDelivery';
+    public const LockerDelivery = 'https://schema.org/LockerDelivery';
 
     /**
      * A DeliveryMethod in which an item is collected on site, e.g. in a store
@@ -45,30 +44,33 @@ class DeliveryMethod extends BaseType implements DeliveryMethodContract, Enumera
      *
      * @see https://schema.org/OnSitePickup
      */
-     const OnSitePickup = 'https://schema.org/OnSitePickup';
+    public const OnSitePickup = 'https://schema.org/OnSitePickup';
 
     /**
      * A private parcel service as the delivery mode available for a certain
      * offer.
-     * 
+     *
      * Commonly used values:
-     * 
+     *
      * * http://purl.org/goodrelations/v1#DHL
      * * http://purl.org/goodrelations/v1#FederalExpress
      * * http://purl.org/goodrelations/v1#UPS
      *
      * @see https://schema.org/ParcelService
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
      */
-     const ParcelService = 'https://schema.org/ParcelService';
+    public const ParcelService = 'https://schema.org/ParcelService';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -98,7 +100,7 @@ class DeliveryMethod extends BaseType implements DeliveryMethodContract, Enumera
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -248,5 +250,4 @@ class DeliveryMethod extends BaseType implements DeliveryMethodContract, Enumera
     {
         return $this->setProperty('url', $url);
     }
-
 }

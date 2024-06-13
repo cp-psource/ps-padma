@@ -309,7 +309,7 @@ class PadmaLayoutSelector {
 	public static function query_authors($offset = 0) {
 
 		$author_query = get_users( array(
-			'who'    => 'authors',
+			'capability'    => 'authors',
 			'fields' => 'ID',
 			'offset' => $offset,
 			'orderby' => 'post_count',

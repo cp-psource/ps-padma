@@ -20,6 +20,8 @@ interface PhysicalActivityContract
 
     public function epidemiology($epidemiology);
 
+    public function funding($funding);
+
     public function guideline($guideline);
 
     public function identifier($identifier);
@@ -49,5 +51,4 @@ interface PhysicalActivityContract
     public function subjectOf($subjectOf);
 
     public function url($url);
-
 }

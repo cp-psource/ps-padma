@@ -2,9 +2,9 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\GrantContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\GrantContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A grant, typically financial or otherwise quantifiable, of resources.
@@ -15,18 +15,17 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
  * sponsorship, indicate the [[funder]] of a [[MonetaryGrant]]. For
  * non-financial support, indicate [[sponsor]] of [[Grant]]s of resources (e.g.
  * office space).
- * 
+ *
  * Grants support  activities directed towards some agreed collective goals,
  * often but not always organized as [[Project]]s. Long-lived projects are
  * sometimes sponsored by a variety of grants over time, but it is also common
  * for a project to be associated with a single grant.
- * 
+ *
  * The amount of a [[Grant]] is represented using [[amount]] as a
  * [[MonetaryAmount]].
  *
  * @see https://schema.org/Grant
- * @see http://pending.schema.org
- * @link https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FundInfoCollab
+ * @see https://pending.schema.org
  *
  */
 class Grant extends BaseType implements GrantContract, IntangibleContract, ThingContract
@@ -34,10 +33,14 @@ class Grant extends BaseType implements GrantContract, IntangibleContract, Thing
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -67,7 +70,7 @@ class Grant extends BaseType implements GrantContract, IntangibleContract, Thing
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -96,18 +99,34 @@ class Grant extends BaseType implements GrantContract, IntangibleContract, Thing
     }
 
     /**
-     * Indicates an item funded or sponsored through a [[Grant]].
+     * Indicates something directly or indirectly funded or sponsored through a
+     * [[Grant]]. See also [[ownershipFundingInfo]].
      *
-     * @param \Spatie\SchemaOrg\Contracts\ThingContract|\Spatie\SchemaOrg\Contracts\ThingContract[] $fundedItem
+     * @param \Spatie\SchemaOrg\Contracts\BioChemEntityContract|\Spatie\SchemaOrg\Contracts\BioChemEntityContract[]|\Spatie\SchemaOrg\Contracts\CreativeWorkContract|\Spatie\SchemaOrg\Contracts\CreativeWorkContract[]|\Spatie\SchemaOrg\Contracts\EventContract|\Spatie\SchemaOrg\Contracts\EventContract[]|\Spatie\SchemaOrg\Contracts\MedicalEntityContract|\Spatie\SchemaOrg\Contracts\MedicalEntityContract[]|\Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[]|\Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[]|\Spatie\SchemaOrg\Contracts\ProductContract|\Spatie\SchemaOrg\Contracts\ProductContract[] $fundedItem
      *
      * @return static
      *
      * @see https://schema.org/fundedItem
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      */
     public function fundedItem($fundedItem)
     {
         return $this->setProperty('fundedItem', $fundedItem);
+    }
+
+    /**
+     * A person or organization that supports (sponsors) something through some
+     * kind of financial contribution.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[]|\Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[] $funder
+     *
+     * @return static
+     *
+     * @see https://schema.org/funder
+     */
+    public function funder($funder)
+    {
+        return $this->setProperty('funder', $funder);
     }
 
     /**
@@ -206,7 +225,7 @@ class Grant extends BaseType implements GrantContract, IntangibleContract, Thing
 
     /**
      * A person or organization that supports a thing through a pledge, promise,
-     * or financial contribution. e.g. a sponsor of a Medical Study or a
+     * or financial contribution. E.g. a sponsor of a Medical Study or a
      * corporate sponsor of an event.
      *
      * @param \Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[]|\Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[] $sponsor
@@ -248,5 +267,4 @@ class Grant extends BaseType implements GrantContract, IntangibleContract, Thing
     {
         return $this->setProperty('url', $url);
     }
-
 }

@@ -18,6 +18,8 @@ interface MedicalGuidelineContraindicationContract
 
     public function evidenceOrigin($evidenceOrigin);
 
+    public function funding($funding);
+
     public function guideline($guideline);
 
     public function guidelineDate($guidelineDate);
@@ -49,5 +51,4 @@ interface MedicalGuidelineContraindicationContract
     public function subjectOf($subjectOf);
 
     public function url($url);
-
 }

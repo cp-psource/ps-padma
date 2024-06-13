@@ -2,13 +2,13 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\CssSelectorTypeContract;
+use Spatie\SchemaOrg\Contracts\CssSelectorTypeContract;
 
 /**
  * Text representing a CSS selector.
  *
  * @see https://schema.org/CssSelectorType
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
  * @link https://github.com/schemaorg/schemaorg/issues/1672
  *
  */

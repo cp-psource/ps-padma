@@ -42,6 +42,8 @@ interface CookActionContract
 
     public function potentialAction($potentialAction);
 
+    public function provider($provider);
+
     public function recipe($recipe);
 
     public function result($result);
@@ -55,5 +57,4 @@ interface CookActionContract
     public function target($target);
 
     public function url($url);
-
 }

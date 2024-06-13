@@ -2,30 +2,30 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\OfferShippingDetailsContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\StructuredValueContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\OfferShippingDetailsContract;
+use Spatie\SchemaOrg\Contracts\StructuredValueContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * OfferShippingDetails represents information about shipping destinations.
- * 
+ *
  * Multiple of these entities can be used to represent different shipping rates
  * for different destinations:
- * 
- * One entity for Alaska/Hawaii. A different one for continental US.A different
+ *
+ * One entity for Alaska/Hawaii. A different one for continental US. A different
  * one for all France.
- * 
+ *
  * Multiple of these entities can be used to represent different shipping costs
  * and delivery times.
- * 
+ *
  * Two entities that are identical but differ in rate and time:
- * 
- * e.g. Cheaper and slower: $5 in 5-7days
- * or Fast and expensive: $15 in 1-2 days
+ *
+ * E.g. Cheaper and slower: $5 in 5-7 days
+ * or Fast and expensive: $15 in 1-2 days.
  *
  * @see https://schema.org/OfferShippingDetails
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
  * @link https://github.com/schemaorg/schemaorg/issues/2506
  *
  */
@@ -34,10 +34,14 @@ class OfferShippingDetails extends BaseType implements OfferShippingDetailsContr
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -73,7 +77,7 @@ class OfferShippingDetails extends BaseType implements OfferShippingDetailsContr
      * @return static
      *
      * @see https://schema.org/deliveryTime
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2506
      */
     public function deliveryTime($deliveryTime)
@@ -82,9 +86,23 @@ class OfferShippingDetails extends BaseType implements OfferShippingDetailsContr
     }
 
     /**
+     * The depth of the item.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\DistanceContract|\Spatie\SchemaOrg\Contracts\DistanceContract[]|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[] $depth
+     *
+     * @return static
+     *
+     * @see https://schema.org/depth
+     */
+    public function depth($depth)
+    {
+        return $this->setProperty('depth', $depth);
+    }
+
+    /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -121,12 +139,26 @@ class OfferShippingDetails extends BaseType implements OfferShippingDetailsContr
      * @return static
      *
      * @see https://schema.org/doesNotShip
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2506
      */
     public function doesNotShip($doesNotShip)
     {
         return $this->setProperty('doesNotShip', $doesNotShip);
+    }
+
+    /**
+     * The height of the item.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\DistanceContract|\Spatie\SchemaOrg\Contracts\DistanceContract[]|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[] $height
+     *
+     * @return static
+     *
+     * @see https://schema.org/height
+     */
+    public function height($height)
+    {
+        return $this->setProperty('height', $height);
     }
 
     /**
@@ -225,14 +257,14 @@ class OfferShippingDetails extends BaseType implements OfferShippingDetailsContr
 
     /**
      * indicates (possibly multiple) shipping destinations. These can be defined
-     * in several ways e.g. postalCode ranges.
+     * in several ways, e.g. postalCode ranges.
      *
      * @param \Spatie\SchemaOrg\Contracts\DefinedRegionContract|\Spatie\SchemaOrg\Contracts\DefinedRegionContract[] $shippingDestination
      *
      * @return static
      *
      * @see https://schema.org/shippingDestination
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2506
      */
     public function shippingDestination($shippingDestination)
@@ -250,12 +282,28 @@ class OfferShippingDetails extends BaseType implements OfferShippingDetailsContr
      * @return static
      *
      * @see https://schema.org/shippingLabel
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2506
      */
     public function shippingLabel($shippingLabel)
     {
         return $this->setProperty('shippingLabel', $shippingLabel);
+    }
+
+    /**
+     * Indicates the origin of a shipment, i.e. where it should be coming from.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\DefinedRegionContract|\Spatie\SchemaOrg\Contracts\DefinedRegionContract[] $shippingOrigin
+     *
+     * @return static
+     *
+     * @see https://schema.org/shippingOrigin
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/3122
+     */
+    public function shippingOrigin($shippingOrigin)
+    {
+        return $this->setProperty('shippingOrigin', $shippingOrigin);
     }
 
     /**
@@ -268,7 +316,7 @@ class OfferShippingDetails extends BaseType implements OfferShippingDetailsContr
      * @return static
      *
      * @see https://schema.org/shippingRate
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2506
      */
     public function shippingRate($shippingRate)
@@ -285,7 +333,7 @@ class OfferShippingDetails extends BaseType implements OfferShippingDetailsContr
      * @return static
      *
      * @see https://schema.org/shippingSettingsLink
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2506
      */
     public function shippingSettingsLink($shippingSettingsLink)
@@ -318,7 +366,7 @@ class OfferShippingDetails extends BaseType implements OfferShippingDetailsContr
      * @return static
      *
      * @see https://schema.org/transitTimeLabel
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2506
      */
     public function transitTimeLabel($transitTimeLabel)
@@ -340,4 +388,31 @@ class OfferShippingDetails extends BaseType implements OfferShippingDetailsContr
         return $this->setProperty('url', $url);
     }
 
+    /**
+     * The weight of the product or person.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[] $weight
+     *
+     * @return static
+     *
+     * @see https://schema.org/weight
+     */
+    public function weight($weight)
+    {
+        return $this->setProperty('weight', $weight);
+    }
+
+    /**
+     * The width of the item.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\DistanceContract|\Spatie\SchemaOrg\Contracts\DistanceContract[]|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[] $width
+     *
+     * @return static
+     *
+     * @see https://schema.org/width
+     */
+    public function width($width)
+    {
+        return $this->setProperty('width', $width);
+    }
 }

@@ -2,18 +2,17 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\CarUsageTypeContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\CarUsageTypeContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A value indicating a special usage of a car, e.g. commercial rental, driving
  * school, or as a taxi.
  *
  * @see https://schema.org/CarUsageType
- * @see http://auto.schema.org
- * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
+ * @see https://auto.schema.org
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
  */
@@ -23,36 +22,37 @@ class CarUsageType extends BaseType implements CarUsageTypeContract, Enumeration
      * Indicates the usage of the vehicle for driving school.
      *
      * @see https://schema.org/DrivingSchoolVehicleUsage
-     * @see http://auto.schema.org
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
+     * @see https://auto.schema.org
      */
-     const DrivingSchoolVehicleUsage = 'https://schema.org/DrivingSchoolVehicleUsage';
+    public const DrivingSchoolVehicleUsage = 'https://schema.org/DrivingSchoolVehicleUsage';
 
     /**
      * Indicates the usage of the vehicle as a rental car.
      *
      * @see https://schema.org/RentalVehicleUsage
-     * @see http://auto.schema.org
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
+     * @see https://auto.schema.org
      */
-     const RentalVehicleUsage = 'https://schema.org/RentalVehicleUsage';
+    public const RentalVehicleUsage = 'https://schema.org/RentalVehicleUsage';
 
     /**
      * Indicates the usage of the car as a taxi.
      *
      * @see https://schema.org/TaxiVehicleUsage
-     * @see http://auto.schema.org
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
+     * @see https://auto.schema.org
      */
-     const TaxiVehicleUsage = 'https://schema.org/TaxiVehicleUsage';
+    public const TaxiVehicleUsage = 'https://schema.org/TaxiVehicleUsage';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -82,7 +82,7 @@ class CarUsageType extends BaseType implements CarUsageTypeContract, Enumeration
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -232,5 +232,4 @@ class CarUsageType extends BaseType implements CarUsageTypeContract, Enumeration
     {
         return $this->setProperty('url', $url);
     }
-
 }

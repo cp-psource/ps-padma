@@ -2,17 +2,17 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\DrugPrescriptionStatusContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\MedicalEnumerationContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\DrugPrescriptionStatusContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\MedicalEnumerationContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * Indicates whether this drug is available by prescription or over-the-counter.
  *
  * @see https://schema.org/DrugPrescriptionStatus
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
  */
@@ -23,25 +23,29 @@ class DrugPrescriptionStatus extends BaseType implements DrugPrescriptionStatusC
      * available over the counter or not.
      *
      * @see https://schema.org/OTC
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const OTC = 'https://schema.org/OTC';
+    public const OTC = 'https://schema.org/OTC';
 
     /**
      * Available by prescription only.
      *
      * @see https://schema.org/PrescriptionOnly
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const PrescriptionOnly = 'https://schema.org/PrescriptionOnly';
+    public const PrescriptionOnly = 'https://schema.org/PrescriptionOnly';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -71,7 +75,7 @@ class DrugPrescriptionStatus extends BaseType implements DrugPrescriptionStatusC
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -221,5 +225,4 @@ class DrugPrescriptionStatus extends BaseType implements DrugPrescriptionStatusC
     {
         return $this->setProperty('url', $url);
     }
-
 }

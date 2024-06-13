@@ -42,6 +42,7 @@ interface TouristTripContract
 
     public function touristType($touristType);
 
-    public function url($url);
+    public function tripOrigin($tripOrigin);
 
+    public function url($url);
 }

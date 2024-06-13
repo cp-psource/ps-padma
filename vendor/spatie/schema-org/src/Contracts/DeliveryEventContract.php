@@ -50,6 +50,8 @@ interface DeliveryEventContract
 
     public function funder($funder);
 
+    public function funding($funding);
+
     public function hasDeliveryMethod($hasDeliveryMethod);
 
     public function identifier($identifier);
@@ -59,6 +61,8 @@ interface DeliveryEventContract
     public function inLanguage($inLanguage);
 
     public function isAccessibleForFree($isAccessibleForFree);
+
+    public function keywords($keywords);
 
     public function location($location);
 
@@ -113,5 +117,4 @@ interface DeliveryEventContract
     public function workFeatured($workFeatured);
 
     public function workPerformed($workPerformed);
-
 }

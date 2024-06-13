@@ -2,19 +2,22 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\MediaManipulationRatingEnumerationContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\MediaManipulationRatingEnumerationContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
- * (editorial work in progress, this definition is incomplete and unreviewed)
- * MediaManipulationRatingEnumeration classifies a number of ways in which a
- * media item (video, image, audio) can be manipulated, taking into account the
- * context within which they are published or presented.
+ *  Codes for use with the [[mediaAuthenticityCategory]] property, indicating
+ * the authenticity of a media object (in the context of how it was published or
+ * shared). In general these codes are not mutually exclusive, although some
+ * combinations (such as 'original' versus 'transformed', 'edited' and 'staged')
+ * would be contradictory if applied in the same [[MediaReview]]. Note that the
+ * application of these codes is with regard to a piece of media shared or
+ * published in a particular context.
  *
  * @see https://schema.org/MediaManipulationRatingEnumeration
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
  * @link https://github.com/schemaorg/schemaorg/issues/2450
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
@@ -22,31 +25,187 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
 class MediaManipulationRatingEnumeration extends BaseType implements MediaManipulationRatingEnumerationContract, EnumerationContract, IntangibleContract, ThingContract
 {
     /**
-     * AuthenticMediaObject: An unaltered image that is presented in an accurate
-     * way.
+     * Content coded 'missing context' in a [[MediaReview]], considered in the
+     * context of how it was published or shared.
      *
-     * @see https://schema.org/AuthenticContent
-     * @see http://pending.schema.org
+     * For a [[VideoObject]] to be 'missing context': Presenting unaltered video
+     * in an inaccurate manner that misrepresents the footage. For example,
+     * using incorrect dates or locations, altering the transcript or sharing
+     * brief clips from a longer video to mislead viewers. (A video rated
+     * 'original' can also be missing context.)
+     *
+     * For an [[ImageObject]] to be 'missing context': Presenting unaltered
+     * images in an inaccurate manner to misrepresent the image and mislead the
+     * viewer. For example, a common tactic is using an unaltered image but
+     * saying it came from a different time or place. (An image rated 'original'
+     * can also be missing context.)
+     *
+     * For an [[ImageObject]] with embedded text to be 'missing context': An
+     * unaltered image presented in an inaccurate manner to misrepresent the
+     * image and mislead the viewer. For example, a common tactic is using an
+     * unaltered image but saying it came from a different time or place. (An
+     * 'original' image with inaccurate text would generally fall in this
+     * category.)
+     *
+     * For an [[AudioObject]] to be 'missing context': Unaltered audio presented
+     * in an inaccurate manner that misrepresents it. For example, using
+     * incorrect dates or locations, or sharing brief clips from a longer
+     * recording to mislead viewers. (Audio rated “original” can also be
+     * missing context.)
+     *
+     * @see https://schema.org/DecontextualizedContent
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2450
      */
-     const AuthenticContent = 'https://schema.org/AuthenticContent';
+    public const DecontextualizedContent = 'https://schema.org/DecontextualizedContent';
 
     /**
-     * MissingContext: ...
+     * Content coded 'edited or cropped content' in a [[MediaReview]],
+     * considered in the context of how it was published or shared.
      *
-     * @see https://schema.org/MissingContext
-     * @see http://pending.schema.org
+     * For a [[VideoObject]] to be 'edited or cropped content': The video has
+     * been edited or rearranged. This category applies to time edits, including
+     * editing multiple videos together to alter the story being told or editing
+     * out large portions from a video.
+     *
+     * For an [[ImageObject]] to be 'edited or cropped content': Presenting a
+     * part of an image from a larger whole to mislead the viewer.
+     *
+     * For an [[ImageObject]] with embedded text to be 'edited or cropped
+     * content': Presenting a part of an image from a larger whole to mislead
+     * the viewer.
+     *
+     * For an [[AudioObject]] to be 'edited or cropped content': The audio has
+     * been edited or rearranged. This category applies to time edits, including
+     * editing multiple audio clips together to alter the story being told or
+     * editing out large portions from the recording.
+     *
+     * @see https://schema.org/EditedOrCroppedContent
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2450
      */
-     const MissingContext = 'https://schema.org/MissingContext';
+    public const EditedOrCroppedContent = 'https://schema.org/EditedOrCroppedContent';
+
+    /**
+     * Content coded 'as original media content' in a [[MediaReview]],
+     * considered in the context of how it was published or shared.
+     *
+     * For a [[VideoObject]] to be 'original': No evidence the footage has been
+     * misleadingly altered or manipulated, though it may contain false or
+     * misleading claims.
+     *
+     * For an [[ImageObject]] to be 'original': No evidence the image has been
+     * misleadingly altered or manipulated, though it may still contain false or
+     * misleading claims.
+     *
+     * For an [[ImageObject]] with embedded text to be 'original': No evidence
+     * the image has been misleadingly altered or manipulated, though it may
+     * still contain false or misleading claims.
+     *
+     * For an [[AudioObject]] to be 'original': No evidence the audio has been
+     * misleadingly altered or manipulated, though it may contain false or
+     * misleading claims.
+     *
+     * @see https://schema.org/OriginalMediaContent
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2450
+     */
+    public const OriginalMediaContent = 'https://schema.org/OriginalMediaContent';
+
+    /**
+     * Content coded 'satire or parody content' in a [[MediaReview]], considered
+     * in the context of how it was published or shared.
+     *
+     * For a [[VideoObject]] to be 'satire or parody content': A video that was
+     * created as political or humorous commentary and is presented in that
+     * context. (Reshares of satire/parody content that do not include relevant
+     * context are more likely to fall under the “missing context” rating.)
+     *
+     * For an [[ImageObject]] to be 'satire or parody content': An image that
+     * was created as political or humorous commentary and is presented in that
+     * context. (Reshares of satire/parody content that do not include relevant
+     * context are more likely to fall under the “missing context” rating.)
+     *
+     * For an [[ImageObject]] with embedded text to be 'satire or parody
+     * content': An image that was created as political or humorous commentary
+     * and is presented in that context. (Reshares of satire/parody content that
+     * do not include relevant context are more likely to fall under the
+     * “missing context” rating.)
+     *
+     * For an [[AudioObject]] to be 'satire or parody content': Audio that was
+     * created as political or humorous commentary and is presented in that
+     * context. (Reshares of satire/parody content that do not include relevant
+     * context are more likely to fall under the “missing context” rating.)
+     *
+     * @see https://schema.org/SatireOrParodyContent
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2450
+     */
+    public const SatireOrParodyContent = 'https://schema.org/SatireOrParodyContent';
+
+    /**
+     * Content coded 'staged content' in a [[MediaReview]], considered in the
+     * context of how it was published or shared.
+     *
+     * For a [[VideoObject]] to be 'staged content': A video that has been
+     * created using actors or similarly contrived.
+     *
+     * For an [[ImageObject]] to be 'staged content': An image that was created
+     * using actors or similarly contrived, such as a screenshot of a fake
+     * tweet.
+     *
+     * For an [[ImageObject]] with embedded text to be 'staged content': An
+     * image that was created using actors or similarly contrived, such as a
+     * screenshot of a fake tweet.
+     *
+     * For an [[AudioObject]] to be 'staged content': Audio that has been
+     * created using actors or similarly contrived.
+     *
+     * @see https://schema.org/StagedContent
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2450
+     */
+    public const StagedContent = 'https://schema.org/StagedContent';
+
+    /**
+     * Content coded 'transformed content' in a [[MediaReview]], considered in
+     * the context of how it was published or shared.
+     *
+     * For a [[VideoObject]] to be 'transformed content':  or all of the video
+     * has been manipulated to transform the footage itself. This category
+     * includes using tools like the Adobe Suite to change the speed of the
+     * video, add or remove visual elements or dub audio. Deepfakes are also a
+     * subset of transformation.
+     *
+     * For an [[ImageObject]] to be 'transformed content': Adding or deleting
+     * visual elements to give the image a different meaning with the intention
+     * to mislead.
+     *
+     * For an [[ImageObject]] with embedded text to be 'transformed content':
+     * Adding or deleting visual elements to give the image a different meaning
+     * with the intention to mislead.
+     *
+     * For an [[AudioObject]] to be 'transformed content': Part or all of the
+     * audio has been manipulated to alter the words or sounds, or the audio has
+     * been synthetically generated, such as to create a sound-alike voice.
+     *
+     * @see https://schema.org/TransformedContent
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2450
+     */
+    public const TransformedContent = 'https://schema.org/TransformedContent';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -76,7 +235,7 @@ class MediaManipulationRatingEnumeration extends BaseType implements MediaManipu
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -226,5 +385,4 @@ class MediaManipulationRatingEnumeration extends BaseType implements MediaManipu
     {
         return $this->setProperty('url', $url);
     }
-
 }

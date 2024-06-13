@@ -34,6 +34,8 @@ interface CourseContract
 
     public function alternativeHeadline($alternativeHeadline);
 
+    public function archivedAt($archivedAt);
+
     public function assesses($assesses);
 
     public function associatedMedia($associatedMedia);
@@ -43,6 +45,8 @@ interface CourseContract
     public function audio($audio);
 
     public function author($author);
+
+    public function availableLanguage($availableLanguage);
 
     public function award($award);
 
@@ -56,6 +60,8 @@ interface CourseContract
 
     public function commentCount($commentCount);
 
+    public function competencyRequired($competencyRequired);
+
     public function conditionsOfAccess($conditionsOfAccess);
 
     public function contentLocation($contentLocation);
@@ -68,9 +74,13 @@ interface CourseContract
 
     public function copyrightHolder($copyrightHolder);
 
+    public function copyrightNotice($copyrightNotice);
+
     public function copyrightYear($copyrightYear);
 
     public function correction($correction);
+
+    public function countryOfOrigin($countryOfOrigin);
 
     public function courseCode($courseCode);
 
@@ -80,6 +90,8 @@ interface CourseContract
 
     public function creator($creator);
 
+    public function creditText($creditText);
+
     public function dateCreated($dateCreated);
 
     public function dateModified($dateModified);
@@ -87,6 +99,8 @@ interface CourseContract
     public function datePublished($datePublished);
 
     public function description($description);
+
+    public function digitalSourceType($digitalSourceType);
 
     public function disambiguatingDescription($disambiguatingDescription);
 
@@ -116,7 +130,11 @@ interface CourseContract
 
     public function fileFormat($fileFormat);
 
+    public function financialAidEligible($financialAidEligible);
+
     public function funder($funder);
+
+    public function funding($funding);
 
     public function genre($genre);
 
@@ -135,6 +153,8 @@ interface CourseContract
     public function interactionStatistic($interactionStatistic);
 
     public function interactivityType($interactivityType);
+
+    public function interpretedAsClaim($interpretedAsClaim);
 
     public function isAccessibleForFree($isAccessibleForFree);
 
@@ -222,6 +242,8 @@ interface CourseContract
 
     public function subjectOf($subjectOf);
 
+    public function syllabusSections($syllabusSections);
+
     public function teaches($teaches);
 
     public function temporal($temporal);
@@ -230,9 +252,13 @@ interface CourseContract
 
     public function text($text);
 
+    public function thumbnail($thumbnail);
+
     public function thumbnailUrl($thumbnailUrl);
 
     public function timeRequired($timeRequired);
+
+    public function totalHistoricalEnrollment($totalHistoricalEnrollment);
 
     public function translationOfWork($translationOfWork);
 
@@ -251,5 +277,4 @@ interface CourseContract
     public function workExample($workExample);
 
     public function workTranslation($workTranslation);
-
 }

@@ -18,6 +18,8 @@ interface SurgicalProcedureContract
 
     public function followup($followup);
 
+    public function funding($funding);
+
     public function guideline($guideline);
 
     public function howPerformed($howPerformed);
@@ -53,5 +55,4 @@ interface SurgicalProcedureContract
     public function subjectOf($subjectOf);
 
     public function url($url);
-
 }

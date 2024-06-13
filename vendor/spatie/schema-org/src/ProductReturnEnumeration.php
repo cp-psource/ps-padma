@@ -2,17 +2,17 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\ProductReturnEnumerationContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\ProductReturnEnumerationContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * ProductReturnEnumeration enumerates several kinds of product return policy.
  * Note that this structure may not capture all aspects of the policy.
  *
  * @see https://schema.org/ProductReturnEnumeration
- * @see http://attic.schema.org
+ * @see https://attic.schema.org
  * @link https://github.com/schemaorg/schemaorg/issues/2288
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
@@ -24,46 +24,50 @@ class ProductReturnEnumeration extends BaseType implements ProductReturnEnumerat
      * returns.
      *
      * @see https://schema.org/ProductReturnFiniteReturnWindow
-     * @see http://attic.schema.org
+     * @see https://attic.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2288
      */
-     const ProductReturnFiniteReturnWindow = 'https://schema.org/ProductReturnFiniteReturnWindow';
+    public const ProductReturnFiniteReturnWindow = 'https://schema.org/ProductReturnFiniteReturnWindow';
 
     /**
      * ProductReturnNotPermitted: product returns are not permitted.
      *
      * @see https://schema.org/ProductReturnNotPermitted
-     * @see http://attic.schema.org
+     * @see https://attic.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2288
      */
-     const ProductReturnNotPermitted = 'https://schema.org/ProductReturnNotPermitted';
+    public const ProductReturnNotPermitted = 'https://schema.org/ProductReturnNotPermitted';
 
     /**
      * ProductReturnUnlimitedWindow: there is an unlimited window for product
      * returns.
      *
      * @see https://schema.org/ProductReturnUnlimitedWindow
-     * @see http://attic.schema.org
+     * @see https://attic.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2288
      */
-     const ProductReturnUnlimitedWindow = 'https://schema.org/ProductReturnUnlimitedWindow';
+    public const ProductReturnUnlimitedWindow = 'https://schema.org/ProductReturnUnlimitedWindow';
 
     /**
      * ProductReturnUnspecified: a product return policy is not specified here.
      *
      * @see https://schema.org/ProductReturnUnspecified
-     * @see http://attic.schema.org
+     * @see https://attic.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2288
      */
-     const ProductReturnUnspecified = 'https://schema.org/ProductReturnUnspecified';
+    public const ProductReturnUnspecified = 'https://schema.org/ProductReturnUnspecified';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -93,7 +97,7 @@ class ProductReturnEnumeration extends BaseType implements ProductReturnEnumerat
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -243,5 +247,4 @@ class ProductReturnEnumeration extends BaseType implements ProductReturnEnumerat
     {
         return $this->setProperty('url', $url);
     }
-
 }

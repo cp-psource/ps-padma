@@ -2,17 +2,17 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\TherapeuticProcedureContract;
-use \Spatie\SchemaOrg\Contracts\MedicalEntityContract;
-use \Spatie\SchemaOrg\Contracts\MedicalProcedureContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\MedicalEntityContract;
+use Spatie\SchemaOrg\Contracts\MedicalProcedureContract;
+use Spatie\SchemaOrg\Contracts\TherapeuticProcedureContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A medical procedure intended primarily for therapeutic purposes, aimed at
  * improving a health condition.
  *
  * @see https://schema.org/TherapeuticProcedure
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  */
 class TherapeuticProcedure extends BaseType implements TherapeuticProcedureContract, MedicalEntityContract, MedicalProcedureContract, ThingContract
@@ -20,10 +20,14 @@ class TherapeuticProcedure extends BaseType implements TherapeuticProcedureContr
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -39,16 +43,16 @@ class TherapeuticProcedure extends BaseType implements TherapeuticProcedureContr
     /**
      * A possible complication and/or side effect of this therapy. If it is
      * known that an adverse outcome is serious (resulting in death, disability,
-     * or permanent damage; requiring hospitalization; or is otherwise
-     * life-threatening or requires immediate medical attention), tag it as a
-     * seriouseAdverseOutcome instead.
+     * or permanent damage; requiring hospitalization; or otherwise
+     * life-threatening or requiring immediate medical attention), tag it as a
+     * seriousAdverseOutcome instead.
      *
      * @param \Spatie\SchemaOrg\Contracts\MedicalEntityContract|\Spatie\SchemaOrg\Contracts\MedicalEntityContract[] $adverseOutcome
      *
      * @return static
      *
      * @see https://schema.org/adverseOutcome
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function adverseOutcome($adverseOutcome)
     {
@@ -77,7 +81,7 @@ class TherapeuticProcedure extends BaseType implements TherapeuticProcedureContr
      * @return static
      *
      * @see https://schema.org/bodyLocation
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function bodyLocation($bodyLocation)
     {
@@ -93,7 +97,7 @@ class TherapeuticProcedure extends BaseType implements TherapeuticProcedureContr
      * @return static
      *
      * @see https://schema.org/code
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function code($code)
     {
@@ -103,7 +107,7 @@ class TherapeuticProcedure extends BaseType implements TherapeuticProcedureContr
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -140,7 +144,7 @@ class TherapeuticProcedure extends BaseType implements TherapeuticProcedureContr
      * @return static
      *
      * @see https://schema.org/doseSchedule
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function doseSchedule($doseSchedule)
     {
@@ -148,14 +152,14 @@ class TherapeuticProcedure extends BaseType implements TherapeuticProcedureContr
     }
 
     /**
-     * Specifying a drug or medicine used in a medication procedure
+     * Specifying a drug or medicine used in a medication procedure.
      *
      * @param \Spatie\SchemaOrg\Contracts\DrugContract|\Spatie\SchemaOrg\Contracts\DrugContract[] $drug
      *
      * @return static
      *
      * @see https://schema.org/drug
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function drug($drug)
     {
@@ -170,11 +174,28 @@ class TherapeuticProcedure extends BaseType implements TherapeuticProcedureContr
      * @return static
      *
      * @see https://schema.org/followup
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function followup($followup)
     {
         return $this->setProperty('followup', $followup);
+    }
+
+    /**
+     * A [[Grant]] that directly or indirectly provide funding or sponsorship
+     * for this item. See also [[ownershipFundingInfo]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\GrantContract|\Spatie\SchemaOrg\Contracts\GrantContract[] $funding
+     *
+     * @return static
+     *
+     * @see https://schema.org/funding
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/383
+     */
+    public function funding($funding)
+    {
+        return $this->setProperty('funding', $funding);
     }
 
     /**
@@ -185,7 +206,7 @@ class TherapeuticProcedure extends BaseType implements TherapeuticProcedureContr
      * @return static
      *
      * @see https://schema.org/guideline
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function guideline($guideline)
     {
@@ -200,7 +221,7 @@ class TherapeuticProcedure extends BaseType implements TherapeuticProcedureContr
      * @return static
      *
      * @see https://schema.org/howPerformed
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function howPerformed($howPerformed)
     {
@@ -249,7 +270,7 @@ class TherapeuticProcedure extends BaseType implements TherapeuticProcedureContr
      * @return static
      *
      * @see https://schema.org/legalStatus
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function legalStatus($legalStatus)
     {
@@ -281,7 +302,7 @@ class TherapeuticProcedure extends BaseType implements TherapeuticProcedureContr
      * @return static
      *
      * @see https://schema.org/medicineSystem
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function medicineSystem($medicineSystem)
     {
@@ -326,7 +347,7 @@ class TherapeuticProcedure extends BaseType implements TherapeuticProcedureContr
      * @return static
      *
      * @see https://schema.org/preparation
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function preparation($preparation)
     {
@@ -342,7 +363,7 @@ class TherapeuticProcedure extends BaseType implements TherapeuticProcedureContr
      * @return static
      *
      * @see https://schema.org/procedureType
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function procedureType($procedureType)
     {
@@ -358,7 +379,7 @@ class TherapeuticProcedure extends BaseType implements TherapeuticProcedureContr
      * @return static
      *
      * @see https://schema.org/recognizingAuthority
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function recognizingAuthority($recognizingAuthority)
     {
@@ -373,7 +394,7 @@ class TherapeuticProcedure extends BaseType implements TherapeuticProcedureContr
      * @return static
      *
      * @see https://schema.org/relevantSpecialty
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function relevantSpecialty($relevantSpecialty)
     {
@@ -404,7 +425,7 @@ class TherapeuticProcedure extends BaseType implements TherapeuticProcedureContr
      * @return static
      *
      * @see https://schema.org/status
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function status($status)
     {
@@ -419,7 +440,7 @@ class TherapeuticProcedure extends BaseType implements TherapeuticProcedureContr
      * @return static
      *
      * @see https://schema.org/study
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function study($study)
     {
@@ -454,5 +475,4 @@ class TherapeuticProcedure extends BaseType implements TherapeuticProcedureContr
     {
         return $this->setProperty('url', $url);
     }
-
 }

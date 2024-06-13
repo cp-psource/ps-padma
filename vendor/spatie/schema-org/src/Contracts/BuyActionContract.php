@@ -44,6 +44,8 @@ interface BuyActionContract
 
     public function priceSpecification($priceSpecification);
 
+    public function provider($provider);
+
     public function result($result);
 
     public function sameAs($sameAs);
@@ -61,5 +63,4 @@ interface BuyActionContract
     public function vendor($vendor);
 
     public function warrantyPromise($warrantyPromise);
-
 }

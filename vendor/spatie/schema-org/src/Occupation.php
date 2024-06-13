@@ -2,9 +2,9 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\OccupationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\OccupationContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A profession, may involve prolonged training and/or a formal qualification.
@@ -18,10 +18,14 @@ class Occupation extends BaseType implements OccupationContract, IntangibleContr
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -51,7 +55,7 @@ class Occupation extends BaseType implements OccupationContract, IntangibleContr
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -87,7 +91,7 @@ class Occupation extends BaseType implements OccupationContract, IntangibleContr
      * @return static
      *
      * @see https://schema.org/educationRequirements
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      */
     public function educationRequirements($educationRequirements)
     {
@@ -117,7 +121,7 @@ class Occupation extends BaseType implements OccupationContract, IntangibleContr
      * Description of skills and experience needed for the position or
      * Occupation.
      *
-     * @param string|string[] $experienceRequirements
+     * @param \Spatie\SchemaOrg\Contracts\OccupationalExperienceRequirementsContract|\Spatie\SchemaOrg\Contracts\OccupationalExperienceRequirementsContract[]|string|string[] $experienceRequirements
      *
      * @return static
      *
@@ -193,7 +197,7 @@ class Occupation extends BaseType implements OccupationContract, IntangibleContr
     }
 
     /**
-     * The region/country for which this occupational description is
+     *  The region/country for which this occupational description is
      * appropriate. Note that educational requirements and qualifications can
      * vary between jurisdictions.
      *
@@ -211,13 +215,12 @@ class Occupation extends BaseType implements OccupationContract, IntangibleContr
 
     /**
      * A category describing the job, preferably using a term from a taxonomy
-     * such as <a href="http://www.onetcenter.org/taxonomy.html">BLS
-     * O*NET-SOC</a>,
+     * such as [BLS O*NET-SOC](http://www.onetcenter.org/taxonomy.html),
      * [ISCO-08](https://www.ilo.org/public/english/bureau/stat/isco/isco08/) or
      * similar, with the property repeated for each applicable value. Ideally
      * the taxonomy should be identified, and both the textual label and formal
      * code for the category should be provided.
-     * 
+     *
      * Note: for historical reasons, any textual label and formal code provided
      * as a literal may be assumed to be from O*NET-SOC.
      *
@@ -226,7 +229,7 @@ class Occupation extends BaseType implements OccupationContract, IntangibleContr
      * @return static
      *
      * @see https://schema.org/occupationalCategory
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      */
     public function occupationalCategory($occupationalCategory)
     {
@@ -256,7 +259,7 @@ class Occupation extends BaseType implements OccupationContract, IntangibleContr
      * @return static
      *
      * @see https://schema.org/qualifications
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      */
     public function qualifications($qualifications)
     {
@@ -338,5 +341,4 @@ class Occupation extends BaseType implements OccupationContract, IntangibleContr
     {
         return $this->setProperty('url', $url);
     }
-
 }

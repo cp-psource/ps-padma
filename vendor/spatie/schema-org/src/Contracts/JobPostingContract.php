@@ -20,6 +20,8 @@ interface JobPostingContract
 
     public function description($description);
 
+    public function directApply($directApply);
+
     public function disambiguatingDescription($disambiguatingDescription);
 
     public function educationRequirements($educationRequirements);
@@ -33,6 +35,8 @@ interface JobPostingContract
     public function employmentUnit($employmentUnit);
 
     public function estimatedSalary($estimatedSalary);
+
+    public function experienceInPlaceOfEducation($experienceInPlaceOfEducation);
 
     public function experienceRequirements($experienceRequirements);
 
@@ -97,5 +101,4 @@ interface JobPostingContract
     public function validThrough($validThrough);
 
     public function workHours($workHours);
-
 }

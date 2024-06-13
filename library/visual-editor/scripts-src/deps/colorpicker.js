@@ -322,9 +322,9 @@ $.extend(Colorpicker.prototype, {
 			});
 		}
 
-		input.click(function(){
+		input.on('click', function() {
 			$.colorpicker._showColorpicker(target);
-		}).bind("refresh", function(){
+		}).bind("refresh", function() {
 			var $this = $(this);
 			var inst = $.colorpicker._getInst(this);
 			$.colorpicker._setColor(inst, input.val() || input.data('color') || $.colorpicker._get(inst, 'color').hexa, true);
@@ -1169,64 +1169,65 @@ $.fn.colorpicker = function(options){
 		return this;
 	}
 
-	if(!$.colorpicker.initialized){
-		$(document).mousedown($.colorpicker._checkExternalClick)
+	if (!$.colorpicker.initialized) {
+		$(document).on('mousedown', $.colorpicker._checkExternalClick)
 			.find('body').append($.colorpicker.cpDiv.hide())
 			.find('#'+mainDivId+'-'+$.colorpicker.mode).closest('li').addClass('selected');
-
-		for(var i in cpDiv.inputs){
-			if(i){
+	
+		for (var i in cpDiv.inputs) {
+			if (i) {
 				var $input = $(cpDiv.inputs[i]);
-				if($input.data('mode')){
-					$input.focus(function(){
+				if ($input.data('mode')) {
+					$input.on('focus', function() {
 						var $this = $(this);
 						$this.closest('li').addClass('selected')
 							.siblings('.selected').removeClass('selected');
 						$.colorpicker._setMode($this.data('mode'));
-					}).closest('li').click(function(){
+					}).closest('li').on('click', function() {
 						$(this).find('input').focus();
 					});
 				}
-
-				$input.blur(function(){
+	
+				$input.on('blur', function() {
 					$.colorpicker._updateInputs();
 				});
-
-				switch(i){
+	
+				switch (i) {
 					case 'h':
 					case 's':
 					case 'v':
 					case 'a':
-						$input.keydown(function(e){
-							if(!$.colorpicker._curInst) return;
+						$input.on('keydown', function(e) {
+							if (!$.colorpicker._curInst) return;
 							var $this = $(this);
 							var inst = $.colorpicker._curInst;
-							switch(e.keyCode){
+							switch (e.keyCode) {
 								case 38:
 								case 40:
 									$this.val(parseInt($this.val()) + (e.shiftKey ? 10 : 1) * (e.keyCode == 40 ? -1 : 1));
 									inst.color.setHsv(cpDiv.inputs.h.val(), cpDiv.inputs.s.val(), cpDiv.inputs.v.val(), cpDiv.inputs.a.val());
 									$.colorpicker._updateColorpicker(true);
-								break;
-
+									break;
+	
 								case 13:
 									$.colorpicker._submit();
-								break;
-
+									break;
+	
 								default:
 									return;
 							}
-						}).keyup(function(){
-							if(!$.colorpicker._curInst) return;
+						}).on('keyup', function() {
+							if (!$.colorpicker._curInst) return;
 							$.colorpicker._curInst.color.setHsv(cpDiv.inputs.h.val(), cpDiv.inputs.s.val(), cpDiv.inputs.v.val(), cpDiv.inputs.a.val());
 							$.colorpicker._updateColorpicker();
 						});
-					break;
+						break;
+	
 
 					case 'r':
 					case 'g':
 					case 'b':
-						$input.keydown(function(e){
+						$input.on('keydown', function(e){
 							if(!$.colorpicker._curInst) return;
 							var $this = $(this);
 							var inst = $.colorpicker._curInst;
@@ -1245,7 +1246,7 @@ $.fn.colorpicker = function(options){
 								default:
 									return;
 							}
-						}).keyup(function(){
+						}).on('keyup', function(){
 							if(!$.colorpicker._curInst) return;
 							$.colorpicker._curInst.color.setRgb(cpDiv.inputs.r.val(), cpDiv.inputs.g.val(), cpDiv.inputs.b.val(), cpDiv.inputs.a.val());
 							$.colorpicker._updateColorpicker();
@@ -1253,7 +1254,7 @@ $.fn.colorpicker = function(options){
 					break;
 
 					case 'hex':
-						$input.keydown(function(e){
+						$input.on('keydown', function(e){
 							if(!$.colorpicker._curInst) return;
 							switch(e.keyCode){
 								case 13:
@@ -1263,7 +1264,7 @@ $.fn.colorpicker = function(options){
 								default:
 									return;
 							}
-						}).keyup(function(){
+						}).on('keyup', function(){
 							var inst = $.colorpicker._curInst;
 							if(!inst) return;
 							if(!cpDiv.inputs.hex.val()){
@@ -1280,16 +1281,14 @@ $.fn.colorpicker = function(options){
 			}
 		}
 
-
 		/* Swatches */
 			/* Add Swatch */
-			cpDiv.addSwatchButton.mousedown(function(e) {
+			cpDiv.addSwatchButton.on('mousedown', function(e) {
 				$.colorpicker.addSwatch($.colorpicker._curInst.color);
 			});
 
-			/* Use swatch */
-			
-			cpDiv.swatches.delegate('.swatch', 'click', function(e) {
+			/* Use swatch */	
+			cpDiv.swatches.on('click', '.swatch', function(e) {
 
 				/* Proxy that way useSwatch has the right this object */
 				var useSwatch = $.proxy($.colorpicker._useSwatch, this);
@@ -1300,9 +1299,7 @@ $.fn.colorpicker = function(options){
 			});
 
 			/* Delete swatch */
-			
-
-			cpDiv.swatches.delegate('.swatch', 'contextmenu', function(e) {
+			cpDiv.swatches.on('contextmenu', '.swatch', function(e) {
 
 				if ( confirm('Are you sure you wish to delete this swatch?') )
 					$.colorpicker.deleteSwatch(this);
@@ -1311,54 +1308,52 @@ $.fn.colorpicker = function(options){
 				return false;
 
 			});
-
 		
-
-		cpDiv.oldColorDiv.mousedown($.colorpicker._useSwatch);
-		cpDiv.colorDiv.mousedown(function(e){
-			$.colorpicker._submit($(this).data('color'));
-			e.preventDefault();
-			return false;
-		});
-
-		cpDiv.defaultHeight = cpDiv.outerHeight();
-		cpDiv.addClass('swatchesOn');
-		cpDiv.swatchHeight = cpDiv.outerHeight() - cpDiv.defaultHeight;
-		cpDiv.removeClass('swatchesOn').addClass('alphaOn');
-		cpDiv.alphaHeight = cpDiv.outerHeight() - cpDiv.defaultHeight;
-		cpDiv.removeClass('alphaOn');
-
-		cpDiv.d1Div.mousedown(function(e){
-			$.colorpicker._isDragging = true;
-			$.colorpicker._mousemoveControl1d(e);
-			$(document).bind('mousemove', $.colorpicker._mousemoveControl1d);
-			return false;
-		})
-		cpDiv.d2Div.mousedown(function(e){
-			$.colorpicker._isDragging = true;
-			$.colorpicker._mousemoveControl2d(e);
-			$(document).bind('mousemove', $.colorpicker._mousemoveControl2d);
-			return false;
-		})
-		cpDiv.alphaDiv.mousedown(function(e){
-			$.colorpicker._isDragging = true;
-			$.colorpicker._mousemoveControlAlpha(e);
-			$(document).bind('mousemove', $.colorpicker._mousemoveControlAlpha);
-			return false;
-		})
-		$(document).mouseup(function(){
-			$(document)
-				.unbind('mousemove', $.colorpicker._mousemoveControl1d)
-				.unbind('mousemove', $.colorpicker._mousemoveControl2d)
-				.unbind('mousemove', $.colorpicker._mousemoveControlAlpha);
-			$.colorpicker._isDragging = false;
-			return false;
-		});
-		$(window).resize(function(){
-			if($.colorpicker._colorpickerShowing){
-				$.colorpicker._positionColorpicker();
-			}
-		})
+			cpDiv.oldColorDiv.on('mousedown', $.colorpicker._useSwatch);
+			cpDiv.colorDiv.on('mousedown', function(e){
+				$.colorpicker._submit($(this).data('color'));
+				e.preventDefault();
+				return false;
+			});
+			
+			cpDiv.defaultHeight = cpDiv.outerHeight();
+			cpDiv.addClass('swatchesOn');
+			cpDiv.swatchHeight = cpDiv.outerHeight() - cpDiv.defaultHeight;
+			cpDiv.removeClass('swatchesOn').addClass('alphaOn');
+			cpDiv.alphaHeight = cpDiv.outerHeight() - cpDiv.defaultHeight;
+			cpDiv.removeClass('alphaOn');
+			
+			cpDiv.d1Div.on('mousedown', function(e){
+				$.colorpicker._isDragging = true;
+				$.colorpicker._mousemoveControl1d(e);
+				$(document).on('mousemove', $.colorpicker._mousemoveControl1d);
+				return false;
+			})
+			cpDiv.d2Div.on('mousedown', function(e){
+				$.colorpicker._isDragging = true;
+				$.colorpicker._mousemoveControl2d(e);
+				$(document).on('mousemove', $.colorpicker._mousemoveControl2d);
+				return false;
+			})
+			cpDiv.alphaDiv.on('mousedown', function(e){
+				$.colorpicker._isDragging = true;
+				$.colorpicker._mousemoveControlAlpha(e);
+				$(document).on('mousemove', $.colorpicker._mousemoveControlAlpha);
+				return false;
+			})
+			$(document).on('mouseup', function(){
+				$(document)
+					.off('mousemove', $.colorpicker._mousemoveControl1d)
+					.off('mousemove', $.colorpicker._mousemoveControl2d)
+					.off('mousemove', $.colorpicker._mousemoveControlAlpha);
+				$.colorpicker._isDragging = false;
+				return false;
+			});
+			$(window).on('resize', function(){
+				if($.colorpicker._colorpickerShowing){
+					$.colorpicker._positionColorpicker();
+				}
+			})			
 
 		$.colorpicker._setMode($.colorpicker.mode);
 

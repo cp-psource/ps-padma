@@ -2,10 +2,10 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\GovernmentBenefitsTypeContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\GovernmentBenefitsTypeContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * GovernmentBenefitsType enumerates several kinds of government benefits to
@@ -13,7 +13,7 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
  * benefits offered.
  *
  * @see https://schema.org/GovernmentBenefitsType
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
  * @link https://github.com/schemaorg/schemaorg/issues/2534
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
@@ -24,81 +24,85 @@ class GovernmentBenefitsType extends BaseType implements GovernmentBenefitsTypeC
      * BasicIncome: this is a benefit for basic income.
      *
      * @see https://schema.org/BasicIncome
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2534
      */
-     const BasicIncome = 'https://schema.org/BasicIncome';
+    public const BasicIncome = 'https://schema.org/BasicIncome';
 
     /**
      * BusinessSupport: this is a benefit for supporting businesses.
      *
      * @see https://schema.org/BusinessSupport
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2534
      */
-     const BusinessSupport = 'https://schema.org/BusinessSupport';
+    public const BusinessSupport = 'https://schema.org/BusinessSupport';
 
     /**
      * DisabilitySupport: this is a benefit for disability support.
      *
      * @see https://schema.org/DisabilitySupport
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2534
      */
-     const DisabilitySupport = 'https://schema.org/DisabilitySupport';
+    public const DisabilitySupport = 'https://schema.org/DisabilitySupport';
 
     /**
      * HealthCare: this is a benefit for health care.
      *
      * @see https://schema.org/HealthCare
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2534
      */
-     const HealthCare = 'https://schema.org/HealthCare';
+    public const HealthCare = 'https://schema.org/HealthCare';
 
     /**
      * OneTimePayments: this is a benefit for one-time payments for individuals.
      *
      * @see https://schema.org/OneTimePayments
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2534
      */
-     const OneTimePayments = 'https://schema.org/OneTimePayments';
+    public const OneTimePayments = 'https://schema.org/OneTimePayments';
 
     /**
      * PaidLeave: this is a benefit for paid leave.
      *
      * @see https://schema.org/PaidLeave
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2534
      */
-     const PaidLeave = 'https://schema.org/PaidLeave';
+    public const PaidLeave = 'https://schema.org/PaidLeave';
 
     /**
      * ParentalSupport: this is a benefit for parental support.
      *
      * @see https://schema.org/ParentalSupport
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2534
      */
-     const ParentalSupport = 'https://schema.org/ParentalSupport';
+    public const ParentalSupport = 'https://schema.org/ParentalSupport';
 
     /**
      * UnemploymentSupport: this is a benefit for unemployment support.
      *
      * @see https://schema.org/UnemploymentSupport
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2534
      */
-     const UnemploymentSupport = 'https://schema.org/UnemploymentSupport';
+    public const UnemploymentSupport = 'https://schema.org/UnemploymentSupport';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -128,7 +132,7 @@ class GovernmentBenefitsType extends BaseType implements GovernmentBenefitsTypeC
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -278,5 +282,4 @@ class GovernmentBenefitsType extends BaseType implements GovernmentBenefitsTypeC
     {
         return $this->setProperty('url', $url);
     }
-
 }

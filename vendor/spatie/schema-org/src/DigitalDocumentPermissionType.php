@@ -2,10 +2,10 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\DigitalDocumentPermissionTypeContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\DigitalDocumentPermissionTypeContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A type of permission which can be granted for accessing a digital document.
@@ -21,29 +21,33 @@ class DigitalDocumentPermissionType extends BaseType implements DigitalDocumentP
      *
      * @see https://schema.org/CommentPermission
      */
-     const CommentPermission = 'https://schema.org/CommentPermission';
+    public const CommentPermission = 'https://schema.org/CommentPermission';
 
     /**
      * Permission to read or view the document.
      *
      * @see https://schema.org/ReadPermission
      */
-     const ReadPermission = 'https://schema.org/ReadPermission';
+    public const ReadPermission = 'https://schema.org/ReadPermission';
 
     /**
      * Permission to write or edit the document.
      *
      * @see https://schema.org/WritePermission
      */
-     const WritePermission = 'https://schema.org/WritePermission';
+    public const WritePermission = 'https://schema.org/WritePermission';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -73,7 +77,7 @@ class DigitalDocumentPermissionType extends BaseType implements DigitalDocumentP
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -223,5 +227,4 @@ class DigitalDocumentPermissionType extends BaseType implements DigitalDocumentP
     {
         return $this->setProperty('url', $url);
     }
-
 }

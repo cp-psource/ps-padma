@@ -2,10 +2,10 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\InteractionCounterContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\StructuredValueContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\InteractionCounterContract;
+use Spatie\SchemaOrg\Contracts\StructuredValueContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A summary of how users have interacted with this CreativeWork. In most cases,
@@ -19,10 +19,14 @@ class InteractionCounter extends BaseType implements InteractionCounterContract,
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -52,7 +56,7 @@ class InteractionCounter extends BaseType implements InteractionCounterContract,
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -78,6 +82,30 @@ class InteractionCounter extends BaseType implements InteractionCounterContract,
     public function disambiguatingDescription($disambiguatingDescription)
     {
         return $this->setProperty('disambiguatingDescription', $disambiguatingDescription);
+    }
+
+    /**
+     * The endTime of something. For a reserved event or service (e.g.
+     * FoodEstablishmentReservation), the time that it is expected to end. For
+     * actions that span a period of time, when the action was performed. E.g.
+     * John wrote a book from January to *December*. For media, including audio
+     * and video, it's the time offset of the end of a clip within a larger
+     * file.
+     *
+     * Note that Event uses startDate/endDate instead of startTime/endTime, even
+     * when describing dates with times. This situation may be clarified in
+     * future revisions.
+     *
+     * @param \DateTimeInterface|\DateTimeInterface[] $endTime
+     *
+     * @return static
+     *
+     * @see https://schema.org/endTime
+     * @link https://github.com/schemaorg/schemaorg/issues/2493
+     */
+    public function endTime($endTime)
+    {
+        return $this->setProperty('endTime', $endTime);
     }
 
     /**
@@ -144,6 +172,21 @@ class InteractionCounter extends BaseType implements InteractionCounterContract,
     }
 
     /**
+     * The location of, for example, where an event is happening, where an
+     * organization is located, or where an action takes place.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\PlaceContract|\Spatie\SchemaOrg\Contracts\PlaceContract[]|\Spatie\SchemaOrg\Contracts\PostalAddressContract|\Spatie\SchemaOrg\Contracts\PostalAddressContract[]|\Spatie\SchemaOrg\Contracts\VirtualLocationContract|\Spatie\SchemaOrg\Contracts\VirtualLocationContract[]|string|string[] $location
+     *
+     * @return static
+     *
+     * @see https://schema.org/location
+     */
+    public function location($location)
+    {
+        return $this->setProperty('location', $location);
+    }
+
+    /**
      * Indicates a page (or other CreativeWork) for which this thing is the main
      * entity being described. See [background
      * notes](/docs/datamodel.html#mainEntityBackground) for details.
@@ -205,6 +248,30 @@ class InteractionCounter extends BaseType implements InteractionCounterContract,
     }
 
     /**
+     * The startTime of something. For a reserved event or service (e.g.
+     * FoodEstablishmentReservation), the time that it is expected to start. For
+     * actions that span a period of time, when the action was performed. E.g.
+     * John wrote a book from *January* to December. For media, including audio
+     * and video, it's the time offset of the start of a clip within a larger
+     * file.
+     *
+     * Note that Event uses startDate/endDate instead of startTime/endTime, even
+     * when describing dates with times. This situation may be clarified in
+     * future revisions.
+     *
+     * @param \DateTimeInterface|\DateTimeInterface[] $startTime
+     *
+     * @return static
+     *
+     * @see https://schema.org/startTime
+     * @link https://github.com/schemaorg/schemaorg/issues/2493
+     */
+    public function startTime($startTime)
+    {
+        return $this->setProperty('startTime', $startTime);
+    }
+
+    /**
      * A CreativeWork or Event about this Thing.
      *
      * @param \Spatie\SchemaOrg\Contracts\CreativeWorkContract|\Spatie\SchemaOrg\Contracts\CreativeWorkContract[]|\Spatie\SchemaOrg\Contracts\EventContract|\Spatie\SchemaOrg\Contracts\EventContract[] $subjectOf
@@ -247,5 +314,4 @@ class InteractionCounter extends BaseType implements InteractionCounterContract,
     {
         return $this->setProperty('userInteractionCount', $userInteractionCount);
     }
-
 }

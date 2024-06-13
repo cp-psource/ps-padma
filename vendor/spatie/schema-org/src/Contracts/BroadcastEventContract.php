@@ -48,6 +48,8 @@ interface BroadcastEventContract
 
     public function funder($funder);
 
+    public function funding($funding);
+
     public function identifier($identifier);
 
     public function image($image);
@@ -57,6 +59,8 @@ interface BroadcastEventContract
     public function isAccessibleForFree($isAccessibleForFree);
 
     public function isLiveBroadcast($isLiveBroadcast);
+
+    public function keywords($keywords);
 
     public function location($location);
 
@@ -119,5 +123,4 @@ interface BroadcastEventContract
     public function workFeatured($workFeatured);
 
     public function workPerformed($workPerformed);
-
 }

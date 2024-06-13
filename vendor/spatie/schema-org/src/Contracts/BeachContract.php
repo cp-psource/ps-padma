@@ -70,6 +70,8 @@ interface BeachContract
 
     public function isicV4($isicV4);
 
+    public function keywords($keywords);
+
     public function latitude($latitude);
 
     public function logo($logo);
@@ -117,5 +119,4 @@ interface BeachContract
     public function tourBookingPage($tourBookingPage);
 
     public function url($url);
-
 }

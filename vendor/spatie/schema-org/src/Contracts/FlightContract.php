@@ -68,8 +68,9 @@ interface FlightContract
 
     public function subjectOf($subjectOf);
 
+    public function tripOrigin($tripOrigin);
+
     public function url($url);
 
     public function webCheckinTime($webCheckinTime);
-
 }

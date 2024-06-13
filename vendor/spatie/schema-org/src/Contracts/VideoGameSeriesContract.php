@@ -38,6 +38,8 @@ interface VideoGameSeriesContract
 
     public function alternativeHeadline($alternativeHeadline);
 
+    public function archivedAt($archivedAt);
+
     public function assesses($assesses);
 
     public function associatedMedia($associatedMedia);
@@ -78,13 +80,19 @@ interface VideoGameSeriesContract
 
     public function copyrightHolder($copyrightHolder);
 
+    public function copyrightNotice($copyrightNotice);
+
     public function copyrightYear($copyrightYear);
 
     public function correction($correction);
 
+    public function countryOfOrigin($countryOfOrigin);
+
     public function creativeWorkStatus($creativeWorkStatus);
 
     public function creator($creator);
+
+    public function creditText($creditText);
 
     public function dateCreated($dateCreated);
 
@@ -93,6 +101,8 @@ interface VideoGameSeriesContract
     public function datePublished($datePublished);
 
     public function description($description);
+
+    public function digitalSourceType($digitalSourceType);
 
     public function director($director);
 
@@ -132,6 +142,8 @@ interface VideoGameSeriesContract
 
     public function funder($funder);
 
+    public function funding($funding);
+
     public function gameItem($gameItem);
 
     public function gameLocation($gameLocation);
@@ -153,6 +165,8 @@ interface VideoGameSeriesContract
     public function interactionStatistic($interactionStatistic);
 
     public function interactivityType($interactivityType);
+
+    public function interpretedAsClaim($interpretedAsClaim);
 
     public function isAccessibleForFree($isAccessibleForFree);
 
@@ -266,6 +280,8 @@ interface VideoGameSeriesContract
 
     public function text($text);
 
+    public function thumbnail($thumbnail);
+
     public function thumbnailUrl($thumbnailUrl);
 
     public function timeRequired($timeRequired);
@@ -289,5 +305,4 @@ interface VideoGameSeriesContract
     public function workExample($workExample);
 
     public function workTranslation($workTranslation);
-
 }

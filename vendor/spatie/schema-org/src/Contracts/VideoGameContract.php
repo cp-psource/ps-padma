@@ -44,6 +44,8 @@ interface VideoGameContract
 
     public function applicationSuite($applicationSuite);
 
+    public function archivedAt($archivedAt);
+
     public function assesses($assesses);
 
     public function associatedMedia($associatedMedia);
@@ -84,6 +86,8 @@ interface VideoGameContract
 
     public function copyrightHolder($copyrightHolder);
 
+    public function copyrightNotice($copyrightNotice);
+
     public function copyrightYear($copyrightYear);
 
     public function correction($correction);
@@ -92,9 +96,13 @@ interface VideoGameContract
 
     public function countriesSupported($countriesSupported);
 
+    public function countryOfOrigin($countryOfOrigin);
+
     public function creativeWorkStatus($creativeWorkStatus);
 
     public function creator($creator);
+
+    public function creditText($creditText);
 
     public function dateCreated($dateCreated);
 
@@ -105,6 +113,8 @@ interface VideoGameContract
     public function description($description);
 
     public function device($device);
+
+    public function digitalSourceType($digitalSourceType);
 
     public function director($director);
 
@@ -144,6 +154,10 @@ interface VideoGameContract
 
     public function funder($funder);
 
+    public function funding($funding);
+
+    public function gameEdition($gameEdition);
+
     public function gameItem($gameItem);
 
     public function gameLocation($gameLocation);
@@ -171,6 +185,8 @@ interface VideoGameContract
     public function interactionStatistic($interactionStatistic);
 
     public function interactivityType($interactivityType);
+
+    public function interpretedAsClaim($interpretedAsClaim);
 
     public function isAccessibleForFree($isAccessibleForFree);
 
@@ -296,6 +312,8 @@ interface VideoGameContract
 
     public function text($text);
 
+    public function thumbnail($thumbnail);
+
     public function thumbnailUrl($thumbnailUrl);
 
     public function timeRequired($timeRequired);
@@ -319,5 +337,4 @@ interface VideoGameContract
     public function workExample($workExample);
 
     public function workTranslation($workTranslation);
-
 }

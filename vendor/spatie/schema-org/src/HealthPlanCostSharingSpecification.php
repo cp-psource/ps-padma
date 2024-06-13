@@ -2,15 +2,15 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\HealthPlanCostSharingSpecificationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\HealthPlanCostSharingSpecificationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A description of costs to the patient under a given network or formulary.
  *
  * @see https://schema.org/HealthPlanCostSharingSpecification
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
  * @link https://github.com/schemaorg/schemaorg/issues/1062
  *
  */
@@ -19,10 +19,14 @@ class HealthPlanCostSharingSpecification extends BaseType implements HealthPlanC
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -52,7 +56,7 @@ class HealthPlanCostSharingSpecification extends BaseType implements HealthPlanC
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -89,7 +93,7 @@ class HealthPlanCostSharingSpecification extends BaseType implements HealthPlanC
      * @return static
      *
      * @see https://schema.org/healthPlanCoinsuranceOption
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1062
      */
     public function healthPlanCoinsuranceOption($healthPlanCoinsuranceOption)
@@ -98,15 +102,14 @@ class HealthPlanCostSharingSpecification extends BaseType implements HealthPlanC
     }
 
     /**
-     * Whether The rate of coinsurance expressed as a number between 0.0 and
-     * 1.0.
+     * The rate of coinsurance expressed as a number between 0.0 and 1.0.
      *
      * @param float|float[]|int|int[] $healthPlanCoinsuranceRate
      *
      * @return static
      *
      * @see https://schema.org/healthPlanCoinsuranceRate
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1062
      */
     public function healthPlanCoinsuranceRate($healthPlanCoinsuranceRate)
@@ -115,14 +118,14 @@ class HealthPlanCostSharingSpecification extends BaseType implements HealthPlanC
     }
 
     /**
-     * Whether The copay amount.
+     * The copay amount.
      *
      * @param \Spatie\SchemaOrg\Contracts\PriceSpecificationContract|\Spatie\SchemaOrg\Contracts\PriceSpecificationContract[] $healthPlanCopay
      *
      * @return static
      *
      * @see https://schema.org/healthPlanCopay
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1062
      */
     public function healthPlanCopay($healthPlanCopay)
@@ -139,7 +142,7 @@ class HealthPlanCostSharingSpecification extends BaseType implements HealthPlanC
      * @return static
      *
      * @see https://schema.org/healthPlanCopayOption
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1062
      */
     public function healthPlanCopayOption($healthPlanCopayOption)
@@ -155,7 +158,7 @@ class HealthPlanCostSharingSpecification extends BaseType implements HealthPlanC
      * @return static
      *
      * @see https://schema.org/healthPlanPharmacyCategory
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1062
      */
     public function healthPlanPharmacyCategory($healthPlanPharmacyCategory)
@@ -285,5 +288,4 @@ class HealthPlanCostSharingSpecification extends BaseType implements HealthPlanC
     {
         return $this->setProperty('url', $url);
     }
-
 }

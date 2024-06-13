@@ -2,12 +2,12 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\ActionAccessSpecificationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\ActionAccessSpecificationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
- * A set of requirements that a must be fulfilled in order to perform an Action.
+ * A set of requirements that must be fulfilled in order to perform an Action.
  *
  * @see https://schema.org/ActionAccessSpecification
  * @link https://github.com/schemaorg/schemaorg/issues/1741
@@ -18,10 +18,14 @@ class ActionAccessSpecification extends BaseType implements ActionAccessSpecific
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -57,6 +61,7 @@ class ActionAccessSpecification extends BaseType implements ActionAccessSpecific
      * @return static
      *
      * @see https://schema.org/availabilityEnds
+     * @link https://github.com/schemaorg/schemaorg/issues/1741
      */
     public function availabilityEnds($availabilityEnds)
     {
@@ -72,6 +77,7 @@ class ActionAccessSpecification extends BaseType implements ActionAccessSpecific
      * @return static
      *
      * @see https://schema.org/availabilityStarts
+     * @link https://github.com/schemaorg/schemaorg/issues/1741
      */
     public function availabilityStarts($availabilityStarts)
     {
@@ -82,7 +88,7 @@ class ActionAccessSpecification extends BaseType implements ActionAccessSpecific
      * A category for the item. Greater signs or slashes can be used to
      * informally indicate a category hierarchy.
      *
-     * @param \Spatie\SchemaOrg\Contracts\PhysicalActivityCategoryContract|\Spatie\SchemaOrg\Contracts\PhysicalActivityCategoryContract[]|\Spatie\SchemaOrg\Contracts\ThingContract|\Spatie\SchemaOrg\Contracts\ThingContract[]|string|string[] $category
+     * @param \Spatie\SchemaOrg\Contracts\CategoryCodeContract|\Spatie\SchemaOrg\Contracts\CategoryCodeContract[]|\Spatie\SchemaOrg\Contracts\PhysicalActivityCategoryContract|\Spatie\SchemaOrg\Contracts\PhysicalActivityCategoryContract[]|\Spatie\SchemaOrg\Contracts\ThingContract|\Spatie\SchemaOrg\Contracts\ThingContract[]|string|string[] $category
      *
      * @return static
      *
@@ -96,7 +102,7 @@ class ActionAccessSpecification extends BaseType implements ActionAccessSpecific
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -128,7 +134,7 @@ class ActionAccessSpecification extends BaseType implements ActionAccessSpecific
      * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the
      * GeoShape for the geo-political region(s) for which the offer or delivery
      * charge specification is valid.
-     * 
+     *
      * See also [[ineligibleRegion]].
      *
      * @param \Spatie\SchemaOrg\Contracts\GeoShapeContract|\Spatie\SchemaOrg\Contracts\GeoShapeContract[]|\Spatie\SchemaOrg\Contracts\PlaceContract|\Spatie\SchemaOrg\Contracts\PlaceContract[]|string|string[] $eligibleRegion
@@ -136,6 +142,7 @@ class ActionAccessSpecification extends BaseType implements ActionAccessSpecific
      * @return static
      *
      * @see https://schema.org/eligibleRegion
+     * @link https://github.com/schemaorg/schemaorg/issues/1741
      */
     public function eligibleRegion($eligibleRegion)
     {
@@ -197,7 +204,7 @@ class ActionAccessSpecification extends BaseType implements ActionAccessSpecific
      * GeoShape for the geo-political region(s) for which the offer or delivery
      * charge specification is not valid, e.g. a region where the transaction is
      * not allowed.
-     * 
+     *
      * See also [[eligibleRegion]].
      *
      * @param \Spatie\SchemaOrg\Contracts\GeoShapeContract|\Spatie\SchemaOrg\Contracts\GeoShapeContract[]|\Spatie\SchemaOrg\Contracts\PlaceContract|\Spatie\SchemaOrg\Contracts\PlaceContract[]|string|string[] $ineligibleRegion
@@ -205,7 +212,7 @@ class ActionAccessSpecification extends BaseType implements ActionAccessSpecific
      * @return static
      *
      * @see https://schema.org/ineligibleRegion
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2242
      */
     public function ineligibleRegion($ineligibleRegion)
@@ -319,5 +326,4 @@ class ActionAccessSpecification extends BaseType implements ActionAccessSpecific
     {
         return $this->setProperty('url', $url);
     }
-
 }

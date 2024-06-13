@@ -26,6 +26,8 @@ interface WorkBasedProgramContract
 
     public function financialAidEligible($financialAidEligible);
 
+    public function hasCourse($hasCourse);
+
     public function identifier($identifier);
 
     public function image($image);
@@ -73,5 +75,4 @@ interface WorkBasedProgramContract
     public function typicalCreditsPerTerm($typicalCreditsPerTerm);
 
     public function url($url);
-
 }

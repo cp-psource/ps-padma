@@ -40,6 +40,8 @@ interface ReturnActionContract
 
     public function potentialAction($potentialAction);
 
+    public function provider($provider);
+
     public function recipient($recipient);
 
     public function result($result);
@@ -55,5 +57,4 @@ interface ReturnActionContract
     public function toLocation($toLocation);
 
     public function url($url);
-
 }

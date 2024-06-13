@@ -14,6 +14,8 @@ interface MedicalObservationalStudyContract
 
     public function disambiguatingDescription($disambiguatingDescription);
 
+    public function funding($funding);
+
     public function guideline($guideline);
 
     public function healthCondition($healthCondition);
@@ -53,5 +55,4 @@ interface MedicalObservationalStudyContract
     public function subjectOf($subjectOf);
 
     public function url($url);
-
 }

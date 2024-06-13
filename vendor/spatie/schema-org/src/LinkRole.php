@@ -2,20 +2,20 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\LinkRoleContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\RoleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\LinkRoleContract;
+use Spatie\SchemaOrg\Contracts\RoleContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
- * A Role that represents a Web link e.g. as expressed via the 'url' property.
+ * A Role that represents a Web link, e.g. as expressed via the 'url' property.
  * Its linkRelationship property can indicate URL-based and plain textual link
- * types e.g. those in IANA link registry or others such as 'amphtml'. This
+ * types, e.g. those in IANA link registry or others such as 'amphtml'. This
  * structure provides a placeholder where details from HTML's link element can
  * be represented outside of HTML, e.g. in JSON-LD feeds.
  *
  * @see https://schema.org/LinkRole
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
  * @link https://github.com/schemaorg/schemaorg/issues/1045
  *
  */
@@ -24,10 +24,14 @@ class LinkRole extends BaseType implements LinkRoleContract, IntangibleContract,
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -57,7 +61,7 @@ class LinkRole extends BaseType implements LinkRoleContract, IntangibleContract,
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -160,7 +164,7 @@ class LinkRole extends BaseType implements LinkRoleContract, IntangibleContract,
      * @return static
      *
      * @see https://schema.org/linkRelationship
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1045
      */
     public function linkRelationship($linkRelationship)
@@ -306,5 +310,4 @@ class LinkRole extends BaseType implements LinkRoleContract, IntangibleContract,
     {
         return $this->setProperty('url', $url);
     }
-
 }

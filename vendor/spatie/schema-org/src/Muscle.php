@@ -2,17 +2,17 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\MuscleContract;
-use \Spatie\SchemaOrg\Contracts\AnatomicalStructureContract;
-use \Spatie\SchemaOrg\Contracts\MedicalEntityContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\AnatomicalStructureContract;
+use Spatie\SchemaOrg\Contracts\MedicalEntityContract;
+use Spatie\SchemaOrg\Contracts\MuscleContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A muscle is an anatomical structure consisting of a contractile form of
  * tissue that animals use to effect movement.
  *
  * @see https://schema.org/Muscle
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  */
 class Muscle extends BaseType implements MuscleContract, AnatomicalStructureContract, MedicalEntityContract, ThingContract
@@ -20,10 +20,14 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -58,7 +62,7 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
      * @return static
      *
      * @see https://schema.org/antagonist
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function antagonist($antagonist)
     {
@@ -75,7 +79,7 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
      * @return static
      *
      * @see https://schema.org/associatedPathophysiology
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function associatedPathophysiology($associatedPathophysiology)
     {
@@ -90,7 +94,7 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
      * @return static
      *
      * @see https://schema.org/bloodSupply
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function bloodSupply($bloodSupply)
     {
@@ -105,7 +109,7 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
      * @return static
      *
      * @see https://schema.org/bodyLocation
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function bodyLocation($bodyLocation)
     {
@@ -121,7 +125,7 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
      * @return static
      *
      * @see https://schema.org/code
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function code($code)
     {
@@ -136,7 +140,7 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
      * @return static
      *
      * @see https://schema.org/connectedTo
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function connectedTo($connectedTo)
     {
@@ -146,7 +150,7 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -166,7 +170,7 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
      * @return static
      *
      * @see https://schema.org/diagram
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function diagram($diagram)
     {
@@ -191,6 +195,23 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
     }
 
     /**
+     * A [[Grant]] that directly or indirectly provide funding or sponsorship
+     * for this item. See also [[ownershipFundingInfo]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\GrantContract|\Spatie\SchemaOrg\Contracts\GrantContract[] $funding
+     *
+     * @return static
+     *
+     * @see https://schema.org/funding
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/383
+     */
+    public function funding($funding)
+    {
+        return $this->setProperty('funding', $funding);
+    }
+
+    /**
      * A medical guideline related to this entity.
      *
      * @param \Spatie\SchemaOrg\Contracts\MedicalGuidelineContract|\Spatie\SchemaOrg\Contracts\MedicalGuidelineContract[] $guideline
@@ -198,7 +219,7 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
      * @return static
      *
      * @see https://schema.org/guideline
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function guideline($guideline)
     {
@@ -246,7 +267,7 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
      * @return static
      *
      * @see https://schema.org/insertion
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function insertion($insertion)
     {
@@ -262,7 +283,7 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
      * @return static
      *
      * @see https://schema.org/legalStatus
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function legalStatus($legalStatus)
     {
@@ -294,7 +315,7 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
      * @return static
      *
      * @see https://schema.org/medicineSystem
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function medicineSystem($medicineSystem)
     {
@@ -309,7 +330,7 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
      * @return static
      *
      * @see https://schema.org/muscleAction
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function muscleAction($muscleAction)
     {
@@ -338,7 +359,7 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
      * @return static
      *
      * @see https://schema.org/nerve
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function nerve($nerve)
     {
@@ -353,7 +374,7 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
      * @return static
      *
      * @see https://schema.org/partOfSystem
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function partOfSystem($partOfSystem)
     {
@@ -384,7 +405,7 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
      * @return static
      *
      * @see https://schema.org/recognizingAuthority
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function recognizingAuthority($recognizingAuthority)
     {
@@ -399,7 +420,7 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
      * @return static
      *
      * @see https://schema.org/relatedCondition
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function relatedCondition($relatedCondition)
     {
@@ -414,7 +435,7 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
      * @return static
      *
      * @see https://schema.org/relatedTherapy
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function relatedTherapy($relatedTherapy)
     {
@@ -429,7 +450,7 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
      * @return static
      *
      * @see https://schema.org/relevantSpecialty
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function relevantSpecialty($relevantSpecialty)
     {
@@ -460,7 +481,7 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
      * @return static
      *
      * @see https://schema.org/study
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function study($study)
     {
@@ -475,7 +496,7 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
      * @return static
      *
      * @see https://schema.org/subStructure
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function subStructure($subStructure)
     {
@@ -510,5 +531,4 @@ class Muscle extends BaseType implements MuscleContract, AnatomicalStructureCont
     {
         return $this->setProperty('url', $url);
     }
-
 }

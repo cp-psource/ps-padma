@@ -22,6 +22,8 @@ interface LocationFeatureSpecificationContract
 
     public function maxValue($maxValue);
 
+    public function measurementMethod($measurementMethod);
+
     public function measurementTechnique($measurementTechnique);
 
     public function minValue($minValue);
@@ -49,5 +51,4 @@ interface LocationFeatureSpecificationContract
     public function value($value);
 
     public function valueReference($valueReference);
-
 }

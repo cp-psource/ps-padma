@@ -2,17 +2,16 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\UnitPriceSpecificationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\PriceSpecificationContract;
-use \Spatie\SchemaOrg\Contracts\StructuredValueContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\PriceSpecificationContract;
+use Spatie\SchemaOrg\Contracts\StructuredValueContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\UnitPriceSpecificationContract;
 
 /**
  * The price asked for a given offer by the respective organization or person.
  *
  * @see https://schema.org/UnitPriceSpecification
- * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
  *
  */
 class UnitPriceSpecification extends BaseType implements UnitPriceSpecificationContract, IntangibleContract, PriceSpecificationContract, StructuredValueContract, ThingContract
@@ -20,10 +19,14 @@ class UnitPriceSpecification extends BaseType implements UnitPriceSpecificationC
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -51,6 +54,26 @@ class UnitPriceSpecification extends BaseType implements UnitPriceSpecificationC
     }
 
     /**
+     * Specifies for how long this price (or price component) will be billed.
+     * Can be used, for example, to model the contractual duration of a
+     * subscription or payment plan. Type can be either a Duration or a Number
+     * (in which case the unit of measurement, for example month, is specified
+     * by the unitCode property).
+     *
+     * @param \Spatie\SchemaOrg\Contracts\DurationContract|\Spatie\SchemaOrg\Contracts\DurationContract[]|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[]|float|float[]|int|int[] $billingDuration
+     *
+     * @return static
+     *
+     * @see https://schema.org/billingDuration
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2689
+     */
+    public function billingDuration($billingDuration)
+    {
+        return $this->setProperty('billingDuration', $billingDuration);
+    }
+
+    /**
      * This property specifies the minimal quantity and rounding increment that
      * will be the basis for the billing. The unit of measurement is specified
      * by the unitCode property.
@@ -60,7 +83,6 @@ class UnitPriceSpecification extends BaseType implements UnitPriceSpecificationC
      * @return static
      *
      * @see https://schema.org/billingIncrement
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function billingIncrement($billingIncrement)
     {
@@ -68,9 +90,28 @@ class UnitPriceSpecification extends BaseType implements UnitPriceSpecificationC
     }
 
     /**
+     * Specifies after how much time this price (or price component) becomes
+     * valid and billing starts. Can be used, for example, to model a price
+     * increase after the first year of a subscription. The unit of measurement
+     * is specified by the unitCode property.
+     *
+     * @param float|float[]|int|int[] $billingStart
+     *
+     * @return static
+     *
+     * @see https://schema.org/billingStart
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2689
+     */
+    public function billingStart($billingStart)
+    {
+        return $this->setProperty('billingStart', $billingStart);
+    }
+
+    /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -108,7 +149,6 @@ class UnitPriceSpecification extends BaseType implements UnitPriceSpecificationC
      * @return static
      *
      * @see https://schema.org/eligibleQuantity
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function eligibleQuantity($eligibleQuantity)
     {
@@ -126,7 +166,6 @@ class UnitPriceSpecification extends BaseType implements UnitPriceSpecificationC
      * @return static
      *
      * @see https://schema.org/eligibleTransactionVolume
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function eligibleTransactionVolume($eligibleTransactionVolume)
     {
@@ -190,7 +229,6 @@ class UnitPriceSpecification extends BaseType implements UnitPriceSpecificationC
      * @return static
      *
      * @see https://schema.org/maxPrice
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function maxPrice($maxPrice)
     {
@@ -205,7 +243,6 @@ class UnitPriceSpecification extends BaseType implements UnitPriceSpecificationC
      * @return static
      *
      * @see https://schema.org/minPrice
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function minPrice($minPrice)
     {
@@ -244,16 +281,16 @@ class UnitPriceSpecification extends BaseType implements UnitPriceSpecificationC
     /**
      * The offer price of a product, or of a price component when attached to
      * PriceSpecification and its subtypes.
-     * 
+     *
      * Usage guidelines:
-     * 
+     *
      * * Use the [[priceCurrency]] property (with standard formats: [ISO 4217
-     * currency format](http://en.wikipedia.org/wiki/ISO_4217) e.g. "USD";
+     * currency format](http://en.wikipedia.org/wiki/ISO_4217), e.g. "USD";
      * [Ticker symbol](https://en.wikipedia.org/wiki/List_of_cryptocurrencies)
-     * for cryptocurrencies e.g. "BTC"; well known names for [Local Exchange
-     * Tradings
+     * for cryptocurrencies, e.g. "BTC"; well known names for [Local Exchange
+     * Trading
      * Systems](https://en.wikipedia.org/wiki/Local_exchange_trading_system)
-     * (LETS) and other currency types e.g. "Ithaca HOUR") instead of including
+     * (LETS) and other currency types, e.g. "Ithaca HOUR") instead of including
      * [ambiguous
      * symbols](http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign)
      * such as '$' in the value.
@@ -265,7 +302,7 @@ class UnitPriceSpecification extends BaseType implements UnitPriceSpecificationC
      * publishing simple machine-readable values alongside more human-friendly
      * formatting.
      * * Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT
-     * NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * NINE' (U+0039)) rather than superficially similar Unicode symbols.
      *
      * @param float|float[]|int|int[]|string|string[] $price
      *
@@ -279,16 +316,33 @@ class UnitPriceSpecification extends BaseType implements UnitPriceSpecificationC
     }
 
     /**
+     * Identifies a price component (for example, a line item on an invoice),
+     * part of the total price for an offer.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\PriceComponentTypeEnumerationContract|\Spatie\SchemaOrg\Contracts\PriceComponentTypeEnumerationContract[] $priceComponentType
+     *
+     * @return static
+     *
+     * @see https://schema.org/priceComponentType
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2689
+     */
+    public function priceComponentType($priceComponentType)
+    {
+        return $this->setProperty('priceComponentType', $priceComponentType);
+    }
+
+    /**
      * The currency of the price, or a price component when attached to
      * [[PriceSpecification]] and its subtypes.
-     * 
+     *
      * Use standard formats: [ISO 4217 currency
-     * format](http://en.wikipedia.org/wiki/ISO_4217) e.g. "USD"; [Ticker
+     * format](http://en.wikipedia.org/wiki/ISO_4217), e.g. "USD"; [Ticker
      * symbol](https://en.wikipedia.org/wiki/List_of_cryptocurrencies) for
-     * cryptocurrencies e.g. "BTC"; well known names for [Local Exchange
-     * Tradings
+     * cryptocurrencies, e.g. "BTC"; well known names for [Local Exchange
+     * Trading
      * Systems](https://en.wikipedia.org/wiki/Local_exchange_trading_system)
-     * (LETS) and other currency types e.g. "Ithaca HOUR".
+     * (LETS) and other currency types, e.g. "Ithaca HOUR".
      *
      * @param string|string[] $priceCurrency
      *
@@ -302,16 +356,19 @@ class UnitPriceSpecification extends BaseType implements UnitPriceSpecificationC
     }
 
     /**
-     * A short text or acronym indicating multiple price specifications for the
-     * same offer, e.g. SRP for the suggested retail price or INVOICE for the
-     * invoice price, mostly used in the car industry.
+     * Defines the type of a price specified for an offered product, for example
+     * a list price, a (temporary) sale price or a manufacturer suggested retail
+     * price. If multiple prices are specified for an offer the [[priceType]]
+     * property can be used to identify the type of each such specified price.
+     * The value of priceType can be specified as a value from enumeration
+     * PriceTypeEnumeration or as a free form text string for price types that
+     * are not already predefined in PriceTypeEnumeration.
      *
-     * @param string|string[] $priceType
+     * @param \Spatie\SchemaOrg\Contracts\PriceTypeEnumerationContract|\Spatie\SchemaOrg\Contracts\PriceTypeEnumerationContract[]|string|string[] $priceType
      *
      * @return static
      *
      * @see https://schema.org/priceType
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function priceType($priceType)
     {
@@ -376,7 +433,6 @@ class UnitPriceSpecification extends BaseType implements UnitPriceSpecificationC
      * @return static
      *
      * @see https://schema.org/unitCode
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function unitCode($unitCode)
     {
@@ -421,7 +477,6 @@ class UnitPriceSpecification extends BaseType implements UnitPriceSpecificationC
      * @return static
      *
      * @see https://schema.org/validFrom
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function validFrom($validFrom)
     {
@@ -437,7 +492,6 @@ class UnitPriceSpecification extends BaseType implements UnitPriceSpecificationC
      * @return static
      *
      * @see https://schema.org/validThrough
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function validThrough($validThrough)
     {
@@ -453,11 +507,9 @@ class UnitPriceSpecification extends BaseType implements UnitPriceSpecificationC
      * @return static
      *
      * @see https://schema.org/valueAddedTaxIncluded
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function valueAddedTaxIncluded($valueAddedTaxIncluded)
     {
         return $this->setProperty('valueAddedTaxIncluded', $valueAddedTaxIncluded);
     }
-
 }

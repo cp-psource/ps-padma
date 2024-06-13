@@ -2,11 +2,11 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\GeoCircleContract;
-use \Spatie\SchemaOrg\Contracts\GeoShapeContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\StructuredValueContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\GeoCircleContract;
+use Spatie\SchemaOrg\Contracts\GeoShapeContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\StructuredValueContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A GeoCircle is a GeoShape representing a circular geographic area. As it is a
@@ -24,10 +24,14 @@ class GeoCircle extends BaseType implements GeoCircleContract, GeoShapeContract,
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -119,7 +123,7 @@ class GeoCircle extends BaseType implements GeoCircleContract, GeoShapeContract,
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -150,7 +154,7 @@ class GeoCircle extends BaseType implements GeoCircleContract, GeoShapeContract,
     /**
      * The elevation of a location ([WGS
      * 84](https://en.wikipedia.org/wiki/World_Geodetic_System)). Values may be
-     * of the form 'NUMBER UNIT*OF*MEASUREMENT' (e.g., '1,000 m', '3,200 ft')
+     * of the form 'NUMBER UNIT\_OF\_MEASUREMENT' (e.g., '1,000 m', '3,200 ft')
      * while numbers alone should be assumed to be a value in meters.
      *
      * @param float|float[]|int|int[]|string|string[] $elevation
@@ -165,7 +169,7 @@ class GeoCircle extends BaseType implements GeoCircleContract, GeoShapeContract,
     }
 
     /**
-     * Indicates the GeoCoordinates at the centre of a GeoShape e.g. GeoCircle.
+     * Indicates the GeoCoordinates at the centre of a GeoShape, e.g. GeoCircle.
      *
      * @param \Spatie\SchemaOrg\Contracts\GeoCoordinatesContract|\Spatie\SchemaOrg\Contracts\GeoCoordinatesContract[] $geoMidpoint
      *
@@ -362,5 +366,4 @@ class GeoCircle extends BaseType implements GeoCircleContract, GeoShapeContract,
     {
         return $this->setProperty('url', $url);
     }
-
 }

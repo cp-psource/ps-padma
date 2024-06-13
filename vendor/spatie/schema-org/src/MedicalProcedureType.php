@@ -2,17 +2,17 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\MedicalProcedureTypeContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\MedicalEnumerationContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\MedicalEnumerationContract;
+use Spatie\SchemaOrg\Contracts\MedicalProcedureTypeContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * An enumeration that describes different types of medical procedures.
  *
  * @see https://schema.org/MedicalProcedureType
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
  */
@@ -22,9 +22,9 @@ class MedicalProcedureType extends BaseType implements MedicalProcedureTypeContr
      * A type of medical procedure that involves noninvasive techniques.
      *
      * @see https://schema.org/NoninvasiveProcedure
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const NoninvasiveProcedure = 'https://schema.org/NoninvasiveProcedure';
+    public const NoninvasiveProcedure = 'https://schema.org/NoninvasiveProcedure';
 
     /**
      * A type of medical procedure that involves percutaneous techniques, where
@@ -32,17 +32,21 @@ class MedicalProcedureType extends BaseType implements MedicalProcedureTypeContr
      * For example, catheter-based procedures like stent delivery.
      *
      * @see https://schema.org/PercutaneousProcedure
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const PercutaneousProcedure = 'https://schema.org/PercutaneousProcedure';
+    public const PercutaneousProcedure = 'https://schema.org/PercutaneousProcedure';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -72,7 +76,7 @@ class MedicalProcedureType extends BaseType implements MedicalProcedureTypeContr
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -222,5 +226,4 @@ class MedicalProcedureType extends BaseType implements MedicalProcedureTypeContr
     {
         return $this->setProperty('url', $url);
     }
-
 }

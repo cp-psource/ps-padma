@@ -4,9 +4,19 @@ namespace Spatie\SchemaOrg\Contracts;
 
 interface MerchantReturnPolicyContract
 {
+    public function additionalProperty($additionalProperty);
+
     public function additionalType($additionalType);
 
     public function alternateName($alternateName);
+
+    public function applicableCountry($applicableCountry);
+
+    public function customerRemorseReturnFees($customerRemorseReturnFees);
+
+    public function customerRemorseReturnLabelSource($customerRemorseReturnLabelSource);
+
+    public function customerRemorseReturnShippingFeesAmount($customerRemorseReturnShippingFeesAmount);
 
     public function description($description);
 
@@ -17,6 +27,14 @@ interface MerchantReturnPolicyContract
     public function image($image);
 
     public function inStoreReturnsOffered($inStoreReturnsOffered);
+
+    public function itemCondition($itemCondition);
+
+    public function itemDefectReturnFees($itemDefectReturnFees);
+
+    public function itemDefectReturnLabelSource($itemDefectReturnLabelSource);
+
+    public function itemDefectReturnShippingFeesAmount($itemDefectReturnShippingFeesAmount);
 
     public function mainEntityOfPage($mainEntityOfPage);
 
@@ -30,14 +48,25 @@ interface MerchantReturnPolicyContract
 
     public function refundType($refundType);
 
+    public function restockingFee($restockingFee);
+
     public function returnFees($returnFees);
 
+    public function returnLabelSource($returnLabelSource);
+
+    public function returnMethod($returnMethod);
+
     public function returnPolicyCategory($returnPolicyCategory);
+
+    public function returnPolicyCountry($returnPolicyCountry);
+
+    public function returnPolicySeasonalOverride($returnPolicySeasonalOverride);
+
+    public function returnShippingFeesAmount($returnShippingFeesAmount);
 
     public function sameAs($sameAs);
 
     public function subjectOf($subjectOf);
 
     public function url($url);
-
 }

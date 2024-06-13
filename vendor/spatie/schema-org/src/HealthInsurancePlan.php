@@ -2,15 +2,15 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\HealthInsurancePlanContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\HealthInsurancePlanContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A US-style health insurance plan, including PPOs, EPOs, and HMOs.
  *
  * @see https://schema.org/HealthInsurancePlan
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
  * @link https://github.com/schemaorg/schemaorg/issues/1062
  *
  */
@@ -19,10 +19,14 @@ class HealthInsurancePlan extends BaseType implements HealthInsurancePlanContrac
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -58,7 +62,7 @@ class HealthInsurancePlan extends BaseType implements HealthInsurancePlanContrac
      * @return static
      *
      * @see https://schema.org/benefitsSummaryUrl
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1062
      */
     public function benefitsSummaryUrl($benefitsSummaryUrl)
@@ -83,7 +87,7 @@ class HealthInsurancePlan extends BaseType implements HealthInsurancePlanContrac
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -119,7 +123,7 @@ class HealthInsurancePlan extends BaseType implements HealthInsurancePlanContrac
      * @return static
      *
      * @see https://schema.org/healthPlanDrugOption
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1062
      */
     public function healthPlanDrugOption($healthPlanDrugOption)
@@ -135,7 +139,7 @@ class HealthInsurancePlan extends BaseType implements HealthInsurancePlanContrac
      * @return static
      *
      * @see https://schema.org/healthPlanDrugTier
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1062
      */
     public function healthPlanDrugTier($healthPlanDrugTier)
@@ -152,7 +156,7 @@ class HealthInsurancePlan extends BaseType implements HealthInsurancePlanContrac
      * @return static
      *
      * @see https://schema.org/healthPlanId
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1062
      */
     public function healthPlanId($healthPlanId)
@@ -169,7 +173,7 @@ class HealthInsurancePlan extends BaseType implements HealthInsurancePlanContrac
      * @return static
      *
      * @see https://schema.org/healthPlanMarketingUrl
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1062
      */
     public function healthPlanMarketingUrl($healthPlanMarketingUrl)
@@ -218,7 +222,7 @@ class HealthInsurancePlan extends BaseType implements HealthInsurancePlanContrac
      * @return static
      *
      * @see https://schema.org/includesHealthPlanFormulary
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1062
      */
     public function includesHealthPlanFormulary($includesHealthPlanFormulary)
@@ -234,7 +238,7 @@ class HealthInsurancePlan extends BaseType implements HealthInsurancePlanContrac
      * @return static
      *
      * @see https://schema.org/includesHealthPlanNetwork
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1062
      */
     public function includesHealthPlanNetwork($includesHealthPlanNetwork)
@@ -333,7 +337,7 @@ class HealthInsurancePlan extends BaseType implements HealthInsurancePlanContrac
     }
 
     /**
-     * The standard for interpreting thePlan ID. The preferred is "HIOS". See
+     * The standard for interpreting the Plan ID. The preferred is "HIOS". See
      * the Centers for Medicare & Medicaid Services for more details.
      *
      * @param string|string[] $usesHealthPlanIdStandard
@@ -341,12 +345,11 @@ class HealthInsurancePlan extends BaseType implements HealthInsurancePlanContrac
      * @return static
      *
      * @see https://schema.org/usesHealthPlanIdStandard
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1062
      */
     public function usesHealthPlanIdStandard($usesHealthPlanIdStandard)
     {
         return $this->setProperty('usesHealthPlanIdStandard', $usesHealthPlanIdStandard);
     }
-
 }

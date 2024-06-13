@@ -2,9 +2,9 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\ProjectContract;
-use \Spatie\SchemaOrg\Contracts\OrganizationContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\OrganizationContract;
+use Spatie\SchemaOrg\Contracts\ProjectContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * An enterprise (potentially individual but typically collaborative), planned
@@ -14,8 +14,7 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
  * sub-structures.
  *
  * @see https://schema.org/Project
- * @see http://pending.schema.org
- * @link https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FundInfoCollab
+ * @see https://pending.schema.org
  *
  */
 class Project extends BaseType implements ProjectContract, OrganizationContract, ThingContract
@@ -31,7 +30,8 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/actionableFeedbackPolicy
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1525
      */
     public function actionableFeedbackPolicy($actionableFeedbackPolicy)
     {
@@ -41,10 +41,14 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -69,6 +73,24 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
     public function address($address)
     {
         return $this->setProperty('address', $address);
+    }
+
+    /**
+     * The number of completed interactions for this entity, in a particular
+     * role (the 'agent'), in a particular action (indicated in the statistic),
+     * and in a particular context (i.e. interactionService).
+     *
+     * @param \Spatie\SchemaOrg\Contracts\InteractionCounterContract|\Spatie\SchemaOrg\Contracts\InteractionCounterContract[] $agentInteractionStatistic
+     *
+     * @return static
+     *
+     * @see https://schema.org/agentInteractionStatistic
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2858
+     */
+    public function agentInteractionStatistic($agentInteractionStatistic)
+    {
+        return $this->setProperty('agentInteractionStatistic', $agentInteractionStatistic);
     }
 
     /**
@@ -209,7 +231,8 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/correctionsPolicy
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1525
      */
     public function correctionsPolicy($correctionsPolicy)
     {
@@ -236,7 +259,7 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -289,7 +312,8 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/diversityPolicy
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1525
      */
     public function diversityPolicy($diversityPolicy)
     {
@@ -307,7 +331,8 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/diversityStaffingReport
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1525
      */
     public function diversityStaffingReport($diversityStaffingReport)
     {
@@ -323,7 +348,6 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/duns
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function duns($duns)
     {
@@ -385,7 +409,7 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/ethicsPolicy
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1525
      */
     public function ethicsPolicy($ethicsPolicy)
@@ -508,6 +532,23 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
     }
 
     /**
+     * A [[Grant]] that directly or indirectly provide funding or sponsorship
+     * for this item. See also [[ownershipFundingInfo]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\GrantContract|\Spatie\SchemaOrg\Contracts\GrantContract[] $funding
+     *
+     * @return static
+     *
+     * @see https://schema.org/funding
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/383
+     */
+    public function funding($funding)
+    {
+        return $this->setProperty('funding', $funding);
+    }
+
+    /**
      * The [Global Location Number](http://www.gs1.org/gln) (GLN, sometimes also
      * referred to as International Location Number or ILN) of the respective
      * organization, person, or place. The GLN is a 13-digit number used to
@@ -518,7 +559,6 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/globalLocationNumber
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function globalLocationNumber($globalLocationNumber)
     {
@@ -533,7 +573,7 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/hasCredential
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2289
      */
     public function hasCredential($hasCredential)
@@ -542,14 +582,14 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
     }
 
     /**
-     * Indicates a MerchantReturnPolicy that may be applicable.
+     * Specifies a MerchantReturnPolicy that may be applicable.
      *
      * @param \Spatie\SchemaOrg\Contracts\MerchantReturnPolicyContract|\Spatie\SchemaOrg\Contracts\MerchantReturnPolicyContract[] $hasMerchantReturnPolicy
      *
      * @return static
      *
      * @see https://schema.org/hasMerchantReturnPolicy
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2288
      */
     public function hasMerchantReturnPolicy($hasMerchantReturnPolicy)
@@ -580,7 +620,6 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/hasPOS
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function hasPOS($hasPOS)
     {
@@ -595,7 +634,7 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/hasProductReturnPolicy
-     * @see http://attic.schema.org
+     * @see https://attic.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2288
      */
     public function hasProductReturnPolicy($hasProductReturnPolicy)
@@ -663,11 +702,47 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/isicV4
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function isicV4($isicV4)
     {
         return $this->setProperty('isicV4', $isicV4);
+    }
+
+    /**
+     * An organization identifier as defined in ISO 6523(-1). Note that many
+     * existing organization identifiers such as
+     * [leiCode](https://schema.org/leiCode), [duns](https://schema.org/duns)
+     * and [vatID](https://schema.org/vatID) can be expressed as an ISO 6523
+     * identifier by setting the ICD part of the ISO 6523 identifier
+     * accordingly.
+     *
+     * @param string|string[] $iso6523Code
+     *
+     * @return static
+     *
+     * @see https://schema.org/iso6523Code
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2915
+     */
+    public function iso6523Code($iso6523Code)
+    {
+        return $this->setProperty('iso6523Code', $iso6523Code);
+    }
+
+    /**
+     * Keywords or tags used to describe some item. Multiple textual entries in
+     * a keywords list are typically delimited by commas, or by repeating the
+     * property.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|string|string[] $keywords
+     *
+     * @return static
+     *
+     * @see https://schema.org/keywords
+     */
+    public function keywords($keywords)
+    {
+        return $this->setProperty('keywords', $keywords);
     }
 
     /**
@@ -681,7 +756,8 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/knowsAbout
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1688
      */
     public function knowsAbout($knowsAbout)
     {
@@ -699,7 +775,8 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/knowsLanguage
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1688
      */
     public function knowsLanguage($knowsLanguage)
     {
@@ -714,7 +791,6 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/legalName
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function legalName($legalName)
     {
@@ -737,8 +813,8 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
     }
 
     /**
-     * The location of for example where the event is happening, an organization
-     * is located, or where an action takes place.
+     * The location of, for example, where an event is happening, where an
+     * organization is located, or where an action takes place.
      *
      * @param \Spatie\SchemaOrg\Contracts\PlaceContract|\Spatie\SchemaOrg\Contracts\PlaceContract[]|\Spatie\SchemaOrg\Contracts\PostalAddressContract|\Spatie\SchemaOrg\Contracts\PostalAddressContract[]|\Spatie\SchemaOrg\Contracts\VirtualLocationContract|\Spatie\SchemaOrg\Contracts\VirtualLocationContract[]|string|string[] $location
      *
@@ -759,7 +835,6 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/logo
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function logo($logo)
     {
@@ -790,7 +865,6 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/makesOffer
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function makesOffer($makesOffer)
     {
@@ -850,7 +924,6 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/naics
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function naics($naics)
     {
@@ -872,7 +945,7 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
     }
 
     /**
-     * nonprofit Status indicates the legal status of a non-profit organization
+     * nonprofitStatus indicates the legal status of a non-profit organization
      * in its primary place of business.
      *
      * @param \Spatie\SchemaOrg\Contracts\NonprofitTypeContract|\Spatie\SchemaOrg\Contracts\NonprofitTypeContract[] $nonprofitStatus
@@ -880,7 +953,7 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/nonprofitStatus
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2543
      */
     public function nonprofitStatus($nonprofitStatus)
@@ -889,7 +962,7 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
     }
 
     /**
-     * The number of employees in an organization e.g. business.
+     * The number of employees in an organization, e.g. business.
      *
      * @param \Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[] $numberOfEmployees
      *
@@ -915,7 +988,8 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/ownershipFundingInfo
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1525
      */
     public function ownershipFundingInfo($ownershipFundingInfo)
     {
@@ -930,7 +1004,6 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/owns
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function owns($owns)
     {
@@ -970,12 +1043,12 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
     /**
      * The publishingPrinciples property indicates (typically via [[URL]]) a
      * document describing the editorial principles of an [[Organization]] (or
-     * individual e.g. a [[Person]] writing a blog) that relate to their
+     * individual, e.g. a [[Person]] writing a blog) that relate to their
      * activities as a publisher, e.g. ethics or diversity policies. When
      * applied to a [[CreativeWork]] (e.g. [[NewsArticle]]) the principles are
      * those of the party primarily responsible for the creation of the
      * [[CreativeWork]].
-     * 
+     *
      * While such policies are most typically expressed in natural language,
      * sometimes related information (e.g. indicating a [[funder]]) can be
      * expressed using schema.org terminology.
@@ -1044,7 +1117,6 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/seeks
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function seeks($seeks)
     {
@@ -1081,7 +1153,7 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
 
     /**
      * A person or organization that supports a thing through a pledge, promise,
-     * or financial contribution. e.g. a sponsor of a Medical Study or a
+     * or financial contribution. E.g. a sponsor of a Medical Study or a
      * corporate sponsor of an event.
      *
      * @param \Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[]|\Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[] $sponsor
@@ -1135,7 +1207,6 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/taxID
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function taxID($taxID)
     {
@@ -1166,7 +1237,8 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/unnamedSourcesPolicy
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1525
      */
     public function unnamedSourcesPolicy($unnamedSourcesPolicy)
     {
@@ -1195,11 +1267,9 @@ class Project extends BaseType implements ProjectContract, OrganizationContract,
      * @return static
      *
      * @see https://schema.org/vatID
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function vatID($vatID)
     {
         return $this->setProperty('vatID', $vatID);
     }
-
 }

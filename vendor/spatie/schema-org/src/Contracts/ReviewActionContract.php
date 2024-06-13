@@ -38,6 +38,8 @@ interface ReviewActionContract
 
     public function potentialAction($potentialAction);
 
+    public function provider($provider);
+
     public function result($result);
 
     public function resultReview($resultReview);
@@ -51,5 +53,4 @@ interface ReviewActionContract
     public function target($target);
 
     public function url($url);
-
 }

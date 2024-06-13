@@ -34,9 +34,17 @@ interface UserReviewContract
 
     public function alternativeHeadline($alternativeHeadline);
 
+    public function archivedAt($archivedAt);
+
     public function assesses($assesses);
 
+    public function associatedClaimReview($associatedClaimReview);
+
     public function associatedMedia($associatedMedia);
+
+    public function associatedMediaReview($associatedMediaReview);
+
+    public function associatedReview($associatedReview);
 
     public function audience($audience);
 
@@ -68,13 +76,19 @@ interface UserReviewContract
 
     public function copyrightHolder($copyrightHolder);
 
+    public function copyrightNotice($copyrightNotice);
+
     public function copyrightYear($copyrightYear);
 
     public function correction($correction);
 
+    public function countryOfOrigin($countryOfOrigin);
+
     public function creativeWorkStatus($creativeWorkStatus);
 
     public function creator($creator);
+
+    public function creditText($creditText);
 
     public function dateCreated($dateCreated);
 
@@ -83,6 +97,8 @@ interface UserReviewContract
     public function datePublished($datePublished);
 
     public function description($description);
+
+    public function digitalSourceType($digitalSourceType);
 
     public function disambiguatingDescription($disambiguatingDescription);
 
@@ -112,6 +128,8 @@ interface UserReviewContract
 
     public function funder($funder);
 
+    public function funding($funding);
+
     public function genre($genre);
 
     public function hasPart($hasPart);
@@ -127,6 +145,8 @@ interface UserReviewContract
     public function interactionStatistic($interactionStatistic);
 
     public function interactivityType($interactivityType);
+
+    public function interpretedAsClaim($interpretedAsClaim);
 
     public function isAccessibleForFree($isAccessibleForFree);
 
@@ -162,11 +182,15 @@ interface UserReviewContract
 
     public function name($name);
 
+    public function negativeNotes($negativeNotes);
+
     public function offers($offers);
 
     public function pattern($pattern);
 
     public function position($position);
+
+    public function positiveNotes($positiveNotes);
 
     public function potentialAction($potentialAction);
 
@@ -226,6 +250,8 @@ interface UserReviewContract
 
     public function text($text);
 
+    public function thumbnail($thumbnail);
+
     public function thumbnailUrl($thumbnailUrl);
 
     public function timeRequired($timeRequired);
@@ -247,5 +273,4 @@ interface UserReviewContract
     public function workExample($workExample);
 
     public function workTranslation($workTranslation);
-
 }

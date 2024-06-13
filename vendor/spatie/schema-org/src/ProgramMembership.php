@@ -2,9 +2,9 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\ProgramMembershipContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\ProgramMembershipContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * Used to describe membership in a loyalty programs (e.g. "StarAliance"),
@@ -18,10 +18,14 @@ class ProgramMembership extends BaseType implements ProgramMembershipContract, I
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -51,7 +55,7 @@ class ProgramMembership extends BaseType implements ProgramMembershipContract, I
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -188,7 +192,7 @@ class ProgramMembership extends BaseType implements ProgramMembershipContract, I
 
     /**
      * The number of membership points earned by the member. If necessary, the
-     * unitText can be used to express the units the points are issued in. (e.g.
+     * unitText can be used to express the units the points are issued in. (E.g.
      * stars, miles, etc.)
      *
      * @param \Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[]|float|float[]|int|int[] $membershipPointsEarned
@@ -196,7 +200,7 @@ class ProgramMembership extends BaseType implements ProgramMembershipContract, I
      * @return static
      *
      * @see https://schema.org/membershipPointsEarned
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2085
      */
     public function membershipPointsEarned($membershipPointsEarned)
@@ -291,5 +295,4 @@ class ProgramMembership extends BaseType implements ProgramMembershipContract, I
     {
         return $this->setProperty('url', $url);
     }
-
 }

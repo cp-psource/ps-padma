@@ -2,9 +2,9 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\RoleContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\RoleContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * Represents additional information about a relationship or property. For
@@ -13,7 +13,7 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
  * Person's 'actor' role in a Movie was for some particular characterName. Such
  * properties can be attached to a Role entity, which is then associated with
  * the main entities using ordinary properties like 'member' or 'actor'.
- * 
+ *
  * See also [blog post](http://blog.schema.org/2014/06/introducing-role.html).
  *
  * @see https://schema.org/Role
@@ -24,10 +24,14 @@ class Role extends BaseType implements RoleContract, IntangibleContract, ThingCo
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -57,7 +61,7 @@ class Role extends BaseType implements RoleContract, IntangibleContract, ThingCo
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -272,5 +276,4 @@ class Role extends BaseType implements RoleContract, IntangibleContract, ThingCo
     {
         return $this->setProperty('url', $url);
     }
-
 }

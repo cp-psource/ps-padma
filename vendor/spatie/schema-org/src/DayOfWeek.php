@@ -2,22 +2,21 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\DayOfWeekContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\DayOfWeekContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * The day of the week, e.g. used to specify to which day the opening hours of
  * an OpeningHoursSpecification refer.
- * 
+ *
  * Originally, URLs from [GoodRelations](http://purl.org/goodrelations/v1) were
  * used (for [[Monday]], [[Tuesday]], [[Wednesday]], [[Thursday]], [[Friday]],
  * [[Saturday]], [[Sunday]] plus a special entry for [[PublicHolidays]]); these
  * have now been integrated directly into schema.org.
  *
  * @see https://schema.org/DayOfWeek
- * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
  */
@@ -28,14 +27,14 @@ class DayOfWeek extends BaseType implements DayOfWeekContract, EnumerationContra
      *
      * @see https://schema.org/Friday
      */
-     const Friday = 'https://schema.org/Friday';
+    public const Friday = 'https://schema.org/Friday';
 
     /**
      * The day of the week between Sunday and Tuesday.
      *
      * @see https://schema.org/Monday
      */
-     const Monday = 'https://schema.org/Monday';
+    public const Monday = 'https://schema.org/Monday';
 
     /**
      * This stands for any day that is a public holiday; it is a placeholder for
@@ -47,52 +46,55 @@ class DayOfWeek extends BaseType implements DayOfWeekContract, EnumerationContra
      * which a public holiday occurs.
      *
      * @see https://schema.org/PublicHolidays
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
      */
-     const PublicHolidays = 'https://schema.org/PublicHolidays';
+    public const PublicHolidays = 'https://schema.org/PublicHolidays';
 
     /**
      * The day of the week between Friday and Sunday.
      *
      * @see https://schema.org/Saturday
      */
-     const Saturday = 'https://schema.org/Saturday';
+    public const Saturday = 'https://schema.org/Saturday';
 
     /**
      * The day of the week between Saturday and Monday.
      *
      * @see https://schema.org/Sunday
      */
-     const Sunday = 'https://schema.org/Sunday';
+    public const Sunday = 'https://schema.org/Sunday';
 
     /**
      * The day of the week between Wednesday and Friday.
      *
      * @see https://schema.org/Thursday
      */
-     const Thursday = 'https://schema.org/Thursday';
+    public const Thursday = 'https://schema.org/Thursday';
 
     /**
      * The day of the week between Monday and Wednesday.
      *
      * @see https://schema.org/Tuesday
      */
-     const Tuesday = 'https://schema.org/Tuesday';
+    public const Tuesday = 'https://schema.org/Tuesday';
 
     /**
      * The day of the week between Tuesday and Thursday.
      *
      * @see https://schema.org/Wednesday
      */
-     const Wednesday = 'https://schema.org/Wednesday';
+    public const Wednesday = 'https://schema.org/Wednesday';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -122,7 +124,7 @@ class DayOfWeek extends BaseType implements DayOfWeekContract, EnumerationContra
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -272,5 +274,4 @@ class DayOfWeek extends BaseType implements DayOfWeekContract, EnumerationContra
     {
         return $this->setProperty('url', $url);
     }
-
 }

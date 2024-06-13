@@ -20,6 +20,8 @@ interface HouseContract
 
     public function amenityFeature($amenityFeature);
 
+    public function bed($bed);
+
     public function branchCode($branchCode);
 
     public function containedIn($containedIn);
@@ -78,6 +80,8 @@ interface HouseContract
 
     public function isicV4($isicV4);
 
+    public function keywords($keywords);
+
     public function latitude($latitude);
 
     public function leaseLength($leaseLength);
@@ -105,6 +109,8 @@ interface HouseContract
     public function numberOfPartialBathrooms($numberOfPartialBathrooms);
 
     public function numberOfRooms($numberOfRooms);
+
+    public function occupancy($occupancy);
 
     public function openingHoursSpecification($openingHoursSpecification);
 
@@ -141,5 +147,4 @@ interface HouseContract
     public function url($url);
 
     public function yearBuilt($yearBuilt);
-
 }

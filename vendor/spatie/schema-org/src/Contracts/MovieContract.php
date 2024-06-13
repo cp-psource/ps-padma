@@ -38,6 +38,8 @@ interface MovieContract
 
     public function alternativeHeadline($alternativeHeadline);
 
+    public function archivedAt($archivedAt);
+
     public function assesses($assesses);
 
     public function associatedMedia($associatedMedia);
@@ -72,6 +74,8 @@ interface MovieContract
 
     public function copyrightHolder($copyrightHolder);
 
+    public function copyrightNotice($copyrightNotice);
+
     public function copyrightYear($copyrightYear);
 
     public function correction($correction);
@@ -82,6 +86,8 @@ interface MovieContract
 
     public function creator($creator);
 
+    public function creditText($creditText);
+
     public function dateCreated($dateCreated);
 
     public function dateModified($dateModified);
@@ -89,6 +95,8 @@ interface MovieContract
     public function datePublished($datePublished);
 
     public function description($description);
+
+    public function digitalSourceType($digitalSourceType);
 
     public function director($director);
 
@@ -124,6 +132,8 @@ interface MovieContract
 
     public function funder($funder);
 
+    public function funding($funding);
+
     public function genre($genre);
 
     public function hasPart($hasPart);
@@ -139,6 +149,8 @@ interface MovieContract
     public function interactionStatistic($interactionStatistic);
 
     public function interactivityType($interactivityType);
+
+    public function interpretedAsClaim($interpretedAsClaim);
 
     public function isAccessibleForFree($isAccessibleForFree);
 
@@ -236,6 +248,8 @@ interface MovieContract
 
     public function text($text);
 
+    public function thumbnail($thumbnail);
+
     public function thumbnailUrl($thumbnailUrl);
 
     public function timeRequired($timeRequired);
@@ -261,5 +275,4 @@ interface MovieContract
     public function workExample($workExample);
 
     public function workTranslation($workTranslation);
-
 }

@@ -18,6 +18,8 @@ interface AggregateOfferContract
 
     public function areaServed($areaServed);
 
+    public function asin($asin);
+
     public function availability($availability);
 
     public function availabilityEnds($availabilityEnds);
@@ -31,6 +33,8 @@ interface AggregateOfferContract
     public function businessFunction($businessFunction);
 
     public function category($category);
+
+    public function checkoutPageURLTemplate($checkoutPageURLTemplate);
 
     public function deliveryLeadTime($deliveryLeadTime);
 
@@ -58,6 +62,12 @@ interface AggregateOfferContract
 
     public function gtin8($gtin8);
 
+    public function hasAdultConsideration($hasAdultConsideration);
+
+    public function hasMeasurement($hasMeasurement);
+
+    public function hasMerchantReturnPolicy($hasMerchantReturnPolicy);
+
     public function highPrice($highPrice);
 
     public function identifier($identifier);
@@ -70,6 +80,8 @@ interface AggregateOfferContract
 
     public function inventoryLevel($inventoryLevel);
 
+    public function isFamilyFriendly($isFamilyFriendly);
+
     public function itemCondition($itemCondition);
 
     public function itemOffered($itemOffered);
@@ -79,6 +91,8 @@ interface AggregateOfferContract
     public function lowPrice($lowPrice);
 
     public function mainEntityOfPage($mainEntityOfPage);
+
+    public function mobileUrl($mobileUrl);
 
     public function mpn($mpn);
 
@@ -123,5 +137,4 @@ interface AggregateOfferContract
     public function validThrough($validThrough);
 
     public function warranty($warranty);
-
 }

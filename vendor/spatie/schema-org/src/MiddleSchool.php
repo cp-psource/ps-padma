@@ -2,12 +2,12 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\MiddleSchoolContract;
-use \Spatie\SchemaOrg\Contracts\CivicStructureContract;
-use \Spatie\SchemaOrg\Contracts\EducationalOrganizationContract;
-use \Spatie\SchemaOrg\Contracts\OrganizationContract;
-use \Spatie\SchemaOrg\Contracts\PlaceContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\CivicStructureContract;
+use Spatie\SchemaOrg\Contracts\EducationalOrganizationContract;
+use Spatie\SchemaOrg\Contracts\MiddleSchoolContract;
+use Spatie\SchemaOrg\Contracts\OrganizationContract;
+use Spatie\SchemaOrg\Contracts\PlaceContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A middle school (typically for children aged around 11-14, although this
@@ -29,7 +29,8 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/actionableFeedbackPolicy
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1525
      */
     public function actionableFeedbackPolicy($actionableFeedbackPolicy)
     {
@@ -37,10 +38,10 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
     }
 
     /**
-     * A property-value pair representing an additional characteristics of the
-     * entitity, e.g. a product feature or another characteristic for which
-     * there is no matching property in schema.org.
-     * 
+     * A property-value pair representing an additional characteristic of the
+     * entity, e.g. a product feature or another characteristic for which there
+     * is no matching property in schema.org.
+     *
      * Note: Publishers should be aware that applications designed to use
      * specific schema.org properties (e.g. https://schema.org/width,
      * https://schema.org/color, https://schema.org/gtin13, ...) will typically
@@ -61,10 +62,14 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -89,6 +94,24 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
     public function address($address)
     {
         return $this->setProperty('address', $address);
+    }
+
+    /**
+     * The number of completed interactions for this entity, in a particular
+     * role (the 'agent'), in a particular action (indicated in the statistic),
+     * and in a particular context (i.e. interactionService).
+     *
+     * @param \Spatie\SchemaOrg\Contracts\InteractionCounterContract|\Spatie\SchemaOrg\Contracts\InteractionCounterContract[] $agentInteractionStatistic
+     *
+     * @return static
+     *
+     * @see https://schema.org/agentInteractionStatistic
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2858
+     */
+    public function agentInteractionStatistic($agentInteractionStatistic)
+    {
+        return $this->setProperty('agentInteractionStatistic', $agentInteractionStatistic);
     }
 
     /**
@@ -145,7 +168,6 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/amenityFeature
-     * @link https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#STI_Accommodation_Ontology
      */
     public function amenityFeature($amenityFeature)
     {
@@ -198,7 +220,7 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * A short textual code (also called "store code") that uniquely identifies
      * a place of business. The code is typically assigned by the
      * parentOrganization and used in structured URLs.
-     * 
+     *
      * For example, in the URL
      * http://www.starbucks.co.uk/store-locator/etc/detail/3047 the code "3047"
      * is a branchCode for a particular branch.
@@ -310,7 +332,8 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/correctionsPolicy
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1525
      */
     public function correctionsPolicy($correctionsPolicy)
     {
@@ -337,7 +360,7 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -390,7 +413,8 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/diversityPolicy
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1525
      */
     public function diversityPolicy($diversityPolicy)
     {
@@ -408,7 +432,8 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/diversityStaffingReport
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1525
      */
     public function diversityStaffingReport($diversityStaffingReport)
     {
@@ -424,7 +449,6 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/duns
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function duns($duns)
     {
@@ -486,7 +510,7 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/ethicsPolicy
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1525
      */
     public function ethicsPolicy($ethicsPolicy)
@@ -609,6 +633,23 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
     }
 
     /**
+     * A [[Grant]] that directly or indirectly provide funding or sponsorship
+     * for this item. See also [[ownershipFundingInfo]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\GrantContract|\Spatie\SchemaOrg\Contracts\GrantContract[] $funding
+     *
+     * @return static
+     *
+     * @see https://schema.org/funding
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/383
+     */
+    public function funding($funding)
+    {
+        return $this->setProperty('funding', $funding);
+    }
+
+    /**
      * The geo coordinates of the place.
      *
      * @param \Spatie\SchemaOrg\Contracts\GeoCoordinatesContract|\Spatie\SchemaOrg\Contracts\GeoCoordinatesContract[]|\Spatie\SchemaOrg\Contracts\GeoShapeContract|\Spatie\SchemaOrg\Contracts\GeoShapeContract[] $geo
@@ -693,9 +734,9 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
 
     /**
      * Represents spatial relations in which two geometries (or the places they
-     * represent) are topologically disjoint: they have no point in common. They
-     * form a set of disconnected geometries." (a symmetric relationship, as
-     * defined in [DE-9IM](https://en.wikipedia.org/wiki/DE-9IM))
+     * represent) are topologically disjoint: "they have no point in common.
+     * They form a set of disconnected geometries." (A symmetric relationship,
+     * as defined in [DE-9IM](https://en.wikipedia.org/wiki/DE-9IM).)
      *
      * @param \Spatie\SchemaOrg\Contracts\GeospatialGeometryContract|\Spatie\SchemaOrg\Contracts\GeospatialGeometryContract[]|\Spatie\SchemaOrg\Contracts\PlaceContract|\Spatie\SchemaOrg\Contracts\PlaceContract[] $geoDisjoint
      *
@@ -714,7 +755,7 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * [DE-9IM](https://en.wikipedia.org/wiki/DE-9IM). "Two geometries are
      * topologically equal if their interiors intersect and no part of the
      * interior or boundary of one geometry intersects the exterior of the
-     * other" (a symmetric relationship)
+     * other" (a symmetric relationship).
      *
      * @param \Spatie\SchemaOrg\Contracts\GeospatialGeometryContract|\Spatie\SchemaOrg\Contracts\GeospatialGeometryContract[]|\Spatie\SchemaOrg\Contracts\PlaceContract|\Spatie\SchemaOrg\Contracts\PlaceContract[] $geoEquals
      *
@@ -762,9 +803,9 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
 
     /**
      * Represents spatial relations in which two geometries (or the places they
-     * represent) touch: they have at least one boundary point in common, but no
-     * interior points." (a symmetric relationship, as defined in
-     * [DE-9IM](https://en.wikipedia.org/wiki/DE-9IM) )
+     * represent) touch: "they have at least one boundary point in common, but
+     * no interior points." (A symmetric relationship, as defined in
+     * [DE-9IM](https://en.wikipedia.org/wiki/DE-9IM).)
      *
      * @param \Spatie\SchemaOrg\Contracts\GeospatialGeometryContract|\Spatie\SchemaOrg\Contracts\GeospatialGeometryContract[]|\Spatie\SchemaOrg\Contracts\PlaceContract|\Spatie\SchemaOrg\Contracts\PlaceContract[] $geoTouches
      *
@@ -805,7 +846,6 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/globalLocationNumber
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function globalLocationNumber($globalLocationNumber)
     {
@@ -820,7 +860,7 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/hasCredential
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2289
      */
     public function hasCredential($hasCredential)
@@ -840,7 +880,7 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/hasDriveThroughService
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2490
      */
     public function hasDriveThroughService($hasDriveThroughService)
@@ -863,14 +903,14 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
     }
 
     /**
-     * Indicates a MerchantReturnPolicy that may be applicable.
+     * Specifies a MerchantReturnPolicy that may be applicable.
      *
      * @param \Spatie\SchemaOrg\Contracts\MerchantReturnPolicyContract|\Spatie\SchemaOrg\Contracts\MerchantReturnPolicyContract[] $hasMerchantReturnPolicy
      *
      * @return static
      *
      * @see https://schema.org/hasMerchantReturnPolicy
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2288
      */
     public function hasMerchantReturnPolicy($hasMerchantReturnPolicy)
@@ -901,7 +941,6 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/hasPOS
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function hasPOS($hasPOS)
     {
@@ -916,7 +955,7 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/hasProductReturnPolicy
-     * @see http://attic.schema.org
+     * @see https://attic.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2288
      */
     public function hasProductReturnPolicy($hasProductReturnPolicy)
@@ -998,11 +1037,47 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/isicV4
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function isicV4($isicV4)
     {
         return $this->setProperty('isicV4', $isicV4);
+    }
+
+    /**
+     * An organization identifier as defined in ISO 6523(-1). Note that many
+     * existing organization identifiers such as
+     * [leiCode](https://schema.org/leiCode), [duns](https://schema.org/duns)
+     * and [vatID](https://schema.org/vatID) can be expressed as an ISO 6523
+     * identifier by setting the ICD part of the ISO 6523 identifier
+     * accordingly.
+     *
+     * @param string|string[] $iso6523Code
+     *
+     * @return static
+     *
+     * @see https://schema.org/iso6523Code
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2915
+     */
+    public function iso6523Code($iso6523Code)
+    {
+        return $this->setProperty('iso6523Code', $iso6523Code);
+    }
+
+    /**
+     * Keywords or tags used to describe some item. Multiple textual entries in
+     * a keywords list are typically delimited by commas, or by repeating the
+     * property.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|string|string[] $keywords
+     *
+     * @return static
+     *
+     * @see https://schema.org/keywords
+     */
+    public function keywords($keywords)
+    {
+        return $this->setProperty('keywords', $keywords);
     }
 
     /**
@@ -1016,7 +1091,8 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/knowsAbout
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1688
      */
     public function knowsAbout($knowsAbout)
     {
@@ -1034,7 +1110,8 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/knowsLanguage
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1688
      */
     public function knowsLanguage($knowsLanguage)
     {
@@ -1064,7 +1141,6 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/legalName
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function legalName($legalName)
     {
@@ -1087,8 +1163,8 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
     }
 
     /**
-     * The location of for example where the event is happening, an organization
-     * is located, or where an action takes place.
+     * The location of, for example, where an event is happening, where an
+     * organization is located, or where an action takes place.
      *
      * @param \Spatie\SchemaOrg\Contracts\PlaceContract|\Spatie\SchemaOrg\Contracts\PlaceContract[]|\Spatie\SchemaOrg\Contracts\PostalAddressContract|\Spatie\SchemaOrg\Contracts\PostalAddressContract[]|\Spatie\SchemaOrg\Contracts\VirtualLocationContract|\Spatie\SchemaOrg\Contracts\VirtualLocationContract[]|string|string[] $location
      *
@@ -1109,7 +1185,6 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/logo
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function logo($logo)
     {
@@ -1155,7 +1230,6 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/makesOffer
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function makesOffer($makesOffer)
     {
@@ -1257,7 +1331,6 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/naics
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function naics($naics)
     {
@@ -1279,7 +1352,7 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
     }
 
     /**
-     * nonprofit Status indicates the legal status of a non-profit organization
+     * nonprofitStatus indicates the legal status of a non-profit organization
      * in its primary place of business.
      *
      * @param \Spatie\SchemaOrg\Contracts\NonprofitTypeContract|\Spatie\SchemaOrg\Contracts\NonprofitTypeContract[] $nonprofitStatus
@@ -1287,7 +1360,7 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/nonprofitStatus
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2543
      */
     public function nonprofitStatus($nonprofitStatus)
@@ -1296,7 +1369,7 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
     }
 
     /**
-     * The number of employees in an organization e.g. business.
+     * The number of employees in an organization, e.g. business.
      *
      * @param \Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[] $numberOfEmployees
      *
@@ -1314,11 +1387,11 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * as a weekly time range, starting with days, then times per day. Multiple
      * days can be listed with commas ',' separating each day. Day or time
      * ranges are specified using a hyphen '-'.
-     * 
+     *
      * * Days are specified using the following two-letter combinations:
      * ```Mo```, ```Tu```, ```We```, ```Th```, ```Fr```, ```Sa```, ```Su```.
-     * * Times are specified using 24:00 time. For example, 3pm is specified as
-     * ```15:00```. 
+     * * Times are specified using 24:00 format. For example, 3pm is specified
+     * as ```15:00```, 10am as ```10:00```.
      * * Here is an example: ```<time itemprop="openingHours" datetime="Tu,Th
      * 16:00-20:00">Tuesdays and Thursdays 4-8pm</time>```.
      * * If a business is open 7 days a week, then it can be specified as
@@ -1344,7 +1417,6 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/openingHoursSpecification
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function openingHoursSpecification($openingHoursSpecification)
     {
@@ -1364,7 +1436,8 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/ownershipFundingInfo
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1525
      */
     public function ownershipFundingInfo($ownershipFundingInfo)
     {
@@ -1379,7 +1452,6 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/owns
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function owns($owns)
     {
@@ -1446,7 +1518,7 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
 
     /**
      * A flag to signal that the [[Place]] is open to public visitors.  If this
-     * property is omitted there is no assumed default boolean value
+     * property is omitted there is no assumed default boolean value.
      *
      * @param bool|bool[] $publicAccess
      *
@@ -1462,12 +1534,12 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
     /**
      * The publishingPrinciples property indicates (typically via [[URL]]) a
      * document describing the editorial principles of an [[Organization]] (or
-     * individual e.g. a [[Person]] writing a blog) that relate to their
+     * individual, e.g. a [[Person]] writing a blog) that relate to their
      * activities as a publisher, e.g. ethics or diversity policies. When
      * applied to a [[CreativeWork]] (e.g. [[NewsArticle]]) the principles are
      * those of the party primarily responsible for the creation of the
      * [[CreativeWork]].
-     * 
+     *
      * While such policies are most typically expressed in natural language,
      * sometimes related information (e.g. indicating a [[funder]]) can be
      * expressed using schema.org terminology.
@@ -1536,7 +1608,6 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/seeks
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function seeks($seeks)
     {
@@ -1580,7 +1651,6 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/smokingAllowed
-     * @link https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#STI_Accommodation_Ontology
      */
     public function smokingAllowed($smokingAllowed)
     {
@@ -1589,7 +1659,7 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
 
     /**
      * The special opening hours of a certain place.
-     * 
+     *
      * Use this to explicitly override general opening hours brought in scope by
      * [[openingHoursSpecification]] or [[openingHours]].
      *
@@ -1606,7 +1676,7 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
 
     /**
      * A person or organization that supports a thing through a pledge, promise,
-     * or financial contribution. e.g. a sponsor of a Medical Study or a
+     * or financial contribution. E.g. a sponsor of a Medical Study or a
      * corporate sponsor of an event.
      *
      * @param \Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[]|\Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[] $sponsor
@@ -1660,7 +1730,6 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/taxID
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function taxID($taxID)
     {
@@ -1691,7 +1760,7 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/tourBookingPage
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2373
      */
     public function tourBookingPage($tourBookingPage)
@@ -1709,7 +1778,8 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/unnamedSourcesPolicy
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1525
      */
     public function unnamedSourcesPolicy($unnamedSourcesPolicy)
     {
@@ -1738,11 +1808,9 @@ class MiddleSchool extends BaseType implements MiddleSchoolContract, CivicStruct
      * @return static
      *
      * @see https://schema.org/vatID
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function vatID($vatID)
     {
         return $this->setProperty('vatID', $vatID);
     }
-
 }

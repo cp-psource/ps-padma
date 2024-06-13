@@ -38,6 +38,8 @@ interface PaintActionContract
 
     public function potentialAction($potentialAction);
 
+    public function provider($provider);
+
     public function result($result);
 
     public function sameAs($sameAs);
@@ -49,5 +51,4 @@ interface PaintActionContract
     public function target($target);
 
     public function url($url);
-
 }

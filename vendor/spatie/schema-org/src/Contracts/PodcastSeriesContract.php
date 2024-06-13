@@ -26,6 +26,8 @@ interface PodcastSeriesContract
 
     public function acquireLicensePage($acquireLicensePage);
 
+    public function actor($actor);
+
     public function additionalType($additionalType);
 
     public function aggregateRating($aggregateRating);
@@ -33,6 +35,8 @@ interface PodcastSeriesContract
     public function alternateName($alternateName);
 
     public function alternativeHeadline($alternativeHeadline);
+
+    public function archivedAt($archivedAt);
 
     public function assesses($assesses);
 
@@ -68,13 +72,19 @@ interface PodcastSeriesContract
 
     public function copyrightHolder($copyrightHolder);
 
+    public function copyrightNotice($copyrightNotice);
+
     public function copyrightYear($copyrightYear);
 
     public function correction($correction);
 
+    public function countryOfOrigin($countryOfOrigin);
+
     public function creativeWorkStatus($creativeWorkStatus);
 
     public function creator($creator);
+
+    public function creditText($creditText);
 
     public function dateCreated($dateCreated);
 
@@ -83,6 +93,8 @@ interface PodcastSeriesContract
     public function datePublished($datePublished);
 
     public function description($description);
+
+    public function digitalSourceType($digitalSourceType);
 
     public function disambiguatingDescription($disambiguatingDescription);
 
@@ -114,6 +126,8 @@ interface PodcastSeriesContract
 
     public function funder($funder);
 
+    public function funding($funding);
+
     public function genre($genre);
 
     public function hasPart($hasPart);
@@ -129,6 +143,8 @@ interface PodcastSeriesContract
     public function interactionStatistic($interactionStatistic);
 
     public function interactivityType($interactivityType);
+
+    public function interpretedAsClaim($interpretedAsClaim);
 
     public function isAccessibleForFree($isAccessibleForFree);
 
@@ -224,6 +240,8 @@ interface PodcastSeriesContract
 
     public function text($text);
 
+    public function thumbnail($thumbnail);
+
     public function thumbnailUrl($thumbnailUrl);
 
     public function timeRequired($timeRequired);
@@ -247,5 +265,4 @@ interface PodcastSeriesContract
     public function workExample($workExample);
 
     public function workTranslation($workTranslation);
-
 }

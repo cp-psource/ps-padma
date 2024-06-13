@@ -20,6 +20,8 @@ interface ApartmentContract
 
     public function amenityFeature($amenityFeature);
 
+    public function bed($bed);
+
     public function branchCode($branchCode);
 
     public function containedIn($containedIn);
@@ -77,6 +79,8 @@ interface ApartmentContract
     public function isAccessibleForFree($isAccessibleForFree);
 
     public function isicV4($isicV4);
+
+    public function keywords($keywords);
 
     public function latitude($latitude);
 
@@ -143,5 +147,4 @@ interface ApartmentContract
     public function url($url);
 
     public function yearBuilt($yearBuilt);
-
 }

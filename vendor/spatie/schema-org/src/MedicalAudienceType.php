@@ -2,17 +2,17 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\MedicalAudienceTypeContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\MedicalEnumerationContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\MedicalAudienceTypeContract;
+use Spatie\SchemaOrg\Contracts\MedicalEnumerationContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * Target audiences types for medical web pages. Enumerated type.
  *
  * @see https://schema.org/MedicalAudienceType
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
  */
@@ -23,25 +23,29 @@ class MedicalAudienceType extends BaseType implements MedicalAudienceTypeContrac
      * professionals involved in clinical practice.
      *
      * @see https://schema.org/Clinician
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const Clinician = 'https://schema.org/Clinician';
+    public const Clinician = 'https://schema.org/Clinician';
 
     /**
      * Medical researchers.
      *
      * @see https://schema.org/MedicalResearcher
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const MedicalResearcher = 'https://schema.org/MedicalResearcher';
+    public const MedicalResearcher = 'https://schema.org/MedicalResearcher';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -71,7 +75,7 @@ class MedicalAudienceType extends BaseType implements MedicalAudienceTypeContrac
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -221,5 +225,4 @@ class MedicalAudienceType extends BaseType implements MedicalAudienceTypeContrac
     {
         return $this->setProperty('url', $url);
     }
-
 }

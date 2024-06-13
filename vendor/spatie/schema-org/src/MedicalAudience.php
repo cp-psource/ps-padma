@@ -2,17 +2,17 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\MedicalAudienceContract;
-use \Spatie\SchemaOrg\Contracts\AudienceContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\PeopleAudienceContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\AudienceContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\MedicalAudienceContract;
+use Spatie\SchemaOrg\Contracts\PeopleAudienceContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * Target audiences for medical web pages.
  *
  * @see https://schema.org/MedicalAudience
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  */
 class MedicalAudience extends BaseType implements MedicalAudienceContract, AudienceContract, IntangibleContract, PeopleAudienceContract, ThingContract
@@ -20,10 +20,14 @@ class MedicalAudience extends BaseType implements MedicalAudienceContract, Audie
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -68,7 +72,7 @@ class MedicalAudience extends BaseType implements MedicalAudienceContract, Audie
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -119,7 +123,7 @@ class MedicalAudience extends BaseType implements MedicalAudienceContract, Audie
      * @return static
      *
      * @see https://schema.org/healthCondition
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function healthCondition($healthCondition)
     {
@@ -278,9 +282,27 @@ class MedicalAudience extends BaseType implements MedicalAudienceContract, Audie
     }
 
     /**
-     * The gender of the person or audience.
+     * The age or age range for the intended audience or person, for example
+     * 3-12 months for infants, 1-5 years for toddlers.
      *
-     * @param string|string[] $suggestedGender
+     * @param \Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[] $suggestedAge
+     *
+     * @return static
+     *
+     * @see https://schema.org/suggestedAge
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2811
+     */
+    public function suggestedAge($suggestedAge)
+    {
+        return $this->setProperty('suggestedAge', $suggestedAge);
+    }
+
+    /**
+     * The suggested gender of the intended person or audience, for example
+     * "male", "female", or "unisex".
+     *
+     * @param \Spatie\SchemaOrg\Contracts\GenderTypeContract|\Spatie\SchemaOrg\Contracts\GenderTypeContract[]|string|string[] $suggestedGender
      *
      * @return static
      *
@@ -292,7 +314,7 @@ class MedicalAudience extends BaseType implements MedicalAudienceContract, Audie
     }
 
     /**
-     * Maximal age recommended for viewing content.
+     * Maximum recommended age in years for the audience or user.
      *
      * @param float|float[]|int|int[] $suggestedMaxAge
      *
@@ -306,7 +328,25 @@ class MedicalAudience extends BaseType implements MedicalAudienceContract, Audie
     }
 
     /**
-     * Minimal age recommended for viewing content.
+     * A suggested range of body measurements for the intended audience or
+     * person, for example inseam between 32 and 34 inches or height between 170
+     * and 190 cm. Typically found on a size chart for wearable products.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[] $suggestedMeasurement
+     *
+     * @return static
+     *
+     * @see https://schema.org/suggestedMeasurement
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2811
+     */
+    public function suggestedMeasurement($suggestedMeasurement)
+    {
+        return $this->setProperty('suggestedMeasurement', $suggestedMeasurement);
+    }
+
+    /**
+     * Minimum recommended age in years for the audience or user.
      *
      * @param float|float[]|int|int[] $suggestedMinAge
      *
@@ -332,5 +372,4 @@ class MedicalAudience extends BaseType implements MedicalAudienceContract, Audie
     {
         return $this->setProperty('url', $url);
     }
-
 }

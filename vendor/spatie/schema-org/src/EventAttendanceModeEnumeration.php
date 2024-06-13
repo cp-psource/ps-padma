@@ -2,17 +2,17 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\EventAttendanceModeEnumerationContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\EventAttendanceModeEnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * An EventAttendanceModeEnumeration value is one of potentially several modes
  * of organising an event, relating to whether it is online or offline.
  *
  * @see https://schema.org/EventAttendanceModeEnumeration
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
  * @link https://github.com/schemaorg/schemaorg/issues/1842
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
@@ -24,37 +24,41 @@ class EventAttendanceModeEnumeration extends BaseType implements EventAttendance
      * both offline and online modes.
      *
      * @see https://schema.org/MixedEventAttendanceMode
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1842
      */
-     const MixedEventAttendanceMode = 'https://schema.org/MixedEventAttendanceMode';
+    public const MixedEventAttendanceMode = 'https://schema.org/MixedEventAttendanceMode';
 
     /**
      * OfflineEventAttendanceMode - an event that is primarily conducted
      * offline.
      *
      * @see https://schema.org/OfflineEventAttendanceMode
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1842
      */
-     const OfflineEventAttendanceMode = 'https://schema.org/OfflineEventAttendanceMode';
+    public const OfflineEventAttendanceMode = 'https://schema.org/OfflineEventAttendanceMode';
 
     /**
      * OnlineEventAttendanceMode - an event that is primarily conducted online.
      *
      * @see https://schema.org/OnlineEventAttendanceMode
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1842
      */
-     const OnlineEventAttendanceMode = 'https://schema.org/OnlineEventAttendanceMode';
+    public const OnlineEventAttendanceMode = 'https://schema.org/OnlineEventAttendanceMode';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -84,7 +88,7 @@ class EventAttendanceModeEnumeration extends BaseType implements EventAttendance
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -234,5 +238,4 @@ class EventAttendanceModeEnumeration extends BaseType implements EventAttendance
     {
         return $this->setProperty('url', $url);
     }
-
 }

@@ -80,6 +80,8 @@ interface HotelRoomContract
 
     public function isicV4($isicV4);
 
+    public function keywords($keywords);
+
     public function latitude($latitude);
 
     public function leaseLength($leaseLength);
@@ -145,5 +147,4 @@ interface HotelRoomContract
     public function url($url);
 
     public function yearBuilt($yearBuilt);
-
 }

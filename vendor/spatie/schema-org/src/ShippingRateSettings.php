@@ -2,10 +2,10 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\ShippingRateSettingsContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\StructuredValueContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\ShippingRateSettingsContract;
+use Spatie\SchemaOrg\Contracts\StructuredValueContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A ShippingRateSettings represents re-usable pieces of shipping information.
@@ -15,7 +15,7 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
  * identified/referenced) by their different values for [[shippingLabel]].
  *
  * @see https://schema.org/ShippingRateSettings
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
  * @link https://github.com/schemaorg/schemaorg/issues/2506
  *
  */
@@ -24,10 +24,14 @@ class ShippingRateSettings extends BaseType implements ShippingRateSettingsContr
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -57,7 +61,7 @@ class ShippingRateSettings extends BaseType implements ShippingRateSettingsContr
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -94,7 +98,7 @@ class ShippingRateSettings extends BaseType implements ShippingRateSettingsContr
      * @return static
      *
      * @see https://schema.org/doesNotShip
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2506
      */
     public function doesNotShip($doesNotShip)
@@ -103,8 +107,8 @@ class ShippingRateSettings extends BaseType implements ShippingRateSettingsContr
     }
 
     /**
-     * A monetary value above which (or equal to) the shipping rate becomes
-     * free. Intended to be used via an [[OfferShippingDetails]] with
+     * A monetary value above (or at) which the shipping rate becomes free.
+     * Intended to be used via an [[OfferShippingDetails]] with
      * [[shippingSettingsLink]] matching this [[ShippingRateSettings]].
      *
      * @param \Spatie\SchemaOrg\Contracts\DeliveryChargeSpecificationContract|\Spatie\SchemaOrg\Contracts\DeliveryChargeSpecificationContract[]|\Spatie\SchemaOrg\Contracts\MonetaryAmountContract|\Spatie\SchemaOrg\Contracts\MonetaryAmountContract[] $freeShippingThreshold
@@ -112,7 +116,7 @@ class ShippingRateSettings extends BaseType implements ShippingRateSettingsContr
      * @return static
      *
      * @see https://schema.org/freeShippingThreshold
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2506
      */
     public function freeShippingThreshold($freeShippingThreshold)
@@ -168,7 +172,7 @@ class ShippingRateSettings extends BaseType implements ShippingRateSettingsContr
      * @return static
      *
      * @see https://schema.org/isUnlabelledFallback
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2506
      */
     public function isUnlabelledFallback($isUnlabelledFallback)
@@ -239,14 +243,14 @@ class ShippingRateSettings extends BaseType implements ShippingRateSettingsContr
 
     /**
      * indicates (possibly multiple) shipping destinations. These can be defined
-     * in several ways e.g. postalCode ranges.
+     * in several ways, e.g. postalCode ranges.
      *
      * @param \Spatie\SchemaOrg\Contracts\DefinedRegionContract|\Spatie\SchemaOrg\Contracts\DefinedRegionContract[] $shippingDestination
      *
      * @return static
      *
      * @see https://schema.org/shippingDestination
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2506
      */
     public function shippingDestination($shippingDestination)
@@ -264,7 +268,7 @@ class ShippingRateSettings extends BaseType implements ShippingRateSettingsContr
      * @return static
      *
      * @see https://schema.org/shippingLabel
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2506
      */
     public function shippingLabel($shippingLabel)
@@ -282,7 +286,7 @@ class ShippingRateSettings extends BaseType implements ShippingRateSettingsContr
      * @return static
      *
      * @see https://schema.org/shippingRate
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2506
      */
     public function shippingRate($shippingRate)
@@ -318,5 +322,4 @@ class ShippingRateSettings extends BaseType implements ShippingRateSettingsContr
     {
         return $this->setProperty('url', $url);
     }
-
 }

@@ -42,12 +42,15 @@ interface ParentAudienceContract
 
     public function subjectOf($subjectOf);
 
+    public function suggestedAge($suggestedAge);
+
     public function suggestedGender($suggestedGender);
 
     public function suggestedMaxAge($suggestedMaxAge);
 
+    public function suggestedMeasurement($suggestedMeasurement);
+
     public function suggestedMinAge($suggestedMinAge);
 
     public function url($url);
-
 }

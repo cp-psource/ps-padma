@@ -2,17 +2,17 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\VeinContract;
-use \Spatie\SchemaOrg\Contracts\AnatomicalStructureContract;
-use \Spatie\SchemaOrg\Contracts\MedicalEntityContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
-use \Spatie\SchemaOrg\Contracts\VesselContract;
+use Spatie\SchemaOrg\Contracts\AnatomicalStructureContract;
+use Spatie\SchemaOrg\Contracts\MedicalEntityContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\VeinContract;
+use Spatie\SchemaOrg\Contracts\VesselContract;
 
 /**
  * A type of blood vessel that specifically carries blood to the heart.
  *
  * @see https://schema.org/Vein
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  */
 class Vein extends BaseType implements VeinContract, AnatomicalStructureContract, MedicalEntityContract, ThingContract, VesselContract
@@ -20,10 +20,14 @@ class Vein extends BaseType implements VeinContract, AnatomicalStructureContract
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -60,7 +64,7 @@ class Vein extends BaseType implements VeinContract, AnatomicalStructureContract
      * @return static
      *
      * @see https://schema.org/associatedPathophysiology
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function associatedPathophysiology($associatedPathophysiology)
     {
@@ -75,7 +79,7 @@ class Vein extends BaseType implements VeinContract, AnatomicalStructureContract
      * @return static
      *
      * @see https://schema.org/bodyLocation
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function bodyLocation($bodyLocation)
     {
@@ -91,7 +95,7 @@ class Vein extends BaseType implements VeinContract, AnatomicalStructureContract
      * @return static
      *
      * @see https://schema.org/code
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function code($code)
     {
@@ -106,7 +110,7 @@ class Vein extends BaseType implements VeinContract, AnatomicalStructureContract
      * @return static
      *
      * @see https://schema.org/connectedTo
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function connectedTo($connectedTo)
     {
@@ -116,7 +120,7 @@ class Vein extends BaseType implements VeinContract, AnatomicalStructureContract
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -136,7 +140,7 @@ class Vein extends BaseType implements VeinContract, AnatomicalStructureContract
      * @return static
      *
      * @see https://schema.org/diagram
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function diagram($diagram)
     {
@@ -168,11 +172,28 @@ class Vein extends BaseType implements VeinContract, AnatomicalStructureContract
      * @return static
      *
      * @see https://schema.org/drainsTo
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function drainsTo($drainsTo)
     {
         return $this->setProperty('drainsTo', $drainsTo);
+    }
+
+    /**
+     * A [[Grant]] that directly or indirectly provide funding or sponsorship
+     * for this item. See also [[ownershipFundingInfo]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\GrantContract|\Spatie\SchemaOrg\Contracts\GrantContract[] $funding
+     *
+     * @return static
+     *
+     * @see https://schema.org/funding
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/383
+     */
+    public function funding($funding)
+    {
+        return $this->setProperty('funding', $funding);
     }
 
     /**
@@ -183,7 +204,7 @@ class Vein extends BaseType implements VeinContract, AnatomicalStructureContract
      * @return static
      *
      * @see https://schema.org/guideline
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function guideline($guideline)
     {
@@ -232,7 +253,7 @@ class Vein extends BaseType implements VeinContract, AnatomicalStructureContract
      * @return static
      *
      * @see https://schema.org/legalStatus
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function legalStatus($legalStatus)
     {
@@ -264,7 +285,7 @@ class Vein extends BaseType implements VeinContract, AnatomicalStructureContract
      * @return static
      *
      * @see https://schema.org/medicineSystem
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function medicineSystem($medicineSystem)
     {
@@ -293,7 +314,7 @@ class Vein extends BaseType implements VeinContract, AnatomicalStructureContract
      * @return static
      *
      * @see https://schema.org/partOfSystem
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function partOfSystem($partOfSystem)
     {
@@ -324,7 +345,7 @@ class Vein extends BaseType implements VeinContract, AnatomicalStructureContract
      * @return static
      *
      * @see https://schema.org/recognizingAuthority
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function recognizingAuthority($recognizingAuthority)
     {
@@ -340,7 +361,7 @@ class Vein extends BaseType implements VeinContract, AnatomicalStructureContract
      * @return static
      *
      * @see https://schema.org/regionDrained
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function regionDrained($regionDrained)
     {
@@ -355,7 +376,7 @@ class Vein extends BaseType implements VeinContract, AnatomicalStructureContract
      * @return static
      *
      * @see https://schema.org/relatedCondition
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function relatedCondition($relatedCondition)
     {
@@ -370,7 +391,7 @@ class Vein extends BaseType implements VeinContract, AnatomicalStructureContract
      * @return static
      *
      * @see https://schema.org/relatedTherapy
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function relatedTherapy($relatedTherapy)
     {
@@ -385,7 +406,7 @@ class Vein extends BaseType implements VeinContract, AnatomicalStructureContract
      * @return static
      *
      * @see https://schema.org/relevantSpecialty
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function relevantSpecialty($relevantSpecialty)
     {
@@ -416,7 +437,7 @@ class Vein extends BaseType implements VeinContract, AnatomicalStructureContract
      * @return static
      *
      * @see https://schema.org/study
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function study($study)
     {
@@ -431,7 +452,7 @@ class Vein extends BaseType implements VeinContract, AnatomicalStructureContract
      * @return static
      *
      * @see https://schema.org/subStructure
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function subStructure($subStructure)
     {
@@ -462,7 +483,7 @@ class Vein extends BaseType implements VeinContract, AnatomicalStructureContract
      * @return static
      *
      * @see https://schema.org/tributary
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function tributary($tributary)
     {
@@ -482,5 +503,4 @@ class Vein extends BaseType implements VeinContract, AnatomicalStructureContract
     {
         return $this->setProperty('url', $url);
     }
-
 }

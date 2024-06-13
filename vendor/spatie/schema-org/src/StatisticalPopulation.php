@@ -2,9 +2,9 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\StatisticalPopulationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\StatisticalPopulationContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A StatisticalPopulation is a set of instances of a certain given type that
@@ -12,20 +12,21 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
  * specify the type. Any property that can be used on instances of that type can
  * appear on the statistical population. For example, a
  * [[StatisticalPopulation]] representing all [[Person]]s with a
- * [[homeLocation]] of East Podunk California, would be described by applying
- * the appropriate [[homeLocation]] and [[populationType]] properties to a
+ * [[homeLocation]] of East Podunk California would be described by applying the
+ * appropriate [[homeLocation]] and [[populationType]] properties to a
  * [[StatisticalPopulation]] item that stands for that set of people.
- * The properties [[numConstraints]] and [[constrainingProperties]] are used to
+ * The properties [[numConstraints]] and [[constraintProperty]] are used to
  * specify which of the populations properties are used to specify the
  * population. Note that the sense of "population" used here is the general
  * sense of a statistical
  * population, and does not imply that the population consists of people. For
  * example, a [[populationType]] of [[Event]] or [[NewsArticle]] could be used.
- * See also [[Observation]], and the [data and
- * datasets](/docs/data-and-datasets.html) overview for more details.
+ * See also [[Observation]], where a [[populationType]] such as [[Person]] or
+ * [[Event]] can be indicated directly. In most cases it may be better to use
+ * [[StatisticalVariable]] instead of [[StatisticalPopulation]].
  *
  * @see https://schema.org/StatisticalPopulation
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
  * @link https://github.com/schemaorg/schemaorg/issues/2291
  *
  * @method static populationType($populationType) The value should be instance of pending types Class|Class[]
@@ -35,10 +36,14 @@ class StatisticalPopulation extends BaseType implements StatisticalPopulationCon
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -66,27 +71,9 @@ class StatisticalPopulation extends BaseType implements StatisticalPopulationCon
     }
 
     /**
-     * Indicates a property used as a constraint to define a
-     * [[StatisticalPopulation]] with respect to the set of entities
-     *   corresponding to an indicated type (via [[populationType]]).
-     *
-     * @param int|int[] $constrainingProperty
-     *
-     * @return static
-     *
-     * @see https://schema.org/constrainingProperty
-     * @see http://pending.schema.org
-     * @link https://github.com/schemaorg/schemaorg/issues/2291
-     */
-    public function constrainingProperty($constrainingProperty)
-    {
-        return $this->setProperty('constrainingProperty', $constrainingProperty);
-    }
-
-    /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -178,25 +165,6 @@ class StatisticalPopulation extends BaseType implements StatisticalPopulationCon
     }
 
     /**
-     * Indicates the number of constraints (not counting [[populationType]])
-     * defined for a particular [[StatisticalPopulation]]. This helps
-     * applications understand if they have access to a sufficiently complete
-     * description of a [[StatisticalPopulation]].
-     *
-     * @param int|int[] $numConstraints
-     *
-     * @return static
-     *
-     * @see https://schema.org/numConstraints
-     * @see http://pending.schema.org
-     * @link https://github.com/schemaorg/schemaorg/issues/2291
-     */
-    public function numConstraints($numConstraints)
-    {
-        return $this->setProperty('numConstraints', $numConstraints);
-    }
-
-    /**
      * Indicates a potential Action, which describes an idealized action in
      * which this thing would play an 'object' role.
      *
@@ -255,5 +223,4 @@ class StatisticalPopulation extends BaseType implements StatisticalPopulationCon
     {
         return $this->setProperty('url', $url);
     }
-
 }

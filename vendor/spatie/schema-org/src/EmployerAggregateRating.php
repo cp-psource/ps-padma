@@ -2,11 +2,11 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\EmployerAggregateRatingContract;
-use \Spatie\SchemaOrg\Contracts\AggregateRatingContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\RatingContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\AggregateRatingContract;
+use Spatie\SchemaOrg\Contracts\EmployerAggregateRatingContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\RatingContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * An aggregate rating of an Organization related to its role as an employer.
@@ -20,10 +20,14 @@ class EmployerAggregateRating extends BaseType implements EmployerAggregateRatin
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -84,7 +88,7 @@ class EmployerAggregateRating extends BaseType implements EmployerAggregateRatin
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -229,7 +233,7 @@ class EmployerAggregateRating extends BaseType implements EmployerAggregateRatin
      * @return static
      *
      * @see https://schema.org/ratingExplanation
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2300
      */
     public function ratingExplanation($ratingExplanation)
@@ -239,11 +243,11 @@ class EmployerAggregateRating extends BaseType implements EmployerAggregateRatin
 
     /**
      * The rating for the content.
-     * 
+     *
      * Usage guidelines:
-     * 
+     *
      * * Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT
-     * NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * NINE' (U+0039)) rather than superficially similar Unicode symbols.
      * * Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a
      * decimal point. Avoid using these symbols as a readability separator.
      *
@@ -347,5 +351,4 @@ class EmployerAggregateRating extends BaseType implements EmployerAggregateRatin
     {
         return $this->setProperty('worstRating', $worstRating);
     }
-
 }

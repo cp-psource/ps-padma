@@ -12,6 +12,8 @@ interface SkiResortContract
 
     public function address($address);
 
+    public function agentInteractionStatistic($agentInteractionStatistic);
+
     public function aggregateRating($aggregateRating);
 
     public function alternateName($alternateName);
@@ -22,6 +24,10 @@ interface SkiResortContract
 
     public function areaServed($areaServed);
 
+    public function audience($audience);
+
+    public function availableLanguage($availableLanguage);
+
     public function award($award);
 
     public function awards($awards);
@@ -31,6 +37,10 @@ interface SkiResortContract
     public function branchOf($branchOf);
 
     public function brand($brand);
+
+    public function checkinTime($checkinTime);
+
+    public function checkoutTime($checkoutTime);
 
     public function contactPoint($contactPoint);
 
@@ -84,6 +94,8 @@ interface SkiResortContract
 
     public function funder($funder);
 
+    public function funding($funding);
+
     public function geo($geo);
 
     public function geoContains($geoContains);
@@ -132,6 +144,10 @@ interface SkiResortContract
 
     public function isicV4($isicV4);
 
+    public function iso6523Code($iso6523Code);
+
+    public function keywords($keywords);
+
     public function knowsAbout($knowsAbout);
 
     public function knowsLanguage($knowsLanguage);
@@ -172,6 +188,8 @@ interface SkiResortContract
 
     public function numberOfEmployees($numberOfEmployees);
 
+    public function numberOfRooms($numberOfRooms);
+
     public function openingHours($openingHours);
 
     public function openingHoursSpecification($openingHoursSpecification);
@@ -183,6 +201,8 @@ interface SkiResortContract
     public function parentOrganization($parentOrganization);
 
     public function paymentAccepted($paymentAccepted);
+
+    public function petsAllowed($petsAllowed);
 
     public function photo($photo);
 
@@ -214,6 +234,8 @@ interface SkiResortContract
 
     public function sponsor($sponsor);
 
+    public function starRating($starRating);
+
     public function subOrganization($subOrganization);
 
     public function subjectOf($subjectOf);
@@ -229,5 +251,4 @@ interface SkiResortContract
     public function url($url);
 
     public function vatID($vatID);
-
 }

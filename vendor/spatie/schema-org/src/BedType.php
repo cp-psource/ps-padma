@@ -2,27 +2,28 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\BedTypeContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\QualitativeValueContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\BedTypeContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\QualitativeValueContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A type of bed. This is used for indicating the bed or beds available in an
  * accommodation.
  *
  * @see https://schema.org/BedType
+ * @link https://github.com/schemaorg/schemaorg/issues/1262
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
  */
 class BedType extends BaseType implements BedTypeContract, EnumerationContract, IntangibleContract, QualitativeValueContract, ThingContract
 {
     /**
-     * A property-value pair representing an additional characteristics of the
-     * entitity, e.g. a product feature or another characteristic for which
-     * there is no matching property in schema.org.
-     * 
+     * A property-value pair representing an additional characteristic of the
+     * entity, e.g. a product feature or another characteristic for which there
+     * is no matching property in schema.org.
+     *
      * Note: Publishers should be aware that applications designed to use
      * specific schema.org properties (e.g. https://schema.org/width,
      * https://schema.org/color, https://schema.org/gtin13, ...) will typically
@@ -43,10 +44,14 @@ class BedType extends BaseType implements BedTypeContract, EnumerationContract, 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -76,7 +81,7 @@ class BedType extends BaseType implements BedTypeContract, EnumerationContract, 
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -113,7 +118,6 @@ class BedType extends BaseType implements BedTypeContract, EnumerationContract, 
      * @return static
      *
      * @see https://schema.org/equal
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function equal($equal)
     {
@@ -129,7 +133,6 @@ class BedType extends BaseType implements BedTypeContract, EnumerationContract, 
      * @return static
      *
      * @see https://schema.org/greater
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function greater($greater)
     {
@@ -145,7 +148,6 @@ class BedType extends BaseType implements BedTypeContract, EnumerationContract, 
      * @return static
      *
      * @see https://schema.org/greaterOrEqual
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function greaterOrEqual($greaterOrEqual)
     {
@@ -194,7 +196,6 @@ class BedType extends BaseType implements BedTypeContract, EnumerationContract, 
      * @return static
      *
      * @see https://schema.org/lesser
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function lesser($lesser)
     {
@@ -210,7 +211,6 @@ class BedType extends BaseType implements BedTypeContract, EnumerationContract, 
      * @return static
      *
      * @see https://schema.org/lesserOrEqual
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function lesserOrEqual($lesserOrEqual)
     {
@@ -256,7 +256,6 @@ class BedType extends BaseType implements BedTypeContract, EnumerationContract, 
      * @return static
      *
      * @see https://schema.org/nonEqual
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function nonEqual($nonEqual)
     {
@@ -324,19 +323,17 @@ class BedType extends BaseType implements BedTypeContract, EnumerationContract, 
     }
 
     /**
-     * A pointer to a secondary value that provides additional information on
-     * the original value, e.g. a reference temperature.
+     * A secondary value that provides additional information on the original
+     * value, e.g. a reference temperature or a type of measurement.
      *
-     * @param \Spatie\SchemaOrg\Contracts\EnumerationContract|\Spatie\SchemaOrg\Contracts\EnumerationContract[]|\Spatie\SchemaOrg\Contracts\PropertyValueContract|\Spatie\SchemaOrg\Contracts\PropertyValueContract[]|\Spatie\SchemaOrg\Contracts\QualitativeValueContract|\Spatie\SchemaOrg\Contracts\QualitativeValueContract[]|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[]|\Spatie\SchemaOrg\Contracts\StructuredValueContract|\Spatie\SchemaOrg\Contracts\StructuredValueContract[] $valueReference
+     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|\Spatie\SchemaOrg\Contracts\EnumerationContract|\Spatie\SchemaOrg\Contracts\EnumerationContract[]|\Spatie\SchemaOrg\Contracts\MeasurementTypeEnumerationContract|\Spatie\SchemaOrg\Contracts\MeasurementTypeEnumerationContract[]|\Spatie\SchemaOrg\Contracts\PropertyValueContract|\Spatie\SchemaOrg\Contracts\PropertyValueContract[]|\Spatie\SchemaOrg\Contracts\QualitativeValueContract|\Spatie\SchemaOrg\Contracts\QualitativeValueContract[]|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[]|\Spatie\SchemaOrg\Contracts\StructuredValueContract|\Spatie\SchemaOrg\Contracts\StructuredValueContract[]|string|string[] $valueReference
      *
      * @return static
      *
      * @see https://schema.org/valueReference
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function valueReference($valueReference)
     {
         return $this->setProperty('valueReference', $valueReference);
     }
-
 }

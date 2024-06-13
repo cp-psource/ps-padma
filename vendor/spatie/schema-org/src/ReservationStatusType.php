@@ -2,11 +2,11 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\ReservationStatusTypeContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\StatusEnumerationContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\ReservationStatusTypeContract;
+use Spatie\SchemaOrg\Contracts\StatusEnumerationContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * Enumerated status values for Reservation.
@@ -22,14 +22,14 @@ class ReservationStatusType extends BaseType implements ReservationStatusTypeCon
      *
      * @see https://schema.org/ReservationCancelled
      */
-     const ReservationCancelled = 'https://schema.org/ReservationCancelled';
+    public const ReservationCancelled = 'https://schema.org/ReservationCancelled';
 
     /**
      * The status of a confirmed reservation.
      *
      * @see https://schema.org/ReservationConfirmed
      */
-     const ReservationConfirmed = 'https://schema.org/ReservationConfirmed';
+    public const ReservationConfirmed = 'https://schema.org/ReservationConfirmed';
 
     /**
      * The status of a reservation on hold pending an update like credit card
@@ -37,7 +37,7 @@ class ReservationStatusType extends BaseType implements ReservationStatusTypeCon
      *
      * @see https://schema.org/ReservationHold
      */
-     const ReservationHold = 'https://schema.org/ReservationHold';
+    public const ReservationHold = 'https://schema.org/ReservationHold';
 
     /**
      * The status of a reservation when a request has been sent, but not
@@ -45,15 +45,19 @@ class ReservationStatusType extends BaseType implements ReservationStatusTypeCon
      *
      * @see https://schema.org/ReservationPending
      */
-     const ReservationPending = 'https://schema.org/ReservationPending';
+    public const ReservationPending = 'https://schema.org/ReservationPending';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -83,7 +87,7 @@ class ReservationStatusType extends BaseType implements ReservationStatusTypeCon
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -233,5 +237,4 @@ class ReservationStatusType extends BaseType implements ReservationStatusTypeCon
     {
         return $this->setProperty('url', $url);
     }
-
 }

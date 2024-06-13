@@ -2,16 +2,16 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\MedicalRiskFactorContract;
-use \Spatie\SchemaOrg\Contracts\MedicalEntityContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\MedicalEntityContract;
+use Spatie\SchemaOrg\Contracts\MedicalRiskFactorContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A risk factor is anything that increases a person's likelihood of developing
  * or contracting a disease, medical condition, or complication.
  *
  * @see https://schema.org/MedicalRiskFactor
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  */
 class MedicalRiskFactor extends BaseType implements MedicalRiskFactorContract, MedicalEntityContract, ThingContract
@@ -19,10 +19,14 @@ class MedicalRiskFactor extends BaseType implements MedicalRiskFactorContract, M
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -58,7 +62,7 @@ class MedicalRiskFactor extends BaseType implements MedicalRiskFactorContract, M
      * @return static
      *
      * @see https://schema.org/code
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function code($code)
     {
@@ -68,7 +72,7 @@ class MedicalRiskFactor extends BaseType implements MedicalRiskFactorContract, M
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -97,6 +101,23 @@ class MedicalRiskFactor extends BaseType implements MedicalRiskFactorContract, M
     }
 
     /**
+     * A [[Grant]] that directly or indirectly provide funding or sponsorship
+     * for this item. See also [[ownershipFundingInfo]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\GrantContract|\Spatie\SchemaOrg\Contracts\GrantContract[] $funding
+     *
+     * @return static
+     *
+     * @see https://schema.org/funding
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/383
+     */
+    public function funding($funding)
+    {
+        return $this->setProperty('funding', $funding);
+    }
+
+    /**
      * A medical guideline related to this entity.
      *
      * @param \Spatie\SchemaOrg\Contracts\MedicalGuidelineContract|\Spatie\SchemaOrg\Contracts\MedicalGuidelineContract[] $guideline
@@ -104,7 +125,7 @@ class MedicalRiskFactor extends BaseType implements MedicalRiskFactorContract, M
      * @return static
      *
      * @see https://schema.org/guideline
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function guideline($guideline)
     {
@@ -152,7 +173,7 @@ class MedicalRiskFactor extends BaseType implements MedicalRiskFactorContract, M
      * @return static
      *
      * @see https://schema.org/increasesRiskOf
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function increasesRiskOf($increasesRiskOf)
     {
@@ -168,7 +189,7 @@ class MedicalRiskFactor extends BaseType implements MedicalRiskFactorContract, M
      * @return static
      *
      * @see https://schema.org/legalStatus
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function legalStatus($legalStatus)
     {
@@ -200,7 +221,7 @@ class MedicalRiskFactor extends BaseType implements MedicalRiskFactorContract, M
      * @return static
      *
      * @see https://schema.org/medicineSystem
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function medicineSystem($medicineSystem)
     {
@@ -245,7 +266,7 @@ class MedicalRiskFactor extends BaseType implements MedicalRiskFactorContract, M
      * @return static
      *
      * @see https://schema.org/recognizingAuthority
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function recognizingAuthority($recognizingAuthority)
     {
@@ -260,7 +281,7 @@ class MedicalRiskFactor extends BaseType implements MedicalRiskFactorContract, M
      * @return static
      *
      * @see https://schema.org/relevantSpecialty
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function relevantSpecialty($relevantSpecialty)
     {
@@ -291,7 +312,7 @@ class MedicalRiskFactor extends BaseType implements MedicalRiskFactorContract, M
      * @return static
      *
      * @see https://schema.org/study
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function study($study)
     {
@@ -326,5 +347,4 @@ class MedicalRiskFactor extends BaseType implements MedicalRiskFactorContract, M
     {
         return $this->setProperty('url', $url);
     }
-
 }

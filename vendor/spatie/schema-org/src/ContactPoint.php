@@ -2,10 +2,10 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\ContactPointContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\StructuredValueContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\ContactPointContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\StructuredValueContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A contact point&#x2014;for example, a Customer Complaints department.
@@ -18,10 +18,14 @@ class ContactPoint extends BaseType implements ContactPointContract, IntangibleC
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -65,7 +69,7 @@ class ContactPoint extends BaseType implements ContactPointContract, IntangibleC
     /**
      * A language someone may use with or at the item, service or place. Please
      * use one of the language codes from the [IETF BCP 47
-     * standard](http://tools.ietf.org/html/bcp47). See also [[inLanguage]]
+     * standard](http://tools.ietf.org/html/bcp47). See also [[inLanguage]].
      *
      * @param \Spatie\SchemaOrg\Contracts\LanguageContract|\Spatie\SchemaOrg\Contracts\LanguageContract[]|string|string[] $availableLanguage
      *
@@ -112,7 +116,7 @@ class ContactPoint extends BaseType implements ContactPointContract, IntangibleC
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -349,5 +353,4 @@ class ContactPoint extends BaseType implements ContactPointContract, IntangibleC
     {
         return $this->setProperty('url', $url);
     }
-
 }

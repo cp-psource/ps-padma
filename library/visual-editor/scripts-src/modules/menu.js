@@ -37,13 +37,10 @@ define(['jquery', 'util.tour', 'helper.codeMirror', 'deps/url'], function($, tou
 			/* END VIEW SITE BUTTON */
 
 			/* SAVE BUTTON */
-				$('span#save-button').click(function() {
-
-					save();
-
-					return false;
-
-				});
+			$('span#save-button').on('click', function() {
+				save();
+				return false;
+			});
 			/* END SAVE BUTTON */
 
 			/* SNAPSHOTS */

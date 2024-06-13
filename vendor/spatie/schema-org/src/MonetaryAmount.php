@@ -2,10 +2,10 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\MonetaryAmountContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\StructuredValueContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\MonetaryAmountContract;
+use Spatie\SchemaOrg\Contracts\StructuredValueContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A monetary value or range. This type can be used to describe an amount of
@@ -15,7 +15,6 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
  * describe the price of an Offer, Invoice, etc.
  *
  * @see https://schema.org/MonetaryAmount
- * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FIBO
  *
  */
 class MonetaryAmount extends BaseType implements MonetaryAmountContract, IntangibleContract, StructuredValueContract, ThingContract
@@ -23,10 +22,14 @@ class MonetaryAmount extends BaseType implements MonetaryAmountContract, Intangi
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -55,14 +58,14 @@ class MonetaryAmount extends BaseType implements MonetaryAmountContract, Intangi
 
     /**
      * The currency in which the monetary amount is expressed.
-     * 
+     *
      * Use standard formats: [ISO 4217 currency
-     * format](http://en.wikipedia.org/wiki/ISO_4217) e.g. "USD"; [Ticker
+     * format](http://en.wikipedia.org/wiki/ISO_4217), e.g. "USD"; [Ticker
      * symbol](https://en.wikipedia.org/wiki/List_of_cryptocurrencies) for
-     * cryptocurrencies e.g. "BTC"; well known names for [Local Exchange
-     * Tradings
+     * cryptocurrencies, e.g. "BTC"; well known names for [Local Exchange
+     * Trading
      * Systems](https://en.wikipedia.org/wiki/Local_exchange_trading_system)
-     * (LETS) and other currency types e.g. "Ithaca HOUR".
+     * (LETS) and other currency types, e.g. "Ithaca HOUR".
      *
      * @param string|string[] $currency
      *
@@ -79,7 +82,7 @@ class MonetaryAmount extends BaseType implements MonetaryAmountContract, Intangi
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -164,7 +167,6 @@ class MonetaryAmount extends BaseType implements MonetaryAmountContract, Intangi
      * @return static
      *
      * @see https://schema.org/maxValue
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function maxValue($maxValue)
     {
@@ -179,7 +181,6 @@ class MonetaryAmount extends BaseType implements MonetaryAmountContract, Intangi
      * @return static
      *
      * @see https://schema.org/minValue
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function minValue($minValue)
     {
@@ -268,7 +269,6 @@ class MonetaryAmount extends BaseType implements MonetaryAmountContract, Intangi
      * @return static
      *
      * @see https://schema.org/validFrom
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function validFrom($validFrom)
     {
@@ -284,7 +284,6 @@ class MonetaryAmount extends BaseType implements MonetaryAmountContract, Intangi
      * @return static
      *
      * @see https://schema.org/validThrough
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function validThrough($validThrough)
     {
@@ -292,14 +291,15 @@ class MonetaryAmount extends BaseType implements MonetaryAmountContract, Intangi
     }
 
     /**
-     * The value of the quantitative value or property value node.
-     * 
+     * The value of a [[QuantitativeValue]] (including [[Observation]]) or
+     * property value node.
+     *
      * * For [[QuantitativeValue]] and [[MonetaryAmount]], the recommended type
      * for values is 'Number'.
-     * * For [[PropertyValue]], it can be 'Text;', 'Number', 'Boolean', or
+     * * For [[PropertyValue]], it can be 'Text', 'Number', 'Boolean', or
      * 'StructuredValue'.
      * * Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT
-     * NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * NINE' (U+0039)) rather than superficially similar Unicode symbols.
      * * Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a
      * decimal point. Avoid using these symbols as a readability separator.
      *
@@ -308,11 +308,9 @@ class MonetaryAmount extends BaseType implements MonetaryAmountContract, Intangi
      * @return static
      *
      * @see https://schema.org/value
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function value($value)
     {
         return $this->setProperty('value', $value);
     }
-
 }

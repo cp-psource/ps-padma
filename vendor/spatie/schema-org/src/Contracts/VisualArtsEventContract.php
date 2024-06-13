@@ -44,6 +44,8 @@ interface VisualArtsEventContract
 
     public function funder($funder);
 
+    public function funding($funding);
+
     public function identifier($identifier);
 
     public function image($image);
@@ -51,6 +53,8 @@ interface VisualArtsEventContract
     public function inLanguage($inLanguage);
 
     public function isAccessibleForFree($isAccessibleForFree);
+
+    public function keywords($keywords);
 
     public function location($location);
 
@@ -105,5 +109,4 @@ interface VisualArtsEventContract
     public function workFeatured($workFeatured);
 
     public function workPerformed($workPerformed);
-
 }

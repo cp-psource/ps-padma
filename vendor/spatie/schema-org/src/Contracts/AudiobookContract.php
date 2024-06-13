@@ -36,6 +36,8 @@ interface AudiobookContract
 
     public function alternativeHeadline($alternativeHeadline);
 
+    public function archivedAt($archivedAt);
+
     public function assesses($assesses);
 
     public function associatedArticle($associatedArticle);
@@ -84,13 +86,19 @@ interface AudiobookContract
 
     public function copyrightHolder($copyrightHolder);
 
+    public function copyrightNotice($copyrightNotice);
+
     public function copyrightYear($copyrightYear);
 
     public function correction($correction);
 
+    public function countryOfOrigin($countryOfOrigin);
+
     public function creativeWorkStatus($creativeWorkStatus);
 
     public function creator($creator);
+
+    public function creditText($creditText);
 
     public function dateCreated($dateCreated);
 
@@ -99,6 +107,8 @@ interface AudiobookContract
     public function datePublished($datePublished);
 
     public function description($description);
+
+    public function digitalSourceType($digitalSourceType);
 
     public function disambiguatingDescription($disambiguatingDescription);
 
@@ -118,6 +128,8 @@ interface AudiobookContract
 
     public function embedUrl($embedUrl);
 
+    public function embeddedTextCaption($embeddedTextCaption);
+
     public function encodesCreativeWork($encodesCreativeWork);
 
     public function encoding($encoding);
@@ -136,6 +148,8 @@ interface AudiobookContract
 
     public function funder($funder);
 
+    public function funding($funding);
+
     public function genre($genre);
 
     public function hasPart($hasPart);
@@ -152,9 +166,13 @@ interface AudiobookContract
 
     public function inLanguage($inLanguage);
 
+    public function ineligibleRegion($ineligibleRegion);
+
     public function interactionStatistic($interactionStatistic);
 
     public function interactivityType($interactivityType);
+
+    public function interpretedAsClaim($interpretedAsClaim);
 
     public function isAccessibleForFree($isAccessibleForFree);
 
@@ -240,6 +258,8 @@ interface AudiobookContract
 
     public function sdPublisher($sdPublisher);
 
+    public function sha256($sha256);
+
     public function size($size);
 
     public function sourceOrganization($sourceOrganization);
@@ -261,6 +281,8 @@ interface AudiobookContract
     public function temporalCoverage($temporalCoverage);
 
     public function text($text);
+
+    public function thumbnail($thumbnail);
 
     public function thumbnailUrl($thumbnailUrl);
 
@@ -289,5 +311,4 @@ interface AudiobookContract
     public function workExample($workExample);
 
     public function workTranslation($workTranslation);
-
 }

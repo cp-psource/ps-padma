@@ -2,10 +2,10 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\PriceSpecificationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\StructuredValueContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\PriceSpecificationContract;
+use Spatie\SchemaOrg\Contracts\StructuredValueContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A structured value representing a price or price range. Typically, only the
@@ -14,7 +14,6 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
  * credit card limits, etc.
  *
  * @see https://schema.org/PriceSpecification
- * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
  *
  */
 class PriceSpecification extends BaseType implements PriceSpecificationContract, IntangibleContract, StructuredValueContract, ThingContract
@@ -22,10 +21,14 @@ class PriceSpecification extends BaseType implements PriceSpecificationContract,
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -55,7 +58,7 @@ class PriceSpecification extends BaseType implements PriceSpecificationContract,
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -93,7 +96,6 @@ class PriceSpecification extends BaseType implements PriceSpecificationContract,
      * @return static
      *
      * @see https://schema.org/eligibleQuantity
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function eligibleQuantity($eligibleQuantity)
     {
@@ -111,7 +113,6 @@ class PriceSpecification extends BaseType implements PriceSpecificationContract,
      * @return static
      *
      * @see https://schema.org/eligibleTransactionVolume
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function eligibleTransactionVolume($eligibleTransactionVolume)
     {
@@ -175,7 +176,6 @@ class PriceSpecification extends BaseType implements PriceSpecificationContract,
      * @return static
      *
      * @see https://schema.org/maxPrice
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function maxPrice($maxPrice)
     {
@@ -190,7 +190,6 @@ class PriceSpecification extends BaseType implements PriceSpecificationContract,
      * @return static
      *
      * @see https://schema.org/minPrice
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function minPrice($minPrice)
     {
@@ -229,16 +228,16 @@ class PriceSpecification extends BaseType implements PriceSpecificationContract,
     /**
      * The offer price of a product, or of a price component when attached to
      * PriceSpecification and its subtypes.
-     * 
+     *
      * Usage guidelines:
-     * 
+     *
      * * Use the [[priceCurrency]] property (with standard formats: [ISO 4217
-     * currency format](http://en.wikipedia.org/wiki/ISO_4217) e.g. "USD";
+     * currency format](http://en.wikipedia.org/wiki/ISO_4217), e.g. "USD";
      * [Ticker symbol](https://en.wikipedia.org/wiki/List_of_cryptocurrencies)
-     * for cryptocurrencies e.g. "BTC"; well known names for [Local Exchange
-     * Tradings
+     * for cryptocurrencies, e.g. "BTC"; well known names for [Local Exchange
+     * Trading
      * Systems](https://en.wikipedia.org/wiki/Local_exchange_trading_system)
-     * (LETS) and other currency types e.g. "Ithaca HOUR") instead of including
+     * (LETS) and other currency types, e.g. "Ithaca HOUR") instead of including
      * [ambiguous
      * symbols](http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign)
      * such as '$' in the value.
@@ -250,7 +249,7 @@ class PriceSpecification extends BaseType implements PriceSpecificationContract,
      * publishing simple machine-readable values alongside more human-friendly
      * formatting.
      * * Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT
-     * NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * NINE' (U+0039)) rather than superficially similar Unicode symbols.
      *
      * @param float|float[]|int|int[]|string|string[] $price
      *
@@ -266,14 +265,14 @@ class PriceSpecification extends BaseType implements PriceSpecificationContract,
     /**
      * The currency of the price, or a price component when attached to
      * [[PriceSpecification]] and its subtypes.
-     * 
+     *
      * Use standard formats: [ISO 4217 currency
-     * format](http://en.wikipedia.org/wiki/ISO_4217) e.g. "USD"; [Ticker
+     * format](http://en.wikipedia.org/wiki/ISO_4217), e.g. "USD"; [Ticker
      * symbol](https://en.wikipedia.org/wiki/List_of_cryptocurrencies) for
-     * cryptocurrencies e.g. "BTC"; well known names for [Local Exchange
-     * Tradings
+     * cryptocurrencies, e.g. "BTC"; well known names for [Local Exchange
+     * Trading
      * Systems](https://en.wikipedia.org/wiki/Local_exchange_trading_system)
-     * (LETS) and other currency types e.g. "Ithaca HOUR".
+     * (LETS) and other currency types, e.g. "Ithaca HOUR".
      *
      * @param string|string[] $priceCurrency
      *
@@ -339,7 +338,6 @@ class PriceSpecification extends BaseType implements PriceSpecificationContract,
      * @return static
      *
      * @see https://schema.org/validFrom
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function validFrom($validFrom)
     {
@@ -355,7 +353,6 @@ class PriceSpecification extends BaseType implements PriceSpecificationContract,
      * @return static
      *
      * @see https://schema.org/validThrough
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function validThrough($validThrough)
     {
@@ -371,11 +368,9 @@ class PriceSpecification extends BaseType implements PriceSpecificationContract,
      * @return static
      *
      * @see https://schema.org/valueAddedTaxIncluded
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function valueAddedTaxIncluded($valueAddedTaxIncluded)
     {
         return $this->setProperty('valueAddedTaxIncluded', $valueAddedTaxIncluded);
     }
-
 }

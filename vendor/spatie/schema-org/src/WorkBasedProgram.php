@@ -2,10 +2,10 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\WorkBasedProgramContract;
-use \Spatie\SchemaOrg\Contracts\EducationalOccupationalProgramContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\EducationalOccupationalProgramContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\WorkBasedProgramContract;
 
 /**
  * A program with both an educational and employment component. Typically based
@@ -15,7 +15,7 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
  * classroom based educational programs.
  *
  * @see https://schema.org/WorkBasedProgram
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
  * @link https://github.com/schemaorg/schemaorg/issues/2289
  *
  */
@@ -24,10 +24,14 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -63,7 +67,7 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
      * @return static
      *
      * @see https://schema.org/applicationDeadline
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2419
      */
     public function applicationDeadline($applicationDeadline)
@@ -80,7 +84,7 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
      * @return static
      *
      * @see https://schema.org/applicationStartDate
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2419
      */
     public function applicationStartDate($applicationStartDate)
@@ -96,7 +100,6 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
      * @return static
      *
      * @see https://schema.org/dayOfWeek
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function dayOfWeek($dayOfWeek)
     {
@@ -106,7 +109,7 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -152,7 +155,7 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
     }
 
     /**
-     * Similar to courseMode, The medium or means of delivery of the program as
+     * Similar to courseMode, the medium or means of delivery of the program as
      * a whole. The value may either be a text label (e.g. "online", "onsite" or
      * "blended"; "synchronous" or "asynchronous"; "full-time" or "part-time")
      * or a URL reference to a term from a controlled vocabulary (e.g.
@@ -163,7 +166,7 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
      * @return static
      *
      * @see https://schema.org/educationalProgramMode
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2419
      */
     public function educationalProgramMode($educationalProgramMode)
@@ -196,12 +199,32 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
      * @return static
      *
      * @see https://schema.org/financialAidEligible
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2418
      */
     public function financialAidEligible($financialAidEligible)
     {
         return $this->setProperty('financialAidEligible', $financialAidEligible);
+    }
+
+    /**
+     * A course or class that is one of the learning opportunities that
+     * constitute an educational / occupational program. No information is
+     * implied about whether the course is mandatory or optional; no guarantee
+     * is implied about whether the course will be available to everyone on the
+     * program.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\CourseContract|\Spatie\SchemaOrg\Contracts\CourseContract[] $hasCourse
+     *
+     * @return static
+     *
+     * @see https://schema.org/hasCourse
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2483
+     */
+    public function hasCourse($hasCourse)
+    {
+        return $this->setProperty('hasCourse', $hasCourse);
     }
 
     /**
@@ -261,7 +284,7 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
      * @return static
      *
      * @see https://schema.org/maximumEnrollment
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2419
      */
     public function maximumEnrollment($maximumEnrollment)
@@ -292,7 +315,7 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
      * @return static
      *
      * @see https://schema.org/numberOfCredits
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2419
      */
     public function numberOfCredits($numberOfCredits)
@@ -302,13 +325,12 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
 
     /**
      * A category describing the job, preferably using a term from a taxonomy
-     * such as <a href="http://www.onetcenter.org/taxonomy.html">BLS
-     * O*NET-SOC</a>,
+     * such as [BLS O*NET-SOC](http://www.onetcenter.org/taxonomy.html),
      * [ISCO-08](https://www.ilo.org/public/english/bureau/stat/isco/isco08/) or
      * similar, with the property repeated for each applicable value. Ideally
      * the taxonomy should be identified, and both the textual label and formal
      * code for the category should be provided.
-     * 
+     *
      * Note: for historical reasons, any textual label and formal code provided
      * as a literal may be assumed to be from O*NET-SOC.
      *
@@ -317,7 +339,7 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
      * @return static
      *
      * @see https://schema.org/occupationalCategory
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      */
     public function occupationalCategory($occupationalCategory)
     {
@@ -334,7 +356,7 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
      * @return static
      *
      * @see https://schema.org/occupationalCredentialAwarded
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2289
      */
     public function occupationalCredentialAwarded($occupationalCredentialAwarded)
@@ -387,7 +409,7 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
      * @return static
      *
      * @see https://schema.org/programPrerequisites
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2289
      */
     public function programPrerequisites($programPrerequisites)
@@ -397,14 +419,14 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
 
     /**
      * The type of educational or occupational program. For example, classroom,
-     * internship, alternance, etc..
+     * internship, alternance, etc.
      *
      * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|string|string[] $programType
      *
      * @return static
      *
      * @see https://schema.org/programType
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2460
      */
     public function programType($programType)
@@ -422,7 +444,7 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
      * @return static
      *
      * @see https://schema.org/provider
-     * @link https://github.com/schemaorg/schemaorg/issues/2289
+     * @see https://pending.schema.org
      */
     public function provider($provider)
     {
@@ -437,7 +459,7 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
      * @return static
      *
      * @see https://schema.org/salaryUponCompletion
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2289
      */
     public function salaryUponCompletion($salaryUponCompletion)
@@ -502,7 +524,7 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
      * @return static
      *
      * @see https://schema.org/termDuration
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2419
      */
     public function termDuration($termDuration)
@@ -521,7 +543,7 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
      * @return static
      *
      * @see https://schema.org/termsPerYear
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2419
      */
     public function termsPerYear($termsPerYear)
@@ -537,7 +559,7 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
      * @return static
      *
      * @see https://schema.org/timeOfDay
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2419
      */
     public function timeOfDay($timeOfDay)
@@ -554,7 +576,7 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
      * @return static
      *
      * @see https://schema.org/timeToComplete
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2289
      */
     public function timeToComplete($timeToComplete)
@@ -570,7 +592,7 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
      * @return static
      *
      * @see https://schema.org/trainingSalary
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      */
     public function trainingSalary($trainingSalary)
     {
@@ -586,7 +608,7 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
      * @return static
      *
      * @see https://schema.org/typicalCreditsPerTerm
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2419
      */
     public function typicalCreditsPerTerm($typicalCreditsPerTerm)
@@ -607,5 +629,4 @@ class WorkBasedProgram extends BaseType implements WorkBasedProgramContract, Edu
     {
         return $this->setProperty('url', $url);
     }
-
 }

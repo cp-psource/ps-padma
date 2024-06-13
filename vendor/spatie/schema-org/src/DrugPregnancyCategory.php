@@ -2,18 +2,18 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\DrugPregnancyCategoryContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\MedicalEnumerationContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\DrugPregnancyCategoryContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\MedicalEnumerationContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * Categories that represent an assessment of the risk of fetal injury due to a
  * drug or pharmaceutical used as directed by the mother during pregnancy.
  *
  * @see https://schema.org/DrugPregnancyCategory
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
  */
@@ -26,9 +26,9 @@ class DrugPregnancyCategory extends BaseType implements DrugPregnancyCategoryCon
      * trimesters).
      *
      * @see https://schema.org/FDAcategoryA
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const FDAcategoryA = 'https://schema.org/FDAcategoryA';
+    public const FDAcategoryA = 'https://schema.org/FDAcategoryA';
 
     /**
      * A designation by the US FDA signifying that animal reproduction studies
@@ -36,9 +36,9 @@ class DrugPregnancyCategory extends BaseType implements DrugPregnancyCategoryCon
      * and well-controlled studies in pregnant women.
      *
      * @see https://schema.org/FDAcategoryB
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const FDAcategoryB = 'https://schema.org/FDAcategoryB';
+    public const FDAcategoryB = 'https://schema.org/FDAcategoryB';
 
     /**
      * A designation by the US FDA signifying that animal reproduction studies
@@ -47,9 +47,9 @@ class DrugPregnancyCategory extends BaseType implements DrugPregnancyCategoryCon
      * of the drug in pregnant women despite potential risks.
      *
      * @see https://schema.org/FDAcategoryC
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const FDAcategoryC = 'https://schema.org/FDAcategoryC';
+    public const FDAcategoryC = 'https://schema.org/FDAcategoryC';
 
     /**
      * A designation by the US FDA signifying that there is positive evidence of
@@ -58,9 +58,9 @@ class DrugPregnancyCategory extends BaseType implements DrugPregnancyCategoryCon
      * warrant use of the drug in pregnant women despite potential risks.
      *
      * @see https://schema.org/FDAcategoryD
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const FDAcategoryD = 'https://schema.org/FDAcategoryD';
+    public const FDAcategoryD = 'https://schema.org/FDAcategoryD';
 
     /**
      * A designation by the US FDA signifying that studies in animals or humans
@@ -70,26 +70,30 @@ class DrugPregnancyCategory extends BaseType implements DrugPregnancyCategoryCon
      * pregnant women clearly outweigh potential benefits.
      *
      * @see https://schema.org/FDAcategoryX
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const FDAcategoryX = 'https://schema.org/FDAcategoryX';
+    public const FDAcategoryX = 'https://schema.org/FDAcategoryX';
 
     /**
      * A designation that the drug in question has not been assigned a pregnancy
      * category designation by the US FDA.
      *
      * @see https://schema.org/FDAnotEvaluated
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const FDAnotEvaluated = 'https://schema.org/FDAnotEvaluated';
+    public const FDAnotEvaluated = 'https://schema.org/FDAnotEvaluated';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -119,7 +123,7 @@ class DrugPregnancyCategory extends BaseType implements DrugPregnancyCategoryCon
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -269,5 +273,4 @@ class DrugPregnancyCategory extends BaseType implements DrugPregnancyCategoryCon
     {
         return $this->setProperty('url', $url);
     }
-
 }

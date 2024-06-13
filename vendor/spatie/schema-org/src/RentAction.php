@@ -2,10 +2,10 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\RentActionContract;
-use \Spatie\SchemaOrg\Contracts\ActionContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
-use \Spatie\SchemaOrg\Contracts\TradeActionContract;
+use Spatie\SchemaOrg\Contracts\ActionContract;
+use Spatie\SchemaOrg\Contracts\RentActionContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\TradeActionContract;
 
 /**
  * The act of giving money in return for temporary use, but not ownership, of an
@@ -34,10 +34,14 @@ class RentAction extends BaseType implements RentActionContract, ActionContract,
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -51,7 +55,7 @@ class RentAction extends BaseType implements RentActionContract, ActionContract,
     }
 
     /**
-     * The direct performer or driver of the action (animate or inanimate). e.g.
+     * The direct performer or driver of the action (animate or inanimate). E.g.
      * *John* wrote a book.
      *
      * @param \Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[]|\Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[] $agent
@@ -82,7 +86,7 @@ class RentAction extends BaseType implements RentActionContract, ActionContract,
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -113,11 +117,11 @@ class RentAction extends BaseType implements RentActionContract, ActionContract,
     /**
      * The endTime of something. For a reserved event or service (e.g.
      * FoodEstablishmentReservation), the time that it is expected to end. For
-     * actions that span a period of time, when the action was performed. e.g.
+     * actions that span a period of time, when the action was performed. E.g.
      * John wrote a book from January to *December*. For media, including audio
      * and video, it's the time offset of the end of a clip within a larger
      * file.
-     * 
+     *
      * Note that Event uses startDate/endDate instead of startTime/endTime, even
      * when describing dates with times. This situation may be clarified in
      * future revisions.
@@ -182,7 +186,7 @@ class RentAction extends BaseType implements RentActionContract, ActionContract,
     }
 
     /**
-     * The object that helped the agent perform the action. e.g. John wrote a
+     * The object that helped the agent perform the action. E.g. John wrote a
      * book with *a pen*.
      *
      * @param \Spatie\SchemaOrg\Contracts\ThingContract|\Spatie\SchemaOrg\Contracts\ThingContract[] $instrument
@@ -211,8 +215,8 @@ class RentAction extends BaseType implements RentActionContract, ActionContract,
     }
 
     /**
-     * The location of for example where the event is happening, an organization
-     * is located, or where an action takes place.
+     * The location of, for example, where an event is happening, where an
+     * organization is located, or where an action takes place.
      *
      * @param \Spatie\SchemaOrg\Contracts\PlaceContract|\Spatie\SchemaOrg\Contracts\PlaceContract[]|\Spatie\SchemaOrg\Contracts\PostalAddressContract|\Spatie\SchemaOrg\Contracts\PostalAddressContract[]|\Spatie\SchemaOrg\Contracts\VirtualLocationContract|\Spatie\SchemaOrg\Contracts\VirtualLocationContract[]|string|string[] $location
      *
@@ -258,7 +262,7 @@ class RentAction extends BaseType implements RentActionContract, ActionContract,
     /**
      * The object upon which the action is carried out, whose state is kept
      * intact or changed. Also known as the semantic roles patient, affected or
-     * undergoer (which change their state) or theme (which doesn't). e.g. John
+     * undergoer (which change their state) or theme (which doesn't). E.g. John
      * read *a book*.
      *
      * @param \Spatie\SchemaOrg\Contracts\ThingContract|\Spatie\SchemaOrg\Contracts\ThingContract[] $object
@@ -273,7 +277,7 @@ class RentAction extends BaseType implements RentActionContract, ActionContract,
     }
 
     /**
-     * Other co-agents that participated in the action indirectly. e.g. John
+     * Other co-agents that participated in the action indirectly. E.g. John
      * wrote a book with *Steve*.
      *
      * @param \Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[]|\Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[] $participant
@@ -305,16 +309,16 @@ class RentAction extends BaseType implements RentActionContract, ActionContract,
     /**
      * The offer price of a product, or of a price component when attached to
      * PriceSpecification and its subtypes.
-     * 
+     *
      * Usage guidelines:
-     * 
+     *
      * * Use the [[priceCurrency]] property (with standard formats: [ISO 4217
-     * currency format](http://en.wikipedia.org/wiki/ISO_4217) e.g. "USD";
+     * currency format](http://en.wikipedia.org/wiki/ISO_4217), e.g. "USD";
      * [Ticker symbol](https://en.wikipedia.org/wiki/List_of_cryptocurrencies)
-     * for cryptocurrencies e.g. "BTC"; well known names for [Local Exchange
-     * Tradings
+     * for cryptocurrencies, e.g. "BTC"; well known names for [Local Exchange
+     * Trading
      * Systems](https://en.wikipedia.org/wiki/Local_exchange_trading_system)
-     * (LETS) and other currency types e.g. "Ithaca HOUR") instead of including
+     * (LETS) and other currency types, e.g. "Ithaca HOUR") instead of including
      * [ambiguous
      * symbols](http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign)
      * such as '$' in the value.
@@ -326,7 +330,7 @@ class RentAction extends BaseType implements RentActionContract, ActionContract,
      * publishing simple machine-readable values alongside more human-friendly
      * formatting.
      * * Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT
-     * NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * NINE' (U+0039)) rather than superficially similar Unicode symbols.
      *
      * @param float|float[]|int|int[]|string|string[] $price
      *
@@ -342,14 +346,14 @@ class RentAction extends BaseType implements RentActionContract, ActionContract,
     /**
      * The currency of the price, or a price component when attached to
      * [[PriceSpecification]] and its subtypes.
-     * 
+     *
      * Use standard formats: [ISO 4217 currency
-     * format](http://en.wikipedia.org/wiki/ISO_4217) e.g. "USD"; [Ticker
+     * format](http://en.wikipedia.org/wiki/ISO_4217), e.g. "USD"; [Ticker
      * symbol](https://en.wikipedia.org/wiki/List_of_cryptocurrencies) for
-     * cryptocurrencies e.g. "BTC"; well known names for [Local Exchange
-     * Tradings
+     * cryptocurrencies, e.g. "BTC"; well known names for [Local Exchange
+     * Trading
      * Systems](https://en.wikipedia.org/wiki/Local_exchange_trading_system)
-     * (LETS) and other currency types e.g. "Ithaca HOUR".
+     * (LETS) and other currency types, e.g. "Ithaca HOUR".
      *
      * @param string|string[] $priceCurrency
      *
@@ -371,11 +375,27 @@ class RentAction extends BaseType implements RentActionContract, ActionContract,
      * @return static
      *
      * @see https://schema.org/priceSpecification
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function priceSpecification($priceSpecification)
     {
         return $this->setProperty('priceSpecification', $priceSpecification);
+    }
+
+    /**
+     * The service provider, service operator, or service performer; the goods
+     * producer. Another party (a seller) may offer those services or goods on
+     * behalf of the provider. A provider may also serve as the seller.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[]|\Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[] $provider
+     *
+     * @return static
+     *
+     * @see https://schema.org/provider
+     * @see https://pending.schema.org
+     */
+    public function provider($provider)
+    {
+        return $this->setProperty('provider', $provider);
     }
 
     /**
@@ -394,7 +414,7 @@ class RentAction extends BaseType implements RentActionContract, ActionContract,
     }
 
     /**
-     * The result produced in the action. e.g. John wrote *a book*.
+     * The result produced in the action. E.g. John wrote *a book*.
      *
      * @param \Spatie\SchemaOrg\Contracts\ThingContract|\Spatie\SchemaOrg\Contracts\ThingContract[] $result
      *
@@ -426,11 +446,11 @@ class RentAction extends BaseType implements RentActionContract, ActionContract,
     /**
      * The startTime of something. For a reserved event or service (e.g.
      * FoodEstablishmentReservation), the time that it is expected to start. For
-     * actions that span a period of time, when the action was performed. e.g.
+     * actions that span a period of time, when the action was performed. E.g.
      * John wrote a book from *January* to December. For media, including audio
      * and video, it's the time offset of the start of a clip within a larger
      * file.
-     * 
+     *
      * Note that Event uses startDate/endDate instead of startTime/endTime, even
      * when describing dates with times. This situation may be clarified in
      * future revisions.
@@ -463,9 +483,9 @@ class RentAction extends BaseType implements RentActionContract, ActionContract,
     }
 
     /**
-     * Indicates a target EntryPoint for an Action.
+     * Indicates a target EntryPoint, or url, for an Action.
      *
-     * @param \Spatie\SchemaOrg\Contracts\EntryPointContract|\Spatie\SchemaOrg\Contracts\EntryPointContract[] $target
+     * @param \Spatie\SchemaOrg\Contracts\EntryPointContract|\Spatie\SchemaOrg\Contracts\EntryPointContract[]|string|string[] $target
      *
      * @return static
      *
@@ -489,5 +509,4 @@ class RentAction extends BaseType implements RentActionContract, ActionContract,
     {
         return $this->setProperty('url', $url);
     }
-
 }

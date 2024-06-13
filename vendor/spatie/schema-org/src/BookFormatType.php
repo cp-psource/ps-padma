@@ -2,10 +2,10 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\BookFormatTypeContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\BookFormatTypeContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * The publication format of the book.
@@ -23,45 +23,49 @@ class BookFormatType extends BaseType implements BookFormatTypeContract, Enumera
      *
      * @see https://schema.org/AudiobookFormat
      */
-     const AudiobookFormat = 'https://schema.org/AudiobookFormat';
+    public const AudiobookFormat = 'https://schema.org/AudiobookFormat';
 
     /**
      * Book format: Ebook.
      *
      * @see https://schema.org/EBook
      */
-     const EBook = 'https://schema.org/EBook';
+    public const EBook = 'https://schema.org/EBook';
 
     /**
      * Book format: GraphicNovel. May represent a bound collection of ComicIssue
      * instances.
      *
      * @see https://schema.org/GraphicNovel
-     * @see http://bib.schema.org
+     * @see https://bib.schema.org
      */
-     const GraphicNovel = 'https://schema.org/GraphicNovel';
+    public const GraphicNovel = 'https://schema.org/GraphicNovel';
 
     /**
      * Book format: Hardcover.
      *
      * @see https://schema.org/Hardcover
      */
-     const Hardcover = 'https://schema.org/Hardcover';
+    public const Hardcover = 'https://schema.org/Hardcover';
 
     /**
      * Book format: Paperback.
      *
      * @see https://schema.org/Paperback
      */
-     const Paperback = 'https://schema.org/Paperback';
+    public const Paperback = 'https://schema.org/Paperback';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -91,7 +95,7 @@ class BookFormatType extends BaseType implements BookFormatTypeContract, Enumera
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -241,5 +245,4 @@ class BookFormatType extends BaseType implements BookFormatTypeContract, Enumera
     {
         return $this->setProperty('url', $url);
     }
-
 }

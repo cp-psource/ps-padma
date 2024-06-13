@@ -2,17 +2,16 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\MerchantReturnEnumerationContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\MerchantReturnEnumerationContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
- * MerchantReturnEnumeration enumerates several kinds of product return policy.
- * Note that this structure may not capture all aspects of the policy.
+ * Enumerates several kinds of product return policies.
  *
  * @see https://schema.org/MerchantReturnEnumeration
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
  * @link https://github.com/schemaorg/schemaorg/issues/2288
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
@@ -20,50 +19,52 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
 class MerchantReturnEnumeration extends BaseType implements MerchantReturnEnumerationContract, EnumerationContract, IntangibleContract, ThingContract
 {
     /**
-     * MerchantReturnFiniteReturnWindow: there is a finite window for product
-     * returns.
+     * Specifies that there is a finite window for product returns.
      *
      * @see https://schema.org/MerchantReturnFiniteReturnWindow
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2288
      */
-     const MerchantReturnFiniteReturnWindow = 'https://schema.org/MerchantReturnFiniteReturnWindow';
+    public const MerchantReturnFiniteReturnWindow = 'https://schema.org/MerchantReturnFiniteReturnWindow';
 
     /**
-     * MerchantReturnNotPermitted: product returns are not permitted.
+     * Specifies that product returns are not permitted.
      *
      * @see https://schema.org/MerchantReturnNotPermitted
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2288
      */
-     const MerchantReturnNotPermitted = 'https://schema.org/MerchantReturnNotPermitted';
+    public const MerchantReturnNotPermitted = 'https://schema.org/MerchantReturnNotPermitted';
 
     /**
-     * MerchantReturnUnlimitedWindow: there is an unlimited window for product
-     * returns.
+     * Specifies that there is an unlimited window for product returns.
      *
      * @see https://schema.org/MerchantReturnUnlimitedWindow
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2288
      */
-     const MerchantReturnUnlimitedWindow = 'https://schema.org/MerchantReturnUnlimitedWindow';
+    public const MerchantReturnUnlimitedWindow = 'https://schema.org/MerchantReturnUnlimitedWindow';
 
     /**
-     * MerchantReturnUnspecified: a product return policy is not specified here.
+     * Specifies that a product return policy is not provided.
      *
      * @see https://schema.org/MerchantReturnUnspecified
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2288
      */
-     const MerchantReturnUnspecified = 'https://schema.org/MerchantReturnUnspecified';
+    public const MerchantReturnUnspecified = 'https://schema.org/MerchantReturnUnspecified';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -93,7 +94,7 @@ class MerchantReturnEnumeration extends BaseType implements MerchantReturnEnumer
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -243,5 +244,4 @@ class MerchantReturnEnumeration extends BaseType implements MerchantReturnEnumer
     {
         return $this->setProperty('url', $url);
     }
-
 }

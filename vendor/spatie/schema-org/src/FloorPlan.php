@@ -2,9 +2,9 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\FloorPlanContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\FloorPlanContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A FloorPlan is an explicit representation of a collection of similar
@@ -18,7 +18,7 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
  * [[image]].
  *
  * @see https://schema.org/FloorPlan
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
  * @link https://github.com/schemaorg/schemaorg/issues/2373
  *
  */
@@ -27,10 +27,14 @@ class FloorPlan extends BaseType implements FloorPlanContract, IntangibleContrac
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -68,7 +72,6 @@ class FloorPlan extends BaseType implements FloorPlanContract, IntangibleContrac
      * @return static
      *
      * @see https://schema.org/amenityFeature
-     * @link https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#STI_Accommodation_Ontology
      */
     public function amenityFeature($amenityFeature)
     {
@@ -78,7 +81,7 @@ class FloorPlan extends BaseType implements FloorPlanContract, IntangibleContrac
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -109,14 +112,13 @@ class FloorPlan extends BaseType implements FloorPlanContract, IntangibleContrac
     /**
      * The size of the accommodation, e.g. in square meter or squarefoot.
      * Typical unit code(s): MTK for square meter, FTK for square foot, or YDK
-     * for square yard
+     * for square yard.
      *
      * @param \Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[] $floorSize
      *
      * @return static
      *
      * @see https://schema.org/floorSize
-     * @link https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#STI_Accommodation_Ontology
      */
     public function floorSize($floorSize)
     {
@@ -164,12 +166,28 @@ class FloorPlan extends BaseType implements FloorPlanContract, IntangibleContrac
      * @return static
      *
      * @see https://schema.org/isPlanForApartment
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2373
      */
     public function isPlanForApartment($isPlanForApartment)
     {
         return $this->setProperty('isPlanForApartment', $isPlanForApartment);
+    }
+
+    /**
+     * A schematic image showing the floorplan layout.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\ImageObjectContract|\Spatie\SchemaOrg\Contracts\ImageObjectContract[]|string|string[] $layoutImage
+     *
+     * @return static
+     *
+     * @see https://schema.org/layoutImage
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2690
+     */
+    public function layoutImage($layoutImage)
+    {
+        return $this->setProperty('layoutImage', $layoutImage);
     }
 
     /**
@@ -213,7 +231,7 @@ class FloorPlan extends BaseType implements FloorPlanContract, IntangibleContrac
      * @return static
      *
      * @see https://schema.org/numberOfAccommodationUnits
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2373
      */
     public function numberOfAccommodationUnits($numberOfAccommodationUnits)
@@ -232,7 +250,7 @@ class FloorPlan extends BaseType implements FloorPlanContract, IntangibleContrac
      * @return static
      *
      * @see https://schema.org/numberOfAvailableAccommodationUnits
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2373
      */
     public function numberOfAvailableAccommodationUnits($numberOfAvailableAccommodationUnits)
@@ -241,7 +259,7 @@ class FloorPlan extends BaseType implements FloorPlanContract, IntangibleContrac
     }
 
     /**
-     * The total integer number of bathrooms in a some [[Accommodation]],
+     * The total integer number of bathrooms in some [[Accommodation]],
      * following real estate conventions as [documented in
      * RESO](https://ddwiki.reso.org/display/DDW17/BathroomsTotalInteger+Field):
      * "The simple sum of the number of bathrooms. For example for a property
@@ -253,7 +271,7 @@ class FloorPlan extends BaseType implements FloorPlanContract, IntangibleContrac
      * @return static
      *
      * @see https://schema.org/numberOfBathroomsTotal
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2373
      */
     public function numberOfBathroomsTotal($numberOfBathroomsTotal)
@@ -270,7 +288,7 @@ class FloorPlan extends BaseType implements FloorPlanContract, IntangibleContrac
      * @return static
      *
      * @see https://schema.org/numberOfBedrooms
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2373
      */
     public function numberOfBedrooms($numberOfBedrooms)
@@ -288,7 +306,7 @@ class FloorPlan extends BaseType implements FloorPlanContract, IntangibleContrac
      * @return static
      *
      * @see https://schema.org/numberOfFullBathrooms
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2373
      */
     public function numberOfFullBathrooms($numberOfFullBathrooms)
@@ -306,7 +324,7 @@ class FloorPlan extends BaseType implements FloorPlanContract, IntangibleContrac
      * @return static
      *
      * @see https://schema.org/numberOfPartialBathrooms
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2373
      */
     public function numberOfPartialBathrooms($numberOfPartialBathrooms)
@@ -325,7 +343,6 @@ class FloorPlan extends BaseType implements FloorPlanContract, IntangibleContrac
      * @return static
      *
      * @see https://schema.org/numberOfRooms
-     * @link https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#STI_Accommodation_Ontology
      */
     public function numberOfRooms($numberOfRooms)
     {
@@ -341,7 +358,6 @@ class FloorPlan extends BaseType implements FloorPlanContract, IntangibleContrac
      * @return static
      *
      * @see https://schema.org/petsAllowed
-     * @link https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#STI_Accommodation_Ontology
      */
     public function petsAllowed($petsAllowed)
     {
@@ -407,5 +423,4 @@ class FloorPlan extends BaseType implements FloorPlanContract, IntangibleContrac
     {
         return $this->setProperty('url', $url);
     }
-
 }

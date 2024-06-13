@@ -2,17 +2,17 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\MedicalGuidelineRecommendationContract;
-use \Spatie\SchemaOrg\Contracts\MedicalEntityContract;
-use \Spatie\SchemaOrg\Contracts\MedicalGuidelineContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\MedicalEntityContract;
+use Spatie\SchemaOrg\Contracts\MedicalGuidelineContract;
+use Spatie\SchemaOrg\Contracts\MedicalGuidelineRecommendationContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A guideline recommendation that is regarded as efficacious and where quality
  * of the data supporting the recommendation is sound.
  *
  * @see https://schema.org/MedicalGuidelineRecommendation
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  */
 class MedicalGuidelineRecommendation extends BaseType implements MedicalGuidelineRecommendationContract, MedicalEntityContract, MedicalGuidelineContract, ThingContract
@@ -20,10 +20,14 @@ class MedicalGuidelineRecommendation extends BaseType implements MedicalGuidelin
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -59,7 +63,7 @@ class MedicalGuidelineRecommendation extends BaseType implements MedicalGuidelin
      * @return static
      *
      * @see https://schema.org/code
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function code($code)
     {
@@ -69,7 +73,7 @@ class MedicalGuidelineRecommendation extends BaseType implements MedicalGuidelin
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -106,7 +110,7 @@ class MedicalGuidelineRecommendation extends BaseType implements MedicalGuidelin
      * @return static
      *
      * @see https://schema.org/evidenceLevel
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function evidenceLevel($evidenceLevel)
     {
@@ -122,11 +126,28 @@ class MedicalGuidelineRecommendation extends BaseType implements MedicalGuidelin
      * @return static
      *
      * @see https://schema.org/evidenceOrigin
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function evidenceOrigin($evidenceOrigin)
     {
         return $this->setProperty('evidenceOrigin', $evidenceOrigin);
+    }
+
+    /**
+     * A [[Grant]] that directly or indirectly provide funding or sponsorship
+     * for this item. See also [[ownershipFundingInfo]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\GrantContract|\Spatie\SchemaOrg\Contracts\GrantContract[] $funding
+     *
+     * @return static
+     *
+     * @see https://schema.org/funding
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/383
+     */
+    public function funding($funding)
+    {
+        return $this->setProperty('funding', $funding);
     }
 
     /**
@@ -137,7 +158,7 @@ class MedicalGuidelineRecommendation extends BaseType implements MedicalGuidelin
      * @return static
      *
      * @see https://schema.org/guideline
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function guideline($guideline)
     {
@@ -152,7 +173,7 @@ class MedicalGuidelineRecommendation extends BaseType implements MedicalGuidelin
      * @return static
      *
      * @see https://schema.org/guidelineDate
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function guidelineDate($guidelineDate)
     {
@@ -168,7 +189,7 @@ class MedicalGuidelineRecommendation extends BaseType implements MedicalGuidelin
      * @return static
      *
      * @see https://schema.org/guidelineSubject
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function guidelineSubject($guidelineSubject)
     {
@@ -217,7 +238,7 @@ class MedicalGuidelineRecommendation extends BaseType implements MedicalGuidelin
      * @return static
      *
      * @see https://schema.org/legalStatus
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function legalStatus($legalStatus)
     {
@@ -249,7 +270,7 @@ class MedicalGuidelineRecommendation extends BaseType implements MedicalGuidelin
      * @return static
      *
      * @see https://schema.org/medicineSystem
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function medicineSystem($medicineSystem)
     {
@@ -294,7 +315,7 @@ class MedicalGuidelineRecommendation extends BaseType implements MedicalGuidelin
      * @return static
      *
      * @see https://schema.org/recognizingAuthority
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function recognizingAuthority($recognizingAuthority)
     {
@@ -309,7 +330,7 @@ class MedicalGuidelineRecommendation extends BaseType implements MedicalGuidelin
      * @return static
      *
      * @see https://schema.org/recommendationStrength
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function recommendationStrength($recommendationStrength)
     {
@@ -324,7 +345,7 @@ class MedicalGuidelineRecommendation extends BaseType implements MedicalGuidelin
      * @return static
      *
      * @see https://schema.org/relevantSpecialty
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function relevantSpecialty($relevantSpecialty)
     {
@@ -355,7 +376,7 @@ class MedicalGuidelineRecommendation extends BaseType implements MedicalGuidelin
      * @return static
      *
      * @see https://schema.org/study
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function study($study)
     {
@@ -390,5 +411,4 @@ class MedicalGuidelineRecommendation extends BaseType implements MedicalGuidelin
     {
         return $this->setProperty('url', $url);
     }
-
 }

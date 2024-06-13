@@ -2,18 +2,18 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\LymphaticVesselContract;
-use \Spatie\SchemaOrg\Contracts\AnatomicalStructureContract;
-use \Spatie\SchemaOrg\Contracts\MedicalEntityContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
-use \Spatie\SchemaOrg\Contracts\VesselContract;
+use Spatie\SchemaOrg\Contracts\AnatomicalStructureContract;
+use Spatie\SchemaOrg\Contracts\LymphaticVesselContract;
+use Spatie\SchemaOrg\Contracts\MedicalEntityContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\VesselContract;
 
 /**
  * A type of blood vessel that specifically carries lymph fluid unidirectionally
  * toward the heart.
  *
  * @see https://schema.org/LymphaticVessel
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  */
 class LymphaticVessel extends BaseType implements LymphaticVesselContract, AnatomicalStructureContract, MedicalEntityContract, ThingContract, VesselContract
@@ -21,10 +21,14 @@ class LymphaticVessel extends BaseType implements LymphaticVesselContract, Anato
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -61,7 +65,7 @@ class LymphaticVessel extends BaseType implements LymphaticVesselContract, Anato
      * @return static
      *
      * @see https://schema.org/associatedPathophysiology
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function associatedPathophysiology($associatedPathophysiology)
     {
@@ -76,7 +80,7 @@ class LymphaticVessel extends BaseType implements LymphaticVesselContract, Anato
      * @return static
      *
      * @see https://schema.org/bodyLocation
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function bodyLocation($bodyLocation)
     {
@@ -92,7 +96,7 @@ class LymphaticVessel extends BaseType implements LymphaticVesselContract, Anato
      * @return static
      *
      * @see https://schema.org/code
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function code($code)
     {
@@ -107,7 +111,7 @@ class LymphaticVessel extends BaseType implements LymphaticVesselContract, Anato
      * @return static
      *
      * @see https://schema.org/connectedTo
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function connectedTo($connectedTo)
     {
@@ -117,7 +121,7 @@ class LymphaticVessel extends BaseType implements LymphaticVesselContract, Anato
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -137,7 +141,7 @@ class LymphaticVessel extends BaseType implements LymphaticVesselContract, Anato
      * @return static
      *
      * @see https://schema.org/diagram
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function diagram($diagram)
     {
@@ -162,6 +166,23 @@ class LymphaticVessel extends BaseType implements LymphaticVesselContract, Anato
     }
 
     /**
+     * A [[Grant]] that directly or indirectly provide funding or sponsorship
+     * for this item. See also [[ownershipFundingInfo]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\GrantContract|\Spatie\SchemaOrg\Contracts\GrantContract[] $funding
+     *
+     * @return static
+     *
+     * @see https://schema.org/funding
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/383
+     */
+    public function funding($funding)
+    {
+        return $this->setProperty('funding', $funding);
+    }
+
+    /**
      * A medical guideline related to this entity.
      *
      * @param \Spatie\SchemaOrg\Contracts\MedicalGuidelineContract|\Spatie\SchemaOrg\Contracts\MedicalGuidelineContract[] $guideline
@@ -169,7 +190,7 @@ class LymphaticVessel extends BaseType implements LymphaticVesselContract, Anato
      * @return static
      *
      * @see https://schema.org/guideline
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function guideline($guideline)
     {
@@ -218,7 +239,7 @@ class LymphaticVessel extends BaseType implements LymphaticVesselContract, Anato
      * @return static
      *
      * @see https://schema.org/legalStatus
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function legalStatus($legalStatus)
     {
@@ -250,7 +271,7 @@ class LymphaticVessel extends BaseType implements LymphaticVesselContract, Anato
      * @return static
      *
      * @see https://schema.org/medicineSystem
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function medicineSystem($medicineSystem)
     {
@@ -279,7 +300,7 @@ class LymphaticVessel extends BaseType implements LymphaticVesselContract, Anato
      * @return static
      *
      * @see https://schema.org/originatesFrom
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function originatesFrom($originatesFrom)
     {
@@ -294,7 +315,7 @@ class LymphaticVessel extends BaseType implements LymphaticVesselContract, Anato
      * @return static
      *
      * @see https://schema.org/partOfSystem
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function partOfSystem($partOfSystem)
     {
@@ -325,7 +346,7 @@ class LymphaticVessel extends BaseType implements LymphaticVesselContract, Anato
      * @return static
      *
      * @see https://schema.org/recognizingAuthority
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function recognizingAuthority($recognizingAuthority)
     {
@@ -341,7 +362,7 @@ class LymphaticVessel extends BaseType implements LymphaticVesselContract, Anato
      * @return static
      *
      * @see https://schema.org/regionDrained
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function regionDrained($regionDrained)
     {
@@ -356,7 +377,7 @@ class LymphaticVessel extends BaseType implements LymphaticVesselContract, Anato
      * @return static
      *
      * @see https://schema.org/relatedCondition
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function relatedCondition($relatedCondition)
     {
@@ -371,7 +392,7 @@ class LymphaticVessel extends BaseType implements LymphaticVesselContract, Anato
      * @return static
      *
      * @see https://schema.org/relatedTherapy
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function relatedTherapy($relatedTherapy)
     {
@@ -386,7 +407,7 @@ class LymphaticVessel extends BaseType implements LymphaticVesselContract, Anato
      * @return static
      *
      * @see https://schema.org/relevantSpecialty
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function relevantSpecialty($relevantSpecialty)
     {
@@ -401,7 +422,7 @@ class LymphaticVessel extends BaseType implements LymphaticVesselContract, Anato
      * @return static
      *
      * @see https://schema.org/runsTo
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function runsTo($runsTo)
     {
@@ -432,7 +453,7 @@ class LymphaticVessel extends BaseType implements LymphaticVesselContract, Anato
      * @return static
      *
      * @see https://schema.org/study
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function study($study)
     {
@@ -447,7 +468,7 @@ class LymphaticVessel extends BaseType implements LymphaticVesselContract, Anato
      * @return static
      *
      * @see https://schema.org/subStructure
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function subStructure($subStructure)
     {
@@ -482,5 +503,4 @@ class LymphaticVessel extends BaseType implements LymphaticVesselContract, Anato
     {
         return $this->setProperty('url', $url);
     }
-
 }

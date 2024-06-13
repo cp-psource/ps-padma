@@ -2,10 +2,10 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\GeoShapeContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\StructuredValueContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\GeoShapeContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\StructuredValueContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * The geographic shape of a place. A GeoShape can be described using several
@@ -14,7 +14,6 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
  * whitespace should be used when writing a list of several such points.
  *
  * @see https://schema.org/GeoShape
- * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_rNews
  *
  */
 class GeoShape extends BaseType implements GeoShapeContract, IntangibleContract, StructuredValueContract, ThingContract
@@ -22,10 +21,14 @@ class GeoShape extends BaseType implements GeoShapeContract, IntangibleContract,
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -117,7 +120,7 @@ class GeoShape extends BaseType implements GeoShapeContract, IntangibleContract,
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -148,7 +151,7 @@ class GeoShape extends BaseType implements GeoShapeContract, IntangibleContract,
     /**
      * The elevation of a location ([WGS
      * 84](https://en.wikipedia.org/wiki/World_Geodetic_System)). Values may be
-     * of the form 'NUMBER UNIT*OF*MEASUREMENT' (e.g., '1,000 m', '3,200 ft')
+     * of the form 'NUMBER UNIT\_OF\_MEASUREMENT' (e.g., '1,000 m', '3,200 ft')
      * while numbers alone should be assumed to be a value in meters.
      *
      * @param float|float[]|int|int[]|string|string[] $elevation
@@ -331,5 +334,4 @@ class GeoShape extends BaseType implements GeoShapeContract, IntangibleContract,
     {
         return $this->setProperty('url', $url);
     }
-
 }

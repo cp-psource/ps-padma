@@ -2,18 +2,17 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\MedicalTrialDesignContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\MedicalEnumerationContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\MedicalEnumerationContract;
+use Spatie\SchemaOrg\Contracts\MedicalTrialDesignContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * Design models for medical trials. Enumerated type.
  *
  * @see https://schema.org/MedicalTrialDesign
- * @see http://health-lifesci.schema.org
- * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
+ * @see https://health-lifesci.schema.org
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
  */
@@ -24,67 +23,67 @@ class MedicalTrialDesign extends BaseType implements MedicalTrialDesignContract,
      * details of the treatment the patient was randomly assigned to.
      *
      * @see https://schema.org/DoubleBlindedTrial
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const DoubleBlindedTrial = 'https://schema.org/DoubleBlindedTrial';
+    public const DoubleBlindedTrial = 'https://schema.org/DoubleBlindedTrial';
 
     /**
      * An international trial.
      *
      * @see https://schema.org/InternationalTrial
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const InternationalTrial = 'https://schema.org/InternationalTrial';
+    public const InternationalTrial = 'https://schema.org/InternationalTrial';
 
     /**
      * A trial that takes place at multiple centers.
      *
      * @see https://schema.org/MultiCenterTrial
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const MultiCenterTrial = 'https://schema.org/MultiCenterTrial';
+    public const MultiCenterTrial = 'https://schema.org/MultiCenterTrial';
 
     /**
      * A trial design in which the researcher knows the full details of the
      * treatment, and so does the patient.
      *
      * @see https://schema.org/OpenTrial
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const OpenTrial = 'https://schema.org/OpenTrial';
+    public const OpenTrial = 'https://schema.org/OpenTrial';
 
     /**
      * A placebo-controlled trial design.
      *
      * @see https://schema.org/PlaceboControlledTrial
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const PlaceboControlledTrial = 'https://schema.org/PlaceboControlledTrial';
+    public const PlaceboControlledTrial = 'https://schema.org/PlaceboControlledTrial';
 
     /**
      * A randomized trial design.
      *
      * @see https://schema.org/RandomizedTrial
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const RandomizedTrial = 'https://schema.org/RandomizedTrial';
+    public const RandomizedTrial = 'https://schema.org/RandomizedTrial';
 
     /**
      * A trial design in which the researcher knows which treatment the patient
      * was randomly assigned to but the patient does not.
      *
      * @see https://schema.org/SingleBlindedTrial
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const SingleBlindedTrial = 'https://schema.org/SingleBlindedTrial';
+    public const SingleBlindedTrial = 'https://schema.org/SingleBlindedTrial';
 
     /**
      * A trial that takes place at a single center.
      *
      * @see https://schema.org/SingleCenterTrial
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const SingleCenterTrial = 'https://schema.org/SingleCenterTrial';
+    public const SingleCenterTrial = 'https://schema.org/SingleCenterTrial';
 
     /**
      * A trial design in which neither the researcher, the person administering
@@ -92,17 +91,21 @@ class MedicalTrialDesign extends BaseType implements MedicalTrialDesignContract,
      * patient was randomly assigned to.
      *
      * @see https://schema.org/TripleBlindedTrial
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const TripleBlindedTrial = 'https://schema.org/TripleBlindedTrial';
+    public const TripleBlindedTrial = 'https://schema.org/TripleBlindedTrial';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -132,7 +135,7 @@ class MedicalTrialDesign extends BaseType implements MedicalTrialDesignContract,
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -282,5 +285,4 @@ class MedicalTrialDesign extends BaseType implements MedicalTrialDesignContract,
     {
         return $this->setProperty('url', $url);
     }
-
 }

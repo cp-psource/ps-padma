@@ -2,21 +2,21 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\DeliveryTimeSettingsContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\StructuredValueContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\DeliveryTimeSettingsContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\StructuredValueContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A DeliveryTimeSettings represents re-usable pieces of shipping information,
  * relating to timing. It is designed for publication on an URL that may be
- * referenced via the [[shippingSettingsLink]] property of a
+ * referenced via the [[shippingSettingsLink]] property of an
  * [[OfferShippingDetails]]. Several occurrences can be published, distinguished
  * (and identified/referenced) by their different values for
  * [[transitTimeLabel]].
  *
  * @see https://schema.org/DeliveryTimeSettings
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
  * @link https://github.com/schemaorg/schemaorg/issues/2506
  *
  */
@@ -25,10 +25,14 @@ class DeliveryTimeSettings extends BaseType implements DeliveryTimeSettingsContr
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -64,7 +68,7 @@ class DeliveryTimeSettings extends BaseType implements DeliveryTimeSettingsContr
      * @return static
      *
      * @see https://schema.org/deliveryTime
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2506
      */
     public function deliveryTime($deliveryTime)
@@ -75,7 +79,7 @@ class DeliveryTimeSettings extends BaseType implements DeliveryTimeSettingsContr
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -151,7 +155,7 @@ class DeliveryTimeSettings extends BaseType implements DeliveryTimeSettingsContr
      * @return static
      *
      * @see https://schema.org/isUnlabelledFallback
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2506
      */
     public function isUnlabelledFallback($isUnlabelledFallback)
@@ -222,14 +226,14 @@ class DeliveryTimeSettings extends BaseType implements DeliveryTimeSettingsContr
 
     /**
      * indicates (possibly multiple) shipping destinations. These can be defined
-     * in several ways e.g. postalCode ranges.
+     * in several ways, e.g. postalCode ranges.
      *
      * @param \Spatie\SchemaOrg\Contracts\DefinedRegionContract|\Spatie\SchemaOrg\Contracts\DefinedRegionContract[] $shippingDestination
      *
      * @return static
      *
      * @see https://schema.org/shippingDestination
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2506
      */
     public function shippingDestination($shippingDestination)
@@ -262,7 +266,7 @@ class DeliveryTimeSettings extends BaseType implements DeliveryTimeSettingsContr
      * @return static
      *
      * @see https://schema.org/transitTimeLabel
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2506
      */
     public function transitTimeLabel($transitTimeLabel)
@@ -283,5 +287,4 @@ class DeliveryTimeSettings extends BaseType implements DeliveryTimeSettingsContr
     {
         return $this->setProperty('url', $url);
     }
-
 }

@@ -2,11 +2,11 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\GameServerStatusContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\StatusEnumerationContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\GameServerStatusContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\StatusEnumerationContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * Status of a game server.
@@ -23,7 +23,7 @@ class GameServerStatus extends BaseType implements GameServerStatusContract, Enu
      *
      * @see https://schema.org/OfflinePermanently
      */
-     const OfflinePermanently = 'https://schema.org/OfflinePermanently';
+    public const OfflinePermanently = 'https://schema.org/OfflinePermanently';
 
     /**
      * Game server status: OfflineTemporarily. Server is offline now but it can
@@ -31,14 +31,14 @@ class GameServerStatus extends BaseType implements GameServerStatusContract, Enu
      *
      * @see https://schema.org/OfflineTemporarily
      */
-     const OfflineTemporarily = 'https://schema.org/OfflineTemporarily';
+    public const OfflineTemporarily = 'https://schema.org/OfflineTemporarily';
 
     /**
      * Game server status: Online. Server is available.
      *
      * @see https://schema.org/Online
      */
-     const Online = 'https://schema.org/Online';
+    public const Online = 'https://schema.org/Online';
 
     /**
      * Game server status: OnlineFull. Server is online but unavailable. The
@@ -46,15 +46,19 @@ class GameServerStatus extends BaseType implements GameServerStatusContract, Enu
      *
      * @see https://schema.org/OnlineFull
      */
-     const OnlineFull = 'https://schema.org/OnlineFull';
+    public const OnlineFull = 'https://schema.org/OnlineFull';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -84,7 +88,7 @@ class GameServerStatus extends BaseType implements GameServerStatusContract, Enu
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -234,5 +238,4 @@ class GameServerStatus extends BaseType implements GameServerStatusContract, Enu
     {
         return $this->setProperty('url', $url);
     }
-
 }

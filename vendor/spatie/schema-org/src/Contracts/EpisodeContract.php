@@ -38,6 +38,8 @@ interface EpisodeContract
 
     public function alternativeHeadline($alternativeHeadline);
 
+    public function archivedAt($archivedAt);
+
     public function assesses($assesses);
 
     public function associatedMedia($associatedMedia);
@@ -72,13 +74,19 @@ interface EpisodeContract
 
     public function copyrightHolder($copyrightHolder);
 
+    public function copyrightNotice($copyrightNotice);
+
     public function copyrightYear($copyrightYear);
 
     public function correction($correction);
 
+    public function countryOfOrigin($countryOfOrigin);
+
     public function creativeWorkStatus($creativeWorkStatus);
 
     public function creator($creator);
+
+    public function creditText($creditText);
 
     public function dateCreated($dateCreated);
 
@@ -88,6 +96,8 @@ interface EpisodeContract
 
     public function description($description);
 
+    public function digitalSourceType($digitalSourceType);
+
     public function director($director);
 
     public function directors($directors);
@@ -95,6 +105,8 @@ interface EpisodeContract
     public function disambiguatingDescription($disambiguatingDescription);
 
     public function discussionUrl($discussionUrl);
+
+    public function duration($duration);
 
     public function editEIDR($editEIDR);
 
@@ -122,6 +134,8 @@ interface EpisodeContract
 
     public function funder($funder);
 
+    public function funding($funding);
+
     public function genre($genre);
 
     public function hasPart($hasPart);
@@ -137,6 +151,8 @@ interface EpisodeContract
     public function interactionStatistic($interactionStatistic);
 
     public function interactivityType($interactivityType);
+
+    public function interpretedAsClaim($interpretedAsClaim);
 
     public function isAccessibleForFree($isAccessibleForFree);
 
@@ -236,6 +252,8 @@ interface EpisodeContract
 
     public function text($text);
 
+    public function thumbnail($thumbnail);
+
     public function thumbnailUrl($thumbnailUrl);
 
     public function timeRequired($timeRequired);
@@ -259,5 +277,4 @@ interface EpisodeContract
     public function workExample($workExample);
 
     public function workTranslation($workTranslation);
-
 }

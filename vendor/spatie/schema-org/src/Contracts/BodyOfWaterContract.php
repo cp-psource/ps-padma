@@ -70,6 +70,8 @@ interface BodyOfWaterContract
 
     public function isicV4($isicV4);
 
+    public function keywords($keywords);
+
     public function latitude($latitude);
 
     public function logo($logo);
@@ -115,5 +117,4 @@ interface BodyOfWaterContract
     public function tourBookingPage($tourBookingPage);
 
     public function url($url);
-
 }

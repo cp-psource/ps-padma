@@ -1,10 +1,12 @@
 <?php
 
 class PadmaContentBlockDisplay {
+	public $block;
+	public $paged;
+	public $row_open;
 
 	var $count = 0;			
 	var $query = array();
-
 
 	function __construct($block) {
 
@@ -20,9 +22,7 @@ class PadmaContentBlockDisplay {
 			$this->paged = 1; 
 		}
 		$this->add_hooks();
-
 	}
-
 
 	/**
 	 * Created this function to make the call a little shorter.
@@ -32,7 +32,6 @@ class PadmaContentBlockDisplay {
 		return PadmaBlockAPI::get_setting($this->block, $setting, $default);
 
 	}
-
 
 	function add_hooks() {
 
@@ -48,7 +47,6 @@ class PadmaContentBlockDisplay {
 		add_filter('the_content', array($this, 'filter_nofollow_links_in_post'));				
 
 	}
-
 
 	function remove_hooks() {
 

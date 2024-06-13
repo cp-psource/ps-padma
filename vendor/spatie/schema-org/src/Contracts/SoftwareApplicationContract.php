@@ -40,6 +40,8 @@ interface SoftwareApplicationContract
 
     public function applicationSuite($applicationSuite);
 
+    public function archivedAt($archivedAt);
+
     public function assesses($assesses);
 
     public function associatedMedia($associatedMedia);
@@ -76,6 +78,8 @@ interface SoftwareApplicationContract
 
     public function copyrightHolder($copyrightHolder);
 
+    public function copyrightNotice($copyrightNotice);
+
     public function copyrightYear($copyrightYear);
 
     public function correction($correction);
@@ -84,9 +88,13 @@ interface SoftwareApplicationContract
 
     public function countriesSupported($countriesSupported);
 
+    public function countryOfOrigin($countryOfOrigin);
+
     public function creativeWorkStatus($creativeWorkStatus);
 
     public function creator($creator);
+
+    public function creditText($creditText);
 
     public function dateCreated($dateCreated);
 
@@ -97,6 +105,8 @@ interface SoftwareApplicationContract
     public function description($description);
 
     public function device($device);
+
+    public function digitalSourceType($digitalSourceType);
 
     public function disambiguatingDescription($disambiguatingDescription);
 
@@ -132,6 +142,8 @@ interface SoftwareApplicationContract
 
     public function funder($funder);
 
+    public function funding($funding);
+
     public function genre($genre);
 
     public function hasPart($hasPart);
@@ -149,6 +161,8 @@ interface SoftwareApplicationContract
     public function interactionStatistic($interactionStatistic);
 
     public function interactivityType($interactivityType);
+
+    public function interpretedAsClaim($interpretedAsClaim);
 
     public function isAccessibleForFree($isAccessibleForFree);
 
@@ -266,6 +280,8 @@ interface SoftwareApplicationContract
 
     public function text($text);
 
+    public function thumbnail($thumbnail);
+
     public function thumbnailUrl($thumbnailUrl);
 
     public function timeRequired($timeRequired);
@@ -287,5 +303,4 @@ interface SoftwareApplicationContract
     public function workExample($workExample);
 
     public function workTranslation($workTranslation);
-
 }

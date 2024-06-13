@@ -38,6 +38,8 @@ interface TVEpisodeContract
 
     public function alternativeHeadline($alternativeHeadline);
 
+    public function archivedAt($archivedAt);
+
     public function assesses($assesses);
 
     public function associatedMedia($associatedMedia);
@@ -72,6 +74,8 @@ interface TVEpisodeContract
 
     public function copyrightHolder($copyrightHolder);
 
+    public function copyrightNotice($copyrightNotice);
+
     public function copyrightYear($copyrightYear);
 
     public function correction($correction);
@@ -82,6 +86,8 @@ interface TVEpisodeContract
 
     public function creator($creator);
 
+    public function creditText($creditText);
+
     public function dateCreated($dateCreated);
 
     public function dateModified($dateModified);
@@ -90,6 +96,8 @@ interface TVEpisodeContract
 
     public function description($description);
 
+    public function digitalSourceType($digitalSourceType);
+
     public function director($director);
 
     public function directors($directors);
@@ -97,6 +105,8 @@ interface TVEpisodeContract
     public function disambiguatingDescription($disambiguatingDescription);
 
     public function discussionUrl($discussionUrl);
+
+    public function duration($duration);
 
     public function editEIDR($editEIDR);
 
@@ -124,6 +134,8 @@ interface TVEpisodeContract
 
     public function funder($funder);
 
+    public function funding($funding);
+
     public function genre($genre);
 
     public function hasPart($hasPart);
@@ -139,6 +151,8 @@ interface TVEpisodeContract
     public function interactionStatistic($interactionStatistic);
 
     public function interactivityType($interactivityType);
+
+    public function interpretedAsClaim($interpretedAsClaim);
 
     public function isAccessibleForFree($isAccessibleForFree);
 
@@ -242,6 +256,8 @@ interface TVEpisodeContract
 
     public function text($text);
 
+    public function thumbnail($thumbnail);
+
     public function thumbnailUrl($thumbnailUrl);
 
     public function timeRequired($timeRequired);
@@ -267,5 +283,4 @@ interface TVEpisodeContract
     public function workExample($workExample);
 
     public function workTranslation($workTranslation);
-
 }

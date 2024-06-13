@@ -34,6 +34,8 @@ interface AudioObjectContract
 
     public function alternativeHeadline($alternativeHeadline);
 
+    public function archivedAt($archivedAt);
+
     public function assesses($assesses);
 
     public function associatedArticle($associatedArticle);
@@ -78,13 +80,19 @@ interface AudioObjectContract
 
     public function copyrightHolder($copyrightHolder);
 
+    public function copyrightNotice($copyrightNotice);
+
     public function copyrightYear($copyrightYear);
 
     public function correction($correction);
 
+    public function countryOfOrigin($countryOfOrigin);
+
     public function creativeWorkStatus($creativeWorkStatus);
 
     public function creator($creator);
+
+    public function creditText($creditText);
 
     public function dateCreated($dateCreated);
 
@@ -93,6 +101,8 @@ interface AudioObjectContract
     public function datePublished($datePublished);
 
     public function description($description);
+
+    public function digitalSourceType($digitalSourceType);
 
     public function disambiguatingDescription($disambiguatingDescription);
 
@@ -112,6 +122,8 @@ interface AudioObjectContract
 
     public function embedUrl($embedUrl);
 
+    public function embeddedTextCaption($embeddedTextCaption);
+
     public function encodesCreativeWork($encodesCreativeWork);
 
     public function encoding($encoding);
@@ -130,6 +142,8 @@ interface AudioObjectContract
 
     public function funder($funder);
 
+    public function funding($funding);
+
     public function genre($genre);
 
     public function hasPart($hasPart);
@@ -144,9 +158,13 @@ interface AudioObjectContract
 
     public function inLanguage($inLanguage);
 
+    public function ineligibleRegion($ineligibleRegion);
+
     public function interactionStatistic($interactionStatistic);
 
     public function interactivityType($interactivityType);
+
+    public function interpretedAsClaim($interpretedAsClaim);
 
     public function isAccessibleForFree($isAccessibleForFree);
 
@@ -226,6 +244,8 @@ interface AudioObjectContract
 
     public function sdPublisher($sdPublisher);
 
+    public function sha256($sha256);
+
     public function size($size);
 
     public function sourceOrganization($sourceOrganization);
@@ -247,6 +267,8 @@ interface AudioObjectContract
     public function temporalCoverage($temporalCoverage);
 
     public function text($text);
+
+    public function thumbnail($thumbnail);
 
     public function thumbnailUrl($thumbnailUrl);
 
@@ -275,5 +297,4 @@ interface AudioObjectContract
     public function workExample($workExample);
 
     public function workTranslation($workTranslation);
-
 }

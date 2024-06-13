@@ -2,25 +2,24 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\QuantitativeValueContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\StructuredValueContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\QuantitativeValueContract;
+use Spatie\SchemaOrg\Contracts\StructuredValueContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
- * A point value or interval for product characteristics and other purposes.
+ *  A point value or interval for product characteristics and other purposes.
  *
  * @see https://schema.org/QuantitativeValue
- * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
  *
  */
 class QuantitativeValue extends BaseType implements QuantitativeValueContract, IntangibleContract, StructuredValueContract, ThingContract
 {
     /**
-     * A property-value pair representing an additional characteristics of the
-     * entitity, e.g. a product feature or another characteristic for which
-     * there is no matching property in schema.org.
-     * 
+     * A property-value pair representing an additional characteristic of the
+     * entity, e.g. a product feature or another characteristic for which there
+     * is no matching property in schema.org.
+     *
      * Note: Publishers should be aware that applications designed to use
      * specific schema.org properties (e.g. https://schema.org/width,
      * https://schema.org/color, https://schema.org/gtin13, ...) will typically
@@ -41,10 +40,14 @@ class QuantitativeValue extends BaseType implements QuantitativeValueContract, I
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -74,7 +77,7 @@ class QuantitativeValue extends BaseType implements QuantitativeValueContract, I
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -159,7 +162,6 @@ class QuantitativeValue extends BaseType implements QuantitativeValueContract, I
      * @return static
      *
      * @see https://schema.org/maxValue
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function maxValue($maxValue)
     {
@@ -174,7 +176,6 @@ class QuantitativeValue extends BaseType implements QuantitativeValueContract, I
      * @return static
      *
      * @see https://schema.org/minValue
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function minValue($minValue)
     {
@@ -251,7 +252,6 @@ class QuantitativeValue extends BaseType implements QuantitativeValueContract, I
      * @return static
      *
      * @see https://schema.org/unitCode
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function unitCode($unitCode)
     {
@@ -289,14 +289,15 @@ class QuantitativeValue extends BaseType implements QuantitativeValueContract, I
     }
 
     /**
-     * The value of the quantitative value or property value node.
-     * 
+     * The value of a [[QuantitativeValue]] (including [[Observation]]) or
+     * property value node.
+     *
      * * For [[QuantitativeValue]] and [[MonetaryAmount]], the recommended type
      * for values is 'Number'.
-     * * For [[PropertyValue]], it can be 'Text;', 'Number', 'Boolean', or
+     * * For [[PropertyValue]], it can be 'Text', 'Number', 'Boolean', or
      * 'StructuredValue'.
      * * Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT
-     * NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * NINE' (U+0039)) rather than superficially similar Unicode symbols.
      * * Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a
      * decimal point. Avoid using these symbols as a readability separator.
      *
@@ -305,7 +306,6 @@ class QuantitativeValue extends BaseType implements QuantitativeValueContract, I
      * @return static
      *
      * @see https://schema.org/value
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function value($value)
     {
@@ -313,19 +313,17 @@ class QuantitativeValue extends BaseType implements QuantitativeValueContract, I
     }
 
     /**
-     * A pointer to a secondary value that provides additional information on
-     * the original value, e.g. a reference temperature.
+     * A secondary value that provides additional information on the original
+     * value, e.g. a reference temperature or a type of measurement.
      *
-     * @param \Spatie\SchemaOrg\Contracts\EnumerationContract|\Spatie\SchemaOrg\Contracts\EnumerationContract[]|\Spatie\SchemaOrg\Contracts\PropertyValueContract|\Spatie\SchemaOrg\Contracts\PropertyValueContract[]|\Spatie\SchemaOrg\Contracts\QualitativeValueContract|\Spatie\SchemaOrg\Contracts\QualitativeValueContract[]|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[]|\Spatie\SchemaOrg\Contracts\StructuredValueContract|\Spatie\SchemaOrg\Contracts\StructuredValueContract[] $valueReference
+     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|\Spatie\SchemaOrg\Contracts\EnumerationContract|\Spatie\SchemaOrg\Contracts\EnumerationContract[]|\Spatie\SchemaOrg\Contracts\MeasurementTypeEnumerationContract|\Spatie\SchemaOrg\Contracts\MeasurementTypeEnumerationContract[]|\Spatie\SchemaOrg\Contracts\PropertyValueContract|\Spatie\SchemaOrg\Contracts\PropertyValueContract[]|\Spatie\SchemaOrg\Contracts\QualitativeValueContract|\Spatie\SchemaOrg\Contracts\QualitativeValueContract[]|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[]|\Spatie\SchemaOrg\Contracts\StructuredValueContract|\Spatie\SchemaOrg\Contracts\StructuredValueContract[]|string|string[] $valueReference
      *
      * @return static
      *
      * @see https://schema.org/valueReference
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function valueReference($valueReference)
     {
         return $this->setProperty('valueReference', $valueReference);
     }
-
 }

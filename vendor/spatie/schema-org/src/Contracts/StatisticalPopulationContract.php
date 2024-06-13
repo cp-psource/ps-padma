@@ -8,8 +8,6 @@ interface StatisticalPopulationContract
 
     public function alternateName($alternateName);
 
-    public function constrainingProperty($constrainingProperty);
-
     public function description($description);
 
     public function disambiguatingDescription($disambiguatingDescription);
@@ -22,8 +20,6 @@ interface StatisticalPopulationContract
 
     public function name($name);
 
-    public function numConstraints($numConstraints);
-
     public function potentialAction($potentialAction);
 
     public function sameAs($sameAs);
@@ -31,5 +27,4 @@ interface StatisticalPopulationContract
     public function subjectOf($subjectOf);
 
     public function url($url);
-
 }

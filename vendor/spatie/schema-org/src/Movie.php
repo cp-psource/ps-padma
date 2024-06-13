@@ -2,9 +2,9 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\MovieContract;
-use \Spatie\SchemaOrg\Contracts\CreativeWorkContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\CreativeWorkContract;
+use Spatie\SchemaOrg\Contracts\MovieContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A movie.
@@ -37,7 +37,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * @return static
      *
      * @see https://schema.org/abstract
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/276
      */
     public function abstract($abstract)
@@ -47,9 +47,9 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
 
     /**
      * The human sensory perceptual system or cognitive faculty through which a
-     * person may process or perceive information. Expected values include:
-     * auditory, tactile, textual, visual, colorDependent, chartOnVisual,
-     * chemOnVisual, diagramOnVisual, mathOnVisual, musicOnVisual, textOnVisual.
+     * person may process or perceive information. Values should be drawn from
+     * the [approved
+     * vocabulary](https://www.w3.org/2021/a11y-discov-vocab/latest/#accessMode-vocabulary).
      *
      * @param string|string[] $accessMode
      *
@@ -65,8 +65,9 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
 
     /**
      * A list of single or combined accessModes that are sufficient to
-     * understand all the intellectual content of a resource. Expected values
-     * include:  auditory, tactile, textual, visual.
+     * understand all the intellectual content of a resource. Values should be
+     * drawn from the [approved
+     * vocabulary](https://www.w3.org/2021/a11y-discov-vocab/latest/#accessModeSufficient-vocabulary).
      *
      * @param \Spatie\SchemaOrg\Contracts\ItemListContract|\Spatie\SchemaOrg\Contracts\ItemListContract[] $accessModeSufficient
      *
@@ -82,8 +83,8 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
 
     /**
      * Indicates that the resource is compatible with the referenced
-     * accessibility API ([WebSchemas wiki lists possible
-     * values](http://www.w3.org/wiki/WebSchemas/Accessibility)).
+     * accessibility API. Values should be drawn from the [approved
+     * vocabulary](https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityAPI-vocabulary).
      *
      * @param string|string[] $accessibilityAPI
      *
@@ -98,8 +99,8 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
 
     /**
      * Identifies input methods that are sufficient to fully control the
-     * described resource ([WebSchemas wiki lists possible
-     * values](http://www.w3.org/wiki/WebSchemas/Accessibility)).
+     * described resource. Values should be drawn from the [approved
+     * vocabulary](https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityControl-vocabulary).
      *
      * @param string|string[] $accessibilityControl
      *
@@ -114,8 +115,9 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
 
     /**
      * Content features of the resource, such as accessible media, alternatives
-     * and supported enhancements for accessibility ([WebSchemas wiki lists
-     * possible values](http://www.w3.org/wiki/WebSchemas/Accessibility)).
+     * and supported enhancements for accessibility. Values should be drawn from
+     * the [approved
+     * vocabulary](https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityFeature-vocabulary).
      *
      * @param string|string[] $accessibilityFeature
      *
@@ -130,9 +132,9 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
 
     /**
      * A characteristic of the described resource that is physiologically
-     * dangerous to some users. Related to WCAG 2.0 guideline 2.3 ([WebSchemas
-     * wiki lists possible
-     * values](http://www.w3.org/wiki/WebSchemas/Accessibility)).
+     * dangerous to some users. Related to WCAG 2.0 guideline 2.3. Values should
+     * be drawn from the [approved
+     * vocabulary](https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityHazard-vocabulary).
      *
      * @param string|string[] $accessibilityHazard
      *
@@ -150,7 +152,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * deficiencies, consistent with the other accessibility metadata but
      * expressing subtleties such as "short descriptions are present but long
      * descriptions will be needed for non-visual users" or "short descriptions
-     * are present and no long descriptions are needed."
+     * are present and no long descriptions are needed".
      *
      * @param string|string[] $accessibilitySummary
      *
@@ -187,7 +189,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * @return static
      *
      * @see https://schema.org/acquireLicensePage
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2454
      */
     public function acquireLicensePage($acquireLicensePage)
@@ -196,7 +198,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
     }
 
     /**
-     * An actor, e.g. in tv, radio, movie, video games etc., or in an event.
+     * An actor, e.g. in TV, radio, movie, video games etc., or in an event.
      * Actors can be associated with individual items or with a series, episode,
      * clip.
      *
@@ -212,7 +214,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
     }
 
     /**
-     * An actor, e.g. in tv, radio, movie, video games etc. Actors can be
+     * An actor, e.g. in TV, radio, movie, video games etc. Actors can be
      * associated with individual items or with a series, episode, clip.
      *
      * @param \Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[] $actors
@@ -229,10 +231,14 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -289,6 +295,26 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
     }
 
     /**
+     * Indicates a page or other link involved in archival of a
+     * [[CreativeWork]]. In the case of [[MediaReview]], the items in a
+     * [[MediaReviewItem]] may often become inaccessible, but be archived by
+     * archival, journalistic, activist, or law enforcement organizations. In
+     * such cases, the referenced page may not directly publish the content.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\WebPageContract|\Spatie\SchemaOrg\Contracts\WebPageContract[]|string|string[] $archivedAt
+     *
+     * @return static
+     *
+     * @see https://schema.org/archivedAt
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2450
+     */
+    public function archivedAt($archivedAt)
+    {
+        return $this->setProperty('archivedAt', $archivedAt);
+    }
+
+    /**
      * The item being described is intended to assess the competency or learning
      * outcome defined by the referenced term.
      *
@@ -297,7 +323,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * @return static
      *
      * @see https://schema.org/assesses
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2427
      */
     public function assesses($assesses)
@@ -458,7 +484,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * held by an [[ArchiveOrganization]]. This property is not suitable for use
      * as a general Web access control mechanism. It is expressed only in
      * natural language.
-     * 
+     *
      * For example "Available by appointment from the Reading Room" or
      * "Accessible only from logged-in accounts ".
      *
@@ -467,7 +493,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * @return static
      *
      * @see https://schema.org/conditionsOfAccess
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2173
      */
     public function conditionsOfAccess($conditionsOfAccess)
@@ -491,7 +517,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
     }
 
     /**
-     * Official rating of a piece of content&#x2014;for example,'MPAA PG-13'.
+     * Official rating of a piece of content&#x2014;for example, 'MPAA PG-13'.
      *
      * @param \Spatie\SchemaOrg\Contracts\RatingContract|\Spatie\SchemaOrg\Contracts\RatingContract[]|string|string[] $contentRating
      *
@@ -513,7 +539,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * @return static
      *
      * @see https://schema.org/contentReferenceTime
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1050
      */
     public function contentReferenceTime($contentReferenceTime)
@@ -550,6 +576,24 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
     }
 
     /**
+     * Text of a notice appropriate for describing the copyright aspects of this
+     * Creative Work, ideally indicating the owner of the copyright for the
+     * Work.
+     *
+     * @param string|string[] $copyrightNotice
+     *
+     * @return static
+     *
+     * @see https://schema.org/copyrightNotice
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2659
+     */
+    public function copyrightNotice($copyrightNotice)
+    {
+        return $this->setProperty('copyrightNotice', $copyrightNotice);
+    }
+
+    /**
      * The year during which the claimed copyright for the CreativeWork was
      * first asserted.
      *
@@ -573,7 +617,8 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * @return static
      *
      * @see https://schema.org/correction
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1950
      */
     public function correction($correction)
     {
@@ -581,8 +626,18 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
     }
 
     /**
-     * The country of the principal offices of the production company or
-     * individual responsible for the movie or program.
+     * The country of origin of something, including products as well as
+     * creative  works such as movie and TV content.
+     *
+     * In the case of TV and movie, this would be the country of the principle
+     * offices of the production company or individual responsible for the
+     * movie. For other kinds of [[CreativeWork]] it is difficult to provide
+     * fully general guidance, and properties such as [[contentLocation]] and
+     * [[locationCreated]] may be more applicable.
+     *
+     * In the case of products, the country of origin of the product. The exact
+     * interpretation of this may vary by context and product type, and cannot
+     * be fully enumerated here.
      *
      * @param \Spatie\SchemaOrg\Contracts\CountryContract|\Spatie\SchemaOrg\Contracts\CountryContract[] $countryOfOrigin
      *
@@ -606,7 +661,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * @return static
      *
      * @see https://schema.org/creativeWorkStatus
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/987
      */
     public function creativeWorkStatus($creativeWorkStatus)
@@ -627,6 +682,23 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
     public function creator($creator)
     {
         return $this->setProperty('creator', $creator);
+    }
+
+    /**
+     * Text that can be used to credit person(s) and/or organization(s)
+     * associated with a published Creative Work.
+     *
+     * @param string|string[] $creditText
+     *
+     * @return static
+     *
+     * @see https://schema.org/creditText
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2659
+     */
+    public function creditText($creditText)
+    {
+        return $this->setProperty('creditText', $creditText);
     }
 
     /**
@@ -676,7 +748,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -688,7 +760,24 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
     }
 
     /**
-     * A director of e.g. tv, radio, movie, video gaming etc. content, or of an
+     * Indicates an IPTCDigitalSourceEnumeration code indicating the nature of
+     * the digital source(s) for some [[CreativeWork]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\IPTCDigitalSourceEnumerationContract|\Spatie\SchemaOrg\Contracts\IPTCDigitalSourceEnumerationContract[] $digitalSourceType
+     *
+     * @return static
+     *
+     * @see https://schema.org/digitalSourceType
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/3392
+     */
+    public function digitalSourceType($digitalSourceType)
+    {
+        return $this->setProperty('digitalSourceType', $digitalSourceType);
+    }
+
+    /**
+     * A director of e.g. TV, radio, movie, video gaming etc. content, or of an
      * event. Directors can be associated with individual items or with a
      * series, episode, clip.
      *
@@ -704,7 +793,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
     }
 
     /**
-     * A director of e.g. tv, radio, movie, video games etc. content. Directors
+     * A director of e.g. TV, radio, movie, video games etc. content. Directors
      * can be associated with individual items or with a series, episode, clip.
      *
      * @param \Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[] $directors
@@ -768,12 +857,12 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * An [EIDR](https://eidr.org/) (Entertainment Identifier Registry)
      * [[identifier]] representing a specific edit / edition for a work of film
      * or television.
-     * 
+     *
      * For example, the motion picture known as "Ghostbusters" whose
-     * [[titleEIDR]] is "10.5240/7EC7-228A-510A-053E-CBB8-J", has several edits
+     * [[titleEIDR]] is "10.5240/7EC7-228A-510A-053E-CBB8-J" has several edits,
      * e.g. "10.5240/1F2A-E1C5-680A-14C6-E76B-I" and
      * "10.5240/8A35-3BEE-6497-5D12-9E4F-3".
-     * 
+     *
      * Since schema.org types like [[Movie]] and [[TVEpisode]] can be used for
      * both works and their multiple expressions, it is possible to use
      * [[titleEIDR]] alone (for a general description), or alongside
@@ -784,7 +873,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * @return static
      *
      * @see https://schema.org/editEIDR
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2469
      */
     public function editEIDR($editEIDR)
@@ -808,7 +897,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
 
     /**
      * An alignment to an established educational framework.
-     * 
+     *
      * This property should not be used where the nature of the alignment can be
      * described using a simple property, for example to express that a resource
      * [[teaches]] or [[assesses]] a competency.
@@ -834,7 +923,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * @return static
      *
      * @see https://schema.org/educationalLevel
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1779
      */
     public function educationalLevel($educationalLevel)
@@ -846,7 +935,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * The purpose of a work in the context of education; for example,
      * 'assignment', 'group work'.
      *
-     * @param string|string[] $educationalUse
+     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|string|string[] $educationalUse
      *
      * @return static
      *
@@ -876,14 +965,14 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * Media type typically expressed using a MIME format (see [IANA
      * site](http://www.iana.org/assignments/media-types/media-types.xhtml) and
      * [MDN
-     * reference](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types))
+     * reference](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)),
      * e.g. application/zip for a SoftwareApplication binary, audio/mpeg for
-     * .mp3 etc.).
-     * 
+     * .mp3 etc.
+     *
      * In cases where a [[CreativeWork]] has several media type representations,
      * [[encoding]] can be used to indicate each [[MediaObject]] alongside
      * particular [[encodingFormat]] information.
-     * 
+     *
      * Unregistered or niche encoding and file formats can be indicated instead
      * via the most appropriate URL, e.g. defining Web page or a
      * Wikipedia/Wikidata entry.
@@ -922,7 +1011,6 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * @return static
      *
      * @see https://schema.org/exampleOfWork
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_bibex
      */
     public function exampleOfWork($exampleOfWork)
     {
@@ -950,7 +1038,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
     /**
      * Media type, typically MIME format (see [IANA
      * site](http://www.iana.org/assignments/media-types/media-types.xhtml)) of
-     * the content e.g. application/zip of a SoftwareApplication binary. In
+     * the content, e.g. application/zip of a SoftwareApplication binary. In
      * cases where a CreativeWork has several media type representations,
      * 'encoding' can be used to indicate each MediaObject alongside particular
      * fileFormat information. Unregistered or niche file formats can be
@@ -984,6 +1072,23 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
     }
 
     /**
+     * A [[Grant]] that directly or indirectly provide funding or sponsorship
+     * for this item. See also [[ownershipFundingInfo]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\GrantContract|\Spatie\SchemaOrg\Contracts\GrantContract[] $funding
+     *
+     * @return static
+     *
+     * @see https://schema.org/funding
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/383
+     */
+    public function funding($funding)
+    {
+        return $this->setProperty('funding', $funding);
+    }
+
+    /**
      * Genre of the creative work, broadcast channel or group.
      *
      * @param string|string[] $genre
@@ -1006,7 +1111,6 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * @return static
      *
      * @see https://schema.org/hasPart
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_bibex
      */
     public function hasPart($hasPart)
     {
@@ -1111,6 +1215,24 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
     }
 
     /**
+     * Used to indicate a specific claim contained, implied, translated or
+     * refined from the content of a [[MediaObject]] or other [[CreativeWork]].
+     * The interpreting party can be indicated using [[claimInterpreter]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\ClaimContract|\Spatie\SchemaOrg\Contracts\ClaimContract[] $interpretedAsClaim
+     *
+     * @return static
+     *
+     * @see https://schema.org/interpretedAsClaim
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2450
+     */
+    public function interpretedAsClaim($interpretedAsClaim)
+    {
+        return $this->setProperty('interpretedAsClaim', $interpretedAsClaim);
+    }
+
+    /**
      * A flag to signal that the item, event, or place is accessible for free.
      *
      * @param bool|bool[] $isAccessibleForFree
@@ -1126,7 +1248,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
 
     /**
      * A resource from which this work is derived or from which it is a
-     * modification or adaption.
+     * modification or adaptation.
      *
      * @param \Spatie\SchemaOrg\Contracts\CreativeWorkContract|\Spatie\SchemaOrg\Contracts\CreativeWorkContract[]|\Spatie\SchemaOrg\Contracts\ProductContract|\Spatie\SchemaOrg\Contracts\ProductContract[]|string|string[] $isBasedOn
      *
@@ -1185,10 +1307,11 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
     }
 
     /**
-     * Keywords or tags used to describe this content. Multiple entries in a
-     * keywords list are typically delimited by commas.
+     * Keywords or tags used to describe some item. Multiple textual entries in
+     * a keywords list are typically delimited by commas, or by repeating the
+     * property.
      *
-     * @param string|string[] $keywords
+     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|string|string[] $keywords
      *
      * @return static
      *
@@ -1203,7 +1326,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * The predominant type or kind characterizing the learning resource. For
      * example, 'presentation', 'handout'.
      *
-     * @param string|string[] $learningResourceType
+     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|string|string[] $learningResourceType
      *
      * @return static
      *
@@ -1295,7 +1418,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * @return static
      *
      * @see https://schema.org/maintainer
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2311
      */
     public function maintainer($maintainer)
@@ -1327,7 +1450,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * @return static
      *
      * @see https://schema.org/materialExtent
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1759
      */
     public function materialExtent($materialExtent)
@@ -1410,7 +1533,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * @return static
      *
      * @see https://schema.org/pattern
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1797
      */
     public function pattern($pattern)
@@ -1449,7 +1572,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
 
     /**
      * The person or organization who produced the work (e.g. music album,
-     * movie, tv/radio series etc.).
+     * movie, TV/radio series etc.).
      *
      * @param \Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[]|\Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[] $producer
      *
@@ -1463,7 +1586,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
     }
 
     /**
-     * The production company or studio responsible for the item e.g. series,
+     * The production company or studio responsible for the item, e.g. series,
      * video game, episode etc.
      *
      * @param \Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[] $productionCompany
@@ -1487,7 +1610,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * @return static
      *
      * @see https://schema.org/provider
-     * @link https://github.com/schemaorg/schemaorg/issues/2289
+     * @see https://pending.schema.org
      */
     public function provider($provider)
     {
@@ -1530,7 +1653,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * @return static
      *
      * @see https://schema.org/publisherImprint
-     * @see http://bib.schema.org
+     * @see https://bib.schema.org
      */
     public function publisherImprint($publisherImprint)
     {
@@ -1540,12 +1663,12 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
     /**
      * The publishingPrinciples property indicates (typically via [[URL]]) a
      * document describing the editorial principles of an [[Organization]] (or
-     * individual e.g. a [[Person]] writing a blog) that relate to their
+     * individual, e.g. a [[Person]] writing a blog) that relate to their
      * activities as a publisher, e.g. ethics or diversity policies. When
      * applied to a [[CreativeWork]] (e.g. [[NewsArticle]]) the principles are
      * those of the party primarily responsible for the creation of the
      * [[CreativeWork]].
-     * 
+     *
      * While such policies are most typically expressed in natural language,
      * sometimes related information (e.g. indicating a [[funder]]) can be
      * expressed using schema.org terminology.
@@ -1637,9 +1760,14 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
 
     /**
      * Indicates (by URL or string) a particular version of a schema used in
-     * some CreativeWork. For example, a document could declare a schemaVersion
-     * using an URL such as https://schema.org/version/2.0/ if precise
-     * indication of schema version was required by some application.
+     * some CreativeWork. This property was created primarily to
+     *     indicate the use of a specific schema.org release, e.g. ```10.0``` as
+     * a simple string, or more explicitly via URL,
+     * ```https://schema.org/docs/releases.html#v10.0```. There may be
+     * situations in which other schemas might usefully be referenced this way,
+     * e.g.
+     * ```http://dublincore.org/specifications/dublin-core/dces/1999-07-02/```
+     * but this has not been carefully explored in the community.
      *
      * @param string|string[] $schemaVersion
      *
@@ -1654,14 +1782,14 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
 
     /**
      * Indicates the date on which the current structured data was generated /
-     * published. Typically used alongside [[sdPublisher]]
+     * published. Typically used alongside [[sdPublisher]].
      *
      * @param \DateTimeInterface|\DateTimeInterface[] $sdDatePublished
      *
      * @return static
      *
      * @see https://schema.org/sdDatePublished
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1886
      */
     public function sdDatePublished($sdDatePublished)
@@ -1678,7 +1806,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * @return static
      *
      * @see https://schema.org/sdLicense
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1886
      */
     public function sdLicense($sdLicense)
@@ -1700,7 +1828,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * @return static
      *
      * @see https://schema.org/sdPublisher
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1886
      */
     public function sdPublisher($sdPublisher)
@@ -1709,19 +1837,18 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
     }
 
     /**
-     * A standardized size of a product or creative work, often simplifying
-     * richer information into a simple textual string, either through referring
-     * to named sizes or (in the case of product markup), by adopting
-     * conventional simplifications. Use of QuantitativeValue with a unitCode or
-     * unitText can add more structure; in other cases, the /width, /height,
-     * /depth and /weight properties may be more applicable.
+     * A standardized size of a product or creative work, specified either
+     * through a simple textual string (for example 'XL', '32Wx34L'), a
+     * QuantitativeValue with a unitCode, or a comprehensive and structured
+     * [[SizeSpecification]]; in other cases, the [[width]], [[height]],
+     * [[depth]] and [[weight]] properties may be more applicable.
      *
-     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[]|string|string[] $size
+     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[]|\Spatie\SchemaOrg\Contracts\SizeSpecificationContract|\Spatie\SchemaOrg\Contracts\SizeSpecificationContract[]|string|string[] $size
      *
      * @return static
      *
      * @see https://schema.org/size
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1797
      */
     public function size($size)
@@ -1780,7 +1907,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
 
     /**
      * A person or organization that supports a thing through a pledge, promise,
-     * or financial contribution. e.g. a sponsor of a Medical Study or a
+     * or financial contribution. E.g. a sponsor of a Medical Study or a
      * corporate sponsor of an event.
      *
      * @param \Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[]|\Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[] $sponsor
@@ -1818,7 +1945,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * @return static
      *
      * @see https://schema.org/subtitleLanguage
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2110
      */
     public function subtitleLanguage($subtitleLanguage)
@@ -1835,7 +1962,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * @return static
      *
      * @see https://schema.org/teaches
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2427
      */
     public function teaches($teaches)
@@ -1867,13 +1994,13 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * format](https://en.wikipedia.org/wiki/ISO_8601#Time_intervals). In
      *       the case of a Dataset it will typically indicate the relevant time
      * period in a precise notation (e.g. for a 2011 census dataset, the year
-     * 2011 would be written "2011/2012"). Other forms of content e.g.
-     * ScholarlyArticle, Book, TVSeries or TVEpisode may indicate their
+     * 2011 would be written "2011/2012"). Other forms of content, e.g.
+     * ScholarlyArticle, Book, TVSeries or TVEpisode, may indicate their
      * temporalCoverage in broader terms - textually or via well-known URL.
      *       Written works such as books may sometimes have precise temporal
      * coverage too, e.g. a work set in 1939 - 1945 can be indicated in ISO 8601
      * interval format format via "1939/1945".
-     * 
+     *
      * Open-ended date ranges can be written with ".." in place of the end date.
      * For example, "2015-11/.." indicates a range beginning in November 2015
      * and with no specified final date. This is tentative and might be updated
@@ -1905,6 +2032,20 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
     }
 
     /**
+     * Thumbnail image for an image or video.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\ImageObjectContract|\Spatie\SchemaOrg\Contracts\ImageObjectContract[] $thumbnail
+     *
+     * @return static
+     *
+     * @see https://schema.org/thumbnail
+     */
+    public function thumbnail($thumbnail)
+    {
+        return $this->setProperty('thumbnail', $thumbnail);
+    }
+
+    /**
      * A thumbnail image relevant to the Thing.
      *
      * @param string|string[] $thumbnailUrl
@@ -1919,9 +2060,8 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
     }
 
     /**
-     * Approximate or typical time it takes to work with or through this
-     * learning resource for the typical intended target audience, e.g. 'PT30M',
-     * 'PT1H25M'.
+     * Approximate or typical time it usually takes to work with or through the
+     * content of this work for the typical or target audience.
      *
      * @param \Spatie\SchemaOrg\Contracts\DurationContract|\Spatie\SchemaOrg\Contracts\DurationContract[] $timeRequired
      *
@@ -1938,22 +2078,22 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * An [EIDR](https://eidr.org/) (Entertainment Identifier Registry)
      * [[identifier]] representing at the most general/abstract level, a work of
      * film or television.
-     * 
+     *
      * For example, the motion picture known as "Ghostbusters" has a titleEIDR
      * of  "10.5240/7EC7-228A-510A-053E-CBB8-J". This title (or work) may have
      * several variants, which EIDR calls "edits". See [[editEIDR]].
-     * 
-     * Since schema.org types like [[Movie]] and [[TVEpisode]] can be used for
-     * both works and their multiple expressions, it is possible to use
-     * [[titleEIDR]] alone (for a general description), or alongside
-     * [[editEIDR]] for a more edit-specific description.
+     *
+     * Since schema.org types like [[Movie]], [[TVEpisode]], [[TVSeason]], and
+     * [[TVSeries]] can be used for both works and their multiple expressions,
+     * it is possible to use [[titleEIDR]] alone (for a general description), or
+     * alongside [[editEIDR]] for a more edit-specific description.
      *
      * @param string|string[] $titleEIDR
      *
      * @return static
      *
      * @see https://schema.org/titleEIDR
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2469
      */
     public function titleEIDR($titleEIDR)
@@ -1962,7 +2102,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
     }
 
     /**
-     * The trailer of a movie or tv/radio series, season, episode, etc.
+     * The trailer of a movie or TV/radio series, season, episode, etc.
      *
      * @param \Spatie\SchemaOrg\Contracts\VideoObjectContract|\Spatie\SchemaOrg\Contracts\VideoObjectContract[] $trailer
      *
@@ -1976,15 +2116,15 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
     }
 
     /**
-     * The work that this work has been translated from. e.g. 物种起源 is a
-     * translationOf “On the Origin of Species”
+     * The work that this work has been translated from. E.g. 物种起源 is a
+     * translationOf “On the Origin of Species”.
      *
      * @param \Spatie\SchemaOrg\Contracts\CreativeWorkContract|\Spatie\SchemaOrg\Contracts\CreativeWorkContract[] $translationOfWork
      *
      * @return static
      *
      * @see https://schema.org/translationOfWork
-     * @see http://bib.schema.org
+     * @see https://bib.schema.org
      */
     public function translationOfWork($translationOfWork)
     {
@@ -2039,11 +2179,11 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * The schema.org [[usageInfo]] property indicates further information about
      * a [[CreativeWork]]. This property is applicable both to works that are
      * freely available and to those that require payment or other transactions.
-     * It can reference additional information e.g. community expectations on
+     * It can reference additional information, e.g. community expectations on
      * preferred linking and citation conventions, as well as purchasing
      * details. For something that can be commercially licensed, usageInfo can
      * provide detailed, resource-specific information about licensing options.
-     * 
+     *
      * This property can be used alongside the license property which indicates
      * license(s) applicable to some piece of content. The usageInfo property
      * can provide information about other licensing options, e.g. acquiring
@@ -2055,7 +2195,7 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * @return static
      *
      * @see https://schema.org/usageInfo
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2454
      */
     public function usageInfo($usageInfo)
@@ -2093,14 +2233,13 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
 
     /**
      * Example/instance/realization/derivation of the concept of this creative
-     * work. eg. The paperback edition, first edition, or eBook.
+     * work. E.g. the paperback edition, first edition, or e-book.
      *
      * @param \Spatie\SchemaOrg\Contracts\CreativeWorkContract|\Spatie\SchemaOrg\Contracts\CreativeWorkContract[] $workExample
      *
      * @return static
      *
      * @see https://schema.org/workExample
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_bibex
      */
     public function workExample($workExample)
     {
@@ -2108,8 +2247,8 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
     }
 
     /**
-     * A work that is a translation of the content of this work. e.g. 西遊記
-     * has an English workTranslation “Journey to the West”,a German
+     * A work that is a translation of the content of this work. E.g. 西遊記
+     * has an English workTranslation “Journey to the West”, a German
      * workTranslation “Monkeys Pilgerfahrt” and a Vietnamese  translation
      * Tây du ký bình khảo.
      *
@@ -2118,11 +2257,10 @@ class Movie extends BaseType implements MovieContract, CreativeWorkContract, Thi
      * @return static
      *
      * @see https://schema.org/workTranslation
-     * @see http://bib.schema.org
+     * @see https://bib.schema.org
      */
     public function workTranslation($workTranslation)
     {
         return $this->setProperty('workTranslation', $workTranslation);
     }
-
 }

@@ -2,14 +2,14 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\RentalCarReservationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ReservationContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\RentalCarReservationContract;
+use Spatie\SchemaOrg\Contracts\ReservationContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A reservation for a rental car.
- * 
+ *
  * Note: This type is for information about actual reservations, e.g. in
  * confirmation emails or HTML pages with individual confirmations of
  * reservations.
@@ -22,10 +22,14 @@ class RentalCarReservation extends BaseType implements RentalCarReservationContr
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -101,7 +105,7 @@ class RentalCarReservation extends BaseType implements RentalCarReservationContr
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -249,7 +253,7 @@ class RentalCarReservation extends BaseType implements RentalCarReservationContr
     }
 
     /**
-     * When a taxi will pickup a passenger or a rental car can be picked up.
+     * When a taxi will pick up a passenger or a rental car can be picked up.
      *
      * @param \DateTimeInterface|\DateTimeInterface[] $pickupTime
      *
@@ -280,14 +284,14 @@ class RentalCarReservation extends BaseType implements RentalCarReservationContr
     /**
      * The currency of the price, or a price component when attached to
      * [[PriceSpecification]] and its subtypes.
-     * 
+     *
      * Use standard formats: [ISO 4217 currency
-     * format](http://en.wikipedia.org/wiki/ISO_4217) e.g. "USD"; [Ticker
+     * format](http://en.wikipedia.org/wiki/ISO_4217), e.g. "USD"; [Ticker
      * symbol](https://en.wikipedia.org/wiki/List_of_cryptocurrencies) for
-     * cryptocurrencies e.g. "BTC"; well known names for [Local Exchange
-     * Tradings
+     * cryptocurrencies, e.g. "BTC"; well known names for [Local Exchange
+     * Trading
      * Systems](https://en.wikipedia.org/wiki/Local_exchange_trading_system)
-     * (LETS) and other currency types e.g. "Ithaca HOUR".
+     * (LETS) and other currency types, e.g. "Ithaca HOUR".
      *
      * @param string|string[] $priceCurrency
      *
@@ -325,7 +329,7 @@ class RentalCarReservation extends BaseType implements RentalCarReservationContr
      * @return static
      *
      * @see https://schema.org/provider
-     * @link https://github.com/schemaorg/schemaorg/issues/2289
+     * @see https://pending.schema.org
      */
     public function provider($provider)
     {
@@ -333,7 +337,7 @@ class RentalCarReservation extends BaseType implements RentalCarReservationContr
     }
 
     /**
-     * The thing -- flight, event, restaurant,etc. being reserved.
+     * The thing -- flight, event, restaurant, etc. being reserved.
      *
      * @param \Spatie\SchemaOrg\Contracts\ThingContract|\Spatie\SchemaOrg\Contracts\ThingContract[] $reservationFor
      *
@@ -422,11 +426,11 @@ class RentalCarReservation extends BaseType implements RentalCarReservationContr
     /**
      * The total price for the reservation or ticket, including applicable
      * taxes, shipping, etc.
-     * 
+     *
      * Usage guidelines:
-     * 
+     *
      * * Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT
-     * NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * NINE' (U+0039)) rather than superficially similar Unicode symbols.
      * * Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a
      * decimal point. Avoid using these symbols as a readability separator.
      *
@@ -468,5 +472,4 @@ class RentalCarReservation extends BaseType implements RentalCarReservationContr
     {
         return $this->setProperty('url', $url);
     }
-
 }

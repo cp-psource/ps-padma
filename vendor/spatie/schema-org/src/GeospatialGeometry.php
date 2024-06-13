@@ -2,16 +2,16 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\GeospatialGeometryContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\GeospatialGeometryContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * (Eventually to be defined as) a supertype of GeoShape designed to accommodate
  * definitions from Geo-Spatial best practices.
  *
  * @see https://schema.org/GeospatialGeometry
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
  * @link https://github.com/schemaorg/schemaorg/issues/1375
  *
  */
@@ -20,10 +20,14 @@ class GeospatialGeometry extends BaseType implements GeospatialGeometryContract,
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -53,7 +57,7 @@ class GeospatialGeometry extends BaseType implements GeospatialGeometryContract,
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -152,9 +156,9 @@ class GeospatialGeometry extends BaseType implements GeospatialGeometryContract,
 
     /**
      * Represents spatial relations in which two geometries (or the places they
-     * represent) are topologically disjoint: they have no point in common. They
-     * form a set of disconnected geometries." (a symmetric relationship, as
-     * defined in [DE-9IM](https://en.wikipedia.org/wiki/DE-9IM))
+     * represent) are topologically disjoint: "they have no point in common.
+     * They form a set of disconnected geometries." (A symmetric relationship,
+     * as defined in [DE-9IM](https://en.wikipedia.org/wiki/DE-9IM).)
      *
      * @param \Spatie\SchemaOrg\Contracts\GeospatialGeometryContract|\Spatie\SchemaOrg\Contracts\GeospatialGeometryContract[]|\Spatie\SchemaOrg\Contracts\PlaceContract|\Spatie\SchemaOrg\Contracts\PlaceContract[] $geoDisjoint
      *
@@ -173,7 +177,7 @@ class GeospatialGeometry extends BaseType implements GeospatialGeometryContract,
      * [DE-9IM](https://en.wikipedia.org/wiki/DE-9IM). "Two geometries are
      * topologically equal if their interiors intersect and no part of the
      * interior or boundary of one geometry intersects the exterior of the
-     * other" (a symmetric relationship)
+     * other" (a symmetric relationship).
      *
      * @param \Spatie\SchemaOrg\Contracts\GeospatialGeometryContract|\Spatie\SchemaOrg\Contracts\GeospatialGeometryContract[]|\Spatie\SchemaOrg\Contracts\PlaceContract|\Spatie\SchemaOrg\Contracts\PlaceContract[] $geoEquals
      *
@@ -221,9 +225,9 @@ class GeospatialGeometry extends BaseType implements GeospatialGeometryContract,
 
     /**
      * Represents spatial relations in which two geometries (or the places they
-     * represent) touch: they have at least one boundary point in common, but no
-     * interior points." (a symmetric relationship, as defined in
-     * [DE-9IM](https://en.wikipedia.org/wiki/DE-9IM) )
+     * represent) touch: "they have at least one boundary point in common, but
+     * no interior points." (A symmetric relationship, as defined in
+     * [DE-9IM](https://en.wikipedia.org/wiki/DE-9IM).)
      *
      * @param \Spatie\SchemaOrg\Contracts\GeospatialGeometryContract|\Spatie\SchemaOrg\Contracts\GeospatialGeometryContract[]|\Spatie\SchemaOrg\Contracts\PlaceContract|\Spatie\SchemaOrg\Contracts\PlaceContract[] $geoTouches
      *
@@ -375,5 +379,4 @@ class GeospatialGeometry extends BaseType implements GeospatialGeometryContract,
     {
         return $this->setProperty('url', $url);
     }
-
 }

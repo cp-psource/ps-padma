@@ -2,9 +2,9 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\DrugCostContract;
-use \Spatie\SchemaOrg\Contracts\MedicalEntityContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\DrugCostContract;
+use Spatie\SchemaOrg\Contracts\MedicalEntityContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * The cost per unit of a medical drug. Note that this type is not meant to
@@ -16,7 +16,7 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
  * consumers of this schema's markup.
  *
  * @see https://schema.org/DrugCost
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  */
 class DrugCost extends BaseType implements DrugCostContract, MedicalEntityContract, ThingContract
@@ -24,10 +24,14 @@ class DrugCost extends BaseType implements DrugCostContract, MedicalEntityContra
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -62,7 +66,7 @@ class DrugCost extends BaseType implements DrugCostContract, MedicalEntityContra
      * @return static
      *
      * @see https://schema.org/applicableLocation
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function applicableLocation($applicableLocation)
     {
@@ -78,7 +82,7 @@ class DrugCost extends BaseType implements DrugCostContract, MedicalEntityContra
      * @return static
      *
      * @see https://schema.org/code
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function code($code)
     {
@@ -93,7 +97,7 @@ class DrugCost extends BaseType implements DrugCostContract, MedicalEntityContra
      * @return static
      *
      * @see https://schema.org/costCategory
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function costCategory($costCategory)
     {
@@ -101,15 +105,15 @@ class DrugCost extends BaseType implements DrugCostContract, MedicalEntityContra
     }
 
     /**
-     * The currency (in 3-letter of the drug cost. See:
-     * http://en.wikipedia.org/wiki/ISO_4217
+     * The currency (in 3-letter) of the drug cost. See:
+     * http://en.wikipedia.org/wiki/ISO_4217.
      *
      * @param string|string[] $costCurrency
      *
      * @return static
      *
      * @see https://schema.org/costCurrency
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function costCurrency($costCurrency)
     {
@@ -125,7 +129,7 @@ class DrugCost extends BaseType implements DrugCostContract, MedicalEntityContra
      * @return static
      *
      * @see https://schema.org/costOrigin
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function costOrigin($costOrigin)
     {
@@ -140,7 +144,7 @@ class DrugCost extends BaseType implements DrugCostContract, MedicalEntityContra
      * @return static
      *
      * @see https://schema.org/costPerUnit
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function costPerUnit($costPerUnit)
     {
@@ -150,7 +154,7 @@ class DrugCost extends BaseType implements DrugCostContract, MedicalEntityContra
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -186,11 +190,28 @@ class DrugCost extends BaseType implements DrugCostContract, MedicalEntityContra
      * @return static
      *
      * @see https://schema.org/drugUnit
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function drugUnit($drugUnit)
     {
         return $this->setProperty('drugUnit', $drugUnit);
+    }
+
+    /**
+     * A [[Grant]] that directly or indirectly provide funding or sponsorship
+     * for this item. See also [[ownershipFundingInfo]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\GrantContract|\Spatie\SchemaOrg\Contracts\GrantContract[] $funding
+     *
+     * @return static
+     *
+     * @see https://schema.org/funding
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/383
+     */
+    public function funding($funding)
+    {
+        return $this->setProperty('funding', $funding);
     }
 
     /**
@@ -201,7 +222,7 @@ class DrugCost extends BaseType implements DrugCostContract, MedicalEntityContra
      * @return static
      *
      * @see https://schema.org/guideline
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function guideline($guideline)
     {
@@ -250,7 +271,7 @@ class DrugCost extends BaseType implements DrugCostContract, MedicalEntityContra
      * @return static
      *
      * @see https://schema.org/legalStatus
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function legalStatus($legalStatus)
     {
@@ -282,7 +303,7 @@ class DrugCost extends BaseType implements DrugCostContract, MedicalEntityContra
      * @return static
      *
      * @see https://schema.org/medicineSystem
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function medicineSystem($medicineSystem)
     {
@@ -327,7 +348,7 @@ class DrugCost extends BaseType implements DrugCostContract, MedicalEntityContra
      * @return static
      *
      * @see https://schema.org/recognizingAuthority
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function recognizingAuthority($recognizingAuthority)
     {
@@ -342,7 +363,7 @@ class DrugCost extends BaseType implements DrugCostContract, MedicalEntityContra
      * @return static
      *
      * @see https://schema.org/relevantSpecialty
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function relevantSpecialty($relevantSpecialty)
     {
@@ -373,7 +394,7 @@ class DrugCost extends BaseType implements DrugCostContract, MedicalEntityContra
      * @return static
      *
      * @see https://schema.org/study
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function study($study)
     {
@@ -408,5 +429,4 @@ class DrugCost extends BaseType implements DrugCostContract, MedicalEntityContra
     {
         return $this->setProperty('url', $url);
     }
-
 }

@@ -2,17 +2,16 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\DeliveryChargeSpecificationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\PriceSpecificationContract;
-use \Spatie\SchemaOrg\Contracts\StructuredValueContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\DeliveryChargeSpecificationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\PriceSpecificationContract;
+use Spatie\SchemaOrg\Contracts\StructuredValueContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * The price for the delivery of an offer using a particular delivery method.
  *
  * @see https://schema.org/DeliveryChargeSpecification
- * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
  *
  */
 class DeliveryChargeSpecification extends BaseType implements DeliveryChargeSpecificationContract, IntangibleContract, PriceSpecificationContract, StructuredValueContract, ThingContract
@@ -20,10 +19,14 @@ class DeliveryChargeSpecification extends BaseType implements DeliveryChargeSpec
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -59,7 +62,6 @@ class DeliveryChargeSpecification extends BaseType implements DeliveryChargeSpec
      * @return static
      *
      * @see https://schema.org/appliesToDeliveryMethod
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function appliesToDeliveryMethod($appliesToDeliveryMethod)
     {
@@ -83,7 +85,7 @@ class DeliveryChargeSpecification extends BaseType implements DeliveryChargeSpec
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -121,7 +123,6 @@ class DeliveryChargeSpecification extends BaseType implements DeliveryChargeSpec
      * @return static
      *
      * @see https://schema.org/eligibleQuantity
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function eligibleQuantity($eligibleQuantity)
     {
@@ -132,7 +133,7 @@ class DeliveryChargeSpecification extends BaseType implements DeliveryChargeSpec
      * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the
      * GeoShape for the geo-political region(s) for which the offer or delivery
      * charge specification is valid.
-     * 
+     *
      * See also [[ineligibleRegion]].
      *
      * @param \Spatie\SchemaOrg\Contracts\GeoShapeContract|\Spatie\SchemaOrg\Contracts\GeoShapeContract[]|\Spatie\SchemaOrg\Contracts\PlaceContract|\Spatie\SchemaOrg\Contracts\PlaceContract[]|string|string[] $eligibleRegion
@@ -140,6 +141,7 @@ class DeliveryChargeSpecification extends BaseType implements DeliveryChargeSpec
      * @return static
      *
      * @see https://schema.org/eligibleRegion
+     * @link https://github.com/schemaorg/schemaorg/issues/1741
      */
     public function eligibleRegion($eligibleRegion)
     {
@@ -157,7 +159,6 @@ class DeliveryChargeSpecification extends BaseType implements DeliveryChargeSpec
      * @return static
      *
      * @see https://schema.org/eligibleTransactionVolume
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function eligibleTransactionVolume($eligibleTransactionVolume)
     {
@@ -202,7 +203,7 @@ class DeliveryChargeSpecification extends BaseType implements DeliveryChargeSpec
      * GeoShape for the geo-political region(s) for which the offer or delivery
      * charge specification is not valid, e.g. a region where the transaction is
      * not allowed.
-     * 
+     *
      * See also [[eligibleRegion]].
      *
      * @param \Spatie\SchemaOrg\Contracts\GeoShapeContract|\Spatie\SchemaOrg\Contracts\GeoShapeContract[]|\Spatie\SchemaOrg\Contracts\PlaceContract|\Spatie\SchemaOrg\Contracts\PlaceContract[]|string|string[] $ineligibleRegion
@@ -210,7 +211,7 @@ class DeliveryChargeSpecification extends BaseType implements DeliveryChargeSpec
      * @return static
      *
      * @see https://schema.org/ineligibleRegion
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2242
      */
     public function ineligibleRegion($ineligibleRegion)
@@ -242,7 +243,6 @@ class DeliveryChargeSpecification extends BaseType implements DeliveryChargeSpec
      * @return static
      *
      * @see https://schema.org/maxPrice
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function maxPrice($maxPrice)
     {
@@ -257,7 +257,6 @@ class DeliveryChargeSpecification extends BaseType implements DeliveryChargeSpec
      * @return static
      *
      * @see https://schema.org/minPrice
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function minPrice($minPrice)
     {
@@ -296,16 +295,16 @@ class DeliveryChargeSpecification extends BaseType implements DeliveryChargeSpec
     /**
      * The offer price of a product, or of a price component when attached to
      * PriceSpecification and its subtypes.
-     * 
+     *
      * Usage guidelines:
-     * 
+     *
      * * Use the [[priceCurrency]] property (with standard formats: [ISO 4217
-     * currency format](http://en.wikipedia.org/wiki/ISO_4217) e.g. "USD";
+     * currency format](http://en.wikipedia.org/wiki/ISO_4217), e.g. "USD";
      * [Ticker symbol](https://en.wikipedia.org/wiki/List_of_cryptocurrencies)
-     * for cryptocurrencies e.g. "BTC"; well known names for [Local Exchange
-     * Tradings
+     * for cryptocurrencies, e.g. "BTC"; well known names for [Local Exchange
+     * Trading
      * Systems](https://en.wikipedia.org/wiki/Local_exchange_trading_system)
-     * (LETS) and other currency types e.g. "Ithaca HOUR") instead of including
+     * (LETS) and other currency types, e.g. "Ithaca HOUR") instead of including
      * [ambiguous
      * symbols](http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign)
      * such as '$' in the value.
@@ -317,7 +316,7 @@ class DeliveryChargeSpecification extends BaseType implements DeliveryChargeSpec
      * publishing simple machine-readable values alongside more human-friendly
      * formatting.
      * * Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT
-     * NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * NINE' (U+0039)) rather than superficially similar Unicode symbols.
      *
      * @param float|float[]|int|int[]|string|string[] $price
      *
@@ -333,14 +332,14 @@ class DeliveryChargeSpecification extends BaseType implements DeliveryChargeSpec
     /**
      * The currency of the price, or a price component when attached to
      * [[PriceSpecification]] and its subtypes.
-     * 
+     *
      * Use standard formats: [ISO 4217 currency
-     * format](http://en.wikipedia.org/wiki/ISO_4217) e.g. "USD"; [Ticker
+     * format](http://en.wikipedia.org/wiki/ISO_4217), e.g. "USD"; [Ticker
      * symbol](https://en.wikipedia.org/wiki/List_of_cryptocurrencies) for
-     * cryptocurrencies e.g. "BTC"; well known names for [Local Exchange
-     * Tradings
+     * cryptocurrencies, e.g. "BTC"; well known names for [Local Exchange
+     * Trading
      * Systems](https://en.wikipedia.org/wiki/Local_exchange_trading_system)
-     * (LETS) and other currency types e.g. "Ithaca HOUR".
+     * (LETS) and other currency types, e.g. "Ithaca HOUR".
      *
      * @param string|string[] $priceCurrency
      *
@@ -406,7 +405,6 @@ class DeliveryChargeSpecification extends BaseType implements DeliveryChargeSpec
      * @return static
      *
      * @see https://schema.org/validFrom
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function validFrom($validFrom)
     {
@@ -422,7 +420,6 @@ class DeliveryChargeSpecification extends BaseType implements DeliveryChargeSpec
      * @return static
      *
      * @see https://schema.org/validThrough
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function validThrough($validThrough)
     {
@@ -438,11 +435,9 @@ class DeliveryChargeSpecification extends BaseType implements DeliveryChargeSpec
      * @return static
      *
      * @see https://schema.org/valueAddedTaxIncluded
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function valueAddedTaxIncluded($valueAddedTaxIncluded)
     {
         return $this->setProperty('valueAddedTaxIncluded', $valueAddedTaxIncluded);
     }
-
 }

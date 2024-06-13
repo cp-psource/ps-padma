@@ -2,13 +2,13 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\TouristDestinationContract;
-use \Spatie\SchemaOrg\Contracts\PlaceContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\PlaceContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\TouristDestinationContract;
 
 /**
  * A tourist destination. In principle any [[Place]] can be a
- * [[TouristDestination]] from a [[City]], [[Region]] or [[Country]] to an
+ * [[TouristDestination]] from a [[City]], Region or [[Country]] to an
  * [[AmusementPark]] or [[Hotel]]. This Type can be used on its own to describe
  * a general [[TouristDestination]], or be used as an [[additionalType]] to add
  * tourist relevant properties to any other [[Place]].  A [[TouristDestination]]
@@ -17,19 +17,20 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
  * particular [[touristType]]. The [UNWTO](http://www2.unwto.org/) defines
  * Destination (main destination of a tourism trip) as the place visited that is
  * central to the decision to take the trip.
- *   (See examples below).
+ *   (See examples below.)
  *
  * @see https://schema.org/TouristDestination
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
+ * @link https://github.com/schemaorg/schemaorg/issues/1810
  *
  */
 class TouristDestination extends BaseType implements TouristDestinationContract, PlaceContract, ThingContract
 {
     /**
-     * A property-value pair representing an additional characteristics of the
-     * entitity, e.g. a product feature or another characteristic for which
-     * there is no matching property in schema.org.
-     * 
+     * A property-value pair representing an additional characteristic of the
+     * entity, e.g. a product feature or another characteristic for which there
+     * is no matching property in schema.org.
+     *
      * Note: Publishers should be aware that applications designed to use
      * specific schema.org properties (e.g. https://schema.org/width,
      * https://schema.org/color, https://schema.org/gtin13, ...) will typically
@@ -50,10 +51,14 @@ class TouristDestination extends BaseType implements TouristDestinationContract,
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -120,7 +125,6 @@ class TouristDestination extends BaseType implements TouristDestinationContract,
      * @return static
      *
      * @see https://schema.org/amenityFeature
-     * @link https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#STI_Accommodation_Ontology
      */
     public function amenityFeature($amenityFeature)
     {
@@ -131,7 +135,7 @@ class TouristDestination extends BaseType implements TouristDestinationContract,
      * A short textual code (also called "store code") that uniquely identifies
      * a place of business. The code is typically assigned by the
      * parentOrganization and used in structured URLs.
-     * 
+     *
      * For example, in the URL
      * http://www.starbucks.co.uk/store-locator/etc/detail/3047 the code "3047"
      * is a branchCode for a particular branch.
@@ -193,7 +197,7 @@ class TouristDestination extends BaseType implements TouristDestinationContract,
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -349,9 +353,9 @@ class TouristDestination extends BaseType implements TouristDestinationContract,
 
     /**
      * Represents spatial relations in which two geometries (or the places they
-     * represent) are topologically disjoint: they have no point in common. They
-     * form a set of disconnected geometries." (a symmetric relationship, as
-     * defined in [DE-9IM](https://en.wikipedia.org/wiki/DE-9IM))
+     * represent) are topologically disjoint: "they have no point in common.
+     * They form a set of disconnected geometries." (A symmetric relationship,
+     * as defined in [DE-9IM](https://en.wikipedia.org/wiki/DE-9IM).)
      *
      * @param \Spatie\SchemaOrg\Contracts\GeospatialGeometryContract|\Spatie\SchemaOrg\Contracts\GeospatialGeometryContract[]|\Spatie\SchemaOrg\Contracts\PlaceContract|\Spatie\SchemaOrg\Contracts\PlaceContract[] $geoDisjoint
      *
@@ -370,7 +374,7 @@ class TouristDestination extends BaseType implements TouristDestinationContract,
      * [DE-9IM](https://en.wikipedia.org/wiki/DE-9IM). "Two geometries are
      * topologically equal if their interiors intersect and no part of the
      * interior or boundary of one geometry intersects the exterior of the
-     * other" (a symmetric relationship)
+     * other" (a symmetric relationship).
      *
      * @param \Spatie\SchemaOrg\Contracts\GeospatialGeometryContract|\Spatie\SchemaOrg\Contracts\GeospatialGeometryContract[]|\Spatie\SchemaOrg\Contracts\PlaceContract|\Spatie\SchemaOrg\Contracts\PlaceContract[] $geoEquals
      *
@@ -418,9 +422,9 @@ class TouristDestination extends BaseType implements TouristDestinationContract,
 
     /**
      * Represents spatial relations in which two geometries (or the places they
-     * represent) touch: they have at least one boundary point in common, but no
-     * interior points." (a symmetric relationship, as defined in
-     * [DE-9IM](https://en.wikipedia.org/wiki/DE-9IM) )
+     * represent) touch: "they have at least one boundary point in common, but
+     * no interior points." (A symmetric relationship, as defined in
+     * [DE-9IM](https://en.wikipedia.org/wiki/DE-9IM).)
      *
      * @param \Spatie\SchemaOrg\Contracts\GeospatialGeometryContract|\Spatie\SchemaOrg\Contracts\GeospatialGeometryContract[]|\Spatie\SchemaOrg\Contracts\PlaceContract|\Spatie\SchemaOrg\Contracts\PlaceContract[] $geoTouches
      *
@@ -461,7 +465,6 @@ class TouristDestination extends BaseType implements TouristDestinationContract,
      * @return static
      *
      * @see https://schema.org/globalLocationNumber
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function globalLocationNumber($globalLocationNumber)
     {
@@ -480,7 +483,7 @@ class TouristDestination extends BaseType implements TouristDestinationContract,
      * @return static
      *
      * @see https://schema.org/hasDriveThroughService
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2490
      */
     public function hasDriveThroughService($hasDriveThroughService)
@@ -543,7 +546,8 @@ class TouristDestination extends BaseType implements TouristDestinationContract,
      * @return static
      *
      * @see https://schema.org/includesAttraction
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1810
      */
     public function includesAttraction($includesAttraction)
     {
@@ -574,11 +578,26 @@ class TouristDestination extends BaseType implements TouristDestinationContract,
      * @return static
      *
      * @see https://schema.org/isicV4
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function isicV4($isicV4)
     {
         return $this->setProperty('isicV4', $isicV4);
+    }
+
+    /**
+     * Keywords or tags used to describe some item. Multiple textual entries in
+     * a keywords list are typically delimited by commas, or by repeating the
+     * property.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|string|string[] $keywords
+     *
+     * @return static
+     *
+     * @see https://schema.org/keywords
+     */
+    public function keywords($keywords)
+    {
+        return $this->setProperty('keywords', $keywords);
     }
 
     /**
@@ -604,7 +623,6 @@ class TouristDestination extends BaseType implements TouristDestinationContract,
      * @return static
      *
      * @see https://schema.org/logo
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function logo($logo)
     {
@@ -706,7 +724,6 @@ class TouristDestination extends BaseType implements TouristDestinationContract,
      * @return static
      *
      * @see https://schema.org/openingHoursSpecification
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function openingHoursSpecification($openingHoursSpecification)
     {
@@ -758,7 +775,7 @@ class TouristDestination extends BaseType implements TouristDestinationContract,
 
     /**
      * A flag to signal that the [[Place]] is open to public visitors.  If this
-     * property is omitted there is no assumed default boolean value
+     * property is omitted there is no assumed default boolean value.
      *
      * @param bool|bool[] $publicAccess
      *
@@ -838,7 +855,6 @@ class TouristDestination extends BaseType implements TouristDestinationContract,
      * @return static
      *
      * @see https://schema.org/smokingAllowed
-     * @link https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#STI_Accommodation_Ontology
      */
     public function smokingAllowed($smokingAllowed)
     {
@@ -847,7 +863,7 @@ class TouristDestination extends BaseType implements TouristDestinationContract,
 
     /**
      * The special opening hours of a certain place.
-     * 
+     *
      * Use this to explicitly override general opening hours brought in scope by
      * [[openingHoursSpecification]] or [[openingHours]].
      *
@@ -901,7 +917,7 @@ class TouristDestination extends BaseType implements TouristDestinationContract,
      * @return static
      *
      * @see https://schema.org/tourBookingPage
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2373
      */
     public function tourBookingPage($tourBookingPage)
@@ -910,8 +926,8 @@ class TouristDestination extends BaseType implements TouristDestinationContract,
     }
 
     /**
-     * Attraction suitable for type(s) of tourist. eg. Children, visitors from a
-     * particular country, etc.
+     * Attraction suitable for type(s) of tourist. E.g. children, visitors from
+     * a particular country, etc.
      *
      * @param \Spatie\SchemaOrg\Contracts\AudienceContract|\Spatie\SchemaOrg\Contracts\AudienceContract[]|string|string[] $touristType
      *
@@ -937,5 +953,4 @@ class TouristDestination extends BaseType implements TouristDestinationContract,
     {
         return $this->setProperty('url', $url);
     }
-
 }

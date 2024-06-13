@@ -2,17 +2,17 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\PathologyTestContract;
-use \Spatie\SchemaOrg\Contracts\MedicalEntityContract;
-use \Spatie\SchemaOrg\Contracts\MedicalTestContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\MedicalEntityContract;
+use Spatie\SchemaOrg\Contracts\MedicalTestContract;
+use Spatie\SchemaOrg\Contracts\PathologyTestContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A medical test performed by a laboratory that typically involves examination
  * of a tissue sample by a pathologist.
  *
  * @see https://schema.org/PathologyTest
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  */
 class PathologyTest extends BaseType implements PathologyTestContract, MedicalEntityContract, MedicalTestContract, ThingContract
@@ -20,10 +20,14 @@ class PathologyTest extends BaseType implements PathologyTestContract, MedicalEn
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -44,7 +48,7 @@ class PathologyTest extends BaseType implements PathologyTestContract, MedicalEn
      * @return static
      *
      * @see https://schema.org/affectedBy
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function affectedBy($affectedBy)
     {
@@ -74,7 +78,7 @@ class PathologyTest extends BaseType implements PathologyTestContract, MedicalEn
      * @return static
      *
      * @see https://schema.org/code
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function code($code)
     {
@@ -84,7 +88,7 @@ class PathologyTest extends BaseType implements PathologyTestContract, MedicalEn
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -113,6 +117,23 @@ class PathologyTest extends BaseType implements PathologyTestContract, MedicalEn
     }
 
     /**
+     * A [[Grant]] that directly or indirectly provide funding or sponsorship
+     * for this item. See also [[ownershipFundingInfo]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\GrantContract|\Spatie\SchemaOrg\Contracts\GrantContract[] $funding
+     *
+     * @return static
+     *
+     * @see https://schema.org/funding
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/383
+     */
+    public function funding($funding)
+    {
+        return $this->setProperty('funding', $funding);
+    }
+
+    /**
      * A medical guideline related to this entity.
      *
      * @param \Spatie\SchemaOrg\Contracts\MedicalGuidelineContract|\Spatie\SchemaOrg\Contracts\MedicalGuidelineContract[] $guideline
@@ -120,7 +141,7 @@ class PathologyTest extends BaseType implements PathologyTestContract, MedicalEn
      * @return static
      *
      * @see https://schema.org/guideline
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function guideline($guideline)
     {
@@ -169,7 +190,7 @@ class PathologyTest extends BaseType implements PathologyTestContract, MedicalEn
      * @return static
      *
      * @see https://schema.org/legalStatus
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function legalStatus($legalStatus)
     {
@@ -201,7 +222,7 @@ class PathologyTest extends BaseType implements PathologyTestContract, MedicalEn
      * @return static
      *
      * @see https://schema.org/medicineSystem
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function medicineSystem($medicineSystem)
     {
@@ -230,7 +251,7 @@ class PathologyTest extends BaseType implements PathologyTestContract, MedicalEn
      * @return static
      *
      * @see https://schema.org/normalRange
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function normalRange($normalRange)
     {
@@ -261,7 +282,7 @@ class PathologyTest extends BaseType implements PathologyTestContract, MedicalEn
      * @return static
      *
      * @see https://schema.org/recognizingAuthority
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function recognizingAuthority($recognizingAuthority)
     {
@@ -276,7 +297,7 @@ class PathologyTest extends BaseType implements PathologyTestContract, MedicalEn
      * @return static
      *
      * @see https://schema.org/relevantSpecialty
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function relevantSpecialty($relevantSpecialty)
     {
@@ -307,7 +328,7 @@ class PathologyTest extends BaseType implements PathologyTestContract, MedicalEn
      * @return static
      *
      * @see https://schema.org/signDetected
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function signDetected($signDetected)
     {
@@ -322,7 +343,7 @@ class PathologyTest extends BaseType implements PathologyTestContract, MedicalEn
      * @return static
      *
      * @see https://schema.org/study
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function study($study)
     {
@@ -352,7 +373,7 @@ class PathologyTest extends BaseType implements PathologyTestContract, MedicalEn
      * @return static
      *
      * @see https://schema.org/tissueSample
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function tissueSample($tissueSample)
     {
@@ -381,7 +402,7 @@ class PathologyTest extends BaseType implements PathologyTestContract, MedicalEn
      * @return static
      *
      * @see https://schema.org/usedToDiagnose
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function usedToDiagnose($usedToDiagnose)
     {
@@ -396,11 +417,10 @@ class PathologyTest extends BaseType implements PathologyTestContract, MedicalEn
      * @return static
      *
      * @see https://schema.org/usesDevice
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function usesDevice($usesDevice)
     {
         return $this->setProperty('usesDevice', $usesDevice);
     }
-
 }

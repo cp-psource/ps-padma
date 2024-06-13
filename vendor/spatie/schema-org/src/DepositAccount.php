@@ -2,20 +2,19 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\DepositAccountContract;
-use \Spatie\SchemaOrg\Contracts\BankAccountContract;
-use \Spatie\SchemaOrg\Contracts\FinancialProductContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\InvestmentOrDepositContract;
-use \Spatie\SchemaOrg\Contracts\ServiceContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\BankAccountContract;
+use Spatie\SchemaOrg\Contracts\DepositAccountContract;
+use Spatie\SchemaOrg\Contracts\FinancialProductContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\InvestmentOrDepositContract;
+use Spatie\SchemaOrg\Contracts\ServiceContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A type of Bank Account with a main purpose of depositing funds to gain
  * interest or other benefits.
  *
  * @see https://schema.org/DepositAccount
- * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FIBO
  *
  */
 class DepositAccount extends BaseType implements DepositAccountContract, BankAccountContract, FinancialProductContract, IntangibleContract, InvestmentOrDepositContract, ServiceContract, ThingContract
@@ -28,7 +27,8 @@ class DepositAccount extends BaseType implements DepositAccountContract, BankAcc
      * @return static
      *
      * @see https://schema.org/accountMinimumInflow
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1253
      */
     public function accountMinimumInflow($accountMinimumInflow)
     {
@@ -46,7 +46,8 @@ class DepositAccount extends BaseType implements DepositAccountContract, BankAcc
      * @return static
      *
      * @see https://schema.org/accountOverdraftLimit
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1253
      */
     public function accountOverdraftLimit($accountOverdraftLimit)
     {
@@ -56,10 +57,14 @@ class DepositAccount extends BaseType implements DepositAccountContract, BankAcc
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -126,7 +131,6 @@ class DepositAccount extends BaseType implements DepositAccountContract, BankAcc
      * @return static
      *
      * @see https://schema.org/annualPercentageRate
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FIBO
      */
     public function annualPercentageRate($annualPercentageRate)
     {
@@ -198,7 +202,8 @@ class DepositAccount extends BaseType implements DepositAccountContract, BankAcc
      * @return static
      *
      * @see https://schema.org/bankAccountType
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1253
      */
     public function bankAccountType($bankAccountType)
     {
@@ -241,7 +246,7 @@ class DepositAccount extends BaseType implements DepositAccountContract, BankAcc
      * A category for the item. Greater signs or slashes can be used to
      * informally indicate a category hierarchy.
      *
-     * @param \Spatie\SchemaOrg\Contracts\PhysicalActivityCategoryContract|\Spatie\SchemaOrg\Contracts\PhysicalActivityCategoryContract[]|\Spatie\SchemaOrg\Contracts\ThingContract|\Spatie\SchemaOrg\Contracts\ThingContract[]|string|string[] $category
+     * @param \Spatie\SchemaOrg\Contracts\CategoryCodeContract|\Spatie\SchemaOrg\Contracts\CategoryCodeContract[]|\Spatie\SchemaOrg\Contracts\PhysicalActivityCategoryContract|\Spatie\SchemaOrg\Contracts\PhysicalActivityCategoryContract[]|\Spatie\SchemaOrg\Contracts\ThingContract|\Spatie\SchemaOrg\Contracts\ThingContract[]|string|string[] $category
      *
      * @return static
      *
@@ -255,7 +260,7 @@ class DepositAccount extends BaseType implements DepositAccountContract, BankAcc
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -292,7 +297,6 @@ class DepositAccount extends BaseType implements DepositAccountContract, BankAcc
      * @return static
      *
      * @see https://schema.org/feesAndCommissionsSpecification
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FIBO
      */
     public function feesAndCommissionsSpecification($feesAndCommissionsSpecification)
     {
@@ -370,7 +374,6 @@ class DepositAccount extends BaseType implements DepositAccountContract, BankAcc
      * @return static
      *
      * @see https://schema.org/interestRate
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FIBO
      */
     public function interestRate($interestRate)
     {
@@ -385,7 +388,6 @@ class DepositAccount extends BaseType implements DepositAccountContract, BankAcc
      * @return static
      *
      * @see https://schema.org/isRelatedTo
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function isRelatedTo($isRelatedTo)
     {
@@ -401,7 +403,6 @@ class DepositAccount extends BaseType implements DepositAccountContract, BankAcc
      * @return static
      *
      * @see https://schema.org/isSimilarTo
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function isSimilarTo($isSimilarTo)
     {
@@ -416,7 +417,6 @@ class DepositAccount extends BaseType implements DepositAccountContract, BankAcc
      * @return static
      *
      * @see https://schema.org/logo
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function logo($logo)
     {
@@ -515,7 +515,7 @@ class DepositAccount extends BaseType implements DepositAccountContract, BankAcc
      * @return static
      *
      * @see https://schema.org/provider
-     * @link https://github.com/schemaorg/schemaorg/issues/2289
+     * @see https://pending.schema.org
      */
     public function provider($provider)
     {
@@ -661,7 +661,7 @@ class DepositAccount extends BaseType implements DepositAccountContract, BankAcc
      * @return static
      *
      * @see https://schema.org/termsOfService
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1423
      */
     public function termsOfService($termsOfService)
@@ -682,5 +682,4 @@ class DepositAccount extends BaseType implements DepositAccountContract, BankAcc
     {
         return $this->setProperty('url', $url);
     }
-
 }

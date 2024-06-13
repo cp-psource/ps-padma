@@ -38,6 +38,8 @@ interface LoseActionContract
 
     public function potentialAction($potentialAction);
 
+    public function provider($provider);
+
     public function result($result);
 
     public function sameAs($sameAs);
@@ -51,5 +53,4 @@ interface LoseActionContract
     public function url($url);
 
     public function winner($winner);
-
 }

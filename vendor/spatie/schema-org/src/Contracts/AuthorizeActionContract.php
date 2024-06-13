@@ -38,6 +38,8 @@ interface AuthorizeActionContract
 
     public function potentialAction($potentialAction);
 
+    public function provider($provider);
+
     public function recipient($recipient);
 
     public function result($result);
@@ -51,5 +53,4 @@ interface AuthorizeActionContract
     public function target($target);
 
     public function url($url);
-
 }

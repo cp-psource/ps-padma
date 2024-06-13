@@ -2,18 +2,18 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\UKNonprofitTypeContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\NonprofitTypeContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\NonprofitTypeContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\UKNonprofitTypeContract;
 
 /**
  * UKNonprofitType: Non-profit organization type originating from the United
  * Kingdom.
  *
  * @see https://schema.org/UKNonprofitType
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
  * @link https://github.com/schemaorg/schemaorg/issues/2543
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
@@ -25,47 +25,51 @@ class UKNonprofitType extends BaseType implements UKNonprofitTypeContract, Enume
      * Charitable Incorporated Organization (UK).
      *
      * @see https://schema.org/CharitableIncorporatedOrganization
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2543
      */
-     const CharitableIncorporatedOrganization = 'https://schema.org/CharitableIncorporatedOrganization';
+    public const CharitableIncorporatedOrganization = 'https://schema.org/CharitableIncorporatedOrganization';
 
     /**
      * LimitedByGuaranteeCharity: Non-profit type referring to a charitable
      * company that is limited by guarantee (UK).
      *
      * @see https://schema.org/LimitedByGuaranteeCharity
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2543
      */
-     const LimitedByGuaranteeCharity = 'https://schema.org/LimitedByGuaranteeCharity';
+    public const LimitedByGuaranteeCharity = 'https://schema.org/LimitedByGuaranteeCharity';
 
     /**
      * UKTrust: Non-profit type referring to a UK trust.
      *
      * @see https://schema.org/UKTrust
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2543
      */
-     const UKTrust = 'https://schema.org/UKTrust';
+    public const UKTrust = 'https://schema.org/UKTrust';
 
     /**
      * UnincorporatedAssociationCharity: Non-profit type referring to a
      * charitable company that is not incorporated (UK).
      *
      * @see https://schema.org/UnincorporatedAssociationCharity
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2543
      */
-     const UnincorporatedAssociationCharity = 'https://schema.org/UnincorporatedAssociationCharity';
+    public const UnincorporatedAssociationCharity = 'https://schema.org/UnincorporatedAssociationCharity';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -95,7 +99,7 @@ class UKNonprofitType extends BaseType implements UKNonprofitTypeContract, Enume
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -245,5 +249,4 @@ class UKNonprofitType extends BaseType implements UKNonprofitTypeContract, Enume
     {
         return $this->setProperty('url', $url);
     }
-
 }

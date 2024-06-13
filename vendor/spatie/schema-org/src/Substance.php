@@ -2,16 +2,16 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\SubstanceContract;
-use \Spatie\SchemaOrg\Contracts\MedicalEntityContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\MedicalEntityContract;
+use Spatie\SchemaOrg\Contracts\SubstanceContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * Any matter of defined composition that has discrete existence, whose origin
  * may be biological, mineral or chemical.
  *
  * @see https://schema.org/Substance
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  */
 class Substance extends BaseType implements SubstanceContract, MedicalEntityContract, ThingContract
@@ -25,7 +25,7 @@ class Substance extends BaseType implements SubstanceContract, MedicalEntityCont
      * @return static
      *
      * @see https://schema.org/activeIngredient
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function activeIngredient($activeIngredient)
     {
@@ -35,10 +35,14 @@ class Substance extends BaseType implements SubstanceContract, MedicalEntityCont
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -74,7 +78,7 @@ class Substance extends BaseType implements SubstanceContract, MedicalEntityCont
      * @return static
      *
      * @see https://schema.org/code
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function code($code)
     {
@@ -84,7 +88,7 @@ class Substance extends BaseType implements SubstanceContract, MedicalEntityCont
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -113,6 +117,23 @@ class Substance extends BaseType implements SubstanceContract, MedicalEntityCont
     }
 
     /**
+     * A [[Grant]] that directly or indirectly provide funding or sponsorship
+     * for this item. See also [[ownershipFundingInfo]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\GrantContract|\Spatie\SchemaOrg\Contracts\GrantContract[] $funding
+     *
+     * @return static
+     *
+     * @see https://schema.org/funding
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/383
+     */
+    public function funding($funding)
+    {
+        return $this->setProperty('funding', $funding);
+    }
+
+    /**
      * A medical guideline related to this entity.
      *
      * @param \Spatie\SchemaOrg\Contracts\MedicalGuidelineContract|\Spatie\SchemaOrg\Contracts\MedicalGuidelineContract[] $guideline
@@ -120,7 +141,7 @@ class Substance extends BaseType implements SubstanceContract, MedicalEntityCont
      * @return static
      *
      * @see https://schema.org/guideline
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function guideline($guideline)
     {
@@ -169,7 +190,7 @@ class Substance extends BaseType implements SubstanceContract, MedicalEntityCont
      * @return static
      *
      * @see https://schema.org/legalStatus
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function legalStatus($legalStatus)
     {
@@ -201,7 +222,7 @@ class Substance extends BaseType implements SubstanceContract, MedicalEntityCont
      * @return static
      *
      * @see https://schema.org/maximumIntake
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function maximumIntake($maximumIntake)
     {
@@ -217,7 +238,7 @@ class Substance extends BaseType implements SubstanceContract, MedicalEntityCont
      * @return static
      *
      * @see https://schema.org/medicineSystem
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function medicineSystem($medicineSystem)
     {
@@ -262,7 +283,7 @@ class Substance extends BaseType implements SubstanceContract, MedicalEntityCont
      * @return static
      *
      * @see https://schema.org/recognizingAuthority
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function recognizingAuthority($recognizingAuthority)
     {
@@ -277,7 +298,7 @@ class Substance extends BaseType implements SubstanceContract, MedicalEntityCont
      * @return static
      *
      * @see https://schema.org/relevantSpecialty
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function relevantSpecialty($relevantSpecialty)
     {
@@ -308,7 +329,7 @@ class Substance extends BaseType implements SubstanceContract, MedicalEntityCont
      * @return static
      *
      * @see https://schema.org/study
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function study($study)
     {
@@ -343,5 +364,4 @@ class Substance extends BaseType implements SubstanceContract, MedicalEntityCont
     {
         return $this->setProperty('url', $url);
     }
-
 }

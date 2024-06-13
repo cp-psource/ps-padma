@@ -40,6 +40,8 @@ interface AddActionContract
 
     public function potentialAction($potentialAction);
 
+    public function provider($provider);
+
     public function result($result);
 
     public function sameAs($sameAs);
@@ -53,5 +55,4 @@ interface AddActionContract
     public function targetCollection($targetCollection);
 
     public function url($url);
-
 }

@@ -28,6 +28,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|AddAction addAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|AdministrativeArea administrativeArea(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|AdultEntertainment adultEntertainment(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|AdultOrientedEnumeration adultOrientedEnumeration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|AdvertiserContentArticle advertiserContentArticle(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|AggregateOffer aggregateOffer(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|AggregateRating aggregateRating(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -36,6 +37,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|Airport airport(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|AlignmentObject alignmentObject(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|AllocateAction allocateAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|AmpStory ampStory(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|AmusementPark amusementPark(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|AnalysisNewsArticle analysisNewsArticle(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|AnatomicalStructure anatomicalStructure(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -62,6 +64,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|Attorney attorney(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Audience audience(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|AudioObject audioObject(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|AudioObjectSnapshot audioObjectSnapshot(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Audiobook audiobook(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|AuthorizeAction authorizeAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|AutoBodyShop autoBodyShop(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -85,6 +88,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|BedType bedType(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|BefriendAction befriendAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|BikeStore bikeStore(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|BioChemEntity bioChemEntity(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Blog blog(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|BlogPosting blogPosting(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|BloodTest bloodTest(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -92,6 +96,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|BoatReservation boatReservation(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|BoatTerminal boatTerminal(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|BoatTrip boatTrip(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|BodyMeasurementTypeEnumeration bodyMeasurementTypeEnumeration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|BodyOfWater bodyOfWater(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Bone bone(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Book book(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -141,6 +146,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|CheckInAction checkInAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|CheckOutAction checkOutAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|CheckoutPage checkoutPage(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|ChemicalSubstance chemicalSubstance(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|ChildCare childCare(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|ChildrensEvent childrensEvent(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|ChooseAction chooseAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -171,6 +177,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|ComputerStore computerStore(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|ConfirmAction confirmAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Consortium consortium(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|ConstraintNode constraintNode(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|ConsumeAction consumeAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|ContactPage contactPage(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|ContactPoint contactPoint(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -230,6 +237,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|DigitalDocument digitalDocument(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|DigitalDocumentPermission digitalDocumentPermission(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|DigitalDocumentPermissionType digitalDocumentPermissionType(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|DigitalPlatformEnumeration digitalPlatformEnumeration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|DisagreeAction disagreeAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|DiscoverAction discoverAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|DiscussionForumPosting discussionForumPosting(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -253,6 +261,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|DrugStrength drugStrength(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|DryCleaningOrLaundry dryCleaningOrLaundry(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Duration duration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|EUEnergyEfficiencyEnumeration eUEnergyEfficiencyEnumeration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|EatAction eatAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|EducationEvent educationEvent(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|EducationalAudience educationalAudience(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -272,6 +281,9 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|EndorseAction endorseAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|EndorsementRating endorsementRating(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Energy energy(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|EnergyConsumptionDetails energyConsumptionDetails(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|EnergyEfficiencyEnumeration energyEfficiencyEnumeration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|EnergyStarEnergyEfficiencyEnumeration energyStarEnergyEfficiencyEnumeration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|EngineSpecification engineSpecification(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|EntertainmentBusiness entertainmentBusiness(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|EntryPoint entryPoint(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -310,6 +322,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|FundingScheme fundingScheme(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|FurnitureStore furnitureStore(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Game game(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|GameAvailabilityEnumeration gameAvailabilityEnumeration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|GamePlayMode gamePlayMode(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|GameServer gameServer(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|GameServerStatus gameServerStatus(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -317,6 +330,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|GasStation gasStation(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|GatedResidenceCommunity gatedResidenceCommunity(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|GenderType genderType(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|Gene gene(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|GeneralContractor generalContractor(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|GeoCircle geoCircle(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|GeoCoordinates geoCoordinates(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -364,11 +378,16 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|HowToSupply howToSupply(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|HowToTip howToTip(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|HowToTool howToTool(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|HyperToc hyperToc(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|HyperTocEntry hyperTocEntry(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|IPTCDigitalSourceEnumeration iPTCDigitalSourceEnumeration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|IceCreamShop iceCreamShop(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|IgnoreAction ignoreAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|ImageGallery imageGallery(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|ImageObject imageObject(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|ImageObjectSnapshot imageObjectSnapshot(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|ImagingTest imagingTest(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|IndividualPhysician individualPhysician(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|IndividualProduct individualProduct(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|InfectiousAgentClass infectiousAgentClass(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|InfectiousDisease infectiousDisease(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -429,11 +448,16 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|MapCategoryType mapCategoryType(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|MarryAction marryAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Mass mass(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|MathSolver mathSolver(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|MaximumDoseSchedule maximumDoseSchedule(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|MeasurementMethodEnum measurementMethodEnum(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|MeasurementTypeEnumeration measurementTypeEnumeration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|MediaEnumeration mediaEnumeration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|MediaGallery mediaGallery(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|MediaManipulationRatingEnumeration mediaManipulationRatingEnumeration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|MediaObject mediaObject(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|MediaReview mediaReview(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|MediaReviewItem mediaReviewItem(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|MediaSubscription mediaSubscription(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|MedicalAudience medicalAudience(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|MedicalAudienceType medicalAudienceType(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -485,10 +509,12 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|MenuSection menuSection(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|MerchantReturnEnumeration merchantReturnEnumeration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|MerchantReturnPolicy merchantReturnPolicy(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|MerchantReturnPolicySeasonalOverride merchantReturnPolicySeasonalOverride(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Message message(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|MiddleSchool middleSchool(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|MobileApplication mobileApplication(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|MobilePhoneStore mobilePhoneStore(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|MolecularEntity molecularEntity(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|MonetaryAmount monetaryAmount(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|MonetaryAmountDistribution monetaryAmountDistribution(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|MonetaryGrant monetaryGrant(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -537,6 +563,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|NutritionInformation nutritionInformation(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Observation observation(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Occupation occupation(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|OccupationalExperienceRequirements occupationalExperienceRequirements(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|OccupationalTherapy occupationalTherapy(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|OceanBodyOfWater oceanBodyOfWater(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Offer offer(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -547,6 +574,8 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|OfferShippingDetails offerShippingDetails(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|OfficeEquipmentStore officeEquipmentStore(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|OnDemandEvent onDemandEvent(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|OnlineBusiness onlineBusiness(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|OnlineStore onlineStore(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|OpeningHoursSpecification openingHoursSpecification(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|OpinionNewsArticle opinionNewsArticle(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Optician optician(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -592,17 +621,20 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|PhysicalExam physicalExam(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|PhysicalTherapy physicalTherapy(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Physician physician(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|PhysiciansOffice physiciansOffice(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Place place(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|PlaceOfWorship placeOfWorship(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|PlanAction planAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Play play(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|PlayAction playAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|PlayGameAction playGameAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Playground playground(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Plumber plumber(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|PodcastEpisode podcastEpisode(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|PodcastSeason podcastSeason(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|PodcastSeries podcastSeries(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|PoliceStation policeStation(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|PoliticalParty politicalParty(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Pond pond(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|PostOffice postOffice(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|PostalAddress postalAddress(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -613,7 +645,9 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|Preschool preschool(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|PresentationDigitalDocument presentationDigitalDocument(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|PreventionIndication preventionIndication(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|PriceComponentTypeEnumeration priceComponentTypeEnumeration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|PriceSpecification priceSpecification(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|PriceTypeEnumeration priceTypeEnumeration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Product product(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|ProductCollection productCollection(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|ProductGroup productGroup(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -628,6 +662,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|Property property(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|PropertyValue propertyValue(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|PropertyValueSpecification propertyValueSpecification(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|Protein protein(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|PsychologicalTreatment psychologicalTreatment(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|PublicSwimmingPool publicSwimmingPool(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|PublicToilet publicToilet(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -673,7 +708,9 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|Report report(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|ReportageNewsArticle reportageNewsArticle(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|ReportedDoseSchedule reportedDoseSchedule(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|ResearchOrganization researchOrganization(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|ResearchProject researchProject(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|Researcher researcher(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Reservation reservation(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|ReservationPackage reservationPackage(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|ReservationStatusType reservationStatusType(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -686,6 +723,8 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|ResumeAction resumeAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|ReturnAction returnAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|ReturnFeesEnumeration returnFeesEnumeration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|ReturnLabelSourceEnumeration returnLabelSourceEnumeration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|ReturnMethodEnumeration returnMethodEnumeration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Review review(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|ReviewAction reviewAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|ReviewNewsArticle reviewNewsArticle(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -706,9 +745,11 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|Sculpture sculpture(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|SeaBodyOfWater seaBodyOfWater(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|SearchAction searchAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|SearchRescueOrganization searchRescueOrganization(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|SearchResultsPage searchResultsPage(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Season season(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Seat seat(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|SeekToAction seekToAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|SelfStorage selfStorage(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|SellAction sellAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|SendAction sendAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -724,11 +765,15 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|ShortStory shortStory(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|SingleFamilyResidence singleFamilyResidence(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|SiteNavigationElement siteNavigationElement(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|SizeGroupEnumeration sizeGroupEnumeration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|SizeSpecification sizeSpecification(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|SizeSystemEnumeration sizeSystemEnumeration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|SkiResort skiResort(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|SocialEvent socialEvent(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|SocialMediaPosting socialMediaPosting(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|SoftwareApplication softwareApplication(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|SoftwareSourceCode softwareSourceCode(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|SolveMathAction solveMathAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|SomeProducts someProducts(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|SpeakableSpecification speakableSpecification(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|SpecialAnnouncement specialAnnouncement(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -742,7 +787,9 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|SpreadsheetDigitalDocument spreadsheetDigitalDocument(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|StadiumOrArena stadiumOrArena(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|State state(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|Statement statement(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|StatisticalPopulation statisticalPopulation(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|StatisticalVariable statisticalVariable(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|StatusEnumeration statusEnumeration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|SteeringPositionValue steeringPositionValue(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Store store(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -755,6 +802,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|SuperficialAnatomy superficialAnatomy(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|SurgicalProcedure surgicalProcedure(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|SuspendAction suspendAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|Syllabus syllabus(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Synagogue synagogue(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|TVClip tVClip(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|TVEpisode tVEpisode(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -767,11 +815,13 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|TaxiReservation taxiReservation(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|TaxiService taxiService(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|TaxiStand taxiStand(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|Taxon taxon(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|TechArticle techArticle(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|TelevisionChannel televisionChannel(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|TelevisionStation televisionStation(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|TennisComplex tennisComplex(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|TextDigitalDocument textDigitalDocument(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|TextObject textObject(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|TheaterEvent theaterEvent(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|TheaterGroup theaterGroup(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|TherapeuticProcedure therapeuticProcedure(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -814,6 +864,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|UserPlusOnes userPlusOnes(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|UserReview userReview(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|UserTweets userTweets(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|VacationRental vacationRental(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Vehicle vehicle(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Vein vein(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Vessel vessel(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -823,6 +874,7 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|VideoGameClip videoGameClip(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|VideoGameSeries videoGameSeries(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|VideoObject videoObject(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|VideoObjectSnapshot videoObjectSnapshot(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|ViewAction viewAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|VirtualLocation virtualLocation(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|VisualArtsEvent visualArtsEvent(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -840,6 +892,9 @@ use Spatie\SchemaOrg\Exceptions\TypeNotInGraph;
  * @method self|WatchAction watchAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|Waterfall waterfall(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|WearAction wearAction(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|WearableMeasurementTypeEnumeration wearableMeasurementTypeEnumeration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|WearableSizeGroupEnumeration wearableSizeGroupEnumeration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
+ * @method self|WearableSizeSystemEnumeration wearableSizeSystemEnumeration(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|WebAPI webAPI(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|WebApplication webApplication(string|\Closure|null $identifier = null, \Closure|null $callback = null)
  * @method self|WebContent webContent(string|\Closure|null $identifier = null, \Closure|null $callback = null)
@@ -864,6 +919,17 @@ class Graph implements Type, ArrayAccess, JsonSerializable
 
     /** @var array */
     protected $hidden = [];
+
+    /** @var string|null */
+    protected $context;
+
+    /** @var string */
+    protected $nonce = '';
+
+    public function __construct(string|array|null $context = null)
+    {
+        $this->context = $context;
+    }
 
     /**
      * This overloads all \Spatie\SchemaOrg\Schema construction methods.
@@ -1006,7 +1072,7 @@ class Graph implements Type, ArrayAccess, JsonSerializable
     {
         // show all
         if ($identifier === null) {
-            $this->hidden[$type] = false;
+            unset($this->hidden[$type]);
 
             return $this;
         }
@@ -1047,6 +1113,13 @@ class Graph implements Type, ArrayAccess, JsonSerializable
 
             return $this;
         }
+
+        return $this;
+    }
+
+    public function setNonce(string $nonce)
+    {
+        $this->nonce = $nonce;
 
         return $this;
     }
@@ -1100,17 +1173,28 @@ class Graph implements Type, ArrayAccess, JsonSerializable
         return $this->nodes;
     }
 
-    public function getContext(): string
+    public function getContext(): string|array
     {
-        return 'https://schema.org';
+        return $this->context ?? 'https://schema.org';
+    }
+
+    public function nonceAttr(): string
+    {
+        if ($this->nonce) {
+            $attr = ' nonce="'.$this->nonce.'"';
+        } else {
+            $attr = '';
+        }
+
+        return $attr;
     }
 
     public function toScript(): string
     {
-        return '<script type="application/ld+json">'.json_encode($this, JSON_UNESCAPED_UNICODE).'</script>';
+        return '<script type="application/ld+json"'.$this->nonceAttr().'>'.json_encode($this, JSON_UNESCAPED_UNICODE).'</script>';
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         return $this->toArray();
     }
@@ -1129,21 +1213,21 @@ class Graph implements Type, ArrayAccess, JsonSerializable
         return explode('.', $key);
     }
 
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         [$type, $identifier] = $this->getTypeAndIdentifier($offset);
 
         return $this->has($type, $identifier);
     }
 
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         [$type, $identifier] = $this->getTypeAndIdentifier($offset);
 
         return $this->get($type, $identifier);
     }
 
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         $identifier = $offset;
 
@@ -1154,7 +1238,7 @@ class Graph implements Type, ArrayAccess, JsonSerializable
         $this->set($value, $identifier);
     }
 
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         [$type, $identifier] = $this->getTypeAndIdentifier($offset);
 

@@ -46,6 +46,8 @@ interface OrderActionContract
 
     public function priceSpecification($priceSpecification);
 
+    public function provider($provider);
+
     public function result($result);
 
     public function sameAs($sameAs);
@@ -57,5 +59,4 @@ interface OrderActionContract
     public function target($target);
 
     public function url($url);
-
 }

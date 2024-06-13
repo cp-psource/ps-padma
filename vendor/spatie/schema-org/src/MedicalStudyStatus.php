@@ -2,17 +2,17 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\MedicalStudyStatusContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\MedicalEnumerationContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\MedicalEnumerationContract;
+use Spatie\SchemaOrg\Contracts\MedicalStudyStatusContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * The status of a medical study. Enumerated type.
  *
  * @see https://schema.org/MedicalStudyStatus
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
  */
@@ -22,89 +22,93 @@ class MedicalStudyStatus extends BaseType implements MedicalStudyStatusContract,
      * Active, but not recruiting new participants.
      *
      * @see https://schema.org/ActiveNotRecruiting
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const ActiveNotRecruiting = 'https://schema.org/ActiveNotRecruiting';
+    public const ActiveNotRecruiting = 'https://schema.org/ActiveNotRecruiting';
 
     /**
      * Completed.
      *
      * @see https://schema.org/Completed
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const Completed = 'https://schema.org/Completed';
+    public const Completed = 'https://schema.org/Completed';
 
     /**
      * Enrolling participants by invitation only.
      *
      * @see https://schema.org/EnrollingByInvitation
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const EnrollingByInvitation = 'https://schema.org/EnrollingByInvitation';
+    public const EnrollingByInvitation = 'https://schema.org/EnrollingByInvitation';
 
     /**
      * Not yet recruiting.
      *
      * @see https://schema.org/NotYetRecruiting
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const NotYetRecruiting = 'https://schema.org/NotYetRecruiting';
+    public const NotYetRecruiting = 'https://schema.org/NotYetRecruiting';
 
     /**
      * Recruiting participants.
      *
      * @see https://schema.org/Recruiting
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const Recruiting = 'https://schema.org/Recruiting';
+    public const Recruiting = 'https://schema.org/Recruiting';
 
     /**
      * Results are available.
      *
      * @see https://schema.org/ResultsAvailable
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const ResultsAvailable = 'https://schema.org/ResultsAvailable';
+    public const ResultsAvailable = 'https://schema.org/ResultsAvailable';
 
     /**
      * Results are not available.
      *
      * @see https://schema.org/ResultsNotAvailable
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const ResultsNotAvailable = 'https://schema.org/ResultsNotAvailable';
+    public const ResultsNotAvailable = 'https://schema.org/ResultsNotAvailable';
 
     /**
      * Suspended.
      *
      * @see https://schema.org/Suspended
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const Suspended = 'https://schema.org/Suspended';
+    public const Suspended = 'https://schema.org/Suspended';
 
     /**
      * Terminated.
      *
      * @see https://schema.org/Terminated
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const Terminated = 'https://schema.org/Terminated';
+    public const Terminated = 'https://schema.org/Terminated';
 
     /**
      * Withdrawn.
      *
      * @see https://schema.org/Withdrawn
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const Withdrawn = 'https://schema.org/Withdrawn';
+    public const Withdrawn = 'https://schema.org/Withdrawn';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -134,7 +138,7 @@ class MedicalStudyStatus extends BaseType implements MedicalStudyStatusContract,
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -284,5 +288,4 @@ class MedicalStudyStatus extends BaseType implements MedicalStudyStatusContract,
     {
         return $this->setProperty('url', $url);
     }
-
 }

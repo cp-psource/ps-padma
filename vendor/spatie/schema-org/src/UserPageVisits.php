@@ -2,10 +2,10 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\UserPageVisitsContract;
-use \Spatie\SchemaOrg\Contracts\EventContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
-use \Spatie\SchemaOrg\Contracts\UserInteractionContract;
+use Spatie\SchemaOrg\Contracts\EventContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\UserInteractionContract;
+use Spatie\SchemaOrg\Contracts\UserPageVisitsContract;
 
 /**
  * UserInteraction and its subtypes is an old way of talking about users
@@ -33,7 +33,7 @@ class UserPageVisits extends BaseType implements UserPageVisitsContract, EventCo
     }
 
     /**
-     * An actor, e.g. in tv, radio, movie, video games etc., or in an event.
+     * An actor, e.g. in TV, radio, movie, video games etc., or in an event.
      * Actors can be associated with individual items or with a series, episode,
      * clip.
      *
@@ -51,10 +51,14 @@ class UserPageVisits extends BaseType implements UserPageVisitsContract, EventCo
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -147,7 +151,6 @@ class UserPageVisits extends BaseType implements UserPageVisitsContract, EventCo
      * @return static
      *
      * @see https://schema.org/composer
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#MBZ
      */
     public function composer($composer)
     {
@@ -171,7 +174,7 @@ class UserPageVisits extends BaseType implements UserPageVisitsContract, EventCo
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -183,7 +186,7 @@ class UserPageVisits extends BaseType implements UserPageVisitsContract, EventCo
     }
 
     /**
-     * A director of e.g. tv, radio, movie, video gaming etc. content, or of an
+     * A director of e.g. TV, radio, movie, video gaming etc. content, or of an
      * event. Directors can be associated with individual items or with a
      * series, episode, clip.
      *
@@ -269,7 +272,7 @@ class UserPageVisits extends BaseType implements UserPageVisitsContract, EventCo
      * @return static
      *
      * @see https://schema.org/eventAttendanceMode
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1842
      */
     public function eventAttendanceMode($eventAttendanceMode)
@@ -299,7 +302,7 @@ class UserPageVisits extends BaseType implements UserPageVisitsContract, EventCo
      * @return static
      *
      * @see https://schema.org/eventSchedule
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1457
      */
     public function eventSchedule($eventSchedule)
@@ -335,6 +338,23 @@ class UserPageVisits extends BaseType implements UserPageVisitsContract, EventCo
     public function funder($funder)
     {
         return $this->setProperty('funder', $funder);
+    }
+
+    /**
+     * A [[Grant]] that directly or indirectly provide funding or sponsorship
+     * for this item. See also [[ownershipFundingInfo]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\GrantContract|\Spatie\SchemaOrg\Contracts\GrantContract[] $funding
+     *
+     * @return static
+     *
+     * @see https://schema.org/funding
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/383
+     */
+    public function funding($funding)
+    {
+        return $this->setProperty('funding', $funding);
     }
 
     /**
@@ -403,8 +423,24 @@ class UserPageVisits extends BaseType implements UserPageVisitsContract, EventCo
     }
 
     /**
-     * The location of for example where the event is happening, an organization
-     * is located, or where an action takes place.
+     * Keywords or tags used to describe some item. Multiple textual entries in
+     * a keywords list are typically delimited by commas, or by repeating the
+     * property.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|string|string[] $keywords
+     *
+     * @return static
+     *
+     * @see https://schema.org/keywords
+     */
+    public function keywords($keywords)
+    {
+        return $this->setProperty('keywords', $keywords);
+    }
+
+    /**
+     * The location of, for example, where an event is happening, where an
+     * organization is located, or where an action takes place.
      *
      * @param \Spatie\SchemaOrg\Contracts\PlaceContract|\Spatie\SchemaOrg\Contracts\PlaceContract[]|\Spatie\SchemaOrg\Contracts\PostalAddressContract|\Spatie\SchemaOrg\Contracts\PostalAddressContract[]|\Spatie\SchemaOrg\Contracts\VirtualLocationContract|\Spatie\SchemaOrg\Contracts\VirtualLocationContract[]|string|string[] $location
      *
@@ -457,7 +493,7 @@ class UserPageVisits extends BaseType implements UserPageVisitsContract, EventCo
      * @return static
      *
      * @see https://schema.org/maximumPhysicalAttendeeCapacity
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1842
      */
     public function maximumPhysicalAttendeeCapacity($maximumPhysicalAttendeeCapacity)
@@ -466,7 +502,7 @@ class UserPageVisits extends BaseType implements UserPageVisitsContract, EventCo
     }
 
     /**
-     * The maximum physical attendee capacity of an [[Event]] whose
+     * The maximum virtual attendee capacity of an [[Event]] whose
      * [[eventAttendanceMode]] is [[OnlineEventAttendanceMode]] (or the online
      * aspects, in the case of a [[MixedEventAttendanceMode]]).
      *
@@ -475,7 +511,7 @@ class UserPageVisits extends BaseType implements UserPageVisitsContract, EventCo
      * @return static
      *
      * @see https://schema.org/maximumVirtualAttendeeCapacity
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1842
      */
     public function maximumVirtualAttendeeCapacity($maximumVirtualAttendeeCapacity)
@@ -656,7 +692,7 @@ class UserPageVisits extends BaseType implements UserPageVisitsContract, EventCo
 
     /**
      * A person or organization that supports a thing through a pledge, promise,
-     * or financial contribution. e.g. a sponsor of a Medical Study or a
+     * or financial contribution. E.g. a sponsor of a Medical Study or a
      * corporate sponsor of an event.
      *
      * @param \Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[]|\Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[] $sponsor
@@ -822,5 +858,4 @@ class UserPageVisits extends BaseType implements UserPageVisitsContract, EventCo
     {
         return $this->setProperty('workPerformed', $workPerformed);
     }
-
 }

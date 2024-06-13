@@ -38,6 +38,8 @@ interface QuestionContract
 
     public function answerCount($answerCount);
 
+    public function archivedAt($archivedAt);
+
     public function assesses($assesses);
 
     public function associatedMedia($associatedMedia);
@@ -72,13 +74,19 @@ interface QuestionContract
 
     public function copyrightHolder($copyrightHolder);
 
+    public function copyrightNotice($copyrightNotice);
+
     public function copyrightYear($copyrightYear);
 
     public function correction($correction);
 
+    public function countryOfOrigin($countryOfOrigin);
+
     public function creativeWorkStatus($creativeWorkStatus);
 
     public function creator($creator);
+
+    public function creditText($creditText);
 
     public function dateCreated($dateCreated);
 
@@ -87,6 +95,8 @@ interface QuestionContract
     public function datePublished($datePublished);
 
     public function description($description);
+
+    public function digitalSourceType($digitalSourceType);
 
     public function disambiguatingDescription($disambiguatingDescription);
 
@@ -97,6 +107,8 @@ interface QuestionContract
     public function editEIDR($editEIDR);
 
     public function editor($editor);
+
+    public function eduQuestionType($eduQuestionType);
 
     public function educationalAlignment($educationalAlignment);
 
@@ -118,6 +130,8 @@ interface QuestionContract
 
     public function funder($funder);
 
+    public function funding($funding);
+
     public function genre($genre);
 
     public function hasPart($hasPart);
@@ -133,6 +147,8 @@ interface QuestionContract
     public function interactionStatistic($interactionStatistic);
 
     public function interactivityType($interactivityType);
+
+    public function interpretedAsClaim($interpretedAsClaim);
 
     public function isAccessibleForFree($isAccessibleForFree);
 
@@ -167,6 +183,8 @@ interface QuestionContract
     public function name($name);
 
     public function offers($offers);
+
+    public function parentItem($parentItem);
 
     public function pattern($pattern);
 
@@ -204,6 +222,8 @@ interface QuestionContract
 
     public function sdPublisher($sdPublisher);
 
+    public function sharedContent($sharedContent);
+
     public function size($size);
 
     public function sourceOrganization($sourceOrganization);
@@ -225,6 +245,8 @@ interface QuestionContract
     public function temporalCoverage($temporalCoverage);
 
     public function text($text);
+
+    public function thumbnail($thumbnail);
 
     public function thumbnailUrl($thumbnailUrl);
 
@@ -249,5 +271,4 @@ interface QuestionContract
     public function workExample($workExample);
 
     public function workTranslation($workTranslation);
-
 }

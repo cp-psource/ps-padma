@@ -2,16 +2,17 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\ExchangeRateSpecificationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\StructuredValueContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\ExchangeRateSpecificationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\StructuredValueContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A structured value representing exchange rate.
  *
  * @see https://schema.org/ExchangeRateSpecification
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
+ * @link https://github.com/schemaorg/schemaorg/issues/1253
  *
  */
 class ExchangeRateSpecification extends BaseType implements ExchangeRateSpecificationContract, IntangibleContract, StructuredValueContract, ThingContract
@@ -19,10 +20,14 @@ class ExchangeRateSpecification extends BaseType implements ExchangeRateSpecific
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -51,14 +56,14 @@ class ExchangeRateSpecification extends BaseType implements ExchangeRateSpecific
 
     /**
      * The currency in which the monetary amount is expressed.
-     * 
+     *
      * Use standard formats: [ISO 4217 currency
-     * format](http://en.wikipedia.org/wiki/ISO_4217) e.g. "USD"; [Ticker
+     * format](http://en.wikipedia.org/wiki/ISO_4217), e.g. "USD"; [Ticker
      * symbol](https://en.wikipedia.org/wiki/List_of_cryptocurrencies) for
-     * cryptocurrencies e.g. "BTC"; well known names for [Local Exchange
-     * Tradings
+     * cryptocurrencies, e.g. "BTC"; well known names for [Local Exchange
+     * Trading
      * Systems](https://en.wikipedia.org/wiki/Local_exchange_trading_system)
-     * (LETS) and other currency types e.g. "Ithaca HOUR".
+     * (LETS) and other currency types, e.g. "Ithaca HOUR".
      *
      * @param string|string[] $currency
      *
@@ -80,7 +85,8 @@ class ExchangeRateSpecification extends BaseType implements ExchangeRateSpecific
      * @return static
      *
      * @see https://schema.org/currentExchangeRate
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1253
      */
     public function currentExchangeRate($currentExchangeRate)
     {
@@ -90,7 +96,7 @@ class ExchangeRateSpecification extends BaseType implements ExchangeRateSpecific
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -127,7 +133,8 @@ class ExchangeRateSpecification extends BaseType implements ExchangeRateSpecific
      * @return static
      *
      * @see https://schema.org/exchangeRateSpread
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1253
      */
     public function exchangeRateSpread($exchangeRateSpread)
     {
@@ -256,5 +263,4 @@ class ExchangeRateSpecification extends BaseType implements ExchangeRateSpecific
     {
         return $this->setProperty('url', $url);
     }
-
 }

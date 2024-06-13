@@ -2,18 +2,18 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\InfectiousAgentClassContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\MedicalEnumerationContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\InfectiousAgentClassContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\MedicalEnumerationContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * Classes of agents or pathogens that transmit infectious diseases. Enumerated
  * type.
  *
  * @see https://schema.org/InfectiousAgentClass
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
  */
@@ -23,57 +23,61 @@ class InfectiousAgentClass extends BaseType implements InfectiousAgentClassContr
      * Pathogenic bacteria that cause bacterial infection.
      *
      * @see https://schema.org/Bacteria
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const Bacteria = 'https://schema.org/Bacteria';
+    public const Bacteria = 'https://schema.org/Bacteria';
 
     /**
      * Pathogenic fungus.
      *
      * @see https://schema.org/Fungus
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const Fungus = 'https://schema.org/Fungus';
+    public const Fungus = 'https://schema.org/Fungus';
 
     /**
      * Multicellular parasite that causes an infection.
      *
      * @see https://schema.org/MulticellularParasite
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const MulticellularParasite = 'https://schema.org/MulticellularParasite';
+    public const MulticellularParasite = 'https://schema.org/MulticellularParasite';
 
     /**
      * A prion is an infectious agent composed of protein in a misfolded form.
      *
      * @see https://schema.org/Prion
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const Prion = 'https://schema.org/Prion';
+    public const Prion = 'https://schema.org/Prion';
 
     /**
      * Single-celled organism that causes an infection.
      *
      * @see https://schema.org/Protozoa
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const Protozoa = 'https://schema.org/Protozoa';
+    public const Protozoa = 'https://schema.org/Protozoa';
 
     /**
      * Pathogenic virus that causes viral infection.
      *
      * @see https://schema.org/Virus
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const Virus = 'https://schema.org/Virus';
+    public const Virus = 'https://schema.org/Virus';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -103,7 +107,7 @@ class InfectiousAgentClass extends BaseType implements InfectiousAgentClassContr
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -253,5 +257,4 @@ class InfectiousAgentClass extends BaseType implements InfectiousAgentClassContr
     {
         return $this->setProperty('url', $url);
     }
-
 }

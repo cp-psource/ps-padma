@@ -42,6 +42,8 @@ interface BorrowActionContract
 
     public function potentialAction($potentialAction);
 
+    public function provider($provider);
+
     public function result($result);
 
     public function sameAs($sameAs);
@@ -55,5 +57,4 @@ interface BorrowActionContract
     public function toLocation($toLocation);
 
     public function url($url);
-
 }

@@ -2,21 +2,28 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\MediaReviewContract;
-use \Spatie\SchemaOrg\Contracts\CreativeWorkContract;
-use \Spatie\SchemaOrg\Contracts\ReviewContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\CreativeWorkContract;
+use Spatie\SchemaOrg\Contracts\MediaReviewContract;
+use Spatie\SchemaOrg\Contracts\ReviewContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
- * (editorial work in progress, this definition is incomplete and unreviewed)
- *     A [[MediaReview]] is a more specialized form of Review dedicated to the
+ * A [[MediaReview]] is a more specialized form of Review dedicated to the
  * evaluation of media content online, typically in the context of fact-checking
  * and misinformation.
  *     For more general reviews of media in the broader sense, use
- * [[UserReview]], [[CriticReview]] or other [[Review]] types.
+ * [[UserReview]], [[CriticReview]] or other [[Review]] types. This definition
+ * is
+ *     a work in progress. While the [[MediaManipulationRatingEnumeration]] list
+ * reflects significant community review amongst fact-checkers and others
+ * working
+ *     to combat misinformation, the specific structures for representing media
+ * objects, their versions and publication context, are still evolving.
+ * Similarly, best practices for the relationship between [[MediaReview]] and
+ * [[ClaimReview]] markup have not yet been finalized.
  *
  * @see https://schema.org/MediaReview
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
  * @link https://github.com/schemaorg/schemaorg/issues/2450
  *
  */
@@ -45,7 +52,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * @return static
      *
      * @see https://schema.org/abstract
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/276
      */
     public function abstract($abstract)
@@ -55,9 +62,9 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
 
     /**
      * The human sensory perceptual system or cognitive faculty through which a
-     * person may process or perceive information. Expected values include:
-     * auditory, tactile, textual, visual, colorDependent, chartOnVisual,
-     * chemOnVisual, diagramOnVisual, mathOnVisual, musicOnVisual, textOnVisual.
+     * person may process or perceive information. Values should be drawn from
+     * the [approved
+     * vocabulary](https://www.w3.org/2021/a11y-discov-vocab/latest/#accessMode-vocabulary).
      *
      * @param string|string[] $accessMode
      *
@@ -73,8 +80,9 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
 
     /**
      * A list of single or combined accessModes that are sufficient to
-     * understand all the intellectual content of a resource. Expected values
-     * include:  auditory, tactile, textual, visual.
+     * understand all the intellectual content of a resource. Values should be
+     * drawn from the [approved
+     * vocabulary](https://www.w3.org/2021/a11y-discov-vocab/latest/#accessModeSufficient-vocabulary).
      *
      * @param \Spatie\SchemaOrg\Contracts\ItemListContract|\Spatie\SchemaOrg\Contracts\ItemListContract[] $accessModeSufficient
      *
@@ -90,8 +98,8 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
 
     /**
      * Indicates that the resource is compatible with the referenced
-     * accessibility API ([WebSchemas wiki lists possible
-     * values](http://www.w3.org/wiki/WebSchemas/Accessibility)).
+     * accessibility API. Values should be drawn from the [approved
+     * vocabulary](https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityAPI-vocabulary).
      *
      * @param string|string[] $accessibilityAPI
      *
@@ -106,8 +114,8 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
 
     /**
      * Identifies input methods that are sufficient to fully control the
-     * described resource ([WebSchemas wiki lists possible
-     * values](http://www.w3.org/wiki/WebSchemas/Accessibility)).
+     * described resource. Values should be drawn from the [approved
+     * vocabulary](https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityControl-vocabulary).
      *
      * @param string|string[] $accessibilityControl
      *
@@ -122,8 +130,9 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
 
     /**
      * Content features of the resource, such as accessible media, alternatives
-     * and supported enhancements for accessibility ([WebSchemas wiki lists
-     * possible values](http://www.w3.org/wiki/WebSchemas/Accessibility)).
+     * and supported enhancements for accessibility. Values should be drawn from
+     * the [approved
+     * vocabulary](https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityFeature-vocabulary).
      *
      * @param string|string[] $accessibilityFeature
      *
@@ -138,9 +147,9 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
 
     /**
      * A characteristic of the described resource that is physiologically
-     * dangerous to some users. Related to WCAG 2.0 guideline 2.3 ([WebSchemas
-     * wiki lists possible
-     * values](http://www.w3.org/wiki/WebSchemas/Accessibility)).
+     * dangerous to some users. Related to WCAG 2.0 guideline 2.3. Values should
+     * be drawn from the [approved
+     * vocabulary](https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityHazard-vocabulary).
      *
      * @param string|string[] $accessibilityHazard
      *
@@ -158,7 +167,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * deficiencies, consistent with the other accessibility metadata but
      * expressing subtleties such as "short descriptions are present but long
      * descriptions will be needed for non-visual users" or "short descriptions
-     * are present and no long descriptions are needed."
+     * are present and no long descriptions are needed".
      *
      * @param string|string[] $accessibilitySummary
      *
@@ -195,7 +204,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * @return static
      *
      * @see https://schema.org/acquireLicensePage
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2454
      */
     public function acquireLicensePage($acquireLicensePage)
@@ -206,10 +215,14 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -266,6 +279,26 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
     }
 
     /**
+     * Indicates a page or other link involved in archival of a
+     * [[CreativeWork]]. In the case of [[MediaReview]], the items in a
+     * [[MediaReviewItem]] may often become inaccessible, but be archived by
+     * archival, journalistic, activist, or law enforcement organizations. In
+     * such cases, the referenced page may not directly publish the content.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\WebPageContract|\Spatie\SchemaOrg\Contracts\WebPageContract[]|string|string[] $archivedAt
+     *
+     * @return static
+     *
+     * @see https://schema.org/archivedAt
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2450
+     */
+    public function archivedAt($archivedAt)
+    {
+        return $this->setProperty('archivedAt', $archivedAt);
+    }
+
+    /**
      * The item being described is intended to assess the competency or learning
      * outcome defined by the referenced term.
      *
@@ -274,12 +307,33 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * @return static
      *
      * @see https://schema.org/assesses
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2427
      */
     public function assesses($assesses)
     {
         return $this->setProperty('assesses', $assesses);
+    }
+
+    /**
+     * An associated [[ClaimReview]], related by specific common content, topic
+     * or claim. The expectation is that this property would be most typically
+     * used in cases where a single activity is conducting both claim reviews
+     * and media reviews, in which case [[relatedMediaReview]] would commonly be
+     * used on a [[ClaimReview]], while [[relatedClaimReview]] would be used on
+     * [[MediaReview]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\ReviewContract|\Spatie\SchemaOrg\Contracts\ReviewContract[] $associatedClaimReview
+     *
+     * @return static
+     *
+     * @see https://schema.org/associatedClaimReview
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2450
+     */
+    public function associatedClaimReview($associatedClaimReview)
+    {
+        return $this->setProperty('associatedClaimReview', $associatedClaimReview);
     }
 
     /**
@@ -295,6 +349,43 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
     public function associatedMedia($associatedMedia)
     {
         return $this->setProperty('associatedMedia', $associatedMedia);
+    }
+
+    /**
+     * An associated [[MediaReview]], related by specific common content, topic
+     * or claim. The expectation is that this property would be most typically
+     * used in cases where a single activity is conducting both claim reviews
+     * and media reviews, in which case [[relatedMediaReview]] would commonly be
+     * used on a [[ClaimReview]], while [[relatedClaimReview]] would be used on
+     * [[MediaReview]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\ReviewContract|\Spatie\SchemaOrg\Contracts\ReviewContract[] $associatedMediaReview
+     *
+     * @return static
+     *
+     * @see https://schema.org/associatedMediaReview
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2450
+     */
+    public function associatedMediaReview($associatedMediaReview)
+    {
+        return $this->setProperty('associatedMediaReview', $associatedMediaReview);
+    }
+
+    /**
+     * An associated [[Review]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\ReviewContract|\Spatie\SchemaOrg\Contracts\ReviewContract[] $associatedReview
+     *
+     * @return static
+     *
+     * @see https://schema.org/associatedReview
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2450
+     */
+    public function associatedReview($associatedReview)
+    {
+        return $this->setProperty('associatedReview', $associatedReview);
     }
 
     /**
@@ -435,7 +526,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * held by an [[ArchiveOrganization]]. This property is not suitable for use
      * as a general Web access control mechanism. It is expressed only in
      * natural language.
-     * 
+     *
      * For example "Available by appointment from the Reading Room" or
      * "Accessible only from logged-in accounts ".
      *
@@ -444,7 +535,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * @return static
      *
      * @see https://schema.org/conditionsOfAccess
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2173
      */
     public function conditionsOfAccess($conditionsOfAccess)
@@ -468,7 +559,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
     }
 
     /**
-     * Official rating of a piece of content&#x2014;for example,'MPAA PG-13'.
+     * Official rating of a piece of content&#x2014;for example, 'MPAA PG-13'.
      *
      * @param \Spatie\SchemaOrg\Contracts\RatingContract|\Spatie\SchemaOrg\Contracts\RatingContract[]|string|string[] $contentRating
      *
@@ -490,7 +581,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * @return static
      *
      * @see https://schema.org/contentReferenceTime
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1050
      */
     public function contentReferenceTime($contentReferenceTime)
@@ -527,6 +618,24 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
     }
 
     /**
+     * Text of a notice appropriate for describing the copyright aspects of this
+     * Creative Work, ideally indicating the owner of the copyright for the
+     * Work.
+     *
+     * @param string|string[] $copyrightNotice
+     *
+     * @return static
+     *
+     * @see https://schema.org/copyrightNotice
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2659
+     */
+    public function copyrightNotice($copyrightNotice)
+    {
+        return $this->setProperty('copyrightNotice', $copyrightNotice);
+    }
+
+    /**
      * The year during which the claimed copyright for the CreativeWork was
      * first asserted.
      *
@@ -550,11 +659,37 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * @return static
      *
      * @see https://schema.org/correction
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1950
      */
     public function correction($correction)
     {
         return $this->setProperty('correction', $correction);
+    }
+
+    /**
+     * The country of origin of something, including products as well as
+     * creative  works such as movie and TV content.
+     *
+     * In the case of TV and movie, this would be the country of the principle
+     * offices of the production company or individual responsible for the
+     * movie. For other kinds of [[CreativeWork]] it is difficult to provide
+     * fully general guidance, and properties such as [[contentLocation]] and
+     * [[locationCreated]] may be more applicable.
+     *
+     * In the case of products, the country of origin of the product. The exact
+     * interpretation of this may vary by context and product type, and cannot
+     * be fully enumerated here.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\CountryContract|\Spatie\SchemaOrg\Contracts\CountryContract[] $countryOfOrigin
+     *
+     * @return static
+     *
+     * @see https://schema.org/countryOfOrigin
+     */
+    public function countryOfOrigin($countryOfOrigin)
+    {
+        return $this->setProperty('countryOfOrigin', $countryOfOrigin);
     }
 
     /**
@@ -568,7 +703,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * @return static
      *
      * @see https://schema.org/creativeWorkStatus
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/987
      */
     public function creativeWorkStatus($creativeWorkStatus)
@@ -589,6 +724,23 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
     public function creator($creator)
     {
         return $this->setProperty('creator', $creator);
+    }
+
+    /**
+     * Text that can be used to credit person(s) and/or organization(s)
+     * associated with a published Creative Work.
+     *
+     * @param string|string[] $creditText
+     *
+     * @return static
+     *
+     * @see https://schema.org/creditText
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2659
+     */
+    public function creditText($creditText)
+    {
+        return $this->setProperty('creditText', $creditText);
     }
 
     /**
@@ -638,7 +790,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -647,6 +799,23 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
     public function description($description)
     {
         return $this->setProperty('description', $description);
+    }
+
+    /**
+     * Indicates an IPTCDigitalSourceEnumeration code indicating the nature of
+     * the digital source(s) for some [[CreativeWork]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\IPTCDigitalSourceEnumerationContract|\Spatie\SchemaOrg\Contracts\IPTCDigitalSourceEnumerationContract[] $digitalSourceType
+     *
+     * @return static
+     *
+     * @see https://schema.org/digitalSourceType
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/3392
+     */
+    public function digitalSourceType($digitalSourceType)
+    {
+        return $this->setProperty('digitalSourceType', $digitalSourceType);
     }
 
     /**
@@ -684,12 +853,12 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * An [EIDR](https://eidr.org/) (Entertainment Identifier Registry)
      * [[identifier]] representing a specific edit / edition for a work of film
      * or television.
-     * 
+     *
      * For example, the motion picture known as "Ghostbusters" whose
-     * [[titleEIDR]] is "10.5240/7EC7-228A-510A-053E-CBB8-J", has several edits
+     * [[titleEIDR]] is "10.5240/7EC7-228A-510A-053E-CBB8-J" has several edits,
      * e.g. "10.5240/1F2A-E1C5-680A-14C6-E76B-I" and
      * "10.5240/8A35-3BEE-6497-5D12-9E4F-3".
-     * 
+     *
      * Since schema.org types like [[Movie]] and [[TVEpisode]] can be used for
      * both works and their multiple expressions, it is possible to use
      * [[titleEIDR]] alone (for a general description), or alongside
@@ -700,7 +869,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * @return static
      *
      * @see https://schema.org/editEIDR
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2469
      */
     public function editEIDR($editEIDR)
@@ -724,7 +893,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
 
     /**
      * An alignment to an established educational framework.
-     * 
+     *
      * This property should not be used where the nature of the alignment can be
      * described using a simple property, for example to express that a resource
      * [[teaches]] or [[assesses]] a competency.
@@ -750,7 +919,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * @return static
      *
      * @see https://schema.org/educationalLevel
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1779
      */
     public function educationalLevel($educationalLevel)
@@ -762,7 +931,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * The purpose of a work in the context of education; for example,
      * 'assignment', 'group work'.
      *
-     * @param string|string[] $educationalUse
+     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|string|string[] $educationalUse
      *
      * @return static
      *
@@ -792,14 +961,14 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * Media type typically expressed using a MIME format (see [IANA
      * site](http://www.iana.org/assignments/media-types/media-types.xhtml) and
      * [MDN
-     * reference](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types))
+     * reference](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)),
      * e.g. application/zip for a SoftwareApplication binary, audio/mpeg for
-     * .mp3 etc.).
-     * 
+     * .mp3 etc.
+     *
      * In cases where a [[CreativeWork]] has several media type representations,
      * [[encoding]] can be used to indicate each [[MediaObject]] alongside
      * particular [[encodingFormat]] information.
-     * 
+     *
      * Unregistered or niche encoding and file formats can be indicated instead
      * via the most appropriate URL, e.g. defining Web page or a
      * Wikipedia/Wikidata entry.
@@ -838,7 +1007,6 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * @return static
      *
      * @see https://schema.org/exampleOfWork
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_bibex
      */
     public function exampleOfWork($exampleOfWork)
     {
@@ -866,7 +1034,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
     /**
      * Media type, typically MIME format (see [IANA
      * site](http://www.iana.org/assignments/media-types/media-types.xhtml)) of
-     * the content e.g. application/zip of a SoftwareApplication binary. In
+     * the content, e.g. application/zip of a SoftwareApplication binary. In
      * cases where a CreativeWork has several media type representations,
      * 'encoding' can be used to indicate each MediaObject alongside particular
      * fileFormat information. Unregistered or niche file formats can be
@@ -900,6 +1068,23 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
     }
 
     /**
+     * A [[Grant]] that directly or indirectly provide funding or sponsorship
+     * for this item. See also [[ownershipFundingInfo]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\GrantContract|\Spatie\SchemaOrg\Contracts\GrantContract[] $funding
+     *
+     * @return static
+     *
+     * @see https://schema.org/funding
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/383
+     */
+    public function funding($funding)
+    {
+        return $this->setProperty('funding', $funding);
+    }
+
+    /**
      * Genre of the creative work, broadcast channel or group.
      *
      * @param string|string[] $genre
@@ -922,7 +1107,6 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * @return static
      *
      * @see https://schema.org/hasPart
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_bibex
      */
     public function hasPart($hasPart)
     {
@@ -1027,6 +1211,24 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
     }
 
     /**
+     * Used to indicate a specific claim contained, implied, translated or
+     * refined from the content of a [[MediaObject]] or other [[CreativeWork]].
+     * The interpreting party can be indicated using [[claimInterpreter]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\ClaimContract|\Spatie\SchemaOrg\Contracts\ClaimContract[] $interpretedAsClaim
+     *
+     * @return static
+     *
+     * @see https://schema.org/interpretedAsClaim
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2450
+     */
+    public function interpretedAsClaim($interpretedAsClaim)
+    {
+        return $this->setProperty('interpretedAsClaim', $interpretedAsClaim);
+    }
+
+    /**
      * A flag to signal that the item, event, or place is accessible for free.
      *
      * @param bool|bool[] $isAccessibleForFree
@@ -1042,7 +1244,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
 
     /**
      * A resource from which this work is derived or from which it is a
-     * modification or adaption.
+     * modification or adaptation.
      *
      * @param \Spatie\SchemaOrg\Contracts\CreativeWorkContract|\Spatie\SchemaOrg\Contracts\CreativeWorkContract[]|\Spatie\SchemaOrg\Contracts\ProductContract|\Spatie\SchemaOrg\Contracts\ProductContract[]|string|string[] $isBasedOn
      *
@@ -1115,10 +1317,11 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
     }
 
     /**
-     * Keywords or tags used to describe this content. Multiple entries in a
-     * keywords list are typically delimited by commas.
+     * Keywords or tags used to describe some item. Multiple textual entries in
+     * a keywords list are typically delimited by commas, or by repeating the
+     * property.
      *
-     * @param string|string[] $keywords
+     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|string|string[] $keywords
      *
      * @return static
      *
@@ -1133,7 +1336,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * The predominant type or kind characterizing the learning resource. For
      * example, 'presentation', 'handout'.
      *
-     * @param string|string[] $learningResourceType
+     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|string|string[] $learningResourceType
      *
      * @return static
      *
@@ -1225,7 +1428,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * @return static
      *
      * @see https://schema.org/maintainer
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2311
      */
     public function maintainer($maintainer)
@@ -1257,7 +1460,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * @return static
      *
      * @see https://schema.org/materialExtent
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1759
      */
     public function materialExtent($materialExtent)
@@ -1274,7 +1477,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * @return static
      *
      * @see https://schema.org/mediaAuthenticityCategory
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2450
      */
     public function mediaAuthenticityCategory($mediaAuthenticityCategory)
@@ -1312,6 +1515,34 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
     }
 
     /**
+     * Provides negative considerations regarding something, most typically in
+     * pro/con lists for reviews (alongside [[positiveNotes]]). For symmetry
+     *
+     * In the case of a [[Review]], the property describes the [[itemReviewed]]
+     * from the perspective of the review; in the case of a [[Product]], the
+     * product itself is being described. Since product descriptions
+     * tend to emphasise positive claims, it may be relatively unusual to find
+     * [[negativeNotes]] used in this way. Nevertheless for the sake of
+     * symmetry, [[negativeNotes]] can be used on [[Product]].
+     *
+     * The property values can be expressed either as unstructured text
+     * (repeated as necessary), or if ordered, as a list (in which case the most
+     * negative is at the beginning of the list).
+     *
+     * @param \Spatie\SchemaOrg\Contracts\ItemListContract|\Spatie\SchemaOrg\Contracts\ItemListContract[]|\Spatie\SchemaOrg\Contracts\ListItemContract|\Spatie\SchemaOrg\Contracts\ListItemContract[]|\Spatie\SchemaOrg\Contracts\WebContentContract|\Spatie\SchemaOrg\Contracts\WebContentContract[]|string|string[] $negativeNotes
+     *
+     * @return static
+     *
+     * @see https://schema.org/negativeNotes
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2832
+     */
+    public function negativeNotes($negativeNotes)
+    {
+        return $this->setProperty('negativeNotes', $negativeNotes);
+    }
+
+    /**
      * An offer to provide this item&#x2014;for example, an offer to sell a
      * product, rent the DVD of a movie, perform a service, or give away tickets
      * to an event. Use [[businessFunction]] to indicate the kind of transaction
@@ -1334,6 +1565,42 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
     }
 
     /**
+     * Describes, in a [[MediaReview]] when dealing with
+     * [[DecontextualizedContent]], background information that can contribute
+     * to better interpretation of the [[MediaObject]].
+     *
+     * @param string|string[] $originalMediaContextDescription
+     *
+     * @return static
+     *
+     * @see https://schema.org/originalMediaContextDescription
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2450
+     */
+    public function originalMediaContextDescription($originalMediaContextDescription)
+    {
+        return $this->setProperty('originalMediaContextDescription', $originalMediaContextDescription);
+    }
+
+    /**
+     * Link to the page containing an original version of the content, or
+     * directly to an online copy of the original [[MediaObject]] content, e.g.
+     * video file.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\MediaObjectContract|\Spatie\SchemaOrg\Contracts\MediaObjectContract[]|\Spatie\SchemaOrg\Contracts\WebPageContract|\Spatie\SchemaOrg\Contracts\WebPageContract[]|string|string[] $originalMediaLink
+     *
+     * @return static
+     *
+     * @see https://schema.org/originalMediaLink
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2450
+     */
+    public function originalMediaLink($originalMediaLink)
+    {
+        return $this->setProperty('originalMediaLink', $originalMediaLink);
+    }
+
+    /**
      * A pattern that something has, for example 'polka dot', 'striped',
      * 'Canadian flag'. Values are typically expressed as text, although links
      * to controlled value schemes are also supported.
@@ -1343,7 +1610,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * @return static
      *
      * @see https://schema.org/pattern
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1797
      */
     public function pattern($pattern)
@@ -1366,6 +1633,31 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
     }
 
     /**
+     * Provides positive considerations regarding something, for example product
+     * highlights or (alongside [[negativeNotes]]) pro/con lists for reviews.
+     *
+     * In the case of a [[Review]], the property describes the [[itemReviewed]]
+     * from the perspective of the review; in the case of a [[Product]], the
+     * product itself is being described.
+     *
+     * The property values can be expressed either as unstructured text
+     * (repeated as necessary), or if ordered, as a list (in which case the most
+     * positive is at the beginning of the list).
+     *
+     * @param \Spatie\SchemaOrg\Contracts\ItemListContract|\Spatie\SchemaOrg\Contracts\ItemListContract[]|\Spatie\SchemaOrg\Contracts\ListItemContract|\Spatie\SchemaOrg\Contracts\ListItemContract[]|\Spatie\SchemaOrg\Contracts\WebContentContract|\Spatie\SchemaOrg\Contracts\WebContentContract[]|string|string[] $positiveNotes
+     *
+     * @return static
+     *
+     * @see https://schema.org/positiveNotes
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2832
+     */
+    public function positiveNotes($positiveNotes)
+    {
+        return $this->setProperty('positiveNotes', $positiveNotes);
+    }
+
+    /**
      * Indicates a potential Action, which describes an idealized action in
      * which this thing would play an 'object' role.
      *
@@ -1382,7 +1674,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
 
     /**
      * The person or organization who produced the work (e.g. music album,
-     * movie, tv/radio series etc.).
+     * movie, TV/radio series etc.).
      *
      * @param \Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[]|\Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[] $producer
      *
@@ -1405,7 +1697,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * @return static
      *
      * @see https://schema.org/provider
-     * @link https://github.com/schemaorg/schemaorg/issues/2289
+     * @see https://pending.schema.org
      */
     public function provider($provider)
     {
@@ -1448,7 +1740,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * @return static
      *
      * @see https://schema.org/publisherImprint
-     * @see http://bib.schema.org
+     * @see https://bib.schema.org
      */
     public function publisherImprint($publisherImprint)
     {
@@ -1458,12 +1750,12 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
     /**
      * The publishingPrinciples property indicates (typically via [[URL]]) a
      * document describing the editorial principles of an [[Organization]] (or
-     * individual e.g. a [[Person]] writing a blog) that relate to their
+     * individual, e.g. a [[Person]] writing a blog) that relate to their
      * activities as a publisher, e.g. ethics or diversity policies. When
      * applied to a [[CreativeWork]] (e.g. [[NewsArticle]]) the principles are
      * those of the party primarily responsible for the creation of the
      * [[CreativeWork]].
-     * 
+     *
      * While such policies are most typically expressed in natural language,
      * sometimes related information (e.g. indicating a [[funder]]) can be
      * expressed using schema.org terminology.
@@ -1602,9 +1894,14 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
 
     /**
      * Indicates (by URL or string) a particular version of a schema used in
-     * some CreativeWork. For example, a document could declare a schemaVersion
-     * using an URL such as https://schema.org/version/2.0/ if precise
-     * indication of schema version was required by some application.
+     * some CreativeWork. This property was created primarily to
+     *     indicate the use of a specific schema.org release, e.g. ```10.0``` as
+     * a simple string, or more explicitly via URL,
+     * ```https://schema.org/docs/releases.html#v10.0```. There may be
+     * situations in which other schemas might usefully be referenced this way,
+     * e.g.
+     * ```http://dublincore.org/specifications/dublin-core/dces/1999-07-02/```
+     * but this has not been carefully explored in the community.
      *
      * @param string|string[] $schemaVersion
      *
@@ -1619,14 +1916,14 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
 
     /**
      * Indicates the date on which the current structured data was generated /
-     * published. Typically used alongside [[sdPublisher]]
+     * published. Typically used alongside [[sdPublisher]].
      *
      * @param \DateTimeInterface|\DateTimeInterface[] $sdDatePublished
      *
      * @return static
      *
      * @see https://schema.org/sdDatePublished
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1886
      */
     public function sdDatePublished($sdDatePublished)
@@ -1643,7 +1940,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * @return static
      *
      * @see https://schema.org/sdLicense
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1886
      */
     public function sdLicense($sdLicense)
@@ -1665,7 +1962,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * @return static
      *
      * @see https://schema.org/sdPublisher
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1886
      */
     public function sdPublisher($sdPublisher)
@@ -1674,19 +1971,18 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
     }
 
     /**
-     * A standardized size of a product or creative work, often simplifying
-     * richer information into a simple textual string, either through referring
-     * to named sizes or (in the case of product markup), by adopting
-     * conventional simplifications. Use of QuantitativeValue with a unitCode or
-     * unitText can add more structure; in other cases, the /width, /height,
-     * /depth and /weight properties may be more applicable.
+     * A standardized size of a product or creative work, specified either
+     * through a simple textual string (for example 'XL', '32Wx34L'), a
+     * QuantitativeValue with a unitCode, or a comprehensive and structured
+     * [[SizeSpecification]]; in other cases, the [[width]], [[height]],
+     * [[depth]] and [[weight]] properties may be more applicable.
      *
-     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[]|string|string[] $size
+     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[]|\Spatie\SchemaOrg\Contracts\SizeSpecificationContract|\Spatie\SchemaOrg\Contracts\SizeSpecificationContract[]|string|string[] $size
      *
      * @return static
      *
      * @see https://schema.org/size
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1797
      */
     public function size($size)
@@ -1745,7 +2041,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
 
     /**
      * A person or organization that supports a thing through a pledge, promise,
-     * or financial contribution. e.g. a sponsor of a Medical Study or a
+     * or financial contribution. E.g. a sponsor of a Medical Study or a
      * corporate sponsor of an event.
      *
      * @param \Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[]|\Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[] $sponsor
@@ -1783,7 +2079,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * @return static
      *
      * @see https://schema.org/teaches
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2427
      */
     public function teaches($teaches)
@@ -1815,13 +2111,13 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * format](https://en.wikipedia.org/wiki/ISO_8601#Time_intervals). In
      *       the case of a Dataset it will typically indicate the relevant time
      * period in a precise notation (e.g. for a 2011 census dataset, the year
-     * 2011 would be written "2011/2012"). Other forms of content e.g.
-     * ScholarlyArticle, Book, TVSeries or TVEpisode may indicate their
+     * 2011 would be written "2011/2012"). Other forms of content, e.g.
+     * ScholarlyArticle, Book, TVSeries or TVEpisode, may indicate their
      * temporalCoverage in broader terms - textually or via well-known URL.
      *       Written works such as books may sometimes have precise temporal
      * coverage too, e.g. a work set in 1939 - 1945 can be indicated in ISO 8601
      * interval format format via "1939/1945".
-     * 
+     *
      * Open-ended date ranges can be written with ".." in place of the end date.
      * For example, "2015-11/.." indicates a range beginning in November 2015
      * and with no specified final date. This is tentative and might be updated
@@ -1853,6 +2149,20 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
     }
 
     /**
+     * Thumbnail image for an image or video.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\ImageObjectContract|\Spatie\SchemaOrg\Contracts\ImageObjectContract[] $thumbnail
+     *
+     * @return static
+     *
+     * @see https://schema.org/thumbnail
+     */
+    public function thumbnail($thumbnail)
+    {
+        return $this->setProperty('thumbnail', $thumbnail);
+    }
+
+    /**
      * A thumbnail image relevant to the Thing.
      *
      * @param string|string[] $thumbnailUrl
@@ -1867,9 +2177,8 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
     }
 
     /**
-     * Approximate or typical time it takes to work with or through this
-     * learning resource for the typical intended target audience, e.g. 'PT30M',
-     * 'PT1H25M'.
+     * Approximate or typical time it usually takes to work with or through the
+     * content of this work for the typical or target audience.
      *
      * @param \Spatie\SchemaOrg\Contracts\DurationContract|\Spatie\SchemaOrg\Contracts\DurationContract[] $timeRequired
      *
@@ -1883,15 +2192,15 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
     }
 
     /**
-     * The work that this work has been translated from. e.g. 物种起源 is a
-     * translationOf “On the Origin of Species”
+     * The work that this work has been translated from. E.g. 物种起源 is a
+     * translationOf “On the Origin of Species”.
      *
      * @param \Spatie\SchemaOrg\Contracts\CreativeWorkContract|\Spatie\SchemaOrg\Contracts\CreativeWorkContract[] $translationOfWork
      *
      * @return static
      *
      * @see https://schema.org/translationOfWork
-     * @see http://bib.schema.org
+     * @see https://bib.schema.org
      */
     public function translationOfWork($translationOfWork)
     {
@@ -1946,11 +2255,11 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * The schema.org [[usageInfo]] property indicates further information about
      * a [[CreativeWork]]. This property is applicable both to works that are
      * freely available and to those that require payment or other transactions.
-     * It can reference additional information e.g. community expectations on
+     * It can reference additional information, e.g. community expectations on
      * preferred linking and citation conventions, as well as purchasing
      * details. For something that can be commercially licensed, usageInfo can
      * provide detailed, resource-specific information about licensing options.
-     * 
+     *
      * This property can be used alongside the license property which indicates
      * license(s) applicable to some piece of content. The usageInfo property
      * can provide information about other licensing options, e.g. acquiring
@@ -1962,7 +2271,7 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * @return static
      *
      * @see https://schema.org/usageInfo
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2454
      */
     public function usageInfo($usageInfo)
@@ -2000,14 +2309,13 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
 
     /**
      * Example/instance/realization/derivation of the concept of this creative
-     * work. eg. The paperback edition, first edition, or eBook.
+     * work. E.g. the paperback edition, first edition, or e-book.
      *
      * @param \Spatie\SchemaOrg\Contracts\CreativeWorkContract|\Spatie\SchemaOrg\Contracts\CreativeWorkContract[] $workExample
      *
      * @return static
      *
      * @see https://schema.org/workExample
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_bibex
      */
     public function workExample($workExample)
     {
@@ -2015,8 +2323,8 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
     }
 
     /**
-     * A work that is a translation of the content of this work. e.g. 西遊記
-     * has an English workTranslation “Journey to the West”,a German
+     * A work that is a translation of the content of this work. E.g. 西遊記
+     * has an English workTranslation “Journey to the West”, a German
      * workTranslation “Monkeys Pilgerfahrt” and a Vietnamese  translation
      * Tây du ký bình khảo.
      *
@@ -2025,11 +2333,10 @@ class MediaReview extends BaseType implements MediaReviewContract, CreativeWorkC
      * @return static
      *
      * @see https://schema.org/workTranslation
-     * @see http://bib.schema.org
+     * @see https://bib.schema.org
      */
     public function workTranslation($workTranslation)
     {
         return $this->setProperty('workTranslation', $workTranslation);
     }
-
 }

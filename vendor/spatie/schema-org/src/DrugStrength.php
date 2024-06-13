@@ -2,17 +2,17 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\DrugStrengthContract;
-use \Spatie\SchemaOrg\Contracts\MedicalEntityContract;
-use \Spatie\SchemaOrg\Contracts\MedicalIntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\DrugStrengthContract;
+use Spatie\SchemaOrg\Contracts\MedicalEntityContract;
+use Spatie\SchemaOrg\Contracts\MedicalIntangibleContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A specific strength in which a medical drug is available in a specific
  * country.
  *
  * @see https://schema.org/DrugStrength
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  */
 class DrugStrength extends BaseType implements DrugStrengthContract, MedicalEntityContract, MedicalIntangibleContract, ThingContract
@@ -26,7 +26,7 @@ class DrugStrength extends BaseType implements DrugStrengthContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/activeIngredient
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function activeIngredient($activeIngredient)
     {
@@ -36,10 +36,14 @@ class DrugStrength extends BaseType implements DrugStrengthContract, MedicalEnti
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -74,7 +78,7 @@ class DrugStrength extends BaseType implements DrugStrengthContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/availableIn
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function availableIn($availableIn)
     {
@@ -90,7 +94,7 @@ class DrugStrength extends BaseType implements DrugStrengthContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/code
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function code($code)
     {
@@ -100,7 +104,7 @@ class DrugStrength extends BaseType implements DrugStrengthContract, MedicalEnti
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -129,6 +133,23 @@ class DrugStrength extends BaseType implements DrugStrengthContract, MedicalEnti
     }
 
     /**
+     * A [[Grant]] that directly or indirectly provide funding or sponsorship
+     * for this item. See also [[ownershipFundingInfo]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\GrantContract|\Spatie\SchemaOrg\Contracts\GrantContract[] $funding
+     *
+     * @return static
+     *
+     * @see https://schema.org/funding
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/383
+     */
+    public function funding($funding)
+    {
+        return $this->setProperty('funding', $funding);
+    }
+
+    /**
      * A medical guideline related to this entity.
      *
      * @param \Spatie\SchemaOrg\Contracts\MedicalGuidelineContract|\Spatie\SchemaOrg\Contracts\MedicalGuidelineContract[] $guideline
@@ -136,7 +157,7 @@ class DrugStrength extends BaseType implements DrugStrengthContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/guideline
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function guideline($guideline)
     {
@@ -185,7 +206,7 @@ class DrugStrength extends BaseType implements DrugStrengthContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/legalStatus
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function legalStatus($legalStatus)
     {
@@ -217,7 +238,7 @@ class DrugStrength extends BaseType implements DrugStrengthContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/maximumIntake
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function maximumIntake($maximumIntake)
     {
@@ -233,7 +254,7 @@ class DrugStrength extends BaseType implements DrugStrengthContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/medicineSystem
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function medicineSystem($medicineSystem)
     {
@@ -278,7 +299,7 @@ class DrugStrength extends BaseType implements DrugStrengthContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/recognizingAuthority
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function recognizingAuthority($recognizingAuthority)
     {
@@ -293,7 +314,7 @@ class DrugStrength extends BaseType implements DrugStrengthContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/relevantSpecialty
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function relevantSpecialty($relevantSpecialty)
     {
@@ -324,7 +345,7 @@ class DrugStrength extends BaseType implements DrugStrengthContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/strengthUnit
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function strengthUnit($strengthUnit)
     {
@@ -339,7 +360,7 @@ class DrugStrength extends BaseType implements DrugStrengthContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/strengthValue
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function strengthValue($strengthValue)
     {
@@ -354,7 +375,7 @@ class DrugStrength extends BaseType implements DrugStrengthContract, MedicalEnti
      * @return static
      *
      * @see https://schema.org/study
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function study($study)
     {
@@ -389,5 +410,4 @@ class DrugStrength extends BaseType implements DrugStrengthContract, MedicalEnti
     {
         return $this->setProperty('url', $url);
     }
-
 }

@@ -44,6 +44,8 @@ interface CommentActionContract
 
     public function potentialAction($potentialAction);
 
+    public function provider($provider);
+
     public function recipient($recipient);
 
     public function result($result);
@@ -59,5 +61,4 @@ interface CommentActionContract
     public function target($target);
 
     public function url($url);
-
 }

@@ -24,6 +24,8 @@ interface VitalSignContract
 
     public function expectedPrognosis($expectedPrognosis);
 
+    public function funding($funding);
+
     public function guideline($guideline);
 
     public function identifier($identifier);
@@ -77,5 +79,4 @@ interface VitalSignContract
     public function typicalTest($typicalTest);
 
     public function url($url);
-
 }

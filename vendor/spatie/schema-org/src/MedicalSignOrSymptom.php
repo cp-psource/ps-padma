@@ -2,17 +2,17 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\MedicalSignOrSymptomContract;
-use \Spatie\SchemaOrg\Contracts\MedicalConditionContract;
-use \Spatie\SchemaOrg\Contracts\MedicalEntityContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\MedicalConditionContract;
+use Spatie\SchemaOrg\Contracts\MedicalEntityContract;
+use Spatie\SchemaOrg\Contracts\MedicalSignOrSymptomContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * Any feature associated or not with a medical condition. In medicine a symptom
  * is generally subjective while a sign is objective.
  *
  * @see https://schema.org/MedicalSignOrSymptom
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  */
 class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContract, MedicalConditionContract, MedicalEntityContract, ThingContract
@@ -20,10 +20,14 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -59,7 +63,7 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
      * @return static
      *
      * @see https://schema.org/associatedAnatomy
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function associatedAnatomy($associatedAnatomy)
     {
@@ -75,7 +79,7 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
      * @return static
      *
      * @see https://schema.org/code
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function code($code)
     {
@@ -85,7 +89,7 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -109,7 +113,7 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
      * @return static
      *
      * @see https://schema.org/differentialDiagnosis
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function differentialDiagnosis($differentialDiagnosis)
     {
@@ -134,14 +138,14 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
     }
 
     /**
-     * Specifying a drug or medicine used in a medication procedure
+     * Specifying a drug or medicine used in a medication procedure.
      *
      * @param \Spatie\SchemaOrg\Contracts\DrugContract|\Spatie\SchemaOrg\Contracts\DrugContract[] $drug
      *
      * @return static
      *
      * @see https://schema.org/drug
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function drug($drug)
     {
@@ -157,7 +161,7 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
      * @return static
      *
      * @see https://schema.org/epidemiology
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function epidemiology($epidemiology)
     {
@@ -173,11 +177,28 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
      * @return static
      *
      * @see https://schema.org/expectedPrognosis
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function expectedPrognosis($expectedPrognosis)
     {
         return $this->setProperty('expectedPrognosis', $expectedPrognosis);
+    }
+
+    /**
+     * A [[Grant]] that directly or indirectly provide funding or sponsorship
+     * for this item. See also [[ownershipFundingInfo]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\GrantContract|\Spatie\SchemaOrg\Contracts\GrantContract[] $funding
+     *
+     * @return static
+     *
+     * @see https://schema.org/funding
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/383
+     */
+    public function funding($funding)
+    {
+        return $this->setProperty('funding', $funding);
     }
 
     /**
@@ -188,7 +209,7 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
      * @return static
      *
      * @see https://schema.org/guideline
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function guideline($guideline)
     {
@@ -237,7 +258,7 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
      * @return static
      *
      * @see https://schema.org/legalStatus
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function legalStatus($legalStatus)
     {
@@ -269,7 +290,7 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
      * @return static
      *
      * @see https://schema.org/medicineSystem
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function medicineSystem($medicineSystem)
     {
@@ -299,7 +320,7 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
      * @return static
      *
      * @see https://schema.org/naturalProgression
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function naturalProgression($naturalProgression)
     {
@@ -315,7 +336,7 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
      * @return static
      *
      * @see https://schema.org/pathophysiology
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function pathophysiology($pathophysiology)
     {
@@ -332,7 +353,7 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
      * @return static
      *
      * @see https://schema.org/possibleComplication
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function possibleComplication($possibleComplication)
     {
@@ -347,7 +368,7 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
      * @return static
      *
      * @see https://schema.org/possibleTreatment
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function possibleTreatment($possibleTreatment)
     {
@@ -378,7 +399,7 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
      * @return static
      *
      * @see https://schema.org/primaryPrevention
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function primaryPrevention($primaryPrevention)
     {
@@ -394,7 +415,7 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
      * @return static
      *
      * @see https://schema.org/recognizingAuthority
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function recognizingAuthority($recognizingAuthority)
     {
@@ -409,7 +430,7 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
      * @return static
      *
      * @see https://schema.org/relevantSpecialty
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function relevantSpecialty($relevantSpecialty)
     {
@@ -425,7 +446,7 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
      * @return static
      *
      * @see https://schema.org/riskFactor
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function riskFactor($riskFactor)
     {
@@ -457,7 +478,7 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
      * @return static
      *
      * @see https://schema.org/secondaryPrevention
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function secondaryPrevention($secondaryPrevention)
     {
@@ -474,7 +495,7 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
      * @return static
      *
      * @see https://schema.org/signOrSymptom
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function signOrSymptom($signOrSymptom)
     {
@@ -489,7 +510,7 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
      * @return static
      *
      * @see https://schema.org/stage
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function stage($stage)
     {
@@ -504,7 +525,7 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
      * @return static
      *
      * @see https://schema.org/status
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function status($status)
     {
@@ -519,7 +540,7 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
      * @return static
      *
      * @see https://schema.org/study
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function study($study)
     {
@@ -549,7 +570,7 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
      * @return static
      *
      * @see https://schema.org/typicalTest
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function typicalTest($typicalTest)
     {
@@ -569,5 +590,4 @@ class MedicalSignOrSymptom extends BaseType implements MedicalSignOrSymptomContr
     {
         return $this->setProperty('url', $url);
     }
-
 }

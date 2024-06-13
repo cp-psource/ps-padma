@@ -26,6 +26,8 @@ interface JointContract
 
     public function functionalClass($functionalClass);
 
+    public function funding($funding);
+
     public function guideline($guideline);
 
     public function identifier($identifier);
@@ -63,5 +65,4 @@ interface JointContract
     public function subjectOf($subjectOf);
 
     public function url($url);
-
 }

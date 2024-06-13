@@ -2,9 +2,9 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\ItemListContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\ItemListContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A list of items of any sort&#x2014;for example, Top 10 Movies About
@@ -19,10 +19,14 @@ class ItemList extends BaseType implements ItemListContract, IntangibleContract,
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -52,7 +56,7 @@ class ItemList extends BaseType implements ItemListContract, IntangibleContract,
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -116,13 +120,13 @@ class ItemList extends BaseType implements ItemListContract, IntangibleContract,
     /**
      * For itemListElement values, you can use simple strings (e.g. "Peter",
      * "Paul", "Mary"), existing entities, or use ListItem.
-     * 
+     *
      * Text values are best if the elements in the list are plain strings.
      * Existing entities are best for a simple, unordered list of existing
      * things in your data. ListItem is used with ordered lists when you want to
      * provide additional context about the element in that list or when the
      * same item might be in different places in different lists.
-     * 
+     *
      * Note: The order of elements in your mark-up is not sufficient for
      * indicating the order or elements.  Use ListItem with a 'position'
      * property in such cases.
@@ -257,5 +261,4 @@ class ItemList extends BaseType implements ItemListContract, IntangibleContract,
     {
         return $this->setProperty('url', $url);
     }
-
 }

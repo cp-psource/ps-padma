@@ -2,17 +2,16 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\RefundTypeEnumerationContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\RefundTypeEnumerationContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
- * RefundTypeEnumeration enumerates several kinds of product return refund
- * types.
+ * Enumerates several kinds of product return refund types.
  *
  * @see https://schema.org/RefundTypeEnumeration
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
  * @link https://github.com/schemaorg/schemaorg/issues/2288
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
@@ -20,39 +19,45 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
 class RefundTypeEnumeration extends BaseType implements RefundTypeEnumerationContract, EnumerationContract, IntangibleContract, ThingContract
 {
     /**
-     * A ExchangeRefund ...
+     * Specifies that a refund can be done as an exchange for the same product.
      *
      * @see https://schema.org/ExchangeRefund
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2288
      */
-     const ExchangeRefund = 'https://schema.org/ExchangeRefund';
+    public const ExchangeRefund = 'https://schema.org/ExchangeRefund';
 
     /**
-     * A FullRefund ...
+     * Specifies that a refund can be done in the full amount the customer paid
+     * for the product.
      *
      * @see https://schema.org/FullRefund
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2288
      */
-     const FullRefund = 'https://schema.org/FullRefund';
+    public const FullRefund = 'https://schema.org/FullRefund';
 
     /**
-     * A StoreCreditRefund ...
+     * Specifies that the customer receives a store credit as refund when
+     * returning a product.
      *
      * @see https://schema.org/StoreCreditRefund
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2288
      */
-     const StoreCreditRefund = 'https://schema.org/StoreCreditRefund';
+    public const StoreCreditRefund = 'https://schema.org/StoreCreditRefund';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -82,7 +87,7 @@ class RefundTypeEnumeration extends BaseType implements RefundTypeEnumerationCon
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -232,5 +237,4 @@ class RefundTypeEnumeration extends BaseType implements RefundTypeEnumerationCon
     {
         return $this->setProperty('url', $url);
     }
-
 }

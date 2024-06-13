@@ -203,24 +203,24 @@
             }
 
             // accessibility for links
-            item.children('a').attr('role', 'menuitem').click(function(event){
+            item.children('a').attr('role', 'menuitem').on('click', function(event) {
                 //Ensure that it's not a parent
                 if (settings.closeOnClick && !$(event.target).parent().closest('li').hasClass(prefix+'_parent')) {
-                        //Emulate menu close if set
-                        $($this.btn).click();
-                    }
+                    //Emulate menu close if set
+                    $($this.btn).trigger('click'); // Verwende 'trigger' anstelle von direktem Aufruf
+                }
             });
 
             //also close on click if parent links are set
             if (settings.closeOnClick && settings.allowParentLinks) {
-                item.children('a').children('a').click(function (event) {
+                item.children('a').children('a').on('click', function(event) {
                     //Emulate menu close
-                    $($this.btn).click();
+                    $($this.btn).trigger('click'); // Verwende 'trigger' anstelle von direktem Aufruf
                 });
 
-                item.find('.'+prefix+'_parent-link a:not(.'+prefix+'_item)').click(function(event){
+                item.find('.'+prefix+'_parent-link a:not(.'+prefix+'_item)').on('click', function(event) {
                     //Emulate menu close
-                        $($this.btn).click();
+                    $($this.btn).trigger('click'); // Verwende 'trigger' anstelle von direktem Aufruf
                 });
             }
         });
@@ -240,16 +240,16 @@
         $this.mobileNav.attr('role','menu');
 
         // outline prevention when using mouse
-        $(document).mousedown(function(){
+        $(document).on('mousedown', function() {
             $this._outlines(false);
         });
 
-        $(document).keyup(function(){
+        $(document).on('keyup', function() {
             $this._outlines(true);
         });
 
         // menu button click
-        $($this.btn).click(function (e) {
+        $($this.btn).on('click', function (e) {
             e.preventDefault();
             $this._menuToggle();
         });
@@ -279,8 +279,8 @@
 
         // allow links clickable within parent tags if set
         if (settings.allowParentLinks && settings.nestedParentLinks) {
-            $('.'+prefix+'_item a').click(function(e){
-                    e.stopImmediatePropagation();
+            $('.'+prefix+'_item a').on('click', function(e) {
+                e.stopImmediatePropagation();
             });
         }
     };

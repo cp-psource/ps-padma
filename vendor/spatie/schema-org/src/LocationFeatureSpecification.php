@@ -2,11 +2,11 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\LocationFeatureSpecificationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\PropertyValueContract;
-use \Spatie\SchemaOrg\Contracts\StructuredValueContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\LocationFeatureSpecificationContract;
+use Spatie\SchemaOrg\Contracts\PropertyValueContract;
+use Spatie\SchemaOrg\Contracts\StructuredValueContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * Specifies a location feature by providing a structured value representing a
@@ -14,7 +14,6 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
  * formality.
  *
  * @see https://schema.org/LocationFeatureSpecification
- * @link https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#STI_Accommodation_Ontology
  *
  */
 class LocationFeatureSpecification extends BaseType implements LocationFeatureSpecificationContract, IntangibleContract, PropertyValueContract, StructuredValueContract, ThingContract
@@ -22,10 +21,14 @@ class LocationFeatureSpecification extends BaseType implements LocationFeatureSp
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -55,7 +58,7 @@ class LocationFeatureSpecification extends BaseType implements LocationFeatureSp
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -154,7 +157,6 @@ class LocationFeatureSpecification extends BaseType implements LocationFeatureSp
      * @return static
      *
      * @see https://schema.org/maxValue
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function maxValue($maxValue)
     {
@@ -162,32 +164,58 @@ class LocationFeatureSpecification extends BaseType implements LocationFeatureSp
     }
 
     /**
-     * A technique or technology used in a [[Dataset]] (or [[DataDownload]],
-     * [[DataCatalog]]),
-     * corresponding to the method used for measuring the corresponding
-     * variable(s) (described using [[variableMeasured]]). This is oriented
+     * A subproperty of [[measurementTechnique]] that can be used for specifying
+     * specific methods, in particular via [[MeasurementMethodEnum]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|\Spatie\SchemaOrg\Contracts\MeasurementMethodEnumContract|\Spatie\SchemaOrg\Contracts\MeasurementMethodEnumContract[]|string|string[] $measurementMethod
+     *
+     * @return static
+     *
+     * @see https://schema.org/measurementMethod
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1425
+     */
+    public function measurementMethod($measurementMethod)
+    {
+        return $this->setProperty('measurementMethod', $measurementMethod);
+    }
+
+    /**
+     * A technique, method or technology used in an [[Observation]],
+     * [[StatisticalVariable]] or [[Dataset]] (or [[DataDownload]],
+     * [[DataCatalog]]), corresponding to the method used for measuring the
+     * corresponding variable(s) (for datasets, described using
+     * [[variableMeasured]]; for [[Observation]], a [[StatisticalVariable]]).
+     * Often but not necessarily each [[variableMeasured]] will have an explicit
+     * representation as (or mapping to) an property such as those defined in
+     * Schema.org, or other RDF vocabularies and "knowledge graphs". In that
+     * case the subproperty of [[variableMeasured]] called [[measuredProperty]]
+     * is applicable.
+     *
+     * The [[measurementTechnique]] property helps when extra clarification is
+     * needed about how a [[measuredProperty]] was measured. This is oriented
      * towards scientific and scholarly dataset publication but may have broader
      * applicability; it is not intended as a full representation of
-     * measurement, but rather as a high level summary for dataset discovery.
-     * 
+     * measurement, but can often serve as a high level summary for dataset
+     * discovery.
+     *
      * For example, if [[variableMeasured]] is: molecule concentration,
      * [[measurementTechnique]] could be: "mass spectrometry" or "nmr
-     * spectroscopy" or "colorimetry" or "immunofluorescence".
-     * 
-     * If the [[variableMeasured]] is "depression rating", the
-     * [[measurementTechnique]] could be "Zung Scale" or "HAM-D" or "Beck
-     * Depression Inventory".
-     * 
+     * spectroscopy" or "colorimetry" or "immunofluorescence". If the
+     * [[variableMeasured]] is "depression rating", the [[measurementTechnique]]
+     * could be "Zung Scale" or "HAM-D" or "Beck Depression Inventory".
+     *
      * If there are several [[variableMeasured]] properties recorded for some
      * given data object, use a [[PropertyValue]] for each [[variableMeasured]]
-     * and attach the corresponding [[measurementTechnique]].
+     * and attach the corresponding [[measurementTechnique]]. The value can also
+     * be from an enumeration, organized as a [[MeasurementMetholdEnumeration]].
      *
-     * @param string|string[] $measurementTechnique
+     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|\Spatie\SchemaOrg\Contracts\MeasurementMethodEnumContract|\Spatie\SchemaOrg\Contracts\MeasurementMethodEnumContract[]|string|string[] $measurementTechnique
      *
      * @return static
      *
      * @see https://schema.org/measurementTechnique
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1425
      */
     public function measurementTechnique($measurementTechnique)
@@ -203,7 +231,6 @@ class LocationFeatureSpecification extends BaseType implements LocationFeatureSp
      * @return static
      *
      * @see https://schema.org/minValue
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function minValue($minValue)
     {
@@ -245,7 +272,7 @@ class LocationFeatureSpecification extends BaseType implements LocationFeatureSp
      * propertyID can be
      * (1) a prefixed string, mainly meant to be used with standards for product
      * properties; (2) a site-specific, non-prefixed string (e.g. the primary
-     * key of the property or the vendor-specific id of the property), or (3)
+     * key of the property or the vendor-specific ID of the property), or (3)
      * a URL indicating the type of the property, either pointing to an external
      * vocabulary, or a Web resource that describes the property (e.g. a
      * glossary entry).
@@ -304,7 +331,6 @@ class LocationFeatureSpecification extends BaseType implements LocationFeatureSp
      * @return static
      *
      * @see https://schema.org/unitCode
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function unitCode($unitCode)
     {
@@ -349,7 +375,6 @@ class LocationFeatureSpecification extends BaseType implements LocationFeatureSp
      * @return static
      *
      * @see https://schema.org/validFrom
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function validFrom($validFrom)
     {
@@ -365,7 +390,6 @@ class LocationFeatureSpecification extends BaseType implements LocationFeatureSp
      * @return static
      *
      * @see https://schema.org/validThrough
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function validThrough($validThrough)
     {
@@ -373,14 +397,15 @@ class LocationFeatureSpecification extends BaseType implements LocationFeatureSp
     }
 
     /**
-     * The value of the quantitative value or property value node.
-     * 
+     * The value of a [[QuantitativeValue]] (including [[Observation]]) or
+     * property value node.
+     *
      * * For [[QuantitativeValue]] and [[MonetaryAmount]], the recommended type
      * for values is 'Number'.
-     * * For [[PropertyValue]], it can be 'Text;', 'Number', 'Boolean', or
+     * * For [[PropertyValue]], it can be 'Text', 'Number', 'Boolean', or
      * 'StructuredValue'.
      * * Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT
-     * NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * NINE' (U+0039)) rather than superficially similar Unicode symbols.
      * * Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a
      * decimal point. Avoid using these symbols as a readability separator.
      *
@@ -389,7 +414,6 @@ class LocationFeatureSpecification extends BaseType implements LocationFeatureSp
      * @return static
      *
      * @see https://schema.org/value
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function value($value)
     {
@@ -397,19 +421,17 @@ class LocationFeatureSpecification extends BaseType implements LocationFeatureSp
     }
 
     /**
-     * A pointer to a secondary value that provides additional information on
-     * the original value, e.g. a reference temperature.
+     * A secondary value that provides additional information on the original
+     * value, e.g. a reference temperature or a type of measurement.
      *
-     * @param \Spatie\SchemaOrg\Contracts\EnumerationContract|\Spatie\SchemaOrg\Contracts\EnumerationContract[]|\Spatie\SchemaOrg\Contracts\PropertyValueContract|\Spatie\SchemaOrg\Contracts\PropertyValueContract[]|\Spatie\SchemaOrg\Contracts\QualitativeValueContract|\Spatie\SchemaOrg\Contracts\QualitativeValueContract[]|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[]|\Spatie\SchemaOrg\Contracts\StructuredValueContract|\Spatie\SchemaOrg\Contracts\StructuredValueContract[] $valueReference
+     * @param \Spatie\SchemaOrg\Contracts\DefinedTermContract|\Spatie\SchemaOrg\Contracts\DefinedTermContract[]|\Spatie\SchemaOrg\Contracts\EnumerationContract|\Spatie\SchemaOrg\Contracts\EnumerationContract[]|\Spatie\SchemaOrg\Contracts\MeasurementTypeEnumerationContract|\Spatie\SchemaOrg\Contracts\MeasurementTypeEnumerationContract[]|\Spatie\SchemaOrg\Contracts\PropertyValueContract|\Spatie\SchemaOrg\Contracts\PropertyValueContract[]|\Spatie\SchemaOrg\Contracts\QualitativeValueContract|\Spatie\SchemaOrg\Contracts\QualitativeValueContract[]|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[]|\Spatie\SchemaOrg\Contracts\StructuredValueContract|\Spatie\SchemaOrg\Contracts\StructuredValueContract[]|string|string[] $valueReference
      *
      * @return static
      *
      * @see https://schema.org/valueReference
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function valueReference($valueReference)
     {
         return $this->setProperty('valueReference', $valueReference);
     }
-
 }

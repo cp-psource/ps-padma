@@ -34,6 +34,8 @@ interface VisualArtworkContract
 
     public function alternativeHeadline($alternativeHeadline);
 
+    public function archivedAt($archivedAt);
+
     public function artEdition($artEdition);
 
     public function artMedium($artMedium);
@@ -80,13 +82,19 @@ interface VisualArtworkContract
 
     public function copyrightHolder($copyrightHolder);
 
+    public function copyrightNotice($copyrightNotice);
+
     public function copyrightYear($copyrightYear);
 
     public function correction($correction);
 
+    public function countryOfOrigin($countryOfOrigin);
+
     public function creativeWorkStatus($creativeWorkStatus);
 
     public function creator($creator);
+
+    public function creditText($creditText);
 
     public function dateCreated($dateCreated);
 
@@ -97,6 +105,8 @@ interface VisualArtworkContract
     public function depth($depth);
 
     public function description($description);
+
+    public function digitalSourceType($digitalSourceType);
 
     public function disambiguatingDescription($disambiguatingDescription);
 
@@ -126,6 +136,8 @@ interface VisualArtworkContract
 
     public function funder($funder);
 
+    public function funding($funding);
+
     public function genre($genre);
 
     public function hasPart($hasPart);
@@ -145,6 +157,8 @@ interface VisualArtworkContract
     public function interactionStatistic($interactionStatistic);
 
     public function interactivityType($interactivityType);
+
+    public function interpretedAsClaim($interpretedAsClaim);
 
     public function isAccessibleForFree($isAccessibleForFree);
 
@@ -242,6 +256,8 @@ interface VisualArtworkContract
 
     public function text($text);
 
+    public function thumbnail($thumbnail);
+
     public function thumbnailUrl($thumbnailUrl);
 
     public function timeRequired($timeRequired);
@@ -265,5 +281,4 @@ interface VisualArtworkContract
     public function workExample($workExample);
 
     public function workTranslation($workTranslation);
-
 }

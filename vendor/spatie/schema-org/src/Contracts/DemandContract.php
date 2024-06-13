@@ -14,6 +14,8 @@ interface DemandContract
 
     public function areaServed($areaServed);
 
+    public function asin($asin);
+
     public function availability($availability);
 
     public function availabilityEnds($availabilityEnds);
@@ -93,5 +95,4 @@ interface DemandContract
     public function validThrough($validThrough);
 
     public function warranty($warranty);
-
 }

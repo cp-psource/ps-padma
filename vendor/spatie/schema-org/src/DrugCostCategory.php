@@ -2,17 +2,17 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\DrugCostCategoryContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\MedicalEnumerationContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\DrugCostCategoryContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\MedicalEnumerationContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * Enumerated categories of medical drug costs.
  *
  * @see https://schema.org/DrugCostCategory
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
  */
@@ -23,33 +23,37 @@ class DrugCostCategory extends BaseType implements DrugCostCategoryContract, Enu
      * for the drug.
      *
      * @see https://schema.org/ReimbursementCap
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const ReimbursementCap = 'https://schema.org/ReimbursementCap';
+    public const ReimbursementCap = 'https://schema.org/ReimbursementCap';
 
     /**
      * The drug's cost represents the retail cost of the drug.
      *
      * @see https://schema.org/Retail
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const Retail = 'https://schema.org/Retail';
+    public const Retail = 'https://schema.org/Retail';
 
     /**
      * The drug's cost represents the wholesale acquisition cost of the drug.
      *
      * @see https://schema.org/Wholesale
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
-     const Wholesale = 'https://schema.org/Wholesale';
+    public const Wholesale = 'https://schema.org/Wholesale';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -79,7 +83,7 @@ class DrugCostCategory extends BaseType implements DrugCostCategoryContract, Enu
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -229,5 +233,4 @@ class DrugCostCategory extends BaseType implements DrugCostCategoryContract, Enu
     {
         return $this->setProperty('url', $url);
     }
-
 }

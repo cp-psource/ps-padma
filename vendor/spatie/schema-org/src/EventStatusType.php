@@ -2,11 +2,11 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\EventStatusTypeContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\StatusEnumerationContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\EventStatusTypeContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\StatusEnumerationContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * EventStatusType is an enumeration type whose instances represent several
@@ -25,7 +25,7 @@ class EventStatusType extends BaseType implements EventStatusTypeContract, Enume
      *
      * @see https://schema.org/EventCancelled
      */
-     const EventCancelled = 'https://schema.org/EventCancelled';
+    public const EventCancelled = 'https://schema.org/EventCancelled';
 
     /**
      * Indicates that the event was changed to allow online participation. See
@@ -34,7 +34,7 @@ class EventStatusType extends BaseType implements EventStatusTypeContract, Enume
      *
      * @see https://schema.org/EventMovedOnline
      */
-     const EventMovedOnline = 'https://schema.org/EventMovedOnline';
+    public const EventMovedOnline = 'https://schema.org/EventMovedOnline';
 
     /**
      * The event has been postponed and no new date has been set. The event's
@@ -42,17 +42,17 @@ class EventStatusType extends BaseType implements EventStatusTypeContract, Enume
      *
      * @see https://schema.org/EventPostponed
      */
-     const EventPostponed = 'https://schema.org/EventPostponed';
+    public const EventPostponed = 'https://schema.org/EventPostponed';
 
     /**
      * The event has been rescheduled. The event's previousStartDate should be
      * set to the old date and the startDate should be set to the event's new
      * date. (If the event has been rescheduled multiple times, the
-     * previousStartDate property may be repeated).
+     * previousStartDate property may be repeated.)
      *
      * @see https://schema.org/EventRescheduled
      */
-     const EventRescheduled = 'https://schema.org/EventRescheduled';
+    public const EventRescheduled = 'https://schema.org/EventRescheduled';
 
     /**
      * The event is taking place or has taken place on the startDate as
@@ -60,15 +60,19 @@ class EventStatusType extends BaseType implements EventStatusTypeContract, Enume
      *
      * @see https://schema.org/EventScheduled
      */
-     const EventScheduled = 'https://schema.org/EventScheduled';
+    public const EventScheduled = 'https://schema.org/EventScheduled';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -98,7 +102,7 @@ class EventStatusType extends BaseType implements EventStatusTypeContract, Enume
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -248,5 +252,4 @@ class EventStatusType extends BaseType implements EventStatusTypeContract, Enume
     {
         return $this->setProperty('url', $url);
     }
-
 }

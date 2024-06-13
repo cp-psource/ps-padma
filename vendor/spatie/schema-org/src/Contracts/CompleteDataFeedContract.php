@@ -34,6 +34,8 @@ interface CompleteDataFeedContract
 
     public function alternativeHeadline($alternativeHeadline);
 
+    public function archivedAt($archivedAt);
+
     public function assesses($assesses);
 
     public function associatedMedia($associatedMedia);
@@ -70,13 +72,19 @@ interface CompleteDataFeedContract
 
     public function copyrightHolder($copyrightHolder);
 
+    public function copyrightNotice($copyrightNotice);
+
     public function copyrightYear($copyrightYear);
 
     public function correction($correction);
 
+    public function countryOfOrigin($countryOfOrigin);
+
     public function creativeWorkStatus($creativeWorkStatus);
 
     public function creator($creator);
+
+    public function creditText($creditText);
 
     public function dataFeedElement($dataFeedElement);
 
@@ -89,6 +97,8 @@ interface CompleteDataFeedContract
     public function datePublished($datePublished);
 
     public function description($description);
+
+    public function digitalSourceType($digitalSourceType);
 
     public function disambiguatingDescription($disambiguatingDescription);
 
@@ -120,6 +130,8 @@ interface CompleteDataFeedContract
 
     public function funder($funder);
 
+    public function funding($funding);
+
     public function genre($genre);
 
     public function hasPart($hasPart);
@@ -139,6 +151,8 @@ interface CompleteDataFeedContract
     public function interactionStatistic($interactionStatistic);
 
     public function interactivityType($interactivityType);
+
+    public function interpretedAsClaim($interpretedAsClaim);
 
     public function isAccessibleForFree($isAccessibleForFree);
 
@@ -169,6 +183,8 @@ interface CompleteDataFeedContract
     public function material($material);
 
     public function materialExtent($materialExtent);
+
+    public function measurementMethod($measurementMethod);
 
     public function measurementTechnique($measurementTechnique);
 
@@ -234,6 +250,8 @@ interface CompleteDataFeedContract
 
     public function text($text);
 
+    public function thumbnail($thumbnail);
+
     public function thumbnailUrl($thumbnailUrl);
 
     public function timeRequired($timeRequired);
@@ -259,5 +277,4 @@ interface CompleteDataFeedContract
     public function workExample($workExample);
 
     public function workTranslation($workTranslation);
-
 }

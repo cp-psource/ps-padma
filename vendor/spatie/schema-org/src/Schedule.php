@@ -2,14 +2,14 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\ScheduleContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\ScheduleContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A schedule defines a repeating time period used to describe a regularly
  * occurring [[Event]]. At a minimum a schedule will specify [[repeatFrequency]]
- * which describes the interval between occurences of the event. Additional
+ * which describes the interval between occurrences of the event. Additional
  * information can be provided to specify the schedule more precisely.
  *       This includes identifying the day(s) of the week or month when the
  * recurring event will take place, in addition to its start and end time.
@@ -18,7 +18,7 @@ use \Spatie\SchemaOrg\Contracts\ThingContract;
  * define a limited calendar of events.
  *
  * @see https://schema.org/Schedule
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
  * @link https://github.com/schemaorg/schemaorg/issues/1457
  *
  */
@@ -27,10 +27,14 @@ class Schedule extends BaseType implements ScheduleContract, IntangibleContract,
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -60,14 +64,14 @@ class Schedule extends BaseType implements ScheduleContract, IntangibleContract,
     /**
      * Defines the day(s) of the week on which a recurring [[Event]] takes
      * place. May be specified using either [[DayOfWeek]], or alternatively
-     * [[Text]] conforming to iCal's syntax for byDay recurrence rules
+     * [[Text]] conforming to iCal's syntax for byDay recurrence rules.
      *
      * @param \Spatie\SchemaOrg\Contracts\DayOfWeekContract|\Spatie\SchemaOrg\Contracts\DayOfWeekContract[]|string|string[] $byDay
      *
      * @return static
      *
      * @see https://schema.org/byDay
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1457
      */
     public function byDay($byDay)
@@ -84,7 +88,7 @@ class Schedule extends BaseType implements ScheduleContract, IntangibleContract,
      * @return static
      *
      * @see https://schema.org/byMonth
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1457
      */
     public function byMonth($byMonth)
@@ -101,7 +105,7 @@ class Schedule extends BaseType implements ScheduleContract, IntangibleContract,
      * @return static
      *
      * @see https://schema.org/byMonthDay
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1457
      */
     public function byMonthDay($byMonthDay)
@@ -120,7 +124,7 @@ class Schedule extends BaseType implements ScheduleContract, IntangibleContract,
      * @return static
      *
      * @see https://schema.org/byMonthWeek
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2599
      */
     public function byMonthWeek($byMonthWeek)
@@ -131,7 +135,7 @@ class Schedule extends BaseType implements ScheduleContract, IntangibleContract,
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -193,11 +197,11 @@ class Schedule extends BaseType implements ScheduleContract, IntangibleContract,
     /**
      * The endTime of something. For a reserved event or service (e.g.
      * FoodEstablishmentReservation), the time that it is expected to end. For
-     * actions that span a period of time, when the action was performed. e.g.
+     * actions that span a period of time, when the action was performed. E.g.
      * John wrote a book from January to *December*. For media, including audio
      * and video, it's the time offset of the end of a clip within a larger
      * file.
-     * 
+     *
      * Note that Event uses startDate/endDate instead of startTime/endTime, even
      * when describing dates with times. This situation may be clarified in
      * future revisions.
@@ -231,7 +235,7 @@ class Schedule extends BaseType implements ScheduleContract, IntangibleContract,
      * @return static
      *
      * @see https://schema.org/exceptDate
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1457
      */
     public function exceptDate($exceptDate)
@@ -318,14 +322,14 @@ class Schedule extends BaseType implements ScheduleContract, IntangibleContract,
     }
 
     /**
-     * Defines the number of times a recurring [[Event]] will take place
+     * Defines the number of times a recurring [[Event]] will take place.
      *
      * @param int|int[] $repeatCount
      *
      * @return static
      *
      * @see https://schema.org/repeatCount
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1457
      */
     public function repeatCount($repeatCount)
@@ -334,7 +338,7 @@ class Schedule extends BaseType implements ScheduleContract, IntangibleContract,
     }
 
     /**
-     * Defines the frequency at which [[Events]] will occur according to a
+     * Defines the frequency at which [[Event]]s will occur according to a
      * schedule [[Schedule]]. The intervals between
      *       events should be defined as a [[Duration]] of time.
      *
@@ -343,7 +347,7 @@ class Schedule extends BaseType implements ScheduleContract, IntangibleContract,
      * @return static
      *
      * @see https://schema.org/repeatFrequency
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1457
      */
     public function repeatFrequency($repeatFrequency)
@@ -377,7 +381,7 @@ class Schedule extends BaseType implements ScheduleContract, IntangibleContract,
      * @return static
      *
      * @see https://schema.org/scheduleTimezone
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/1457
      */
     public function scheduleTimezone($scheduleTimezone)
@@ -404,11 +408,11 @@ class Schedule extends BaseType implements ScheduleContract, IntangibleContract,
     /**
      * The startTime of something. For a reserved event or service (e.g.
      * FoodEstablishmentReservation), the time that it is expected to start. For
-     * actions that span a period of time, when the action was performed. e.g.
+     * actions that span a period of time, when the action was performed. E.g.
      * John wrote a book from *January* to December. For media, including audio
      * and video, it's the time offset of the start of a clip within a larger
      * file.
-     * 
+     *
      * Note that Event uses startDate/endDate instead of startTime/endTime, even
      * when describing dates with times. This situation may be clarified in
      * future revisions.
@@ -453,5 +457,4 @@ class Schedule extends BaseType implements ScheduleContract, IntangibleContract,
     {
         return $this->setProperty('url', $url);
     }
-
 }

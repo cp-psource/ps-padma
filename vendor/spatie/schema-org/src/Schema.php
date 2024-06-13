@@ -82,6 +82,11 @@ class Schema
         return new AdultEntertainment();
     }
 
+    public static function adultOrientedEnumeration(): AdultOrientedEnumeration
+    {
+        return new AdultOrientedEnumeration();
+    }
+
     public static function advertiserContentArticle(): AdvertiserContentArticle
     {
         return new AdvertiserContentArticle();
@@ -120,6 +125,11 @@ class Schema
     public static function allocateAction(): AllocateAction
     {
         return new AllocateAction();
+    }
+
+    public static function ampStory(): AmpStory
+    {
+        return new AmpStory();
     }
 
     public static function amusementPark(): AmusementPark
@@ -252,6 +262,11 @@ class Schema
         return new AudioObject();
     }
 
+    public static function audioObjectSnapshot(): AudioObjectSnapshot
+    {
+        return new AudioObjectSnapshot();
+    }
+
     public static function audiobook(): Audiobook
     {
         return new Audiobook();
@@ -367,6 +382,11 @@ class Schema
         return new BikeStore();
     }
 
+    public static function bioChemEntity(): BioChemEntity
+    {
+        return new BioChemEntity();
+    }
+
     public static function blog(): Blog
     {
         return new Blog();
@@ -400,6 +420,11 @@ class Schema
     public static function boatTrip(): BoatTrip
     {
         return new BoatTrip();
+    }
+
+    public static function bodyMeasurementTypeEnumeration(): BodyMeasurementTypeEnumeration
+    {
+        return new BodyMeasurementTypeEnumeration();
     }
 
     public static function bodyOfWater(): BodyOfWater
@@ -647,6 +672,11 @@ class Schema
         return new CheckoutPage();
     }
 
+    public static function chemicalSubstance(): ChemicalSubstance
+    {
+        return new ChemicalSubstance();
+    }
+
     public static function childCare(): ChildCare
     {
         return new ChildCare();
@@ -795,6 +825,11 @@ class Schema
     public static function consortium(): Consortium
     {
         return new Consortium();
+    }
+
+    public static function constraintNode(): ConstraintNode
+    {
+        return new ConstraintNode();
     }
 
     public static function consumeAction(): ConsumeAction
@@ -1092,6 +1127,11 @@ class Schema
         return new DigitalDocumentPermissionType();
     }
 
+    public static function digitalPlatformEnumeration(): DigitalPlatformEnumeration
+    {
+        return new DigitalPlatformEnumeration();
+    }
+
     public static function disagreeAction(): DisagreeAction
     {
         return new DisagreeAction();
@@ -1207,6 +1247,11 @@ class Schema
         return new Duration();
     }
 
+    public static function eUEnergyEfficiencyEnumeration(): EUEnergyEfficiencyEnumeration
+    {
+        return new EUEnergyEfficiencyEnumeration();
+    }
+
     public static function eatAction(): EatAction
     {
         return new EatAction();
@@ -1300,6 +1345,21 @@ class Schema
     public static function energy(): Energy
     {
         return new Energy();
+    }
+
+    public static function energyConsumptionDetails(): EnergyConsumptionDetails
+    {
+        return new EnergyConsumptionDetails();
+    }
+
+    public static function energyEfficiencyEnumeration(): EnergyEfficiencyEnumeration
+    {
+        return new EnergyEfficiencyEnumeration();
+    }
+
+    public static function energyStarEnergyEfficiencyEnumeration(): EnergyStarEnergyEfficiencyEnumeration
+    {
+        return new EnergyStarEnergyEfficiencyEnumeration();
     }
 
     public static function engineSpecification(): EngineSpecification
@@ -1492,6 +1552,11 @@ class Schema
         return new Game();
     }
 
+    public static function gameAvailabilityEnumeration(): GameAvailabilityEnumeration
+    {
+        return new GameAvailabilityEnumeration();
+    }
+
     public static function gamePlayMode(): GamePlayMode
     {
         return new GamePlayMode();
@@ -1525,6 +1590,11 @@ class Schema
     public static function genderType(): GenderType
     {
         return new GenderType();
+    }
+
+    public static function gene(): Gene
+    {
+        return new Gene();
     }
 
     public static function generalContractor(): GeneralContractor
@@ -1762,6 +1832,21 @@ class Schema
         return new HowToTool();
     }
 
+    public static function hyperToc(): HyperToc
+    {
+        return new HyperToc();
+    }
+
+    public static function hyperTocEntry(): HyperTocEntry
+    {
+        return new HyperTocEntry();
+    }
+
+    public static function iPTCDigitalSourceEnumeration(): IPTCDigitalSourceEnumeration
+    {
+        return new IPTCDigitalSourceEnumeration();
+    }
+
     public static function iceCreamShop(): IceCreamShop
     {
         return new IceCreamShop();
@@ -1782,9 +1867,19 @@ class Schema
         return new ImageObject();
     }
 
+    public static function imageObjectSnapshot(): ImageObjectSnapshot
+    {
+        return new ImageObjectSnapshot();
+    }
+
     public static function imagingTest(): ImagingTest
     {
         return new ImagingTest();
+    }
+
+    public static function individualPhysician(): IndividualPhysician
+    {
+        return new IndividualPhysician();
     }
 
     public static function individualProduct(): IndividualProduct
@@ -2087,9 +2182,29 @@ class Schema
         return new Mass();
     }
 
+    public static function mathSolver(): MathSolver
+    {
+        return new MathSolver();
+    }
+
     public static function maximumDoseSchedule(): MaximumDoseSchedule
     {
         return new MaximumDoseSchedule();
+    }
+
+    public static function measurementMethodEnum(): MeasurementMethodEnum
+    {
+        return new MeasurementMethodEnum();
+    }
+
+    public static function measurementTypeEnumeration(): MeasurementTypeEnumeration
+    {
+        return new MeasurementTypeEnumeration();
+    }
+
+    public static function mediaEnumeration(): MediaEnumeration
+    {
+        return new MediaEnumeration();
     }
 
     public static function mediaGallery(): MediaGallery
@@ -2110,6 +2225,11 @@ class Schema
     public static function mediaReview(): MediaReview
     {
         return new MediaReview();
+    }
+
+    public static function mediaReviewItem(): MediaReviewItem
+    {
+        return new MediaReviewItem();
     }
 
     public static function mediaSubscription(): MediaSubscription
@@ -2367,6 +2487,11 @@ class Schema
         return new MerchantReturnPolicy();
     }
 
+    public static function merchantReturnPolicySeasonalOverride(): MerchantReturnPolicySeasonalOverride
+    {
+        return new MerchantReturnPolicySeasonalOverride();
+    }
+
     public static function message(): Message
     {
         return new Message();
@@ -2385,6 +2510,11 @@ class Schema
     public static function mobilePhoneStore(): MobilePhoneStore
     {
         return new MobilePhoneStore();
+    }
+
+    public static function molecularEntity(): MolecularEntity
+    {
+        return new MolecularEntity();
     }
 
     public static function monetaryAmount(): MonetaryAmount
@@ -2627,6 +2757,11 @@ class Schema
         return new Occupation();
     }
 
+    public static function occupationalExperienceRequirements(): OccupationalExperienceRequirements
+    {
+        return new OccupationalExperienceRequirements();
+    }
+
     public static function occupationalTherapy(): OccupationalTherapy
     {
         return new OccupationalTherapy();
@@ -2675,6 +2810,16 @@ class Schema
     public static function onDemandEvent(): OnDemandEvent
     {
         return new OnDemandEvent();
+    }
+
+    public static function onlineBusiness(): OnlineBusiness
+    {
+        return new OnlineBusiness();
+    }
+
+    public static function onlineStore(): OnlineStore
+    {
+        return new OnlineStore();
     }
 
     public static function openingHoursSpecification(): OpeningHoursSpecification
@@ -2902,6 +3047,11 @@ class Schema
         return new Physician();
     }
 
+    public static function physiciansOffice(): PhysiciansOffice
+    {
+        return new PhysiciansOffice();
+    }
+
     public static function place(): Place
     {
         return new Place();
@@ -2925,6 +3075,11 @@ class Schema
     public static function playAction(): PlayAction
     {
         return new PlayAction();
+    }
+
+    public static function playGameAction(): PlayGameAction
+    {
+        return new PlayGameAction();
     }
 
     public static function playground(): Playground
@@ -2955,6 +3110,11 @@ class Schema
     public static function policeStation(): PoliceStation
     {
         return new PoliceStation();
+    }
+
+    public static function politicalParty(): PoliticalParty
+    {
+        return new PoliticalParty();
     }
 
     public static function pond(): Pond
@@ -3007,9 +3167,19 @@ class Schema
         return new PreventionIndication();
     }
 
+    public static function priceComponentTypeEnumeration(): PriceComponentTypeEnumeration
+    {
+        return new PriceComponentTypeEnumeration();
+    }
+
     public static function priceSpecification(): PriceSpecification
     {
         return new PriceSpecification();
+    }
+
+    public static function priceTypeEnumeration(): PriceTypeEnumeration
+    {
+        return new PriceTypeEnumeration();
     }
 
     public static function product(): Product
@@ -3080,6 +3250,11 @@ class Schema
     public static function propertyValueSpecification(): PropertyValueSpecification
     {
         return new PropertyValueSpecification();
+    }
+
+    public static function protein(): Protein
+    {
+        return new Protein();
     }
 
     public static function psychologicalTreatment(): PsychologicalTreatment
@@ -3307,9 +3482,19 @@ class Schema
         return new ReportedDoseSchedule();
     }
 
+    public static function researchOrganization(): ResearchOrganization
+    {
+        return new ResearchOrganization();
+    }
+
     public static function researchProject(): ResearchProject
     {
         return new ResearchProject();
+    }
+
+    public static function researcher(): Researcher
+    {
+        return new Researcher();
     }
 
     public static function reservation(): Reservation
@@ -3370,6 +3555,16 @@ class Schema
     public static function returnFeesEnumeration(): ReturnFeesEnumeration
     {
         return new ReturnFeesEnumeration();
+    }
+
+    public static function returnLabelSourceEnumeration(): ReturnLabelSourceEnumeration
+    {
+        return new ReturnLabelSourceEnumeration();
+    }
+
+    public static function returnMethodEnumeration(): ReturnMethodEnumeration
+    {
+        return new ReturnMethodEnumeration();
     }
 
     public static function review(): Review
@@ -3472,6 +3667,11 @@ class Schema
         return new SearchAction();
     }
 
+    public static function searchRescueOrganization(): SearchRescueOrganization
+    {
+        return new SearchRescueOrganization();
+    }
+
     public static function searchResultsPage(): SearchResultsPage
     {
         return new SearchResultsPage();
@@ -3485,6 +3685,11 @@ class Schema
     public static function seat(): Seat
     {
         return new Seat();
+    }
+
+    public static function seekToAction(): SeekToAction
+    {
+        return new SeekToAction();
     }
 
     public static function selfStorage(): SelfStorage
@@ -3562,6 +3767,21 @@ class Schema
         return new SiteNavigationElement();
     }
 
+    public static function sizeGroupEnumeration(): SizeGroupEnumeration
+    {
+        return new SizeGroupEnumeration();
+    }
+
+    public static function sizeSpecification(): SizeSpecification
+    {
+        return new SizeSpecification();
+    }
+
+    public static function sizeSystemEnumeration(): SizeSystemEnumeration
+    {
+        return new SizeSystemEnumeration();
+    }
+
     public static function skiResort(): SkiResort
     {
         return new SkiResort();
@@ -3585,6 +3805,11 @@ class Schema
     public static function softwareSourceCode(): SoftwareSourceCode
     {
         return new SoftwareSourceCode();
+    }
+
+    public static function solveMathAction(): SolveMathAction
+    {
+        return new SolveMathAction();
     }
 
     public static function someProducts(): SomeProducts
@@ -3652,9 +3877,19 @@ class Schema
         return new State();
     }
 
+    public static function statement(): Statement
+    {
+        return new Statement();
+    }
+
     public static function statisticalPopulation(): StatisticalPopulation
     {
         return new StatisticalPopulation();
+    }
+
+    public static function statisticalVariable(): StatisticalVariable
+    {
+        return new StatisticalVariable();
     }
 
     public static function statusEnumeration(): StatusEnumeration
@@ -3717,6 +3952,11 @@ class Schema
         return new SuspendAction();
     }
 
+    public static function syllabus(): Syllabus
+    {
+        return new Syllabus();
+    }
+
     public static function synagogue(): Synagogue
     {
         return new Synagogue();
@@ -3777,6 +4017,11 @@ class Schema
         return new TaxiStand();
     }
 
+    public static function taxon(): Taxon
+    {
+        return new Taxon();
+    }
+
     public static function techArticle(): TechArticle
     {
         return new TechArticle();
@@ -3800,6 +4045,11 @@ class Schema
     public static function textDigitalDocument(): TextDigitalDocument
     {
         return new TextDigitalDocument();
+    }
+
+    public static function textObject(): TextObject
+    {
+        return new TextObject();
     }
 
     public static function theaterEvent(): TheaterEvent
@@ -4012,6 +4262,11 @@ class Schema
         return new UserTweets();
     }
 
+    public static function vacationRental(): VacationRental
+    {
+        return new VacationRental();
+    }
+
     public static function vehicle(): Vehicle
     {
         return new Vehicle();
@@ -4055,6 +4310,11 @@ class Schema
     public static function videoObject(): VideoObject
     {
         return new VideoObject();
+    }
+
+    public static function videoObjectSnapshot(): VideoObjectSnapshot
+    {
+        return new VideoObjectSnapshot();
     }
 
     public static function viewAction(): ViewAction
@@ -4142,6 +4402,21 @@ class Schema
         return new WearAction();
     }
 
+    public static function wearableMeasurementTypeEnumeration(): WearableMeasurementTypeEnumeration
+    {
+        return new WearableMeasurementTypeEnumeration();
+    }
+
+    public static function wearableSizeGroupEnumeration(): WearableSizeGroupEnumeration
+    {
+        return new WearableSizeGroupEnumeration();
+    }
+
+    public static function wearableSizeSystemEnumeration(): WearableSizeSystemEnumeration
+    {
+        return new WearableSizeSystemEnumeration();
+    }
+
     public static function webAPI(): WebAPI
     {
         return new WebAPI();
@@ -4211,5 +4486,4 @@ class Schema
     {
         return new Zoo();
     }
-
 }

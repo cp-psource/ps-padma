@@ -2,19 +2,19 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\PatientContract;
-use \Spatie\SchemaOrg\Contracts\AudienceContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\MedicalAudienceContract;
-use \Spatie\SchemaOrg\Contracts\PeopleAudienceContract;
-use \Spatie\SchemaOrg\Contracts\PersonContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\AudienceContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\MedicalAudienceContract;
+use Spatie\SchemaOrg\Contracts\PatientContract;
+use Spatie\SchemaOrg\Contracts\PeopleAudienceContract;
+use Spatie\SchemaOrg\Contracts\PersonContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A patient is any person recipient of health care services.
  *
  * @see https://schema.org/Patient
- * @see http://health-lifesci.schema.org
+ * @see https://health-lifesci.schema.org
  *
  */
 class Patient extends BaseType implements PatientContract, AudienceContract, IntangibleContract, MedicalAudienceContract, PeopleAudienceContract, PersonContract, ThingContract
@@ -36,10 +36,14 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -79,6 +83,24 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
     public function affiliation($affiliation)
     {
         return $this->setProperty('affiliation', $affiliation);
+    }
+
+    /**
+     * The number of completed interactions for this entity, in a particular
+     * role (the 'agent'), in a particular action (indicated in the statistic),
+     * and in a particular context (i.e. interactionService).
+     *
+     * @param \Spatie\SchemaOrg\Contracts\InteractionCounterContract|\Spatie\SchemaOrg\Contracts\InteractionCounterContract[] $agentInteractionStatistic
+     *
+     * @return static
+     *
+     * @see https://schema.org/agentInteractionStatistic
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2858
+     */
+    public function agentInteractionStatistic($agentInteractionStatistic)
+    {
+        return $this->setProperty('agentInteractionStatistic', $agentInteractionStatistic);
     }
 
     /**
@@ -205,7 +227,7 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
      * @return static
      *
      * @see https://schema.org/callSign
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2109
      */
     public function callSign($callSign)
@@ -314,7 +336,7 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -334,7 +356,7 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
      * @return static
      *
      * @see https://schema.org/diagnosis
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function diagnosis($diagnosis)
     {
@@ -359,14 +381,14 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
     }
 
     /**
-     * Specifying a drug or medicine used in a medication procedure
+     * Specifying a drug or medicine used in a medication procedure.
      *
      * @param \Spatie\SchemaOrg\Contracts\DrugContract|\Spatie\SchemaOrg\Contracts\DrugContract[] $drug
      *
      * @return static
      *
      * @see https://schema.org/drug
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function drug($drug)
     {
@@ -382,7 +404,6 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
      * @return static
      *
      * @see https://schema.org/duns
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function duns($duns)
     {
@@ -404,8 +425,7 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
     }
 
     /**
-     * Family name. In the U.S., the last name of an Person. This can be used
-     * along with givenName instead of the name property.
+     * Family name. In the U.S., the last name of a Person.
      *
      * @param string|string[] $familyName
      *
@@ -462,6 +482,23 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
     }
 
     /**
+     * A [[Grant]] that directly or indirectly provide funding or sponsorship
+     * for this item. See also [[ownershipFundingInfo]].
+     *
+     * @param \Spatie\SchemaOrg\Contracts\GrantContract|\Spatie\SchemaOrg\Contracts\GrantContract[] $funding
+     *
+     * @return static
+     *
+     * @see https://schema.org/funding
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/383
+     */
+    public function funding($funding)
+    {
+        return $this->setProperty('funding', $funding);
+    }
+
+    /**
      * Gender of something, typically a [[Person]], but possibly also fictional
      * characters, animals, etc. While https://schema.org/Male and
      * https://schema.org/Female may be used, text strings are also acceptable
@@ -476,7 +513,7 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
      * @return static
      *
      * @see https://schema.org/gender
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2341
      */
     public function gender($gender)
@@ -499,8 +536,7 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
     }
 
     /**
-     * Given name. In the U.S., the first name of a Person. This can be used
-     * along with familyName instead of the name property.
+     * Given name. In the U.S., the first name of a Person.
      *
      * @param string|string[] $givenName
      *
@@ -524,7 +560,6 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
      * @return static
      *
      * @see https://schema.org/globalLocationNumber
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function globalLocationNumber($globalLocationNumber)
     {
@@ -539,7 +574,7 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
      * @return static
      *
      * @see https://schema.org/hasCredential
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2289
      */
     public function hasCredential($hasCredential)
@@ -586,7 +621,6 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
      * @return static
      *
      * @see https://schema.org/hasPOS
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function hasPOS($hasPOS)
     {
@@ -602,7 +636,7 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
      * @return static
      *
      * @see https://schema.org/healthCondition
-     * @see http://health-lifesci.schema.org
+     * @see https://health-lifesci.schema.org
      */
     public function healthCondition($healthCondition)
     {
@@ -652,7 +686,7 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
     }
 
     /**
-     * An honorific suffix preceding a Person's name such as M.D. /PhD/MSCSW.
+     * An honorific suffix following a Person's name such as M.D./PhD/MSCSW.
      *
      * @param string|string[] $honorificSuffix
      *
@@ -725,7 +759,6 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
      * @return static
      *
      * @see https://schema.org/isicV4
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function isicV4($isicV4)
     {
@@ -740,7 +773,7 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
      * @return static
      *
      * @see https://schema.org/jobTitle
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
      * @link https://github.com/schemaorg/schemaorg/issues/2192
      */
     public function jobTitle($jobTitle)
@@ -773,7 +806,8 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
      * @return static
      *
      * @see https://schema.org/knowsAbout
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1688
      */
     public function knowsAbout($knowsAbout)
     {
@@ -791,7 +825,8 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
      * @return static
      *
      * @see https://schema.org/knowsLanguage
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1688
      */
     public function knowsLanguage($knowsLanguage)
     {
@@ -822,7 +857,6 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
      * @return static
      *
      * @see https://schema.org/makesOffer
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function makesOffer($makesOffer)
     {
@@ -853,7 +887,6 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
      * @return static
      *
      * @see https://schema.org/naics
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function naics($naics)
     {
@@ -911,7 +944,6 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
      * @return static
      *
      * @see https://schema.org/owns
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function owns($owns)
     {
@@ -978,12 +1010,12 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
     /**
      * The publishingPrinciples property indicates (typically via [[URL]]) a
      * document describing the editorial principles of an [[Organization]] (or
-     * individual e.g. a [[Person]] writing a blog) that relate to their
+     * individual, e.g. a [[Person]] writing a blog) that relate to their
      * activities as a publisher, e.g. ethics or diversity policies. When
      * applied to a [[CreativeWork]] (e.g. [[NewsArticle]]) the principles are
      * those of the party primarily responsible for the creation of the
      * [[CreativeWork]].
-     * 
+     *
      * While such policies are most typically expressed in natural language,
      * sometimes related information (e.g. indicating a [[funder]]) can be
      * expressed using schema.org terminology.
@@ -1080,7 +1112,6 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
      * @return static
      *
      * @see https://schema.org/seeks
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function seeks($seeks)
     {
@@ -1117,7 +1148,7 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
 
     /**
      * A person or organization that supports a thing through a pledge, promise,
-     * or financial contribution. e.g. a sponsor of a Medical Study or a
+     * or financial contribution. E.g. a sponsor of a Medical Study or a
      * corporate sponsor of an event.
      *
      * @param \Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[]|\Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[] $sponsor
@@ -1161,9 +1192,27 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
     }
 
     /**
-     * The gender of the person or audience.
+     * The age or age range for the intended audience or person, for example
+     * 3-12 months for infants, 1-5 years for toddlers.
      *
-     * @param string|string[] $suggestedGender
+     * @param \Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[] $suggestedAge
+     *
+     * @return static
+     *
+     * @see https://schema.org/suggestedAge
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2811
+     */
+    public function suggestedAge($suggestedAge)
+    {
+        return $this->setProperty('suggestedAge', $suggestedAge);
+    }
+
+    /**
+     * The suggested gender of the intended person or audience, for example
+     * "male", "female", or "unisex".
+     *
+     * @param \Spatie\SchemaOrg\Contracts\GenderTypeContract|\Spatie\SchemaOrg\Contracts\GenderTypeContract[]|string|string[] $suggestedGender
      *
      * @return static
      *
@@ -1175,7 +1224,7 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
     }
 
     /**
-     * Maximal age recommended for viewing content.
+     * Maximum recommended age in years for the audience or user.
      *
      * @param float|float[]|int|int[] $suggestedMaxAge
      *
@@ -1189,7 +1238,25 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
     }
 
     /**
-     * Minimal age recommended for viewing content.
+     * A suggested range of body measurements for the intended audience or
+     * person, for example inseam between 32 and 34 inches or height between 170
+     * and 190 cm. Typically found on a size chart for wearable products.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\QuantitativeValueContract|\Spatie\SchemaOrg\Contracts\QuantitativeValueContract[] $suggestedMeasurement
+     *
+     * @return static
+     *
+     * @see https://schema.org/suggestedMeasurement
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/2811
+     */
+    public function suggestedMeasurement($suggestedMeasurement)
+    {
+        return $this->setProperty('suggestedMeasurement', $suggestedMeasurement);
+    }
+
+    /**
+     * Minimum recommended age in years for the audience or user.
      *
      * @param float|float[]|int|int[] $suggestedMinAge
      *
@@ -1211,7 +1278,6 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
      * @return static
      *
      * @see https://schema.org/taxID
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function taxID($taxID)
     {
@@ -1254,7 +1320,6 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
      * @return static
      *
      * @see https://schema.org/vatID
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function vatID($vatID)
     {
@@ -1269,7 +1334,6 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
      * @return static
      *
      * @see https://schema.org/weight
-     * @link http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
      */
     public function weight($weight)
     {
@@ -1303,5 +1367,4 @@ class Patient extends BaseType implements PatientContract, AudienceContract, Int
     {
         return $this->setProperty('worksFor', $worksFor);
     }
-
 }

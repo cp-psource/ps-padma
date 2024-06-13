@@ -2,17 +2,18 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\LegalForceStatusContract;
-use \Spatie\SchemaOrg\Contracts\EnumerationContract;
-use \Spatie\SchemaOrg\Contracts\IntangibleContract;
-use \Spatie\SchemaOrg\Contracts\StatusEnumerationContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\EnumerationContract;
+use Spatie\SchemaOrg\Contracts\IntangibleContract;
+use Spatie\SchemaOrg\Contracts\LegalForceStatusContract;
+use Spatie\SchemaOrg\Contracts\StatusEnumerationContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
 
 /**
  * A list of possible statuses for the legal force of a legislation.
  *
  * @see https://schema.org/LegalForceStatus
- * @see http://pending.schema.org
+ * @see https://pending.schema.org
+ * @link https://github.com/schemaorg/schemaorg/issues/1156
  *
  * @method static supersededBy($supersededBy) The value should be instance of pending types Class|Class[]|Enumeration|Enumeration[]|Property|Property[]
  */
@@ -22,33 +23,40 @@ class LegalForceStatus extends BaseType implements LegalForceStatusContract, Enu
      * Indicates that a legislation is in force.
      *
      * @see https://schema.org/InForce
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1156
      */
-     const InForce = 'https://schema.org/InForce';
+    public const InForce = 'https://schema.org/InForce';
 
     /**
      * Indicates that a legislation is currently not in force.
      *
      * @see https://schema.org/NotInForce
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1156
      */
-     const NotInForce = 'https://schema.org/NotInForce';
+    public const NotInForce = 'https://schema.org/NotInForce';
 
     /**
      * Indicates that parts of the legislation are in force, and parts are not.
      *
      * @see https://schema.org/PartiallyInForce
-     * @see http://pending.schema.org
+     * @see https://pending.schema.org
+     * @link https://github.com/schemaorg/schemaorg/issues/1156
      */
-     const PartiallyInForce = 'https://schema.org/PartiallyInForce';
+    public const PartiallyInForce = 'https://schema.org/PartiallyInForce';
 
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -78,7 +86,7 @@ class LegalForceStatus extends BaseType implements LegalForceStatusContract, Enu
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -228,5 +236,4 @@ class LegalForceStatus extends BaseType implements LegalForceStatusContract, Enu
     {
         return $this->setProperty('url', $url);
     }
-
 }

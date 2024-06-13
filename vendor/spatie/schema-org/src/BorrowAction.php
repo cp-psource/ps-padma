@@ -2,17 +2,17 @@
 
 namespace Spatie\SchemaOrg;
 
-use \Spatie\SchemaOrg\Contracts\BorrowActionContract;
-use \Spatie\SchemaOrg\Contracts\ActionContract;
-use \Spatie\SchemaOrg\Contracts\ThingContract;
-use \Spatie\SchemaOrg\Contracts\TransferActionContract;
+use Spatie\SchemaOrg\Contracts\ActionContract;
+use Spatie\SchemaOrg\Contracts\BorrowActionContract;
+use Spatie\SchemaOrg\Contracts\ThingContract;
+use Spatie\SchemaOrg\Contracts\TransferActionContract;
 
 /**
  * The act of obtaining an object under an agreement to return it at a later
  * date. Reciprocal of LendAction.
- * 
+ *
  * Related actions:
- * 
+ *
  * * [[LendAction]]: Reciprocal of BorrowAction.
  *
  * @see https://schema.org/BorrowAction
@@ -37,10 +37,14 @@ class BorrowAction extends BaseType implements BorrowActionContract, ActionContr
     /**
      * An additional type for the item, typically used for adding more specific
      * types from external vocabularies in microdata syntax. This is a
-     * relationship between something and a class that the thing is in. In RDFa
-     * syntax, it is better to use the native RDFa syntax - the 'typeof'
-     * attribute - for multiple types. Schema.org tools may have only weaker
-     * understanding of extra types, in particular those defined externally.
+     * relationship between something and a class that the thing is in.
+     * Typically the value is a URI-identified RDF class, and in this case
+     * corresponds to the
+     *     use of rdf:type in RDF. Text values can be used sparingly, for cases
+     * where useful information can be added without their being an appropriate
+     * schema to reference. In the case of text values, the class label should
+     * follow the schema.org [style
+     * guide](https://schema.org/docs/styleguide.html).
      *
      * @param string|string[] $additionalType
      *
@@ -54,7 +58,7 @@ class BorrowAction extends BaseType implements BorrowActionContract, ActionContr
     }
 
     /**
-     * The direct performer or driver of the action (animate or inanimate). e.g.
+     * The direct performer or driver of the action (animate or inanimate). E.g.
      * *John* wrote a book.
      *
      * @param \Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[]|\Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[] $agent
@@ -85,7 +89,7 @@ class BorrowAction extends BaseType implements BorrowActionContract, ActionContr
     /**
      * A description of the item.
      *
-     * @param string|string[] $description
+     * @param \Spatie\SchemaOrg\Contracts\TextObjectContract|\Spatie\SchemaOrg\Contracts\TextObjectContract[]|string|string[] $description
      *
      * @return static
      *
@@ -116,11 +120,11 @@ class BorrowAction extends BaseType implements BorrowActionContract, ActionContr
     /**
      * The endTime of something. For a reserved event or service (e.g.
      * FoodEstablishmentReservation), the time that it is expected to end. For
-     * actions that span a period of time, when the action was performed. e.g.
+     * actions that span a period of time, when the action was performed. E.g.
      * John wrote a book from January to *December*. For media, including audio
      * and video, it's the time offset of the end of a clip within a larger
      * file.
-     * 
+     *
      * Note that Event uses startDate/endDate instead of startTime/endTime, even
      * when describing dates with times. This situation may be clarified in
      * future revisions.
@@ -200,7 +204,7 @@ class BorrowAction extends BaseType implements BorrowActionContract, ActionContr
     }
 
     /**
-     * The object that helped the agent perform the action. e.g. John wrote a
+     * The object that helped the agent perform the action. E.g. John wrote a
      * book with *a pen*.
      *
      * @param \Spatie\SchemaOrg\Contracts\ThingContract|\Spatie\SchemaOrg\Contracts\ThingContract[] $instrument
@@ -230,8 +234,8 @@ class BorrowAction extends BaseType implements BorrowActionContract, ActionContr
     }
 
     /**
-     * The location of for example where the event is happening, an organization
-     * is located, or where an action takes place.
+     * The location of, for example, where an event is happening, where an
+     * organization is located, or where an action takes place.
      *
      * @param \Spatie\SchemaOrg\Contracts\PlaceContract|\Spatie\SchemaOrg\Contracts\PlaceContract[]|\Spatie\SchemaOrg\Contracts\PostalAddressContract|\Spatie\SchemaOrg\Contracts\PostalAddressContract[]|\Spatie\SchemaOrg\Contracts\VirtualLocationContract|\Spatie\SchemaOrg\Contracts\VirtualLocationContract[]|string|string[] $location
      *
@@ -277,7 +281,7 @@ class BorrowAction extends BaseType implements BorrowActionContract, ActionContr
     /**
      * The object upon which the action is carried out, whose state is kept
      * intact or changed. Also known as the semantic roles patient, affected or
-     * undergoer (which change their state) or theme (which doesn't). e.g. John
+     * undergoer (which change their state) or theme (which doesn't). E.g. John
      * read *a book*.
      *
      * @param \Spatie\SchemaOrg\Contracts\ThingContract|\Spatie\SchemaOrg\Contracts\ThingContract[] $object
@@ -292,7 +296,7 @@ class BorrowAction extends BaseType implements BorrowActionContract, ActionContr
     }
 
     /**
-     * Other co-agents that participated in the action indirectly. e.g. John
+     * Other co-agents that participated in the action indirectly. E.g. John
      * wrote a book with *Steve*.
      *
      * @param \Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[]|\Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[] $participant
@@ -322,7 +326,24 @@ class BorrowAction extends BaseType implements BorrowActionContract, ActionContr
     }
 
     /**
-     * The result produced in the action. e.g. John wrote *a book*.
+     * The service provider, service operator, or service performer; the goods
+     * producer. Another party (a seller) may offer those services or goods on
+     * behalf of the provider. A provider may also serve as the seller.
+     *
+     * @param \Spatie\SchemaOrg\Contracts\OrganizationContract|\Spatie\SchemaOrg\Contracts\OrganizationContract[]|\Spatie\SchemaOrg\Contracts\PersonContract|\Spatie\SchemaOrg\Contracts\PersonContract[] $provider
+     *
+     * @return static
+     *
+     * @see https://schema.org/provider
+     * @see https://pending.schema.org
+     */
+    public function provider($provider)
+    {
+        return $this->setProperty('provider', $provider);
+    }
+
+    /**
+     * The result produced in the action. E.g. John wrote *a book*.
      *
      * @param \Spatie\SchemaOrg\Contracts\ThingContract|\Spatie\SchemaOrg\Contracts\ThingContract[] $result
      *
@@ -354,11 +375,11 @@ class BorrowAction extends BaseType implements BorrowActionContract, ActionContr
     /**
      * The startTime of something. For a reserved event or service (e.g.
      * FoodEstablishmentReservation), the time that it is expected to start. For
-     * actions that span a period of time, when the action was performed. e.g.
+     * actions that span a period of time, when the action was performed. E.g.
      * John wrote a book from *January* to December. For media, including audio
      * and video, it's the time offset of the start of a clip within a larger
      * file.
-     * 
+     *
      * Note that Event uses startDate/endDate instead of startTime/endTime, even
      * when describing dates with times. This situation may be clarified in
      * future revisions.
@@ -391,9 +412,9 @@ class BorrowAction extends BaseType implements BorrowActionContract, ActionContr
     }
 
     /**
-     * Indicates a target EntryPoint for an Action.
+     * Indicates a target EntryPoint, or url, for an Action.
      *
-     * @param \Spatie\SchemaOrg\Contracts\EntryPointContract|\Spatie\SchemaOrg\Contracts\EntryPointContract[] $target
+     * @param \Spatie\SchemaOrg\Contracts\EntryPointContract|\Spatie\SchemaOrg\Contracts\EntryPointContract[]|string|string[] $target
      *
      * @return static
      *
@@ -432,5 +453,4 @@ class BorrowAction extends BaseType implements BorrowActionContract, ActionContr
     {
         return $this->setProperty('url', $url);
     }
-
 }
