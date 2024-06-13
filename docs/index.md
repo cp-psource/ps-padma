@@ -1,4 +1,4 @@
-# Getting Started
+# Erste Schritte
 
 We are developing a comprehensive guide to allow Padma | Unlimited users to become familiar with the platform and its tools.  
 

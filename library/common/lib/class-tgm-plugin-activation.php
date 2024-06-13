@@ -331,77 +331,77 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 
 			// Load class strings.
 			$this->strings = array(
-				'page_title'                      => __( 'Install Required Plugins', 'tgmpa' ),
-				'menu_title'                      => __( 'Install Plugins', 'tgmpa' ),
+				'page_title'                      => __( 'Installation erforderlicher Plugins', 'tgmpa' ),
+				'menu_title'                      => __( 'Plugins installieren', 'tgmpa' ),
 				/* translators: %s: plugin name. */
-				'installing'                      => __( 'Installing Plugin: %s', 'tgmpa' ),
+				'installing'                      => __( 'Installiere Plugin: %s', 'tgmpa' ),
 				/* translators: %s: plugin name. */
-				'updating'                        => __( 'Updating Plugin: %s', 'tgmpa' ),
-				'oops'                            => __( 'Something went wrong with the plugin API.', 'tgmpa' ),
+				'updating'                        => __( 'Aktualisiere Plugin: %s', 'tgmpa' ),
+				'oops'                            => __( 'Es gibt einen Fehler mit dem Plugin-API.', 'tgmpa' ),
 				'notice_can_install_required'     => _n_noop(
 					/* translators: 1: plugin name(s). */
-					'This theme requires the following plugin: %1$s.',
-					'This theme requires the following plugins: %1$s.',
+					'Padma Unlimited erfordert das folgende Plugin: %1$s.',
+					'Padma Unlimited erfordert die folgenden Plugins: %1$s.',
 					'tgmpa'
 				),
 				'notice_can_install_recommended'  => _n_noop(
 					/* translators: 1: plugin name(s). */
-					'This theme recommends the following plugin: %1$s.',
-					'This theme recommends the following plugins: %1$s.',
+					'Padma Unlimited empfiehlt das folgende Plugin: %1$s.',
+					'Padma Unlimited empfiehlt die folgenden Plugins: %1$s.',
 					'tgmpa'
 				),
 				'notice_ask_to_update'            => _n_noop(
 					/* translators: 1: plugin name(s). */
-					'The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s.',
-					'The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s.',
+					'Das folgende Plugin muss auf die neueste Version aktualisiert werden, um maximale Kompatibilität mit Padma Unlimited zu gewährleisten: %1$s.',
+					'Die folgenden Plugins müssen auf die neueste Version aktualisiert werden, um maximale Kompatibilität mit Padma Unlimited zu gewährleisten: %1$s.',
 					'tgmpa'
 				),
 				'notice_ask_to_update_maybe'      => _n_noop(
 					/* translators: 1: plugin name(s). */
-					'There is an update available for: %1$s.',
-					'There are updates available for the following plugins: %1$s.',
+					'Es gibt ein Update für: %1$s.',
+					'Für die folgenden Plugins sind Updates verfügbar: %1$s.',
 					'tgmpa'
 				),
 				'notice_can_activate_required'    => _n_noop(
 					/* translators: 1: plugin name(s). */
-					'The following required plugin is currently inactive: %1$s.',
-					'The following required plugins are currently inactive: %1$s.',
+					'Das folgende erforderliche Plugin ist derzeit inaktiv: %1$s.',
+					'Die folgenden erforderlichen Plugins sind derzeit inaktiv: %1$s.',
 					'tgmpa'
 				),
 				'notice_can_activate_recommended' => _n_noop(
 					/* translators: 1: plugin name(s). */
-					'The following recommended plugin is currently inactive: %1$s.',
-					'The following recommended plugins are currently inactive: %1$s.',
+					'Das folgende empfohlene Plugin ist derzeit inaktiv: %1$s.',
+					'Die folgenden empfohlenen Plugins sind derzeit inaktiv: %1$s.',
 					'tgmpa'
 				),
 				'install_link'                    => _n_noop(
-					'Begin installing plugin',
-					'Begin installing plugins',
+					'Beginne mit der Installation des Plugins',
+					'Beginne mit der Installation von Plugins',
 					'tgmpa'
 				),
 				'update_link'                     => _n_noop(
-					'Begin updating plugin',
-					'Begin updating plugins',
+					'Beginne mit der Aktualisierung des Plugins',
+					'Beginne mit der Aktualisierung von Plugins',
 					'tgmpa'
 				),
 				'activate_link'                   => _n_noop(
-					'Begin activating plugin',
-					'Begin activating plugins',
+					'Beginne mit der Aktivierung des Plugins',
+					'Beginne mit der Aktivierung von Plugins',
 					'tgmpa'
 				),
-				'return'                          => __( 'Return to Required Plugins Installer', 'tgmpa' ),
-				'dashboard'                       => __( 'Return to the Dashboard', 'tgmpa' ),
-				'plugin_activated'                => __( 'Plugin activated successfully.', 'tgmpa' ),
-				'activated_successfully'          => __( 'The following plugin was activated successfully:', 'tgmpa' ),
+				'return'                          => __( 'Zurück zum Installer für erforderliche Plugins', 'tgmpa' ),
+				'dashboard'                       => __( 'Zurück zum Dashboard', 'tgmpa' ),
+				'plugin_activated'                => __( 'Das Plugin wurde erfolgreich aktiviert.', 'tgmpa' ),
+				'activated_successfully'          => __( 'Das folgende Plugin wurde erfolgreich aktiviert:', 'tgmpa' ),
 				/* translators: 1: plugin name. */
-				'plugin_already_active'           => __( 'No action taken. Plugin %1$s was already active.', 'tgmpa' ),
+				'plugin_already_active'           => __( 'Keine Aktion ausgeführt. Plugin %1$s war bereits aktiv.', 'tgmpa' ),
 				/* translators: 1: plugin name. */
-				'plugin_needs_higher_version'     => __( 'Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin.', 'tgmpa' ),
+				'plugin_needs_higher_version'     => __( 'Plugin nicht aktiviert. Für dieses Theme wird eine höhere Version von %s benötigt. Bitte aktualisiere das Plugin.', 'tgmpa' ),
 				/* translators: 1: dashboard link. */
-				'complete'                        => __( 'All plugins installed and activated successfully. %1$s', 'tgmpa' ),
-				'dismiss'                         => __( 'Dismiss this notice', 'tgmpa' ),
-				'notice_cannot_install_activate'  => __( 'There are one or more required or recommended plugins to install, update or activate.', 'tgmpa' ),
-				'contact_admin'                   => __( 'Please contact the administrator of this site for help.', 'tgmpa' ),
+				'complete'                        => __( 'Alle Plugins erfolgreich installiert und aktiviert. %1$s', 'tgmpa' ),
+				'dismiss'                         => __( 'Ignoriere diese Nachricht', 'tgmpa' ),
+				'notice_cannot_install_activate'  => __( 'Es gibt ein oder mehrere erforderliche oder empfohlene Plugins zum Installieren, Aktualisieren oder Aktivieren.', 'tgmpa' ),
+				'contact_admin'                   => __( 'Bitte kontaktiere den Administrator dieser Webseite für Hilfe.', 'tgmpa' ),
 			);
 
 			do_action( 'tgmpa_register' );
@@ -604,8 +604,8 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 			$actions['update'] = sprintf(
 				'<a href="%1$s" title="%2$s" class="edit">%3$s</a>',
 				esc_url( $this->get_tgmpa_status_url( 'update' ) ),
-				esc_attr__( 'This plugin needs to be updated to be compatible with your theme.', 'tgmpa' ),
-				esc_html__( 'Update Required', 'tgmpa' )
+				esc_attr__( 'Dieses Plugin muss aktualisiert werden, um mit Padma Unlimited kompatibel zu sein.', 'tgmpa' ),
+				esc_html__( 'Aktualisierung erforderlich', 'tgmpa' )
 			);
 
 			return $actions;
@@ -722,7 +722,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		 */
 		protected function add_admin_menu( array $args ) {
 			if ( has_filter( 'tgmpa_admin_menu_use_add_theme_page' ) ) {
-				_deprecated_function( 'The "tgmpa_admin_menu_use_add_theme_page" filter', '2.5.0', esc_html__( 'Set the parent_slug config variable instead.', 'tgmpa' ) );
+				_deprecated_function( 'The "tgmpa_admin_menu_use_add_theme_page" filter', '2.5.0', esc_html__( 'Setze stattdessen die Konfigurationsvariable parent_slug.', 'tgmpa' ) );
 			}
 
 			if ( 'themes.php' === $this->parent_slug ) {
@@ -917,7 +917,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 
 				// Display message based on if all plugins are now active or not.
 				if ( $this->is_tgmpa_complete() ) {
-					echo '<p>', sprintf( esc_html( $this->strings['complete'] ), '<a href="' . esc_url( self_admin_url() ) . '">' . esc_html__( 'Return to the Dashboard', 'tgmpa' ) . '</a>' ), '</p>';
+					echo '<p>', sprintf( esc_html( $this->strings['complete'] ), '<a href="' . esc_url( self_admin_url() ) . '">' . esc_html__( 'Zurück zum Dashboard', 'tgmpa' ) . '</a>' ), '</p>';
 					echo '<style type="text/css">#adminmenu .wp-submenu li.current { display: none !important; }</style>';
 				} else {
 					echo '<p><a href="', esc_url( $this->get_tgmpa_url() ), '" target="_parent">', esc_html( $this->strings['return'] ), '</a></p>';
@@ -1024,10 +1024,10 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 					if ( true === $GLOBALS['wp_filesystem']->move( $from_path, $to_path ) ) {
 						return trailingslashit( $to_path );
 					} else {
-						return new WP_Error( 'rename_failed', esc_html__( 'The remote plugin package does not contain a folder with the desired slug and renaming did not work.', 'tgmpa' ) . ' ' . esc_html__( 'Please contact the plugin provider and ask them to package their plugin according to the WordPress guidelines.', 'tgmpa' ), array( 'found' => $subdir_name, 'expected' => $desired_slug ) );
+						return new WP_Error( 'rename_failed', esc_html__( 'Das Remote-Plugin-Paket enthält keinen Ordner mit dem gewünschten Slug und das Umbenennen hat nicht funktioniert.', 'tgmpa' ) . ' ' . esc_html__( 'Bitte kontaktiere den Plugin-Anbieter und bitte ihn, sein Plugin gemäß den WordPress-Richtlinien zu verpacken.', 'tgmpa' ), array( 'found' => $subdir_name, 'expected' => $desired_slug ) );
 					}
 				} elseif ( empty( $subdir_name ) ) {
-					return new WP_Error( 'packaged_wrong', esc_html__( 'The remote plugin package consists of more than one file, but the files are not packaged in a folder.', 'tgmpa' ) . ' ' . esc_html__( 'Please contact the plugin provider and ask them to package their plugin according to the WordPress guidelines.', 'tgmpa' ), array( 'found' => $subdir_name, 'expected' => $desired_slug ) );
+					return new WP_Error( 'packaged_wrong', esc_html__( 'Das Remote-Plugin-Paket besteht aus mehreren Dateien, die Dateien sind jedoch nicht in einem Ordner gepackt.', 'tgmpa' ) . ' ' . esc_html__( 'Bitte kontaktiere den Plugin-Anbieter und bitte ihn, sein Plugin gemäß den WordPress-Richtlinien zu verpacken.', 'tgmpa' ), array( 'found' => $subdir_name, 'expected' => $desired_slug ) );
 				}
 			}
 

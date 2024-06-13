@@ -387,7 +387,7 @@ msgstr ""
 
 #: library/admin/admin.php:296
 #: library/admin/pages/options.php:84
-msgid "Getting Started"
+msgid "Erste Schritte"
 msgstr ""
 
 #: library/admin/admin.php:497

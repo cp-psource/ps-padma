@@ -1,11 +1,11 @@
 <h2 class="nav-tab-wrapper big-tabs-tabs">
-	<a class="nav-tab" href="#tab-general"><?php _e('General','padma'); ?></a>
-	<a class="nav-tab" href="#tab-seo"><?php _e('Search Engine Optimization','padma'); ?></a>
-	<a class="nav-tab" href="#tab-scripts"><?php _e('Scripts/Analytics','padma'); ?></a>
-	<a class="nav-tab" href="#tab-visual-editor"><?php _e('Visual Editor','padma'); ?></a>
-	<a class="nav-tab" href="#tab-advanced"><?php _e('Advanced','padma'); ?></a>
-	<a class="nav-tab" href="#tab-compatibility"><?php _e('Compatibility','padma'); ?></a>
-	<a class="nav-tab" href="#tab-mobile"><?php _e('Mobile','padma'); ?></a>
+	<a class="nav-tab" href="#tab-general"><?php _e('Allgemein','padma'); ?></a>
+	<a class="nav-tab" href="#tab-seo"><?php _e('SEO','padma'); ?></a>
+	<a class="nav-tab" href="#tab-scripts"><?php _e('Skripte/Analyse','padma'); ?></a>
+	<a class="nav-tab" href="#tab-visual-editor"><?php _e('Visueller Editor','padma'); ?></a>
+	<a class="nav-tab" href="#tab-advanced"><?php _e('Erweitert','padma'); ?></a>
+	<a class="nav-tab" href="#tab-compatibility"><?php _e('Kompatibilität','padma'); ?></a>
+	<a class="nav-tab" href="#tab-mobile"><?php _e('Mobil','padma'); ?></a>
 	<a class="nav-tab" href="#tab-fonts"><?php _e('Fonts','padma'); ?></a>
 </h2>
 
@@ -25,12 +25,12 @@
 				<div id="" class="postbox padma-admin-options-group">
 
 					<button type="button" class="handlediv" aria-expanded="false">
-						<span class="screen-reader-text">Toggle panel: General</span>
+						<span class="screen-reader-text">Toggle panel: Allgemein</span>
 						<span class="toggle-indicator" aria-hidden="true"></span>
 					</button>
 
 
-					<h2 class="hndle"><span>General</span></h2>
+					<h2 class="hndle"><span>Allgemein</span></h2>
 
 					<?php
 					$form = array(
@@ -40,7 +40,7 @@
 							'type' => 'text',
 							'label' => 'Favicon URL',
 							'value' => PadmaOption::get('favicon'),
-							'description' => __('A favicon is the little image that sits next to your address in the favorites menu and on tabs.  If you do not know how to save an image as an icon you can go to <a href="http://www.favicon.cc/" target="_blank">favicon.cc</a> and draw or import an image.','padma')
+							'description' => __('Ein Favicon ist das kleine Bild, das neben der URL im Favoritenmenü und auf Registerkarten angezeigt wird. Wenn Du nicht weisst, wie Du ein Bild als Symbol speicherst, kannst Du zu <a href="http://www.favicon.cc/" target="_blank">favicon.cc</a> gehen und ein Bild zeichnen oder importieren.','padma')
 						),
 
 						array(
@@ -48,7 +48,7 @@
 							'size' => 'large',
 							'type' => 'text',
 							'label' => 'Feed URL',
-							'description' => __('If you use any service like <a href="http://feedburner.google.com/" target="_blank">FeedBurner</a>, type the feed URL here.','padma'),
+							'description' => __('Wenn Du einen Dienst wie <a href="http://feedburner.google.com/" target="_blank">FeedBurner</a> verwendest, gib hier die Feed-URL ein.','padma'),
 							'value' => PadmaOption::get('feed-url')
 						)
 					);
@@ -64,61 +64,61 @@
 				<div id="" class="postbox padma-admin-options-group">
 
 					<button type="button" class="handlediv" aria-expanded="false">
-						<span class="screen-reader-text"><?php _e('Admin Preferences','padma'); ?></span>
+						<span class="screen-reader-text"><?php _e('Administratoreinstellungen','padma'); ?></span>
 						<span class="toggle-indicator" aria-hidden="true"></span>
 					</button>
 
 
-					<h2 class="hndle"><span>Admin Preferences</span></h2>
+					<h2 class="hndle"><span>Administratoreinstellungen</span></h2>
 
 					<?php
 					$form = array(
 						array(
 							'id' 		=> 'menu-setup',
 							'type' 		=> 'radio',
-							'label' 	=> __('Default Admin Page','padma'),
+							'label' 	=> __('Standard-Administratorseite','padma'),
 							'value' 	=> PadmaOption::get('menu-setup', false, 'getting-started'),
 							'radios' 	=> array(
 								array(
 									'value' => 'getting-started',
-									'label' => __('Getting Started','padma')
+									'label' => __('Erste Schritte','padma')
 								),
 
 								array(
 									'value' => 'visual-editor',
-									'label' => __('Visual Editor','padma')
+									'label' => __('Visueller Editor','padma')
 								),
 
 								array(
 									'value' => 'options',
-									'label' => __('Options','padma')
+									'label' => __('Einstellungen','padma')
 								)
 							),
-							'description' => __('Select which admin page you would like to be directed to when you click on "Padma" in the WordPress Admin.','padma')
+							'description' => __('Wähle aus, zu welcher Admin-Seite Du weitergeleitet werden möchtest, wenn Du im WordPress-Admin auf "Padma" klickst.','padma')
 						),
 						array(
 							'type' 	=> 'checkbox',
-							'label' => __('Do not recommend plugin installation','padma'),
+							'label' => __('Keine Installation empfohlener Plugins','padma'),
 							'checkboxes' => array(
 								array(
 									'id' 		=> 'do-not-recommend-plugin-installation',
-									'label' 	=> __('Hide recommended plugin notice','padma'),
+									'label' 	=> __('Hinweis zu empfohlenen Plugins ausblenden','padma'),
 									'checked' 	=> PadmaOption::get('do-not-recommend-plugin-installation', false, false)
 								)
 							),
-							'description' => __('If on, Padma will not recommend install "Updater" and "Services" plugin','padma')
+							'description' => __('Wenn aktiviert, empfiehlt Padma nicht die Installation von empfohlenen Plugins.','padma')
 						),
 						array(
 							'type' => 'checkbox',
-							'label' => __('Version Number','padma'),
+							'label' => __('Versionsnummer','padma'),
 							'checkboxes' => array(
 								array(
 									'id' => 'hide-menu-version-number',
-									'label' => __('Hide Padma Version Number From Menu','padma'),
+									'label' => __('Padma-Versionsnummer aus dem Menü verbergen','padma'),
 									'checked' => PadmaOption::get('hide-menu-version-number', false, true)
 								)
 							),
-							'description' => sprintf( __('Check this if you wish to have the Menu say "Padma" instead of "Padma %s"','padma'), PADMA_VERSION )
+							'description' => sprintf( __('Aktivieren diese Option, wenn im Menü "Padma" statt "Padma %s" stehen soll.','padma'), PADMA_VERSION )
 						),
 					);
 
@@ -137,15 +137,15 @@
 				switch ( PadmaSEO::plugin_active() ) {
 
 					case 'aioseop':
-						echo '<div class="alert alert-yellow"><p>' . __('Padma has detected that you are using the All In One SEO pack plugin.  In order to reduce conflicts and save resources, Padma\'s SEO functionality has been disabled.','padma') . '</p></div>';
+						echo '<div class="alert alert-yellow"><p>' . __('Padma hat festgestellt, dass Du das All In One SEO Pack-Plugin verwendest. Um Konflikte zu reduzieren und Ressourcen zu sparen, wurde die SEO-Funktionalität von Padma deaktiviert.','padma') . '</p></div>';
 					break;
 
 					case 'wpseo':
-						echo '<div class="alert alert-yellow"><p>' . __('Padma has detected that you are using Yoast\'s WordPress SEO plugin.  In order to reduce conflicts and save resources, Padma\'s SEO functionality has been disabled.','padma') . '</p></div>';
+						echo '<div class="alert alert-yellow"><p>' . __('Padma hat festgestellt, dass Sie das WordPress SEO-Plugin von Yoast verwenden. Um Konflikte zu reduzieren und Ressourcen zu sparen, wurde die SEO-Funktionalität von Padma deaktiviert.','padma') . '</p></div>';
 					break;
 
 					default:
-						echo '<div class="alert alert-yellow"><p>' . __('Padma\'s SEO functionality is disabled.','padma') . '</p></div>';
+						echo '<div class="alert alert-yellow"><p>' . __('Padmas SEO-Funktionalität ist deaktiviert.','padma') . '</p></div>';
 						break;
 
 				}
@@ -153,7 +153,7 @@
 			} else {
 			?>
 
-				<h3 class="title" id="seo-templates-title"><?php _e('SEO Templates','padma'); ?></h3>
+				<h3 class="title" id="seo-templates-title"><?php _e('SEO-Vorlagen','padma'); ?></h3>
 
 				<div id="seo-templates">
 					<div id="seo-templates-hidden-inputs">
@@ -193,13 +193,13 @@
 					</div>
 
 					<div id="seo-templates-header">
-						<span><?php _e('Select a Template:','padma'); ?></span>
+						<span><?php _e('Wähle eine Vorlage:','padma'); ?></span>
 						<select>
 							<option value="index"><?php _e('Blog Index','padma'); ?></option>
 
 							<?php
 							if ( get_option('show_on_front') == 'page' )
-								echo '<option value="front_page">' . __('Front Page','padma') . '</option>';
+								echo '<option value="front_page">' . __('Startseite','padma') . '</option>';
 							?>
 
 							<optgroup label="Single">
@@ -212,13 +212,13 @@
 							</optgroup>
 
 							<optgroup label="Archive">
-								<option value="archive-category"><?php _e('Category','padma'); ?></option>
-								<option value="archive-search"><?php _e('Search','padma'); ?></option>
-								<option value="archive-date"><?php _e('Date','padma'); ?></option>
-								<option value="archive-author"><?php _e('Author','padma'); ?></option>
-								<option value="archive-post_tag"><?php _e('Post Tag','padma'); ?></option>
-								<option value="archive-post_type"><?php _e('Post Type','padma'); ?></option>
-								<option value="archive-taxonomy"><?php _e('Taxonomy','padma'); ?></option>
+								<option value="archive-category"><?php _e('Kategorie','padma'); ?></option>
+								<option value="archive-search"><?php _e('Suche','padma'); ?></option>
+								<option value="archive-date"><?php _e('Datum','padma'); ?></option>
+								<option value="archive-author"><?php _e('Autor','padma'); ?></option>
+								<option value="archive-post_tag"><?php _e('Beitrags-Tag','padma'); ?></option>
+								<option value="archive-post_type"><?php _e('Beitrags-Typ','padma'); ?></option>
+								<option value="archive-taxonomy"><?php _e('Taxonomie','padma'); ?></option>
 							</optgroup>
 
 							<option value="four04">404</option>
@@ -234,7 +234,7 @@
 								'id' => 'title',
 								'type' => 'text',
 								'size' => 'large',
-								'label' => __('Title','padma'),
+								'label' => __('Titel','padma'),
 								'description' => __('The title is the main text that describes the page. It is the single most important on-page SEO element (behind overall content).  The title appears at the top of the web browser when viewing the page, in browser tabs, search engine results, and external websites.  <strong>Tip:</strong> it is best that the title stays below 70 characters.<br /><br /><a href="http://www.seomoz.org/learn-seo/title-tag" target="_blank">Learn more about Titles &raquo;</a>','padma'),
 								'no-submit' => true
 							),

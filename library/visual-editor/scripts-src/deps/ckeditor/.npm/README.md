@@ -13,7 +13,7 @@ Supports a broad range of browsers, including legacy ones.
 
 ![CKEditor 4 screenshot](https://c.cksource.com/a/1/img/npm/ckeditor4.png)
 
-## Getting Started
+## Erste Schritte
 
 ```
 npm install --save ckeditor4

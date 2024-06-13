@@ -293,7 +293,7 @@ class PadmaAdmin {
 			switch ( $parent_menu['id'] ) {
 
 				case 'getting-started':
-					self::add_admin_submenu( __('Getting Started','padma'), 'padma-getting-started', array('PadmaAdminPages', 'getting_started'));
+					self::add_admin_submenu( __('Erste Schritte','padma'), 'padma-getting-started', array('PadmaAdminPages', 'getting_started'));
 					self::add_admin_submenu( __('Visual Editor','padma'), 'padma-visual-editor', array('PadmaAdminPages', 'visual_editor'));
 					self::add_admin_submenu( __('Templates','padma'), 'padma-templates', array('PadmaAdminPages', 'templates'));
 					self::add_admin_submenu( __('Options','padma'), 'padma-options', array('PadmaAdminPages', 'options'));
@@ -329,7 +329,7 @@ class PadmaAdmin {
 			case 'getting-started':
 				$parent_menu = array(
 					'id' => 'getting-started',
-					'name' => 'Getting Started',
+					'name' => 'Erste Schritte',
 					'callback' => array('PadmaAdminPages', 'getting_started')
 				);
 			break;
