@@ -140,7 +140,6 @@ class PadmaFooterBlock extends PadmaBlockAPI {
 
 	}
 
-
 	/**
 	 * Echos the Unlimited by Padma.
 	 * 
@@ -157,24 +156,21 @@ class PadmaFooterBlock extends PadmaBlockAPI {
 
 	}
 
-
 	/**
 	 * Shows a simple copyright paragraph.
 	 *
 	 * @return mixed
 	 **/
 	public static function show_copyright($custom_copyright = false) {
-
 		$default_copyright = __('Copyright', 'padma') . ' &copy; ' . date('Y') . ' ' . get_bloginfo('name');
 
-		$custom_copyright = preg_replace( '/%Y%/', date('Y'), $custom_copyright );  //Change %Y% for current year
-
+		// Ensure $custom_copyright is a string before calling preg_replace
+		$custom_copyright = is_null($custom_copyright) ? '' : $custom_copyright;
+		$custom_copyright = preg_replace('/%Y%/', date('Y'), $custom_copyright);  // Change %Y% for current year
 		$copyright = $custom_copyright ? $custom_copyright : $default_copyright;
 
 		echo apply_filters('padma_copyright', padma_parse_php('<p class="copyright footer-copyright custom-copyright">' . $copyright . '</p>'));
-
 	}
-
 
 	/**
 	 * Shows a simple go to top link.
