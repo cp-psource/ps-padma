@@ -296,7 +296,7 @@ PROTOTYPE.destroy = function(immediate) {
 };
 
 ;function invalidOpt(a) {
-	return a === NULL || $.type(a) !== 'object';
+	return a === null || typeof a !== 'object'
 }
 
 function invalidContent(c) {
@@ -1376,7 +1376,7 @@ PROTOTYPE._unbind = function(targets, suffix) {
 // Apply common event handlers using delegate (avoids excessive .bind calls!)
 var ns = '.'+NAMESPACE;
 function delegate(selector, events, method) {	
-	$(document.body).delegate(selector,
+	$(document.body).on(selector,
 		(events.split ? events : events.join(ns + ' ')) + ns,
 		function() {
 			var api = QTIP.api[ $.attr(this, ATTR_ID) ];
