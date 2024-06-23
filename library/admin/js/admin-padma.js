@@ -242,7 +242,7 @@ $(document).ready(function() {
 			}
 		});
 	
-		$('textarea#system-info-textarea').bind('mouseup', function() {
+		$('textarea#system-info-textarea').on('mouseup', function() {
 		
 			$(this)
 				.focus()

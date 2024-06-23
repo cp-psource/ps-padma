@@ -720,7 +720,7 @@ PROTOTYPE._removeTitle = function(reposition)
 		pluginCalculations, offset;
 
 	// Check if absolute position was passed
-	if($.isArray(target) && target.length === 2) {
+	if(Array.isArray(target) && target.length === 2) {
 		// Force left top and set position
 		at = { x: LEFT, y: TOP };
 		position = { left: target[0], top: target[1] };
@@ -1364,13 +1364,13 @@ PROTOTYPE._storeMouse = function(event) {
 // Bind events
 PROTOTYPE._bind = function(targets, events, method, suffix, context) {
 	var ns = '.' + this._id + (suffix ? '-'+suffix : '');
-	events.length && $(targets).bind(
+	events.length && $(targets).on(
 		(events.split ? events : events.join(ns + ' ')) + ns,
 		$.proxy(method, context || this)
 	);
 };
 PROTOTYPE._unbind = function(targets, suffix) {
-	$(targets).unbind('.' + this._id + (suffix ? '-'+suffix : ''));
+	$(targets).off('.' + this._id + (suffix ? '-'+suffix : ''));
 };
 
 // Apply common event handlers using delegate (avoids excessive .bind calls!)
@@ -1465,8 +1465,8 @@ PROTOTYPE._assignInitialEvents = function(event) {
 	var options = this.options,
 		showTarget = options.show.target,
 		hideTarget = options.hide.target,
-		showEvents = options.show.event ? $.trim('' + options.show.event).split(' ') : [],
-		hideEvents = options.hide.event ? $.trim('' + options.hide.event).split(' ') : [];
+		showEvents = options.show.event ? ('' + options.show.event).trim().split(' ') : [],
+		hideEvents = options.hide.event ? ('' + options.hide.event).trim().split(' ') : [];
 
 	/*
 	 * Make sure hoverIntent functions properly by using mouseleave as a hide event if
@@ -1527,8 +1527,8 @@ PROTOTYPE._assignEvents = function() {
 		bodyTarget = $(document.body),
 		windowTarget = $(window),
 
-		showEvents = options.show.event ? $.trim('' + options.show.event).split(' ') : [],
-		hideEvents = options.hide.event ? $.trim('' + options.hide.event).split(' ') : [];
+		showEvents = options.show.event ? ('' + options.show.event).trim().split(' ') : [],
+		hideEvents = options.hide.event ? ('' + options.hide.event).trim().split(' ') : [];
 
 
 	// Assign passed event callbacks
@@ -1796,7 +1796,7 @@ QTIP = $.fn.qtip = function(options, notation, newValue)
 			var api, id;
 
 			// Find next available ID, or use custom ID if provided
-			id = $.isArray(opts.id) ? opts.id[i] : opts.id;
+			id = Array.isArray(opts.id) ? opts.id[i] : opts.id;
 			id = !id || id === FALSE || id.length < 1 || QTIP.api[id] ? QTIP.nextid++ : id;
 
 			// Initialize the qTip and re-grab newly sanitized options

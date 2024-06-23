@@ -773,7 +773,7 @@
     // log our positions
     this.log({ type: "pos-coords", x: this.pos.x, y: this.pos.y});
 
-    if ( $.isArray( this.options.constrainTo ) ) {
+    if ( Array.isArray( this.options.constrainTo ) ) {
 
       if ( this.options.constrainTo[3] !== undefined && this.options.constrainTo[1] !== undefined ) {
         upperXLimit     = this.options.constrainTo[1] === false ?  Infinity : this.options.constrainTo[1];
