@@ -34,7 +34,7 @@ define(['jquery', 'jqueryUI', 'deps/jquery.cookie', 'util.tooltips', 'modules/pa
 		var tabLink = tab.find('a');
 		
 		$('div#panel').tabs('refresh');
-		$(tabLink).bind('click', showPanel);
+		$(tabLink).on('click', showPanel);
 		
 		showPanel();
 
@@ -348,7 +348,7 @@ define(['jquery', 'jqueryUI', 'deps/jquery.cookie', 'util.tooltips', 'modules/pa
 
 			});
 
-			$('ul#panel-top-right li#minimize').bind('click', function(event) {
+			$('ul#panel-top-right li#minimize').on('click', function(event) {
 
 				togglePanel();
 

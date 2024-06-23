@@ -127,7 +127,7 @@ $(document).ready(function() {
 			}, 4000);
 	
 			//Bind Clickables
-			$('div#padma-seo-preview h4').bind('click', function(event) {
+			$('div#padma-seo-preview h4').on('click', function(event) {
 				
 				if ( $('input#padma-admin-meta-box-seo-title').val().length == 0 )
 					$('input#padma-admin-meta-box-seo-title').val($(this).text());
@@ -141,7 +141,7 @@ $(document).ready(function() {
 				
 			});
 
-			$('div#padma-seo-preview p#seo-preview-description').bind('click', function(event) {
+			$('div#padma-seo-preview p#seo-preview-description').on('click', function(event) {
 				
 				$('textarea#padma-admin-meta-box-seo-description')
 					.focus()

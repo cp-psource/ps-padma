@@ -44,7 +44,7 @@
 			// build element specific options
 			var options = $.meta ? $.extend({}, opts, $this.data()) : opts;
 
-			$this.bind('keydown',function (e) {
+			$this.on('keydown',function (e) {
 				var kc = $.fn.tabby.catch_kc(e);
 				if (16 === kc) pressed.shft = true;
 				/*
@@ -61,9 +61,9 @@
 					return false;
 				}
 
-			}).bind('keyup',function (e) {
+			}).on('keyup',function (e) {
 				if (16 === $.fn.tabby.catch_kc(e)) pressed.shft = false;
-			}).bind('blur',function (e) { // workaround for Opera -- http://www.webdeveloper.com/forum/showthread.php?p=806588
+			}).on('blur',function (e) { // workaround for Opera -- http://www.webdeveloper.com/forum/showthread.php?p=806588
 				if (9 === pressed.last) $(e.target).one('focus',function () {pressed.last = null;}).get(0).focus();
 			});
 

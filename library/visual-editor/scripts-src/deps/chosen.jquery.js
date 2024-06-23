@@ -688,11 +688,11 @@
 				_this.clipboard_event_checker(evt);
 			});
 			if (this.is_multiple) {
-				return this.search_choices.bind('click.chosen', function (evt) {
+				return this.search_choices.on('click.chosen', function (evt) {
 					_this.choices_click(evt);
 				});
 			} else {
-				return this.container.bind('click.chosen', function (evt) {
+				return this.container.on('click.chosen', function (evt) {
 					evt.preventDefault();
 				});
 			}
@@ -714,14 +714,14 @@
 				this.container.addClass('chosen-disabled');
 				this.search_field[0].disabled = true;
 				if (!this.is_multiple) {
-					this.selected_item.unbind("focus.chosen", this.activate_action);
+					this.selected_item.off("focus.chosen", this.activate_action);
 				}
 				return this.close_field();
 			} else {
 				this.container.removeClass('chosen-disabled');
 				this.search_field[0].disabled = false;
 				if (!this.is_multiple) {
-					return this.selected_item.bind("focus.chosen", this.activate_action);
+					return this.selected_item.on("focus.chosen", this.activate_action);
 				}
 			}
 		};
@@ -736,7 +736,7 @@
 						if (this.is_multiple) {
 							this.search_field.val("");
 						}
-						$(this.container[0].ownerDocument).bind('click.chosen', this.click_test_action);
+						$(this.container[0].ownerDocument).on('click.chosen', this.click_test_action);
 						this.results_show();
 					} else if (!this.is_multiple && evt && (($(evt.target)[0] === this.selected_item[0]) || $(evt.target).parents("a.chosen-single").length)) {
 						evt.preventDefault();
@@ -899,7 +899,7 @@
 				this.form_field_label = $("label[for='" + this.form_field.id + "']");
 			}
 			if (this.form_field_label.length > 0) {
-				return this.form_field_label.bind('click.chosen', function (evt) {
+				return this.form_field_label.on('click.chosen', function (evt) {
 					if (_this.is_multiple) {
 						return _this.container_mousedown(evt);
 					} else {
@@ -956,7 +956,7 @@
 					"class": 'search-choice-close',
 					'data-option-array-index': item.array_index
 				});
-				close_link.bind('click.chosen', function (evt) {
+				close_link.on('click.chosen', function (evt) {
 					return _this.choice_destroy_link_click(evt);
 				});
 				choice.append(close_link);

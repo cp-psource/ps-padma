@@ -312,7 +312,7 @@ define(['jquery', 'util.tooltips', 'helper.boxes', 'modules/panel'], function($,
 
 								}
 
-								$(currentTourStep.nextHandler.clickElement).bind('click', nextHandlerCallback);
+								$(currentTourStep.nextHandler.clickElement).on('click', nextHandlerCallback);
 
 							}
 

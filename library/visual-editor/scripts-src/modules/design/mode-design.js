@@ -1104,7 +1104,7 @@ define(['jquery', 'underscore', 'helper.contentEditor', 'deps/interact', 'util.n
 			this.bindDesignEditorInfo = function() {
 					
 				/* Customize for layout button */
-				$('span.customize-element-for-layout').bind('click', function() {
+				$('span.customize-element-for-layout').on('click', function() {
 
 					var currentElement = designEditor.getCurrentElement();
 					var currentElementID = currentElement.data('element-id');
@@ -1114,7 +1114,7 @@ define(['jquery', 'underscore', 'helper.contentEditor', 'deps/interact', 'util.n
 				});
 			
 				/* Customize for regular element button */
-				$('span.customize-for-regular-element').bind('click', function() {
+				$('span.customize-for-regular-element').on('click', function() {
 					designEditor.getCurrentElement().find('> span.element-name').trigger('click');
 				});
 
@@ -2858,7 +2858,7 @@ define(['jquery', 'underscore', 'helper.contentEditor', 'deps/interact', 'util.n
 
 								$('<li class="inspector-context-menu-parent" data-parent-id="' + $(this).data('inspectorElementOptions').id + '"><span>' + $(this).data('inspectorElementOptions').name + '</span></li>')
 									.appendTo(parentsMenu.find('ul'))
-									.bind('click', function() {
+									.on('click', function() {
 
 										inspectorElement = parentElement;
 
@@ -3302,7 +3302,7 @@ define(['jquery', 'underscore', 'helper.contentEditor', 'deps/interact', 'util.n
 
 		bind: function() {
 
-			$('#toggle-inspector').bind('click', toggleInspector);
+			$('#toggle-inspector').on('click', toggleInspector);
 			$i('.block').on('dblclick', designEditor.processElementDoubleClick);
 
 		},

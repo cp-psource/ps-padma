@@ -253,7 +253,7 @@ define(['jquery', 'deps/itstylesheet', 'util.saving', 'util.usability', 'util.to
 					event.stopPropagation();
 				});
 
-				$i('html, body').bind('keyup', function(event) {
+				$i('html, body').on('keyup', function(event) {
 					$(document).trigger(event);
 					event.stopPropagation();
 				});

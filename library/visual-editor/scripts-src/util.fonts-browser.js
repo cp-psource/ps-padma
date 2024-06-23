@@ -488,7 +488,7 @@ options.delay);return this};this.cache();this.results(true);this.stripe();this.l
 
 			var self = this;
 
-			context.find('.fonts-search select').bind('change', function() {
+			context.find('.fonts-search select').on('change', function() {
 
 				$('.fonts-noresults').hide();
 				var sortBy = $(this).val();

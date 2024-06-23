@@ -107,7 +107,7 @@ define(['modules/iframe', 'deps/jquery.pep'], function(iframe) {
 				/* If close button doesn't exist, create it. */
 				box.find('.box-top').append('<span class="box-close">X</span>');
 				
-				box.find('.box-close').bind('click', function(){
+				box.find('.box-close').on('click', function(){
 					closeBox(id, settings.deleteWhenClosed);
 				});
 				
