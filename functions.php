@@ -57,6 +57,9 @@ add_filter(
 	}
 );
 
+/**
+ * @@@@@@@@@@@@@@@@@ PS UPDATER 1.3 @@@@@@@@@@@
+ **/
 require 'psource/psource-plugin-update/plugin-update-checker.php';
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
@@ -66,5 +69,9 @@ $myUpdateChecker = PucFactory::buildUpdateChecker(
 	'ps-padma'
 );
 
+
 //Set the branch that contains the stable release.
-$myUpdateChecker->setBranch('master');
+$myUpdateChecker->setBranch('main');
+/**
+ * @@@@@@@@@@@@@@@@@ ENDE PS UPDATER 1.3 @@@@@@@@@@@
+ **/
