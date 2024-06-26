@@ -34,10 +34,10 @@ class PadmaPlugins{
 
 			array(
 				'name'         => 'Padma Advanced', // The plugin name.
-				'slug'         => 'ps-padma-advanced', // The plugin slug (typically the folder name).
-				'source' 	   => 'https://github.com/cp-psource/ps-padma-advanced/releases/download/v.0.0.2/ps-padma-advanced.zip',
+				'slug'         => 'padma-advanced', // The plugin slug (typically the folder name).
+				'source' 	   => 'https://github.com/cp-psource/padma-advanced/releases/download/v.0.0.2/padma-advanced.zip',
 				'required'     => false, // If false, the plugin is only 'recommended' instead of required.
-				'external_url' => 'https://cp-psource.github.io/ps-padma-advanced/', // If set, overrides default API URL and points to an external URL.
+				//'external_url' => 'https://github.com/cp-psource/padma-advanced/releases/download/v.0.0.2/padma-advanced.zip', // If set, overrides default API URL and points to an external URL.
 			),
 		);
 
