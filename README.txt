@@ -1,4 +1,4 @@
-===CP Padma ===
+===PS Padma ===
 Contributors: PSOURCE
 Requires at least: WordPress 4.7
 Tested up to: WordPress 5.5
@@ -12,7 +12,7 @@ Tags: theme, template, template builder, builder, theme builder, padma, flexible
 
 == Description ==
 
-CP Padma ist ein Template-Builder-Theme mit Drag-and-Drop-Bearbeitung, Point-and-Click-Designfunktionen, leistungsstarker Suchmaschinenoptimierung und vielem mehr.
+PS Padma ist ein Template-Builder-Theme mit Drag-and-Drop-Bearbeitung, Point-and-Click-Designfunktionen, leistungsstarker Suchmaschinenoptimierung und vielem mehr.
 
 
 == Installation ==
