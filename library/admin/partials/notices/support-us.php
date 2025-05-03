@@ -2,21 +2,21 @@
 
 <div class="notice notice-info padma-unlimited-notice-rate">
 
-	<img alt="Padma Unlimited" src="<?php echo get_template_directory_uri() . '/library/admin/images/padma-theme-logo-square-250.png'; ?>" class="avatar avatar-120 photo" height="120" width="120">
+	<img alt="PS Padma" src="<?php echo get_template_directory_uri() . '/library/admin/images/padma-theme-logo-square-250.png'; ?>" class="avatar avatar-120 photo" height="120" width="120">
 
 	<div class="padma-unlimited-notice-rate-content">
 
 		<div class="padma-unlimited-notice-rate-content-text">
-			<p><?php _e( 'Hallo bei Padma Unlimited', 'padma' ); ?>,</p>
+			<p><?php _e( 'Hallo bei PS Padma', 'padma' ); ?>,</p>
 			<p><?php _e( 'Unser Team hat wirklich hart daran gearbeitet, Dir dieses leistungsstarke Tool zur Verfügung zu stellen. Wir hoffen, es gefällt Dir.', 'padma' ); ?></p>
-			<p><?php _e( 'Padma Unlimited ist der offizielle Nachfolger unseres UpFront-Frameworks. Beachte bitte, derzeit befindet sich dieser Theme-Builder in der Finalen Testphase.', 'padma' ); ?></p>
+			<p><?php _e( 'PS Padma ist der offizielle Nachfolger unseres UpFront-Frameworks. Beachte bitte, derzeit befindet sich dieser Theme-Builder in der Finalen Testphase.', 'padma' ); ?></p>
 			<h4><?php _e( 'Möchtest Du mitarbeiten?', 'padma' ); ?></h4>
 			<ul>				
 				<li><?php _e( '- Fehler melden: https://github.com/cp-psource/ps-padma/issues', 'padma' ); ?></li>
 				<li><?php _e( '- Gemeinsames Programmieren über GitHub', 'padma' ); ?></li>
 				<li><?php _e( '- Schlage Funktionalitäten, Blöcke oder Plugins vor', 'padma' ); ?></li>
 				<li><?php _e( '- Trete unseren Netzwerk bei', 'padma' ); ?></li>
-				<li><?php _e( '- Teile Padma Unlimited Builder mit Kollegen und Freunden', 'padma' ); ?></li>
+				<li><?php _e( '- Teile PS Padma Builder mit Kollegen und Freunden', 'padma' ); ?></li>
 				<li><?php _e( '- Sag es weiter!', 'padma' ); ?></li>
 			</ul>			
 			<p><?php _e( 'Lasst uns gemeinsam bauen!', 'padma' ); ?></p>

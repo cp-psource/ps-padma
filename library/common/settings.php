@@ -1,9 +1,9 @@
 <?php
 /**
- * All settings of Padma Unlimited and Padma Lite
+ * All settings of PS Padma and Padma Lite
  *
  * @package Padma
- * @author Padma Unlimited Team
+ * @author PS Padma Team
  *
  **/
 

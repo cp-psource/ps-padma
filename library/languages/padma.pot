@@ -1,8 +1,8 @@
-# Copyright (C) 2020 Padma Unlimited Team
+# Copyright (C) 2020 PS Padma Team
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Padma Unlimited 1.2.20\n"
+"Project-Id-Version: PS Padma 1.2.20\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/padma\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Domain: padma\n"
 
 #. Theme Name of the theme
-msgid "Padma Unlimited"
+msgid "PS Padma"
 msgstr ""
 
 #. Theme URI of the theme
@@ -28,7 +28,7 @@ msgid "Padma is a template builder theme with drag and drop editing, point and c
 msgstr ""
 
 #. Author of the theme
-msgid "Padma Unlimited Team"
+msgid "PS Padma Team"
 msgstr ""
 
 #: library/abstract/api-block.php:170
@@ -627,7 +627,7 @@ msgid "Discover available Plugins and Blocks."
 msgstr ""
 
 #: library/admin/pages/getting-started.php:129
-msgid "Get into Padma Services to unlock the Padma Unlimited potential."
+msgid "Get into Padma Services to unlock the PS Padma potential."
 msgstr ""
 
 #: library/admin/pages/options.php:7
@@ -1338,7 +1338,7 @@ msgid "- Join our social networks"
 msgstr ""
 
 #: library/admin/partials/notices/support-us.php:19
-msgid "- Share Padma Unlimited Builder with colleagues and friends"
+msgid "- Share PS Padma Builder with colleagues and friends"
 msgstr ""
 
 #: library/admin/partials/notices/support-us.php:20

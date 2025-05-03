@@ -2,9 +2,9 @@
 Contributors: PSOURCE
 Requires at least: WordPress 4.7
 Tested up to: WordPress 5.5
-Version: 1.0.0
+Version: 1.0.1
 Requires at least: 4.9
-Tested up to: 5.8.2
+Tested up to: 6.8.1
 Requires PHP: 7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -24,7 +24,7 @@ PS Padma ist ein Template-Builder-Theme mit Drag-and-Drop-Bearbeitung, Point-and
 
 == Copyright ==
 
-Copyright 2014-2023 PSOURCE
+Copyright 2014-2025 PSOURCE
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -42,6 +42,13 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
 
 == Changelog ==
+
+= 1.0.1 =
+* Released: May 3, 2025
+
+* PhP8 fixes
+* New Docs
+* New Updater
 
 = 1.0.0 =
 * Released: Jun 26, 2024

@@ -3,7 +3,7 @@
  * All of the global functions to be used everywhere in Padma.
  *
  * @package Padma
- * @author Padma Unlimited Team
+ * @author PS Padma Team
  *
  **/
 

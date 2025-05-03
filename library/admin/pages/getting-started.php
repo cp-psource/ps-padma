@@ -46,7 +46,7 @@ defined('ABSPATH') or die("No script kiddies please!");
 
 			<h2><?php _e('Padma starter users','padma'); ?></h2>
 			<div class="box">
-				<p><?php _e('Please read Padma | Unlimited Theme Builder <a href="https://docs.padmaunlimited.com/">Documentation</a>.','padma'); ?></p>
+				<p><?php _e('Please read Padma | Unlimited Theme Builder <a href="https://cp-psource.github.io/ps-padma/">Documentation</a>.','padma'); ?></p>
 			</div>
 
 
@@ -61,8 +61,8 @@ defined('ABSPATH') or die("No script kiddies please!");
 			</div>
 			<div class="box">
 				<h3><?php _e('Additional Blocks available!','padma'); ?></h3>
-				<p><?php _e('Padma dashboard allows users to manage their Padma | Unlimited installations. Also, Discover Padma tiers subscription to access additional Plugins and Services.','padma'); ?></p>
-				<a href="https://dashboard.padmaunlimited.com/login"><?php _e('Register to Padma Services to get access to additional Plugins and Blocks','padma'); ?></a>				
+				<p><?php _e('Mit dem PS Padma Advanced Plugin erweiterst Du Die Möglichkeiten von PS Padma beinahe ins Endlose.','padma'); ?></p>
+				<a href="https://cp-psource.github.io/padma-advanced/"><?php _e('Hole Dir mit PS Padma Advanced noch viel mehr Blöcke','padma'); ?></a>				
 			</div>
 		</div>
 	</div>
@@ -95,17 +95,8 @@ defined('ABSPATH') or die("No script kiddies please!");
 			<p><?php _e('Padma | Unlimited Theme Builder provides professional support and comprehensive documentation to help you bring your projects alive.','padma'); ?></p>			
 			<div class="separator"></div>
 			<div class="box">
-				<h3><?php _e('Padma | Community','padma'); ?></h3>
-				<p><?php _e('Join our community, get involved and help each other across multiple channels.','padma'); ?></p>
-				<p><a href="https://www.facebook.com/padmaunlimited/" target="_blank"><?php _e('Facebook Page','padma'); ?></a></p>
-				<p><a href="https://www.facebook.com/groups/367999217036886/" target="_blank"><?php _e('Facebook Users Group (English)','padma'); ?></a></p>
-				<p><a href="https://www.facebook.com/groups/291445981578459/" target="_blank"><?php _e('Facebook Users Group (Español)','padma'); ?></a></p>
-				<p><a href="https://twitter.com/PadmaUnlimited" target="_blank">Twitter</a></p>
-				<p><a href="https://join.slack.com/t/padma-unlimited/shared_invite/enQtNTAxMzM1NjcwNTc5LWVmZjliNDRhZTQ1Y2FhZDY3ZjdkNzMzYzRmMzEwMDEyMWY0MjllYzJhYTk4ZTMxODEzNjk5NzE1YzMyMjFjNmY" target="_blank">Slack</a></p>
-			</div>
-			<div class="box">
 				<h3><?php _e('Padma | Documentation','padma'); ?></h3>
-				<p><?php _e('Register with us and get free access to our in- depth documentation. <a target="_blank" href="https://docs.padmaunlimited.com/" rel="noopener">docs.padmaunlimited.com</a>','padma'); ?></p>
+				<p><?php _e('Register with us and get free access to our in- depth documentation. <a target="_blank" href="https://cp-psource.github.io/padma-advanced/" rel="noopener">docs.padmaunlimited.com</a>','padma'); ?></p>
 			</div>
 		</div>
 	</div>
@@ -125,8 +116,8 @@ defined('ABSPATH') or die("No script kiddies please!");
 				<h3><?php _e('Padma | Unlimited Blocks','padma'); ?></h3>
 				<p><?php _e('Extend the functionality of your Padma | Unlimited WordPress Theme Builder installation by adding useful custom blocks to your Projects.','padma'); ?></p>
 				<p><?php _e('Services: Documentation, Lifesaver (Migrate from HTW/Blox), Child Theme, Templates on cloud, site monitor.','padma'); ?></p>								
-				<a href="https://dashboard.padmaunlimited.com/login"><?php _e('Discover available Plugins and Blocks.','padma'); ?></a>	
-				<p><?php _e('Get into Padma Services to unlock the Padma Unlimited potential.','padma'); ?></p>
+				<a href="https://cp-psource.github.io/padma-advanced/"><?php _e('Discover available Plugins and Blocks.','padma'); ?></a>	
+				<p><?php _e('Get into Padma Services to unlock the PS Padma potential.','padma'); ?></p>
 			</div>
 		</div>
 	</div>

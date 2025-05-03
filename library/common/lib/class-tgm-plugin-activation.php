@@ -340,20 +340,20 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 				'oops'                            => __( 'Es gibt einen Fehler mit dem Plugin-API.', 'tgmpa' ),
 				'notice_can_install_required'     => _n_noop(
 					/* translators: 1: plugin name(s). */
-					'Padma Unlimited erfordert das folgende Plugin: %1$s.',
-					'Padma Unlimited erfordert die folgenden Plugins: %1$s.',
+					'PS Padma erfordert das folgende Plugin: %1$s.',
+					'PS Padma erfordert die folgenden Plugins: %1$s.',
 					'tgmpa'
 				),
 				'notice_can_install_recommended'  => _n_noop(
 					/* translators: 1: plugin name(s). */
-					'Padma Unlimited empfiehlt das folgende Plugin: %1$s.',
-					'Padma Unlimited empfiehlt die folgenden Plugins: %1$s.',
+					'PS Padma empfiehlt das folgende Plugin: %1$s.',
+					'PS Padma empfiehlt die folgenden Plugins: %1$s.',
 					'tgmpa'
 				),
 				'notice_ask_to_update'            => _n_noop(
 					/* translators: 1: plugin name(s). */
-					'Das folgende Plugin muss auf die neueste Version aktualisiert werden, um maximale Kompatibilität mit Padma Unlimited zu gewährleisten: %1$s.',
-					'Die folgenden Plugins müssen auf die neueste Version aktualisiert werden, um maximale Kompatibilität mit Padma Unlimited zu gewährleisten: %1$s.',
+					'Das folgende Plugin muss auf die neueste Version aktualisiert werden, um maximale Kompatibilität mit PS Padma zu gewährleisten: %1$s.',
+					'Die folgenden Plugins müssen auf die neueste Version aktualisiert werden, um maximale Kompatibilität mit PS Padma zu gewährleisten: %1$s.',
 					'tgmpa'
 				),
 				'notice_ask_to_update_maybe'      => _n_noop(
@@ -604,7 +604,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 			$actions['update'] = sprintf(
 				'<a href="%1$s" title="%2$s" class="edit">%3$s</a>',
 				esc_url( $this->get_tgmpa_status_url( 'update' ) ),
-				esc_attr__( 'Dieses Plugin muss aktualisiert werden, um mit Padma Unlimited kompatibel zu sein.', 'tgmpa' ),
+				esc_attr__( 'Dieses Plugin muss aktualisiert werden, um mit PS Padma kompatibel zu sein.', 'tgmpa' ),
 				esc_html__( 'Aktualisierung erforderlich', 'tgmpa' )
 			);
 

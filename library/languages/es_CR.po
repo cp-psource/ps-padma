@@ -1,8 +1,8 @@
-# Copyright (C) 2019 Padma Unlimited Team
+# Copyright (C) 2019 PS Padma Team
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Padma Unlimited 1.0.1\n"
+"Project-Id-Version: PS Padma 1.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/padma\n"
 "Last-Translator: \n"
 "Language-Team: Español de Costa Rica\n"
@@ -18,8 +18,8 @@ msgstr ""
 "X-Loco-Version: 2.4.0; wp-5.5-alpha-47929"
 
 #. Theme Name of the theme
-msgid "Padma Unlimited"
-msgstr "Padma Unlimited"
+msgid "PS Padma"
+msgstr "PS Padma"
 
 #. Theme URI of the theme
 #. Author URI of the theme
@@ -48,8 +48,8 @@ msgstr ""
 "</a>."
 
 #. Author of the theme
-msgid "Padma Unlimited Team"
-msgstr "Equipo de Padma Unlimited "
+msgid "PS Padma Team"
+msgstr "Equipo de PS Padma "
 
 #: library/abstract/api-block.php:170
 msgid "Error: The block options class being registered does not exist."
@@ -853,9 +853,9 @@ msgid "Discover available Plugins and Blocks."
 msgstr "Descubra los Plugins y Bloques disponibles."
 
 #: library/admin/pages/getting-started.php:129
-msgid "Get into Padma Services to unlock the Padma Unlimited potential."
+msgid "Get into Padma Services to unlock the PS Padma potential."
 msgstr ""
-"Ingrese a losPadma Services para desbloquear el potencial de Padma Unlimited"
+"Ingrese a losPadma Services para desbloquear el potencial de PS Padma"
 
 #: library/admin/pages/options.php:7
 msgid "Compatibility"
@@ -1867,8 +1867,8 @@ msgstr ""
 " \n"
 
 #: library/admin/partials/notices/support-us.php:19
-msgid "- Share Padma Unlimited Builder with colleagues and friends"
-msgstr "- Comparta Padma Unlimited Builder con colegas y amigos"
+msgid "- Share PS Padma Builder with colleagues and friends"
+msgstr "- Comparta PS Padma Builder con colegas y amigos"
 
 #: library/admin/partials/notices/support-us.php:20
 msgid "- Spread the word!"

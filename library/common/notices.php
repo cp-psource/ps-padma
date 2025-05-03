@@ -1,6 +1,6 @@
 <?php
 /**
- * Padma Unlimited Theme.
+ * PS Padma Theme.
  *
  * @package padma
  */

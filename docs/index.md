@@ -47,7 +47,7 @@ Follow next easy steps to get our **forever free Theme** **Builder** available o
 
 ### Security Considerations
 
-Padma Unlimited Theme has a powerful feature that allows the execution of functions and PHP code within certain blocks, however if you wish you can disable this feature by adding:
+PS Padma Theme has a powerful feature that allows the execution of functions and PHP code within certain blocks, however if you wish you can disable this feature by adding:
 
     define ('PADMA_DISABLE_PHP_PARSING', false);
 

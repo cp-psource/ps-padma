@@ -1,13 +1,13 @@
 <?php
 /**
- * Padma Unlimited Theme
+ * PS Padma Theme
  *
  * @since 1.0.0
  * @package Padma
  *
  * - Original by Clay Griffiths - Headway Themes
  * - New files by Maarten Schraven - UNITED 7
- * - Padma by Padma Unlimited Team - Padma Unlimited S.A.
+ * - Padma by PS Padma Team - PS Padma S.A.
  */
 
 /* Prevent direct access to this file */
