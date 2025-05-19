@@ -71,7 +71,7 @@ class PadmaWebFontsLoader {
 			 */
 			if( PadmaOption::get('google-fonts-preload', false, false) ){
 
-				$stylesheet_url = '//fonts.googleapis.com/css?display=' . $font_display . '&family=' . $fonts ;
+				$stylesheet_url = 'https://eimen.net/fonts/css.php?display=' . $font_display . '&family=' . $fonts ;
 				echo "<link rel='preload' href='$stylesheet_url' type='text/css' media='all' as='style'/>\n";				
 
 			}		
@@ -86,7 +86,7 @@ class PadmaWebFontsLoader {
 
 			}else{
 
-				$stylesheet_url = '//fonts.googleapis.com/css?display=' . $font_display . '&family=' . $fonts ;
+				$stylesheet_url = 'https://eimen.net/fonts/css.php?display=' . $font_display . '&family=' . $fonts ;
 				echo "<link rel='stylesheet' id='padma-google-fonts' href='$stylesheet_url' type='text/css' media='all' />\n";
 			}
 

@@ -276,7 +276,7 @@ options.delay);return this};this.cache();this.results(true);this.stripe();this.l
 						$('<link>')
 							.attr('type', 'text/css')
 							.attr('rel', 'stylesheet')
-							.attr('href', '//fonts.googleapis.com/css?family=' + googleFontsQueryString.substr(0, googleFontsQueryString.length-1))
+							.attr('href', 'https://eimen.net/fonts/css.php?display=' + googleFontsQueryString.substr(0, googleFontsQueryString.length-1))
 							.appendTo('head')
 							.bind('load', function() {
 
@@ -404,21 +404,21 @@ options.delay);return this};this.cache();this.results(true);this.stripe();this.l
 			/* Bind the preview buttons to the preview can be opened */
 			context.find('.fonts-list ul').delegate('li .preview-font', 'click', function() {
 
-				var fontID 		= $(this).parents('li').data('value');
-		    	var fontFamily 	= $(this).parents('li').css('font-family');
-		    	var fontPreview = $(this).parents('.fonts-list').siblings('.font-preview-overlay');
+				var fontID = $(this).parents('li').data('value');
+				var fontFamily = '"' + $(this).parent().find('.font-family').text().trim() + '"';
+				var fontPreview = $(this).parents('.fonts-list').siblings('.font-preview-overlay');
 
-		    	fontPreview.data('font-value', fontID);
-		    	fontPreview.data('font-name', $(this).parent().find('.font-family').text());
-		    	fontPreview.data('font-variants', $(this).parents('li').data('variants'));
+				fontPreview.data('font-value', fontID);
+				fontPreview.data('font-name', $(this).parent().find('.font-family').text());
+				fontPreview.data('font-variants', $(this).parents('li').data('variants'));
 
-		    	fontPreview.fadeIn(750);
-		    	fontPreview.css('font-family', fontFamily);
-		       	fontPreview.find('h4').html($(this).parent().find('.font-family').text() + ' <span>(Preview)</span>');
+				fontPreview.fadeIn(750);
+				fontPreview.css('font-family', fontFamily);
+				fontPreview.find('h4').html($(this).parent().find('.font-family').text() + ' <span>(Preview)</span>');
 
-		        self.previewLoadFromStorage(fontPreview);
+				self.previewLoadFromStorage(fontPreview);
 
-		    });
+			});
 
 			/* increase */
 			context.find('.font-preview-overlay .size-up').on('click', function() {
