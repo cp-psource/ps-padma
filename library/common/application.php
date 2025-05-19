@@ -53,13 +53,13 @@ class Padma {
 
 		/* Site URLs */
 		if(!defined('PADMA_SITE_URL')){
-			define('PADMA_SITE_URL', 'http://www.padmaunlimited.com/');
+			define('PADMA_SITE_URL', 'https://cp-psource.github.io/ps-padma/');
 		}
 		if(!defined('PADMA_API_URL')){
-			define('PADMA_API_URL', 'https://api.n3rds.work/');
+			define('PADMA_API_URL', 'https://eimen.net/fonts/');
 		}
 		if(!defined('PADMA_CDN_URL')){			
-			define('PADMA_CDN_URL', 'https://cdn.padmaunlimited.com/');			
+			define('PADMA_CDN_URL', 'https://eimen.net/fonts/');			
 		}
 		if(!defined('PADMA_DASHBOARD_URL')){
 			define('PADMA_DASHBOARD_URL', 'https://dashboard.padmaunlimited.com/');			

@@ -35,7 +35,7 @@ class PadmaGutenbergBlocks {
 		}
 
 		// Add Gutenberg Block categories
-		add_filter( 'block_categories', array( __CLASS__, 'add_block_category' ), 10, 2 );
+		add_filter( 'block_categories_all', array( __CLASS__, 'add_block_category' ), 10, 2 );
 
 		// Register Padma Blocks as Gutenberg Blocks
 		add_action('init', array(__CLASS__,'padma_blocks_as_gutenberg_blocks'));
