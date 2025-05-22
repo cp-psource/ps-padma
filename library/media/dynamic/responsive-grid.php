@@ -180,7 +180,7 @@ class PadmaResponsiveGridDynamicMedia {
 
 	static function fitvids() {
 
-		return 'if(window.jQuery){ jQuery(document).ready(function() { jQuery(document).fitVids(); }); }';
+		return '';
 
 	}
 

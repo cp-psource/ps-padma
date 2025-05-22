@@ -74,15 +74,17 @@ class PadmaWebFontsLoader {
 				$stylesheet_url = 'https://eimen.net/fonts/css.php?display=' . $font_display . '&family=' . $fonts ;
 				echo "<link rel='preload' href='$stylesheet_url' type='text/css' media='all' as='style'/>\n";				
 
-			}		
-
-
+			}	
 
 			if(PadmaOption::get('load-google-fonts-asynchronously')){
 
 				wp_enqueue_script('google-fonts-async', padma_url() . '/library/media/js/google-fonts-asynchronously.js', array('jquery'), false, true);
-				wp_localize_script( 'google-fonts-async', 'fontsToUse', $fonts );
-				wp_localize_script( 'google-fonts-async', 'fontsDisplay', $font_display );
+
+				// Korrekte Übergabe als Array
+				wp_localize_script('google-fonts-async', 'padmaGoogleFonts', array(
+					'fontsToUse'   => $fonts,
+					'fontsDisplay' => $font_display,
+				));
 
 			}else{
 
@@ -91,7 +93,6 @@ class PadmaWebFontsLoader {
 			}
 
 		}
-
 
 	}
 	/* End Google Web Fonts */
