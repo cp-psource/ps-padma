@@ -43,7 +43,7 @@ class PadmaSettings {
 	public static function set_enviroment(){
 
 		/*	Errors	*/
-		error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT);
+		error_reporting(E_ALL & ~E_DEPRECATED);
 		@ini_set('display_errors', 'Off');
 
 	}
