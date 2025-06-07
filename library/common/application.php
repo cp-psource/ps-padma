@@ -319,7 +319,7 @@ class Padma {
 		add_theme_support( 'screen-reader-css' );
 
 		/* WordPress Functionality */
-		add_theme_support( 'html5', array( 'caption' ) );
+		//add_theme_support( 'html5', array( 'caption' ) );
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'menus' );
 		add_theme_support( 'widgets' );
