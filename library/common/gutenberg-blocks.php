@@ -17,30 +17,25 @@ class PadmaGutenbergBlocks {
 
 	public static function init() {
 
-		if(!PadmaOption::get('padma-blocks-as-gutenberg-blocks'))
-			return;
+    if(!PadmaOption::get('padma-blocks-as-gutenberg-blocks'))
+        return;
 
-		/**
-		 *
-		 * Feature only for WP5+
-		 *
-		 */
+    // Feature nur für echtes WordPress 5+
+    if (
+        defined('CLASSICPRESS_VERSION') ||
+        function_exists('classicpress_version_short') ||
+        file_exists(ABSPATH . 'wp-includes/classicpress-version.php') ||
+        !function_exists('register_block_type')
+    ) {
+        return;
+    }
 
-		if(function_exists('classicpress_version_short')){
-			return;
-		}
+    // Add Gutenberg Block categories
+    add_filter( 'block_categories_all', array( __CLASS__, 'add_block_category' ), 10, 2 );
 
-		if(!function_exists('register_block_type')){
-			return;
-		}
-
-		// Add Gutenberg Block categories
-		add_filter( 'block_categories_all', array( __CLASS__, 'add_block_category' ), 10, 2 );
-
-		// Register Padma Blocks as Gutenberg Blocks
-		add_action('init', array(__CLASS__,'padma_blocks_as_gutenberg_blocks'));
-
-	}
+    // Register Padma Blocks as Gutenberg Blocks
+    add_action('init', array(__CLASS__,'padma_blocks_as_gutenberg_blocks'));
+}
 
 
 	/**

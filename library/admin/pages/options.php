@@ -544,6 +544,7 @@
 		<div class="big-tab" id="tab-advanced-content">
 
 			<!-- Advanced -->
+			<?php if ( !is_multisite() ) : ?>
 			<div id="tab-general-content" class="postbox-container padma-postbox-container">		
 				<div id="" class="postbox padma-admin-options-group">
 
@@ -551,7 +552,6 @@
 						<span class="screen-reader-text"><?php _e('Automatic Updates','padma'); ?></span>
 						<span class="toggle-indicator" aria-hidden="true"></span>
 					</button>
-
 
 					<h2 class="hndle"><span><?php _e('Automatic Updates','padma'); ?></span></h2>
 
@@ -584,10 +584,10 @@
 					);
 
 					PadmaAdminInputs::admin_field_generate($form);
-
 					?>
 				</div>
 			</div>
+		<?php endif; ?>
 
 			<!-- Caching &amp; Compression -->
 			<div id="tab-general-content" class="postbox-container padma-postbox-container">		
@@ -653,40 +653,6 @@
 								)
 							),
 							'description' => __('Enables WordPress to send a Link:<...> rel="prefetch" header for every enqueued script and style as WordPress outputs them into the page source. Requires a web server that supports HTTP/2. <strong>Important:</strong> This feature is Experimental.','padma')
-						)
-					);
-
-					PadmaAdminInputs::admin_field_generate($form);
-
-					?>
-				</div>
-			</div>
-
-			<!-- Developer -->
-			<div id="tab-general-content" class="postbox-container padma-postbox-container">		
-				<div id="" class="postbox padma-admin-options-group">
-
-					<button type="button" class="handlediv" aria-expanded="false">
-						<span class="screen-reader-text"><?php _e('Developer','padma'); ?></span>
-						<span class="toggle-indicator" aria-hidden="true"></span>
-					</button>
-
-
-					<h2 class="hndle"><span><?php _e('Developer','padma'); ?></span></h2>
-
-					<?php
-					$form = array(
-						array(
-							'type' => 'checkbox',
-							'label' => __('Use Padma Developer version','padma'),
-							'checkboxes' => array(
-								array(
-									'id' => 'use-developer-version',
-									'label' => __('Allow install Edge version','padma'),
-									'checked' => PadmaOption::get('use-developer-version', false, false)
-								)
-							),
-							'description' => __('This option is for developers, use this option only if you know what are you doing. Padma Theme and plugins will upgrade to testing version. <strong>Do NOT use on production sites.</strong> This option requires Padma Updater plugin. Once active this option will allow you to upgrade your website to the latest version.','padma')
 						)
 					);
 
@@ -804,39 +770,41 @@
 
 
 			<!-- Gutenberg -->
-			<div id="tab-general-content" class="postbox-container padma-postbox-container">		
-				<div id="" class="postbox padma-admin-options-group">
+<?php
+function is_classicpress() {
+    return function_exists( 'classicpress_version' );
+}
 
-					<button type="button" class="handlediv" aria-expanded="false">
-						<span class="screen-reader-text"><?php _e('Gutenberg','padma'); ?></span>
-						<span class="toggle-indicator" aria-hidden="true"></span>
-					</button>
-
-
-					<h2 class="hndle"><span><?php _e('Gutenberg','padma'); ?></span></h2>
-
-					<?php
-					$form = array(
-						array(
-							'type' 	=> 'checkbox',
-							'label' => __('Display Padma Blocks in Gutenberg','padma'),
-							'checkboxes' => array(
-								array(
-									'id' 		=> 'padma-blocks-as-gutenberg-blocks',
-									'label' 	=> __('Show Padma Blocks as Gutenberg Blocks','padma'),
-									'checked' 	=> PadmaOption::get('padma-blocks-as-gutenberg-blocks', false, false)
-								)
-							),
-							'description' => __('If on, Padma will allow to use Padma Blocks as Gutenberg Blocks. Go to "Block Options > Anywhere" to enable it. <strong>Important:</strong> This feature is Experimental.','padma')
-						)
-					);
-
-					PadmaAdminInputs::admin_field_generate($form);
-
-					?>
-				</div>
-			</div>
-		</div>
+global $wp_version;
+if ( !is_classicpress() && version_compare( $wp_version, '5.0', '>=' ) ) :
+?>
+    <div id="tab-general-content" class="postbox-container padma-postbox-container">
+        <div class="postbox padma-admin-options-group">
+            <button type="button" class="handlediv" aria-expanded="false">
+                <span class="screen-reader-text"><?php _e('Gutenberg','padma'); ?></span>
+                <span class="toggle-indicator" aria-hidden="true"></span>
+            </button>
+            <h2 class="hndle"><span><?php _e('Gutenberg','padma'); ?></span></h2>
+            <?php
+            $form = array(
+                array(
+                    'type' 	=> 'checkbox',
+                    'label' => __('Display Padma Blocks in Gutenberg','padma'),
+                    'checkboxes' => array(
+                        array(
+                            'id' 		=> 'padma-blocks-as-gutenberg-blocks',
+                            'label' 	=> __('Show Padma Blocks as Gutenberg Blocks','padma'),
+                            'checked' 	=> PadmaOption::get('padma-blocks-as-gutenberg-blocks', false, false)
+                        )
+                    ),
+                    'description' => __('If on, Padma will allow to use Padma Blocks as Gutenberg Blocks. Go to "Block Options > Anywhere" to enable it. <strong>Important:</strong> This feature is Experimental.','padma')
+                )
+            );
+            PadmaAdminInputs::admin_field_generate($form);
+            ?>
+        </div>
+    </div>
+<?php endif; ?>
 
 		<div class="big-tab" id="tab-mobile-content">
 
