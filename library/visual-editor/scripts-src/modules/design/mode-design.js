@@ -2375,7 +2375,7 @@ define(['jquery', 'underscore', 'helper.contentEditor', 'deps/interact', 'util.n
 				showNotification({
 					id: 'inspector',
 					message: '<strong>Right-click</strong> highlighted elements to style them.<br /><br />Once an element is selected, you may nudge it using your arrow keys.<br /><br />The faded orange and purple are the margins and padding.  These colors are only visible when the inspector is active.',
-					closeConfirmMessage: 'Please be sure you understand how the Design Editor inspector works before hiding this message.',
+					/*closeConfirmMessage: 'Please be sure you understand how the Design Editor inspector works before hiding this message.',*/
 					closeTimer: false,
 					closable: true,
 					doNotShowAgain: true
