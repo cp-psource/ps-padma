@@ -299,7 +299,7 @@ class PadmaMetaBoxSEO extends PadmaAdminMetaBoxAPI {
 		//Do not use this box if the page being edited is the front page since they can edit the setting in the configuration.
 		if ( get_option('page_on_front') == padma_get('post') && get_option('show_on_front') == 'page' ) {
 
-			$this->info = sprintf( __('<strong>Configure the SEO settings for this page (Front Page) in the Padma Search Engine Optimization settings tab in <a href="%" target="_blank">Padma &raquo; Configuration</a>.</strong>','padma'), admin_url('admin.php?page=padma-options#tab-seo') );
+			$this->info = sprintf( __('<strong>Configure the SEO settings for this page (Front Page) in the Padma Search Engine Optimization settings tab in <a href="%s" target="_blank">Padma &raquo; Configuration</a>.</strong>','padma'), admin_url('admin.php?page=padma-options#tab-seo') );
 
 			$this->inputs = array();
 
