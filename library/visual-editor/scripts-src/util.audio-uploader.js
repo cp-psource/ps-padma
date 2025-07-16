@@ -2,6 +2,40 @@ define(['jquery', 'underscore'], function($, _) {
 
 	openAudioUploader = function(callback) {
 
+		// Check if WordPress Media Library is available
+		if (typeof wp !== 'undefined' && wp.media) {
+			
+			// Initialize WordPress Media Library directly
+			var mediaUploader = wp.media({
+				title: 'Select or Upload Audio',
+				button: {
+					text: 'Select Audio'
+				},
+				multiple: false,
+				library: {
+					type: 'audio'
+				}
+			});
+			
+			// Handle media selection
+			mediaUploader.on('select', function() {
+				var attachment = mediaUploader.state().get('selection').first().toJSON();
+				callback(attachment.url, attachment.filename);
+			});
+			
+			// Open the media library
+			mediaUploader.open();
+			
+		} else {
+			// Fallback to iframe method if wp.media is not available
+			openAudioUploaderIframe(callback);
+		}
+
+	}
+
+	// Fallback iframe method
+	openAudioUploaderIframe = function(callback) {
+
 		if ( !boxExists('input-audio') ) {
 
 			if ( isNaN(Padma.viewModels.layoutSelector.currentLayout()) )
@@ -13,7 +47,7 @@ define(['jquery', 'underscore'], function($, _) {
 				description: 'Upload or select an audio',
 				src: Padma.homeURL + '/?padma-trigger=media-uploader',
 				load: function() {
-					initiateAudioUploader(callback);
+					console.log('Audio uploader iframe loaded');
 				},
 				width: $(window).width() - 200,
 				height: $(window).height() - 200,
@@ -38,62 +72,6 @@ define(['jquery', 'underscore'], function($, _) {
 		}
 
 		openBox('input-audio');
-
-	}
-
-	initiateAudioUploader = function(callback) {
-
-		/* Check if iframe body has iframe-loaded class which is added via inline script in the footer of the iframe */
-		if (
-			!$('#box-input-audio iframe').length
-			|| typeof $('#box-input-audio iframe')[0].contentWindow.wp == 'undefined'
-			|| typeof $('#box-input-audio iframe')[0].contentWindow.wp.media == 'undefined'
-			|| typeof $('#box-input-audio iframe')[0].contentWindow.wp.media() == 'undefined'
-		) {
-
-			return setTimeout(function() {
-				initiateAudioUploader(callback);
-			}, 100);
-
-		}
-
-		wpMedia = $('#box-input-audio iframe')[0].contentWindow.wp.media;
-		var currentLayoutFragments = Padma.viewModels.layoutSelector.currentLayout().split('-');
-
-		/* If the current layout is a WordPress "post" then associate all attachments uploaded with the post */
-		if (_.first(currentLayoutFragments) == 'single' && !isNaN(_.last(currentLayoutFragments)) ) {
-			wpMedia.model.settings.post.id = _.last(currentLayoutFragments);
-		}
-
-		wpMedia.frames = {
-			file_frame: wpMedia({
-				title: '',
-				button: {
-					text: 'Use Audio'
-				},
-				multiple: false
-			})
-		};
-
-		wpMedia.frames.file_frame.on( 'select', function() {
-			// We set multiple to false so only get one audio from the uploader
-			attachment = wpMedia.frames.file_frame.state().get('selection').first().toJSON();
-
-			if ( typeof url == 'undefined' )
-				var url = attachment.url;
-
-			var filename = url.split('/')[url.split('/').length-1];
-
-			callback(url, filename);
-
-			parent.closeBox('input-audio', true);
-		});
-
-		wpMedia.frames.file_frame.on('escape', function() {
-			parent.closeBox('input-audio', true);
-		});
-
-		return wpMedia.frames.file_frame.open();
 
 	}
 
