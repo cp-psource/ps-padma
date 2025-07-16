@@ -12,6 +12,32 @@ if (!function_exists('wp_enqueue_script')) {
     require_once('../../../../../../wp-load.php');
 }
 
+// Remove MarketPress floating cart and other frontend hooks that shouldn't be in the media uploader
+remove_all_actions('wp_footer');
+remove_all_actions('wp_head');
+
+// Re-add only essential WordPress hooks
+add_action('wp_head', 'wp_enqueue_scripts', 1);
+add_action('wp_head', 'wp_print_styles', 8);
+add_action('wp_head', 'wp_print_head_scripts', 9);
+add_action('wp_footer', 'wp_print_footer_scripts', 20);
+
+// Remove any MarketPress hooks specifically
+if (function_exists('remove_action')) {
+    remove_action('wp_footer', 'mp_cart_widget');
+    remove_action('wp_head', 'mp_cart_scripts');
+    remove_action('wp_footer', 'mp_floating_cart');
+    remove_action('wp_enqueue_scripts', 'mp_enqueue_scripts');
+    remove_action('wp_head', 'mp_head_scripts');
+    remove_action('wp_footer', 'mp_footer_scripts');
+}
+
+// Remove any theme hooks that might add unwanted content
+remove_all_actions('padma_head');
+remove_all_actions('padma_body_open');
+remove_all_actions('padma_body_close');
+remove_all_actions('padma_footer');
+
 // Get media type from URL
 $type = isset($_GET['type']) ? sanitize_text_field($_GET['type']) : 'image';
 $tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'upload';
@@ -443,6 +469,27 @@ if (isset($_POST['url-upload']) && !empty($_POST['src'])) {
                 window.parent.closeBox('input-image', true);
             }
         }
+        
+        // Hide MarketPress cart and other unwanted elements after page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide MarketPress floating cart
+            var cartElements = document.querySelectorAll('.mp-cart-widget, .mp-floating-cart, .mp-cart-float, .marketpress-cart, .mp-cart, .floating-cart, .cart-widget, .woocommerce-cart, .cart-contents, .cart-icon, .header-cart, .mini-cart, .widget_shopping_cart, .shopping-cart-widget, .mp_cart_widget_content, .mp_cart_widget');
+            cartElements.forEach(function(element) {
+                element.style.display = 'none';
+                element.style.visibility = 'hidden';
+                element.remove(); // Remove completely
+            });
+            
+            // Also check for any elements with IDs that might be cart-related
+            var cartIds = ['mp-cart', 'floating-cart', 'cart-widget', 'marketpress-cart'];
+            cartIds.forEach(function(id) {
+                var element = document.getElementById(id);
+                if (element) {
+                    element.style.display = 'none';
+                    element.remove();
+                }
+            });
+        });
     </script>
     
     <?php wp_footer(); ?>
